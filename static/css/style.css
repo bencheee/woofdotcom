@@ -42,6 +42,10 @@ body {
     background-color: var(--color6);
 }
 
+.main-container {
+    width: 100%;
+}
+
 img {
     width: 100%;
     display: block;
