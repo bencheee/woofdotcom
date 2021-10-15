@@ -10,11 +10,65 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Libre+Franklin:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
     rel="stylesheet">
+  <link
+    href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+    crossorigin="anonymous" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/style.css" type="text/css">
   <title>woof(dot)com</title>
 </head>
 
 <body>
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="navbar">
+      <a class="navbar__logo" href="{{ url_for('index') }}">
+        <i class="fas fa-paw"></i>
+        <span>woof(dot)com</span>
+      </a>
+      <span class="navbar__toggle"><i class="fas fa-bars"></i></span>
+    </div>
+    <ul class="nav__mobile">
+      {% if not session.user %}
+        <a href=#>
+          <li>Register</li>
+        </a>
+        <a href=#>
+          <li>Login</li>
+        </a>
+        <a href=#>
+          <li>Give up a dog</li>
+        </a>
+        <a href=#>
+          <li>Contact us</li>
+        </a>
+      {% else %}
+        <a href=#>
+          <li>Adopt a dog</li>
+        </a>
+        <a href=#>
+          <li>Give up a dog</li>
+        </a>
+        <a href=#>
+          <li>Post new article</li>
+        </a>
+        <a href=#>
+          <li>View profile</li>
+        </a>
+        <a href=#>
+          <li>Inbox</li>
+        </a>
+        <a href=#>
+          <li>Logout</li>
+        </a>
+        {% if session.user != "Admin" %}
+          <a href=#>
+            <li>Contact us</li>
+          </a>
+        {% endif %}
+      {% endif %}
+    </ul>
+  </nav>
 
   {% block content %}
   {% endblock %}
