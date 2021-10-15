@@ -19,7 +19,8 @@ a {
 
 h1,
 h2,
-.navbar__logo span {
+.navbar__logo span,
+.footer__title {
     font-family: 'Fredericka the Great', cursive;
     font-weight: 100;
 }
@@ -99,4 +100,33 @@ li {
     font-size: 1.5rem;
     color: var(--color6);
     box-shadow: inset 4px 0px 0px -2px #ffffff61;
+}
+
+.footer {
+    text-align: center;
+    background-color:var(--color2);
+    color: var(--color6);
+    padding: 25px 0;
+}
+
+.footer__title {
+    font-size: 1.5rem;
+}
+
+.footer__links {
+    display: flex;
+    justify-content: center;
+}
+
+.footer i {
+    font-size: 2rem;
+    margin: 25px 10px;
+}
+
+.footer a {
+    color: var(--color6);
+}
+
+.footer__copyright {
+    font-size: 0.8rem;
 }
