@@ -21,6 +21,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/user_register", methods=["GET", "POST"])
+def user_register():
+    return render_template("user_register.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

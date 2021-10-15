@@ -8,6 +8,9 @@
     --color4: #8bd9d4;
     --color5: #b3e4e0;
     --color6: #f2f9f9;
+
+    /* Transparent 10% */
+    --color3-10: #33b4ab18;
 }
 
 /* FONTS */
@@ -20,7 +23,8 @@ a {
 h1,
 h2,
 .navbar__logo span,
-.footer__title {
+.footer__title,
+.form__title {
     font-family: 'Fredericka the Great', cursive;
     font-weight: 100;
 }
@@ -42,10 +46,6 @@ body {
     background-color: var(--color6);
 }
 
-.main-container {
-    width: 100%;
-}
-
 img {
     width: 100%;
     display: block;
@@ -58,6 +58,141 @@ a {
 
 li {
     list-style: none;
+}
+
+/* GENERAL LAYOUT */
+
+/* hr's */
+
+.hr {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.hr--form {
+    margin: 35px auto;
+}
+
+/* Buttons */
+
+.btn {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--color3);
+    color: var(--color6);
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+}
+
+.btn--invert {
+    background-color: var(--color6);
+    color: var(--color3);
+    border: 1px solid var(--color2);
+}
+
+/* Containers */
+
+.main-container {
+    width: 100%;
+}
+
+.container {
+    padding: 5px 5px 35px 5px;
+}
+
+.container--light {
+    background-color: var(--color6);
+    color: var(--color1);
+}
+
+.container--dark {
+    background-color: var(--color3);
+    color: var(--color6);
+}
+
+.container--extended {
+    top: 80px;
+    margin: 0 auto 80px auto;
+}
+
+/* Forms */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 100;
+    color: var(--color0);
+    padding: 0 10px;
+    height: 100%;
+}
+
+.form__title {
+    text-align: center;
+    margin: 30px auto 35px auto;
+    font-size: 2rem;
+}
+
+.form__label {
+    font-size: 1.2rem;
+}
+
+.form__input,
+.form__select {
+    height: 30px;
+    margin-bottom: 15px;
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding-left: 5px;
+    background-color: var(--color3-10);
+}
+
+.form__input--bold {
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.form__input::placeholder {
+    font-size: 0.9rem;
+}
+
+.form__textarea {
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.1rem;
+    background-color: var(--color3-10);
+    height: 350px;
+}
+
+/* user_register.html */
+
+.regform__option {
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.regform__option--small {
+    font-weight: 100;
+    margin-top: 0;
+    font-size: 0.8rem;
+}
+
+.btn--register {
+    margin: 35px auto 0 auto;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 0.9rem;
 }
 
 /* Navbar and Footer */
