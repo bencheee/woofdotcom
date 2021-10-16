@@ -91,6 +91,12 @@ def user_logout():
     return redirect(url_for("index"))
 
 
+@app.route("/user_profile", methods=["GET", "POST"])
+def user_profile():
+    user = mongo.db.users.find_one({"username": session["user"]})
+    return render_template("user_profile.html", user=user)
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

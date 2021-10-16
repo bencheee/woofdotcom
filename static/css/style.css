@@ -246,6 +246,20 @@ li {
     font-weight: 400;
 }
 
+/* user_profile.html */
+
+.textarea--profile-info {
+    margin-bottom: 35px;
+}
+
+.btn--profile {
+    margin-top: 20px;
+}
+
+.hr--profile {
+    margin: 35px auto;
+}
+
 /* Navbar and Footer */
 
 .nav {
