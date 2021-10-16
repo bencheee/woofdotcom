@@ -19,6 +19,10 @@ $("#flash-close").click(function(){
 // Toggles password visibility
 $("#pass_icon").click(passToggle);
 
+// Toggles Dropdown items on surrender.html
+$(".btn--surrender").click(function(){
+    $(this).next().slideToggle();
+})
 
 // ####################
 //      FUNCTIONS
