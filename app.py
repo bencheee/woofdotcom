@@ -84,6 +84,13 @@ def user_login():
     return render_template("user_login.html")
 
 
+@app.route("/user_logout")
+def user_logout():
+    session.pop("user")
+    flash("You have been logged out sucessfully!")
+    return redirect(url_for("index"))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
