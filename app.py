@@ -94,6 +94,34 @@ def user_logout():
 @app.route("/user_profile", methods=["GET", "POST"])
 def user_profile():
     user = mongo.db.users.find_one({"username": session["user"]})
+    # Form to change the user password
+    if request.method == "POST" and "password" in request.form:
+        # Check current password
+        if check_password_hash(user["password"], request.form.get("password")):
+            # Check if new passwords match
+            if request.form.get("password2") == request.form.get("password3"):
+                new_password = generate_password_hash(
+                    request.form.get("password2"))
+                # Update password in database
+                mongo.db.users.update_one(
+                    {"username": session["user"]},
+                    {"$set": {"password": new_password}})
+                flash("Password changed!")
+            else:
+                flash("New passwords don't match!")
+        else:
+            flash("Current password wrong!")
+    # Form to edit user details
+    elif request.method == "POST" and "fname" in request.form:
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+        phone = request.form.get("phone")
+        about = request.form.get("about")
+        mongo.db.users.update_one(
+            {"username": session["user"]},
+            {"$set": {"fname": fname, "lname": lname,
+                      "phone": phone, "about": about}})
+        flash("Info updated!")
     return render_template("user_profile.html", user=user)
 
 
