@@ -66,6 +66,21 @@ def user_register():
 
 @app.route("/user_login", methods=["GET", "POST"])
 def user_login():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+        password = request.form.get("password")
+        # Check if username/password is valid
+        if existing_user is None:
+            flash("Username or password incorrect!")
+            return redirect(url_for("user_login"))
+        if check_password_hash(existing_user["password"], password):
+            session["user"] = request.form.get("username")
+            flash(f"Welcome {existing_user['username']}, you are logged in!")
+            return redirect(url_for("index"))
+        else:
+            flash("Username or password incorrect!")
+            return redirect(url_for("user_login"))
     return render_template("user_login.html")
 
 
