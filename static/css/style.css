@@ -224,6 +224,28 @@ li {
     font-size: 0.9rem;
 }
 
+/* user_login.html */
+
+.container--login {
+    margin: 0 auto;
+    height: 100%;
+}
+
+.btn--login {
+    margin: 35px auto;
+}
+
+.login-link {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 0.9rem;
+}
+
+.login-link a,
+.register-link a {
+    font-weight: 400;
+}
+
 /* Navbar and Footer */
 
 .nav {

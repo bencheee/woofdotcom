@@ -64,6 +64,11 @@ def user_register():
     return render_template("user_register.html")
 
 
+@app.route("/user_login", methods=["GET", "POST"])
+def user_login():
+    return render_template("user_login.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

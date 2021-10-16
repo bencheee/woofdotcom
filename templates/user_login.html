@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Login form -->
+<section class="container container--light container--extended container--login">
+  <form class="form" action="{{ url_for('user_login') }}" method="POST">
+    <p class="form__title">User login</p>
+
+    <label class="form__label" for="username">Username</label>
+    <input class="form__input" type="text" id="username" name="username"
+      required>
+
+    <label class="form__label" for="password">Password</label>
+    <input class="form__input form__input--bold" type="password" id="password"
+      name="password" required>
+
+    <div class="pass-toggle">
+      <i class="far fa-eye" id="pass_icon"></i>
+      <span id="pass_toggle"> Show password</span>
+    </div>
+    <button class="btn btn--login" type="submit">LOGIN</button>
+    <p class="login-link">Not yet a member? Register <a href="/user_register">HERE</a></p>
+  </form>
+</section>
+{% endblock %}
