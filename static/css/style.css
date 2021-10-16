@@ -260,6 +260,57 @@ li {
     margin: 35px auto;
 }
 
+/* dog_surrender.html */
+
+.surrender {
+    padding: 0 10px;
+}
+
+.surrender__text {
+    text-align: justify;
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin: 35px 0;
+}
+
+.surrender__title {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.surrender__item {
+    display: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+.surrender__alert {
+    text-align: justify;
+    font-weight: 100;
+    color: red;
+    margin-top: 35px;
+}
+
+.surrender__alert a {
+    border-bottom: 1px solid #ff7575;
+    font-weight: 100;
+    color: red;
+}
+
+.btn--surrender {
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.btn--rehome {
+    margin-top: 35px;
+}
+
 /* Navbar and Footer */
 
 .nav {

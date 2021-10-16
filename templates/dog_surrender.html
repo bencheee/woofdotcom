@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Dog surrender tips -->
+<section class="container container--light">
+  <div class="surrender">
+    <p class="surrender__text">We understand how difficult the decision can be to give up a dog. If you are struggling, and are at risk of having to surrender, we may be able to help. There are many people looking for a new dog just like yours. Before considering surrendering your dog to a shelter, see if you can find another family who may be interested in giving your dog a new home.</p>
+    <p class="surrender__title">Tips for rehoming your dog</p>
+    <div class="btn btn--invert btn--surrender">Caution</div>
+    <div class="surrender__item container--dark">Use caution when considering unknown individuals or families as your dog's new owners. Hold the initial meeting in a public place and ask questions to screen potential adopters. Share your expectations for your dog's new home. When you find a family that meets your and your dog's needs, ask for identification and contact information to follow up on how your dog is doing in its new home.</div>
+    <div class="btn btn--invert btn--surrender">Time</div>
+    <div class="surrender__item container--dark">Give yourself time to re-home your dog. It can often take weeks or even months to find a new home.</div>
+    <div class="btn btn--invert btn--surrender">Adoptability</div>
+    <div class="surrender__item container--dark">Increase your dog's adoptability. Make sure it’s spayed/neutered, groomed, and up-to-date on its vaccinations.</div>
+    <div class="btn btn--invert btn--surrender">Spread the word</div>
+    <div class="surrender__item container--dark">Tell your friends, family and co-workers. Ask them to spread the word! You never know who may be looking for a new companion.</div>
+    <div class="btn btn--invert btn--surrender">Rescue groups</div>
+    <div class="surrender__item container--dark">Check with local rescue groups.There are many rescue groups who may be able to accept your dog. You can find most of these groups online th.</div>
+    <p class="surrender__alert">PLEASE, NEVER ABANDON YOUR DOG! If you are unable to find someone who will re-home your dog, we will accept owner surrendered pets by appointment. Please send us a message via <a href=#>contact link</a> and we will get back to you shortly.</p>
+    {% if session.user %}
+      <a class="btn btn--rehome" href=#>Rehome your dog</a>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

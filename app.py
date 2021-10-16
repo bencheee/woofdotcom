@@ -125,6 +125,11 @@ def user_profile():
     return render_template("user_profile.html", user=user)
 
 
+@app.route("/dog_surrender")
+def dog_surrender():
+    return render_template("dog_surrender.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
