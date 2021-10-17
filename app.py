@@ -130,6 +130,11 @@ def dog_surrender():
     return render_template("dog_surrender.html")
 
 
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    return render_template("contact.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

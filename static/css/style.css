@@ -311,6 +311,21 @@ li {
     margin-top: 35px;
 }
 
+/* contact.html */
+
+.textarea--contact-subject {
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.btn--contact {
+    margin-top: 35px;
+}
+
+.container--contact {
+    padding-top: 35px;
+}
+
 /* Navbar and Footer */
 
 .nav {
