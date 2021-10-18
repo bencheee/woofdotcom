@@ -326,6 +326,19 @@ li {
     padding-top: 35px;
 }
 
+/* alert.html */
+
+.alert-info {
+    font-size: 1.3rem;
+    text-align: justify;
+    margin-bottom: 35px;
+    padding: 0 10px;
+}
+
+.alert-center {
+    text-align: center;
+}
+
 /* Navbar and Footer */
 
 .nav {

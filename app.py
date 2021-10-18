@@ -26,6 +26,13 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/alert/<response>")
+def alert(response):
+    response_received = response
+    return render_template(
+        "alert.html", response=response_received)
+
+
 @app.route("/user_register", methods=["GET", "POST"])
 def user_register():
     if request.method == "POST":

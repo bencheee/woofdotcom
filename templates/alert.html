@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Alert container -->
+<section class="container container--light container--center
+  container--extended">
+  {% if response == "message sent" %}
+    <p class="alert-info alert-center">Message sent!</p>
+    {% if session.user %}
+      <a class="btn" href=#>Go to inbox</a>
+    {% else %}
+      <a class="btn" href=#>Back to index</a>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}
