@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Banner -->
+<section class="banner">
+  <img class="banner__img" src="/static/images/banner_contact.webp" alt="">
+  <div class="title-section">
+    <h1 class="title-section__title">Title</h1>
+    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
+  </div>
+</section>
 <!-- Contact form -->
 <section class="container container--light container--contact">
   <form class="form" action="{{ url_for('contact') }}" method="POST">

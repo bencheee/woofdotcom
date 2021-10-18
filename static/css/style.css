@@ -206,6 +206,24 @@ li {
     height: 350px;
 }
 
+/*  Title section */
+
+.title-section {
+    background-color: var(--color3);
+    color: var(--color6);
+    text-align: center;
+    padding: 35px 10px;
+}
+
+.title-section__title {
+    font-size: 3rem;
+}
+
+.title-section__text {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
 /* reg-card section */
 
 .reg-card {
