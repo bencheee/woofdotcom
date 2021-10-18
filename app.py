@@ -171,6 +171,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/dog_new", methods=["GET", "POST"])
+def dog_new():
+    return render_template("dog_new.html")
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

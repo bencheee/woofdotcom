@@ -206,6 +206,24 @@ li {
     height: 350px;
 }
 
+.checkbox {
+    padding: 10px;
+    background-color: var(--color3-10);
+    border: 1px solid var(--color1);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.checkbox__title {
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+.inputfile {
+    display: none;
+}
+
 /*  Title section */
 
 .title-section {
@@ -385,6 +403,21 @@ li {
     text-align: center;
 }
 
+/* dog_new.html */
+
+.container--dog {
+    padding-top: 35px;
+}
+
+.textarea--dog-greeting {
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.btn--dog {
+    margin-top: 35px;
+}
+    
 /* Navbar and Footer */
 
 .nav {

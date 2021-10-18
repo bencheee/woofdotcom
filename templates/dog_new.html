@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Dog rehoming form -->
+<section class="container container--light container--dog">
+  <form class="form" action="{{ url_for('dog_new') }}" method="POST"
+    enctype="multipart/form-data">
+
+    <label class="form__label" for="name">Name</label>
+    <input class="form__input" type="text" name="name" id="name" minlength="2"
+      maxlength="15" pattern="^[a-zA-Z]{2,15}}$" required>
+
+    <label class="form__label" for="gender">Gender</label>
+    <select class="form__input" name="gender" id="gender" required>
+      <option value="" selected disabled hidden>Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <label class="form__label" for="age">Age (0 for a puppy)</label>
+    <input class="form__input" type="text" id="age" name="age" minlength="1"
+      maxlength="2" pattern="^[0-9]{1,2}$" required>
+
+    <label class="form__label" for="size">Size</label>
+    <select class="form__input" name="size" id="size" required>
+      <option value="" selected disabled hidden>Select size</option>
+      <option value="Small">Small</option>
+      <option value="Medium">Medium</option>
+      <option value="Large">Large</option>
+    </select>
+
+    <div class="checkbox">
+      <p class="checkbox__title">Other options</p>
+      <ul>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="kids">
+          <label for="good_with">Good with kids</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="family">
+          <label for="good_with">Suitable for families</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="pets">
+          <label for="good_with">Good with other pets</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="single">
+          <label for="good_with">Prefers only one owner</label>
+        </li>
+      </ul>
+    </div>
+
+    <label class="form__label" for="greeting">Greeting</label>
+    <textarea class="form__textarea textarea--dog-greeting" name="greeting"
+      id="greeting" maxlength="150" pattern="([^\s]+)" required></textarea>
+
+    <label class="form__label" for="description">Description</label>
+    <textarea class="form__textarea" name="description" id="description"
+      maxlength="10000" pattern="([^\s]+)" required></textarea>
+
+    <button class="btn btn--dog">POST</button>
+
+  </form>
+</section>
+{% endblock %}
