@@ -403,17 +403,20 @@ li {
     text-align: center;
 }
 
-/* dog_new.html */
+/* dog_new.html & post_new.html*/
 
+.container--post,
 .container--dog {
     padding-top: 35px;
 }
 
+.textarea--post-summary,
 .textarea--dog-greeting {
     height: 150px;
     margin-bottom: 15px;
 }
 
+.btn--post,
 .btn--dog {
     margin-top: 35px;
 }

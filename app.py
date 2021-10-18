@@ -171,6 +171,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/post_new", methods=["GET", "POST"])
+def post_new():
+    categories = list(mongo.db.categories.find())
+    return render_template("post_new.html", categories=categories)
+
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
     if request.method == "POST":
