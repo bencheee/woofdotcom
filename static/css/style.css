@@ -149,6 +149,12 @@ li {
     margin: 0 auto 80px auto;
 }
 
+.container__title {
+    text-align: center;
+    margin: 30px auto 35px auto;
+    font-size: 2rem;
+}
+
 /* Forms */
 
 .form {
@@ -198,6 +204,28 @@ li {
     font-size: 1.1rem;
     background-color: var(--color3-10);
     height: 350px;
+}
+
+/* reg-card section */
+
+.reg-card {
+    font-weight: 100;
+}
+
+.reg-card__text {
+    text-align: justify;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    margin-bottom: 35px;
+}
+
+.reg-card__list {
+    width: 300px;
+    margin: 0 auto 35px auto;
+}
+
+.reg-card__item {
+    font-size: 1.1rem;
 }
 
 /* user_register.html */
