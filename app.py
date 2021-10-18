@@ -174,7 +174,25 @@ def contact():
 @app.route("/post_new", methods=["GET", "POST"])
 def post_new():
     categories = list(mongo.db.categories.find())
+    if request.method == "POST":
+        # Create new post and upload to database
+        new_post = {
+            "title": request.form.get("title"),
+            "summary": request.form.get("summary"),
+            "content": request.form.get("content"),
+            "category": request.form.get("category"),
+            "author": session["user"],
+            "created": datetime.today().timetuple(),
+            "create_date": datetime.now().strftime("%d/%m/%Y"),
+            "create_time": datetime.now().strftime("%H:%M"),
+            "update_date": "",
+            "likes": 0,
+        }
+        mongo.db.posts.insert_one(new_post)
+        flash("New post added!")
+        return redirect(url_for("post_main"))
     return render_template("post_new.html", categories=categories)
+
 
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
