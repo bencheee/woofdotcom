@@ -173,6 +173,21 @@ def contact():
 
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
+    if request.method == "POST":
+        # Create new dog entry and upload to database
+        dog = {
+            "name": request.form.get("name").lower(),
+            "gender": request.form.get("gender"),
+            "age": request.form.get("age"),
+            "size": request.form.get("size"),
+            "good_with": request.form.getlist("good_with"),
+            "description": request.form.get("description"),
+            "greeting": request.form.get("greeting"),
+            "created": datetime.today().timetuple(),
+        }
+        mongo.db.dogs.insert_one(dog)
+        flash("New dog added!")
+        return redirect(url_for("dog_main"))
     return render_template("dog_new.html")
 
 
