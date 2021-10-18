@@ -6,6 +6,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 if os.path.exists("env.py"):
     import env
 
@@ -132,6 +133,34 @@ def dog_surrender():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        # Use existing data for registered users
+        if session.get("user") is None:
+            email = request.form.get("email")
+            name = f"{request.form.get('name')} (Not registered)"
+            registered = False
+        else:
+            user = mongo.db.users.find_one({"username": session["user"]})
+            email = user["email"]
+            name = user["username"]
+            registered = True
+        # Send message to admin
+        message_item = {
+            "sent_by": name,
+            "sent_on": datetime.today().timetuple(),
+            "send_to": "Admin",
+            "create_date": datetime.now().strftime("%d/%m/%Y"),
+            "create_time": datetime.now().strftime("%H:%M"),
+            "subject": request.form.get("subject"),
+            "sender_email": email,
+            "message": request.form.get("message"),
+            "registered": registered,
+            "status": "unread",
+            "replied": False,
+            "type": "standard"
+        }
+        mongo.db.messages.insert_one(message_item)
+        return redirect(url_for("alert", response="message sent"))
     return render_template("contact.html")
 
 
