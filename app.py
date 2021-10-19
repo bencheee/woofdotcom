@@ -233,10 +233,16 @@ def dog_page(dog_id):
         user_info = False
     else:
         user_info = True
+    # Check if user already applied for adoption
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    if dog["_id"] in user["adoption_requests"]:
+        adoption_request = True
+    else:
+        adoption_request = False
     owner = mongo.db.users.find_one({"_id": dog["owner_id"]})
     return render_template(
-        "dog_page.html", dog=dog, owner=owner, user_info=user_info)
+        "dog_page.html", dog=dog, owner=owner, user_info=user_info,
+        adoption_request=adoption_request)
 
 
 if __name__ == "__main__":

@@ -32,7 +32,13 @@
     <p class="dog__description">{{ dog.description }}</p>
   </div>
   {% if user_info == True %} 
-    <a class="btn btn--dog" href=#>Apply for adoption</a>
+    {% if session.user != "Admin" and session.user != owner.username %}
+      {% if adoption_request == False %}
+        <a class="btn btn--dog" href=#>Apply for adoption</a>
+      {% elif adoption_request == True %}
+        <a class="btn btn--dog" href=#>Withdraw application</a>
+      {% endif %}
+    {% endif %}
   {% endif %}
 </section>
 {% endblock %}
