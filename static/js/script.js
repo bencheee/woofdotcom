@@ -106,6 +106,7 @@ function popUp(msg, id) {
     $(`#${id}-confirm`).show();
     $(".btn--popup").click(function () {
         $(".popup__container").hide();
+        $(`#${id}-confirm`).hide();
     });
     enableScroll();
 };
