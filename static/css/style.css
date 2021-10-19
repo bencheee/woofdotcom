@@ -420,6 +420,54 @@ li {
 .btn--dog {
     margin-top: 35px;
 }
+
+/* dog_page.html */
+
+.dog__img {
+    background-size: cover;
+    background-position: center;
+}
+
+.dog__name {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 30px 0 15px 0;
+}
+
+.dog__greeting {
+    margin-bottom: 15px;
+    text-align: justify;
+    font-size: 1.2rem;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.dog__info {
+    margin: 35px 0;
+    padding: 0 10px;
+    font-weight: 100;
+}
+
+.dog__info span  {
+    font-weight: 900;
+}
+
+.hr--dog {
+    margin-bottom: 35px;
+}
+
+.dog__description {
+    font-size: 1.1rem;
+    margin-top: 35px;
+    padding: 0 10px;
+    font-weight: 100;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+
+
+
     
 /* Navbar and Footer */
 

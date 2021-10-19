@@ -210,8 +210,14 @@ def dog_new():
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
-        return redirect(url_for("dog_main"))
+        return redirect(url_for("index"))
     return render_template("dog_new.html")
+
+
+@app.route("/dog_page/<dog_id>")
+def dog_page(dog_id):
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    return render_template("dog_page.html", dog=dog)
 
 
 if __name__ == "__main__":
