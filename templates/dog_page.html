@@ -23,6 +23,12 @@
       {% endif %}
     </div>
     <hr class="hr hr--dark hr--dog">
+    {% if session.user == owner.username or session.user == "Admin" %}
+      <div class="control-buttons">
+        <i id="dog-edit" class="far fa-edit popup-main-btn"></i>
+        <i id="dog-delete" class="far fa-trash-alt popup-main-btn"></i>
+    </div>
+    {% endif %}
     <p class="dog__description">{{ dog.description }}</p>
   </div>
 </section>

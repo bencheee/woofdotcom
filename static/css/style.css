@@ -469,10 +469,17 @@ li {
     white-space: pre-line;
 }
 
+.control-buttons {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    margin: 0 15px 0 0;
+}
 
+.popup-main-btn {
+    margin-left: 10px;
+}
 
-
-    
 /* Navbar and Footer */
 
 .nav {
