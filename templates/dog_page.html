@@ -13,6 +13,14 @@
       {% endif %}
       <p><span>Size: </span>{{ dog.size }}</p>
       <p><span>Gender: </span>{{ dog.gender }}</p><br>
+      {% if session.user == "Admin" %}
+        <fieldset class="fieldset">
+          <legend>Owner Info</legend>
+          <p><span>Full name: </span>{{ owner.fname }} {{ owner.lname }}</p>
+          <p><span>Contact number: </span>{{ owner.phone }}</p>
+          <p><span>Email: </span>{{ owner.email }}</p>
+        </fieldset>
+      {% endif %}
     </div>
     <hr class="hr hr--dark hr--dog">
     <p class="dog__description">{{ dog.description }}</p>
