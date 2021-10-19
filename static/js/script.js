@@ -24,10 +24,10 @@ $(".btn--surrender").click(function(){
     $(this).next().slideToggle();
 })
 
+// Controls image sizes to 16:9 ratio
 $(window).resize(function () {
     resizeImg($(".dog__img"))
 })
-
 resizeImg($(".dog__img"))
 
 

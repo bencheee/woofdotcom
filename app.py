@@ -207,6 +207,7 @@ def dog_new():
             "description": request.form.get("description"),
             "greeting": request.form.get("greeting"),
             "created": datetime.today().timetuple(),
+            "owner_id": user["_id"]
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
