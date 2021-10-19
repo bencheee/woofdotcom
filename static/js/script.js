@@ -32,6 +32,10 @@ $(window).resize(function () {
 resizeImg($(".post__img"))
 resizeImg($(".dog__img"))
 
+// Back button
+$(".js-btn-back").click(function(){
+    window.location.href = document.referrer;
+})
 
 
 // ####################
