@@ -197,6 +197,7 @@ def post_new():
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
     if request.method == "POST":
+        user = mongo.db.users.find_one({"username": session["user"]})
         # Create new dog entry and upload to database
         dog = {
             "name": request.form.get("name").lower(),
@@ -218,7 +219,8 @@ def dog_new():
 @app.route("/dog_page/<dog_id>")
 def dog_page(dog_id):
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
-    return render_template("dog_page.html", dog=dog)
+    owner = mongo.db.users.find_one({"_id": dog["owner_id"]})
+    return render_template("dog_page.html", dog=dog, owner=owner)
 
 
 if __name__ == "__main__":
