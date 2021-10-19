@@ -425,19 +425,22 @@ li {
     margin-top: 35px;
 }
 
-/* dog_page.html */
+/* dog_page.html & post_page.html */
 
+.post__img,
 .dog__img {
     background-size: cover;
     background-position: center;
 }
 
+.post__title,
 .dog__name {
     font-size: 1.5rem;
     font-weight: 900;
     margin: 30px 0 15px 0;
 }
 
+.post__summary,
 .dog__greeting {
     margin-bottom: 15px;
     text-align: justify;
@@ -446,27 +449,21 @@ li {
     font-style: italic;
 }
 
+.post__info,
 .dog__info {
     margin: 35px 0;
     padding: 0 10px;
     font-weight: 100;
 }
 
+.post__info span,
 .dog__info span  {
     font-weight: 900;
 }
 
+.hr--post,
 .hr--dog {
     margin-bottom: 35px;
-}
-
-.dog__description {
-    font-size: 1.1rem;
-    margin-top: 35px;
-    padding: 0 10px;
-    font-weight: 100;
-    text-align: justify;
-    white-space: pre-line;
 }
 
 .control-buttons {
@@ -478,6 +475,22 @@ li {
 
 .popup-main-btn {
     margin-left: 10px;
+}
+
+.post__content,
+.dog__description {
+    font-size: 1.1rem;
+    margin-top: 35px;
+    padding: 0 10px;
+    font-weight: 100;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+.post__likes {
+    font-size: 0.8rem;
+    text-align: right;
+    margin-right: 10px;
 }
 
 /* Navbar and Footer */

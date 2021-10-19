@@ -190,8 +190,14 @@ def post_new():
         }
         mongo.db.posts.insert_one(new_post)
         flash("New post added!")
-        return redirect(url_for("post_main"))
+        return redirect(url_for("index"))
     return render_template("post_new.html", categories=categories)
+
+
+@app.route("/post_page/<post_id>")
+def post_page(post_id):
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    return render_template("post_page.html", post=post)
 
 
 @app.route("/dog_new", methods=["GET", "POST"])
