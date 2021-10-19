@@ -22,12 +22,20 @@
     </div>
     <hr class="hr hr--dark hr--post">
     {% if session.user %}
-    <div class="control-buttons">
-      {% if session.user == post.author or session.user == "Admin" %}
-        <i id="post-edit" class="far fa-edit popup-main-btn"></i>
-        <i id="post-delete" class="far fa-trash-alt popup-main-btn"></i>
-      {% endif %}
-    </div>
+      <div class="control-buttons">
+        {% if session.user == post.author or session.user == "Admin" %}
+          <i id="post-edit" class="far fa-edit popup-main-btn"></i>
+          <i id="post-delete" class="far fa-trash-alt popup-main-btn"></i>
+        {% else %}
+          <a class="star-button" href=#>
+            {% if liked_post == True %}
+              <i class="fas fa-star"></i>
+            {% elif liked_post == False %}
+              <i class="far fa-star"></i>
+            {% endif %}
+          </a>
+        {% endif %}
+      </div>
     {% endif %}
     <p class="post__content">{{ post.content }}</p>
   </div>

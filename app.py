@@ -197,7 +197,14 @@ def post_new():
 @app.route("/post_page/<post_id>")
 def post_page(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    return render_template("post_page.html", post=post)
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # Check if session user has liked this post before
+    if user is not None:
+        if post["_id"] in user["liked_posts"]:
+            liked_post = True
+        else:
+            liked_post = False
+    return render_template("post_page.html", post=post, liked_post=liked_post)
 
 
 @app.route("/dog_new", methods=["GET", "POST"])

@@ -66,6 +66,38 @@ li {
 
 /* GENERAL LAYOUT */
 
+/* Popup */
+
+.popup__container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    width: 100vw;
+}
+
+.popup__text {
+    color: var(--color5);
+    text-align: center;
+    font-size: 1.4em;
+    padding: 0 25px;
+}
+
+.popup__btn-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.btn--popup {
+    width: 150px;
+    font-size: 1rem;
+    margin: 0 15px;
+}
+
 /* Flash */
 
 .flash {
@@ -504,6 +536,11 @@ li {
     font-size: 0.8rem;
     text-align: right;
     margin-right: 10px;
+}
+
+.star-button {
+    width: 100%;
+    text-align: center;
 }
 
 /* Navbar and Footer */

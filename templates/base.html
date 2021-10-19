@@ -112,6 +112,17 @@
     <p class="footer__copyright">©2021, Made by Sandro Bencinic</p>
 </footer>
 
+<div class="popup__container">
+  <div class="popup">
+      <p class="popup__text">TEXT</p>
+      <div class="popup__btn-container">
+          <button class="btn btn--popup" id="">Cancel</button>
+          {% block popup %}
+          {% endblock %}
+      </div>
+  </div>
+</div>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="/static/js/script.js"></script>
