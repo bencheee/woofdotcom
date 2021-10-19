@@ -24,6 +24,15 @@ $(".btn--surrender").click(function(){
     $(this).next().slideToggle();
 })
 
+$(window).resize(function () {
+    resizeImg($(".dog__img"))
+})
+
+resizeImg($(".dog__img"))
+
+
+
+
 // ####################
 //      FUNCTIONS
 // ####################
@@ -45,4 +54,11 @@ function passToggle() {
         $("#pass_icon").addClass("fa-eye");
         $("#pass_toggle").text("Show password");
     }
+}
+
+// Controls image sizes to 16:9 ratio
+function resizeImg(img) {
+    width = img.width()
+    height = width * 0.5625
+    img.css("height", `${height}px`);
 }
