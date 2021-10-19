@@ -31,5 +31,8 @@
     {% endif %}
     <p class="dog__description">{{ dog.description }}</p>
   </div>
+  {% if user_info == True %} 
+    <a class="btn btn--dog" href=#>Apply for adoption</a>
+  {% endif %}
 </section>
 {% endblock %}

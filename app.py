@@ -218,9 +218,25 @@ def dog_new():
 
 @app.route("/dog_page/<dog_id>")
 def dog_page(dog_id):
+    # Prevent users with incomplete profile from adopting
+    user = mongo.db.users.find_one({"username": session["user"]})
+    if (user["fname"] == "" or
+            user["lname"] == "" or
+            user["phone"] == "" or
+            user["about"] == ""):
+        flash(
+            """
+            In order to apply for dog adoption you need to provide \
+            more details about yourself. Please update your \
+            profile before applying.
+            """)
+        user_info = False
+    else:
+        user_info = True
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     owner = mongo.db.users.find_one({"_id": dog["owner_id"]})
-    return render_template("dog_page.html", dog=dog, owner=owner)
+    return render_template(
+        "dog_page.html", dog=dog, owner=owner, user_info=user_info)
 
 
 if __name__ == "__main__":
