@@ -312,6 +312,21 @@ def adopt(dog_id):
     return redirect(url_for('dog_page', dog_id=dog_id))
 
 
+@app.route("/adopt_undo/<dog_id>")
+def adopt_undo(dog_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Delete users request from database
+    user["adoption_requests"].remove(dog["_id"])
+    mongo.db.messages.delete_one({"dog_id": dog_id})
+    mongo.db.users.update_one(
+        {"username": session["user"]},
+        {"$set": {"adoption_requests": user["adoption_requests"]}})
+    flash("Application sucessfully withdrawn !")
+    return redirect(
+        url_for('dog_page', dog_id=dog_id))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
