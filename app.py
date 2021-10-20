@@ -21,6 +21,11 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def permission_denied():
+    flash("Permission denied.")
+    return redirect(url_for("index"))
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
