@@ -304,6 +304,12 @@ def dog_page(dog_id):
 def adopt(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Prevent users with incomplete profile to call function
+    if (user["fname"] == "" or
+        user["lname"] == "" or
+        user["phone"] == "" or
+            user["about"] == ""):
+        return permission_denied()
     # Send adoption request to admin inbox
     message_item = {
         "sent_by": user["username"],
