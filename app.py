@@ -200,6 +200,25 @@ def post_new():
     return render_template("post_new.html", categories=categories)
 
 
+@app.route("/post_delete/<post_id>")
+def post_delete(post_id):
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    users = list(mongo.db.users.find())
+    # Delete post from 'liked_posts' list for all users
+    # in users collection
+    for user in users:
+        if ObjectId(post_id) in user["liked_posts"]:
+            user["liked_posts"].remove(post["_id"])
+            mongo.db.users.update_one(
+                {"username": user["username"]},
+                {"$set": {"liked_posts": user["liked_posts"]}})
+    # Delete post from database
+    mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
+    flash("Post deleted!")
+    return redirect("index")
+
+
+
 @app.route("/post_page/<post_id>")
 def post_page(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})

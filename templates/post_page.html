@@ -49,6 +49,7 @@
 {% block popup %}
   <a class="btn btn--popup" id="post-edit-confirm" href=#
     style="display: none;">Edit</a>
-  <a class="btn btn--popup" id="post-delete-confirm" href=#
+  <a class="btn btn--popup" id="post-delete-confirm"
+    href="{{ url_for('post_delete', post_id=post._id) }}" 
     style="display: none;">Delete</a>
 {% endblock %}
