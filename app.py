@@ -218,7 +218,6 @@ def post_delete(post_id):
     return redirect("index")
 
 
-
 @app.route("/post_page/<post_id>")
 def post_page(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
@@ -288,6 +287,22 @@ def dog_new():
         flash("New dog added!")
         return redirect(url_for("index"))
     return render_template("dog_new.html")
+
+
+@app.route("/dog_delete/<dog_id>")
+def dog_delete(dog_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Delete dog from user's adoption requests in database
+    user["adoption_requests"].remove(dog["_id"])
+    mongo.db.users.update_one(
+        {"username": user["username"]},
+        {"$set": {
+            "adoption_requests": user["adoption_requests"]}})
+    # Remove dog from database
+    mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
+    flash("Dog sucessfully removed from database !")
+    return redirect(url_for('index'))
 
 
 @app.route("/dog_page/<dog_id>")
