@@ -27,7 +27,7 @@
           <i id="post-edit" class="far fa-edit popup-main-btn"></i>
           <i id="post-delete" class="far fa-trash-alt popup-main-btn"></i>
         {% else %}
-          <a class="star-button" href=#>
+          <a class="star-button" href="{{ url_for('post_like', post_id=post._id) }}">
             {% if liked_post == True %}
               <i class="fas fa-star"></i>
             {% elif liked_post == False %}

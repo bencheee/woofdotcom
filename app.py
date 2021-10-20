@@ -219,6 +219,30 @@ def post_page(post_id):
         update_date=update_date)
 
 
+@app.route("/post_like/<post_id>")
+def post_like(post_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    likes = int(post["likes"])
+    # Remove like
+    if post["_id"] in user["liked_posts"]:
+        likes -= 1
+        user["liked_posts"].remove(post["_id"])
+    # Add like
+    else:
+        likes += 1
+        user["liked_posts"].append(post["_id"])
+    # Update number of post likes in database
+    mongo.db.posts.update_one(
+        {"_id": ObjectId(post_id)},
+        {"$set": {"likes": likes}})
+    # Update list of users liked posts in database
+    mongo.db.users.update_one(
+        {"username": session["user"]},
+        {"$set": {"liked_posts": user["liked_posts"]}})
+    return redirect(url_for("post_page", post_id=post_id))
+
+
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
     if request.method == "POST":
