@@ -299,6 +299,26 @@ def dog_page(dog_id):
 def adopt(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Send adoption request to admin inbox
+    message_item = {
+        "sent_by": user["username"],
+        "send_to": "Admin",
+        "sent_on": datetime.today().timetuple(),
+        "create_date": datetime.now().strftime("%d/%m/%Y"),
+        "create_time": datetime.now().strftime("%H:%M"),
+        "subject": f"Adoption - {dog['name'].capitalize()}",
+        "dog_id": dog_id,
+        "dog_name": dog["name"].capitalize(),
+        "sender_fname": user["fname"],
+        "sender_lname": user["lname"],
+        "sender_email": user["email"],
+        "sender_phone": user["phone"],
+        "sender_about": user["about"],
+        "status": "unread",
+        "replied": False,
+        "type": "adoption"
+    }
+    mongo.db.messages.insert_one(message_item)
     # Add adoption request to user's record in database
     user["adoption_requests"].append(dog["_id"])
     mongo.db.users.update_one(
