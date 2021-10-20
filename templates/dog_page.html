@@ -34,9 +34,9 @@
   {% if user_info == True %} 
     {% if session.user != "Admin" and session.user != owner.username %}
       {% if adoption_request == False %}
-        <a class="btn btn--dog" href=#>Apply for adoption</a>
+        <a class="btn btn--dog" href="{{url_for('adopt', dog_id=dog._id)}}">Apply for adoption</a>
       {% elif adoption_request == True %}
-        <a class="btn btn--dog" href=#>Withdraw application</a>
+        <a class="btn btn--dog" href="{{url_for('adopt_undo', dog_id=dog._id)}}">Withdraw application</a>
       {% endif %}
     {% endif %}
   {% endif %}
