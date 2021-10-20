@@ -130,6 +130,7 @@ def user_profile():
             {"$set": {"fname": fname, "lname": lname,
                       "phone": phone, "about": about}})
         flash("Info updated!")
+        return redirect(url_for("index"))
     return render_template("user_profile.html", user=user)
 
 
