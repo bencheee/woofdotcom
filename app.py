@@ -294,6 +294,24 @@ def dog_page(dog_id):
         adoption_request=adoption_request)
 
 
+@app.route("/adopt/<dog_id>")
+def adopt(dog_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Add adoption request to user's record in database
+    user["adoption_requests"].append(dog["_id"])
+    mongo.db.users.update_one(
+        {"username": session["user"]},
+        {"$set": {"adoption_requests": user["adoption_requests"]}})
+    flash(
+        """
+        Application sucessfully sent! One of our team members \
+        will contact you shortly via inbox with further steps \
+        in your application.
+        """)
+    return redirect(url_for('dog_page', dog_id=dog_id))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
