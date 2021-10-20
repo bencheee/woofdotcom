@@ -39,6 +39,7 @@ $(".js-btn-back").click(function () {
 
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
+    disableScroll();
     let id = $(this).attr("id");
     switch (id) {
         case "post-edit":
@@ -65,6 +66,20 @@ $(".popup-main-btn").click(function () {
 //      FUNCTIONS
 // ####################
 
+
+// Enables scrolling on the page
+function enableScroll() {
+    $('html, body').css({
+        "overflow": "visible",
+    });
+}
+
+// Disables scrolling on the page
+function disableScroll() {
+    $('html, body').css({
+        "overflow": "hidden",
+    });
+}
 
 // Toggles password visibility
 function passToggle() {
