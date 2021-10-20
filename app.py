@@ -293,6 +293,31 @@ def dog_new():
 def dog_delete(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    users = list(mongo.db.users.find())
+    for user in users:
+        # Send message about dog deletion to all applicants
+        if ObjectId(dog_id) in user["adoption_requests"]:
+            message_item = {
+                "sent_by": "Admin",
+                "send_to": user["username"],
+                "sent_on": datetime.today().timetuple(),
+                "create_date": datetime.now().strftime("%d/%m/%Y"),
+                "create_time": datetime.now().strftime("%H:%M"),
+                "subject": (
+                    f"Re: Adoption - {dog['name'].capitalize()}"),
+                "message": (
+                    f"""
+                    This is automated message to inform you that \
+                    {dog['name'].capitalize()} is not available for \
+                    adoption anymore. Thank you for your interest in \
+                    adopting {dog['name'].capitalize()} and please \
+                    keep an eye on other dogs that need saving!
+                    """),
+                "status": "unread",
+                "replied": False,
+                "type": "adoption"
+            }
+            mongo.db.messages.insert_one(message_item)
     # Delete dog from user's adoption requests in database
     user["adoption_requests"].remove(dog["_id"])
     mongo.db.users.update_one(
