@@ -198,13 +198,25 @@ def post_new():
 def post_page(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     user = mongo.db.users.find_one({"username": session["user"]})
+    # Create a string with update date if exists in database
+    if post["update_date"] != "":
+        day = post["update_date"][2]
+        mon = post["update_date"][1]
+        year = post["update_date"][0]
+        hour = post["update_date"][3]
+        mins = post["update_date"][4]
+        update_date = f"{day}/{mon}/{year} at {hour}:{mins}"
+    else:
+        update_date = ""
     # Check if session user has liked this post before
     if user is not None:
         if post["_id"] in user["liked_posts"]:
             liked_post = True
         else:
             liked_post = False
-    return render_template("post_page.html", post=post, liked_post=liked_post)
+    return render_template(
+        "post_page.html", post=post, liked_post=liked_post,
+        update_date=update_date)
 
 
 @app.route("/dog_new", methods=["GET", "POST"])
