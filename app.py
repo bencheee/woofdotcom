@@ -292,6 +292,22 @@ def dog_new():
 @app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
 def dog_edit(dog_id):
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    if request.method == "POST":
+        # Get all values from form and update database
+        name = request.form.get("name").lower()
+        gender = request.form.get("gender")
+        age = request.form.get("age")
+        size = request.form.get("size")
+        description = request.form.get("description")
+        greeting = request.form.get("greeting")
+        good_with = request.form.getlist("good_with")
+        mongo.db.dogs.update_one(
+            {"_id": ObjectId(dog_id)},
+            {"$set": {"name": name, "gender": gender, "age": age,
+                      "size": size, "description": description,
+                      "greeting": greeting, "good_with": good_with}})
+        flash("Changes are saved !")
+        return redirect(url_for('dog_page', dog_id=dog_id))
     return render_template("dog_edit.html", dog=dog)
 
 
