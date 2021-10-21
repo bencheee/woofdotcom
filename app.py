@@ -289,6 +289,12 @@ def dog_new():
     return render_template("dog_new.html")
 
 
+@app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
+def dog_edit(dog_id):
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    return render_template("dog_edit.html", dog=dog)
+
+
 @app.route("/dog_delete/<dog_id>")
 def dog_delete(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})

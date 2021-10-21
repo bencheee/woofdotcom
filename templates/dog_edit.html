@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Banner -->
+<section class="banner">
+  <img class="banner__img" src="/static/images/banner_dog_edit.webp" alt="">
+  <div class="title-section">
+    <h1 class="title-section__title">Title</h1>
+    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
+  </div>
+</section>
+<!-- Edit dog details form -->
+<section class="container container--light container--dog">
+  <form class="form" action="{{url_for('dog_edit', dog_id=dog._id)}}"
+    method="POST" enctype="multipart/form-data">
+    <label class="form__label" for="name">Name</label>
+    <input class="form__input" type="text" name="name" id="name" minlength="2"
+      maxlength="15" pattern="^[a-zA-Z]{2,15}}$" value="{{dog.name.capitalize()}}" required>
+
+    <label class="form__label" for="gender">Gender</label>
+    <select class="form__input" name="gender" id="gender" required>
+      <option {% if dog.gender == "Male" %} selected {% endif %}
+        value="Male">Male</option>
+      <option {% if dog.gender == "Female" %} selected {% endif %}
+        value="Female">Female</option>
+    </select>
+
+    <label class="form__label" for="age">Age (0 for a puppy)</label>
+    <input class="form__input" type="text" id="age" name="age" minlength="1"
+      maxlength="2" pattern="^[0-9]{1,2}$" value="{{ dog.age }}" required>
+
+    <label class="form__label" for="size">Size</label>
+    <select class="form__input" name="size" id="size" required>
+      <option {% if dog.size == "Small" %} selected {% endif %}
+        value="Small">Small</option>
+      <option {% if dog.size == "Medium" %} selected {% endif %}
+        value="Medium">Medium</option>
+      <option {% if dog.size == "Large" %} selected {% endif %}
+        value="Large">Large</option>
+    </select>
+
+    <div class="checkbox">
+      <p class="checkbox__name">Other options</p>
+      <ul>
+        <li>
+          <input {% if "kids" in dog.good_with %} checked {% endif %}
+            type="checkbox" name="good_with" id="good_with" value="kids">
+          <label for="good_with">Good with kids</label>
+        </li>
+        <li>
+          <input {% if "family" in dog.good_with %} checked {% endif %}
+            type="checkbox" name="good_with" id="good_with" value="family">
+          <label for="good_with">Suitable for families</label>
+        </li>
+        <li>
+          <input {% if "pets" in dog.good_with %} checked {% endif %}
+            type="checkbox" name="good_with" id="good_with" value="pets">
+          <label for="good_with">Good with other pets</label>
+        </li>
+        <li>
+          <input {% if "single" in dog.good_with %} checked {% endif %}
+            type="checkbox" name="good_with" id="good_with" value="single">
+          <label for="good_with">Prefers only one owner</label>
+        </li>
+      </ul>
+    </div>
+
+    <label class="form__label" for="greeting">Greeting</label>
+    <textarea class="form__textarea textarea--dog-greeting" name="greeting"
+      id="greeting" maxlength="150" pattern="([^\s]+)"
+      required>{{- dog.greeting -}}</textarea>
+
+    <label class="form__label" for="description">Description</label>
+    <textarea class="form__textarea" name="description" id="description"
+      maxlength="10000" pattern="([^\s]+)" required>{{- dog.description -}}</textarea>
+
+    <button class="btn btn--dog" type="submit">POST</button>
+  </form>
+  <div class="btn--bottom js-btn-back">
+    <i class="fas fa-angle-double-left"></i>
+    <span>Back</span>
+  </div>
+</section>
+{% endblock %}
