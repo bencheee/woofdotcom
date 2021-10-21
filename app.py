@@ -200,6 +200,14 @@ def post_new():
     return render_template("post_new.html", categories=categories)
 
 
+@app.route("/post_edit/<post_id>", methods=["GET", "POST"])
+def post_edit(post_id):
+    post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    categories = list(mongo.db.categories.find())
+    return render_template(
+        "post_edit.html", post=post, categories=categories)
+
+
 @app.route("/post_delete/<post_id>")
 def post_delete(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})

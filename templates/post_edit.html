@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Banner -->
+<section class="banner">
+  <img class="banner__img" src="/static/images/banner_post_edit.webp" alt="">
+  <div class="title-section">
+    <h1 class="title-section__title">Title</h1>
+    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
+  </div>
+</section>
+<!-- Edit post form -->
+<section class="container container--light container--post">
+  <form class="form" action="{{ url_for('post_edit', post_id=post._id) }}"
+    method="POST" enctype="multipart/form-data">
+
+    <select class="form__select" name="category" id="category" required>
+      <option>Select category</option>
+      {% for category in categories %}
+        <option value="{{ category.name }}"
+          selected>{{ category.name }}</option>
+      {% endfor %}
+    </select>
+
+    <label class="form__label" for="title">Post title</label>
+    <input class="form__input" type="text" name="title" id="title"
+      minlength="2" maxlength="15" pattern="^[a-zA-Z]{2,15}}$"
+      value="{{ post.title }}" required>
+
+    <label class="form__label" for="summary">Summary</label>
+    <textarea class="form__textarea textarea--post-summary" name="summary"
+      id="summary" maxlength="150" pattern="^[a-zA-Z]$"
+      placeholder="Max 150 characters" required> {{- post.summary -}} </textarea>
+
+    <label class="form__label" for="content">Post content</label>
+    <textarea class="form__textarea" name="content" id="content"
+      maxlength="5000" pattern="^[a-zA-Z]$" placeholder="Max 5000 characters"
+      required> {{- post.content -}} </textarea>
+
+    <button class="btn btn--post">POST</button>
+  </form>
+
+  <div class="btn--bottom js-btn-back">
+    <i class="fas fa-angle-double-left"></i>
+    <span>Back</span>
+  </div>
+</section>
+{% endblock %}
