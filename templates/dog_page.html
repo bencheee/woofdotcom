@@ -48,7 +48,7 @@
 {% endblock %}
 
 {% block popup %}
-  <a class="btn btn--popup" id="dog-edit-confirm" href=#
+  <a class="btn btn--popup" id="dog-edit-confirm" href="{{ url_for('dog_edit', dog_id=dog._id) }}"
     style="display: none;">Edit</a>
   <a class="btn btn--popup" id="dog-delete-confirm" href="{{ url_for('dog_delete', dog_id=dog._id) }}"
     style="display: none;">Delete</a>
