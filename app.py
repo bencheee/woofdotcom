@@ -204,6 +204,17 @@ def post_new():
 def post_edit(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     categories = list(mongo.db.categories.find())
+    if request.method == "POST":
+        title = request.form.get("title")
+        summary = request.form.get("summary")
+        content = request.form.get("content")
+        mongo.db.posts.update_one(
+            {"_id": ObjectId(post_id)},
+            {"$set": {"title": title, "summary": summary,
+                      "content": content,
+                      "update_date": datetime.today().timetuple()}})
+        flash("Changes are saved !")
+        return redirect(url_for('post_page', post_id=post_id))
     return render_template(
         "post_edit.html", post=post, categories=categories)
 
