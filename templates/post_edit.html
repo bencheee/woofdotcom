@@ -36,6 +36,12 @@
       maxlength="5000" pattern="^[a-zA-Z]$" placeholder="Max 5000 characters"
       required> {{- post.content -}} </textarea>
 
+    <label class="btn btn--invert btn--post js-btn-photo" for="photo">
+      <i class="fas fa-upload"></i><span> Upload photo</span>
+      <p class="btn__caption">Recommended size 1024 x 576px</p>
+    </label>
+    <input class="inputfile" type="file" name="photo" id="photo">
+  
     <button class="btn btn--post">POST</button>
   </form>
 
