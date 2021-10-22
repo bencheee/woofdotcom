@@ -259,13 +259,23 @@ def post_edit(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
+        if list(request.files['photo']) != [] and post["img_id"] != "default":
+            MY_BUCKET.Object(post["img_filename"]).delete()
+        try:
+            Image.open(request.files['photo'])
+        except UnidentifiedImageError:
+            flash("Image type not supported.")
+            return redirect(url_for("post_edit"))
+        posts = mongo.db.posts.find()
+        img_id, img_filename, img_path = generate_photo("post", posts)
         title = request.form.get("title")
         summary = request.form.get("summary")
         content = request.form.get("content")
         mongo.db.posts.update_one(
             {"_id": ObjectId(post_id)},
             {"$set": {"title": title, "summary": summary,
-                      "content": content,
+                      "content": content, "img_path": img_path,
+                      "img_id": img_id, "img_filename": img_filename,
                       "update_date": datetime.today().timetuple()}})
         flash("Changes are saved !")
         return redirect(url_for('post_page', post_id=post_id))
