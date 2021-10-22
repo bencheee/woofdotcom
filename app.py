@@ -1,12 +1,13 @@
 import pdb
 import os
+from datetime import datetime
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+import boto3
 if os.path.exists("env.py"):
     import env
 
@@ -16,6 +17,17 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
+
+# Configure AWS client
+s3 = boto3.client(
+    's3',
+    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
+)
+BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
+S3_RESOURCE = boto3.resource('s3')
+MY_BUCKET = S3_RESOURCE.Bucket(BUCKET_NAME)
+IMG_FOLDER = os.environ.get("IMG_FOLDER")
 
 # Connect database with the app
 mongo = PyMongo(app)
