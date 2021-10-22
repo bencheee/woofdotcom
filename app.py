@@ -343,6 +343,18 @@ def post_like(post_id):
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
     if request.method == "POST":
+        if list(request.files['photo']) == []:
+            img_path = "/static/images/dog_default.webp"
+            img_id = "default"
+            img_filename = "dog_img_default.webp"
+        else:
+            try:
+                Image.open(request.files['photo'])
+            except UnidentifiedImageError:
+                flash("Image type not supported.")
+                return redirect(url_for("dog_new"))
+            dogs = mongo.db.dogs.find()
+            img_id, img_filename, img_path = generate_photo("dog", dogs)
         user = mongo.db.users.find_one({"username": session["user"]})
         # Create new dog entry and upload to database
         dog = {
@@ -354,7 +366,10 @@ def dog_new():
             "description": request.form.get("description"),
             "greeting": request.form.get("greeting"),
             "created": datetime.today().timetuple(),
-            "owner_id": user["_id"]
+            "owner_id": user["_id"],
+            "img_id": img_id,
+            "img_filename": img_filename,
+            "img_path": img_path
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
