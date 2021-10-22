@@ -2,7 +2,7 @@ import pdb
 import os
 import random
 from io import BytesIO
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 from datetime import datetime
 from flask import (
     Flask, flash, render_template,
@@ -220,6 +220,18 @@ def contact():
 def post_new():
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
+        if list(request.files['photo']) == []:
+            img_path = "/static/images/post_default.webp"
+            img_id = "default"
+            img_filename = "post_img_default.webp"
+        else:
+            try:
+                Image.open(request.files['photo'])
+            except UnidentifiedImageError:
+                flash("Image type not supported.")
+                return redirect(url_for("post_new"))
+            posts = mongo.db.posts.find()
+            img_id, img_filename, img_path = generate_photo("post", posts)
         # Create new post and upload to database
         new_post = {
             "title": request.form.get("title"),
@@ -232,6 +244,9 @@ def post_new():
             "create_time": datetime.now().strftime("%H:%M"),
             "update_date": "",
             "likes": 0,
+            "img_id": img_id,
+            "img_filename": img_filename,
+            "img_path": img_path
         }
         mongo.db.posts.insert_one(new_post)
         flash("New post added!")
