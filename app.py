@@ -1,5 +1,8 @@
 import pdb
 import os
+import random
+from io import BytesIO
+from PIL import Image
 from datetime import datetime
 from flask import (
     Flask, flash, render_template,
@@ -36,6 +39,30 @@ mongo = PyMongo(app)
 def permission_denied():
     flash("Permission denied.")
     return redirect(url_for("index"))
+
+
+def generate_photo(item, collection):
+    image = Image.open(request.files['photo'])
+    image.thumbnail((768, 432))
+    img_id = round(random.random() * 1000000)
+    img_filename = f"{item}_img_{img_id}.webp"
+    while True:
+        image_exists = False
+        for i in collection:
+            if i["img_id"] == img_id:
+                image_exists = True
+        if image_exists:
+            img_id = round(random.random() * 1000000)
+            img_filename = f"{item}_img_{img_id}.webp"
+        else:
+            buffer = BytesIO()
+            image.save(buffer, 'webp')
+            buffer.seek(0)
+            MY_BUCKET.Object(img_filename).put(
+                Body=buffer, ContentType='image/webp')
+            break
+    img_path = f"{IMG_FOLDER}{img_filename}"
+    return img_id, img_filename, img_path
 
 
 @app.route("/")
