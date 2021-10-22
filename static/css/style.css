@@ -273,6 +273,15 @@ li {
     display: none;
 }
 
+.btn__caption {
+    position: absolute;
+    width: 100%;
+    font-size: 0.7rem;
+    text-align: center;
+    bottom: -20px;
+    left: 0;
+}
+
 /*  Title section */
 
 .title-section {
