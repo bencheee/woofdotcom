@@ -391,6 +391,15 @@ def dog_new():
 def dog_edit(dog_id):
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     if request.method == "POST":
+        if list(request.files['photo']) != [] and dog["img_id"] != "default":
+            MY_BUCKET.Object(dog["img_filename"]).delete()
+        try:
+            Image.open(request.files['photo'])
+        except UnidentifiedImageError:
+            flash("Image type not supported.")
+            return redirect(url_for("dog_edit"))
+        dogs = mongo.db.dogs.find()
+        img_id, img_filename, img_path = generate_photo("dog", dogs)
         # Get all values from form and update database
         name = request.form.get("name").lower()
         gender = request.form.get("gender")
@@ -403,7 +412,9 @@ def dog_edit(dog_id):
             {"_id": ObjectId(dog_id)},
             {"$set": {"name": name, "gender": gender, "age": age,
                       "size": size, "description": description,
-                      "greeting": greeting, "good_with": good_with}})
+                      "greeting": greeting, "good_with": good_with, 
+                      "img_path": img_path, "img_filename": img_filename,
+                      "img_id": img_id}})
         flash("Changes are saved !")
         return redirect(url_for('dog_page', dog_id=dog_id))
     return render_template("dog_edit.html", dog=dog)
