@@ -458,6 +458,9 @@ def dog_delete(dog_id):
         {"username": user["username"]},
         {"$set": {
             "adoption_requests": user["adoption_requests"]}})
+    # Delete only images uploaded by users, not default system images
+    if dog["img_id"] != "default":
+        MY_BUCKET.Object(dog["img_filename"]).delete()
     # Remove dog from database
     mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
     flash("Dog sucessfully removed from database !")
