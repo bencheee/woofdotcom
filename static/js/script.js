@@ -61,6 +61,20 @@ $(".popup-main-btn").click(function () {
     }
 })
 
+// Changes text for 'upload photo' button
+$(".inputfile").change(function (e) {
+    fileDefault = "No file selected";
+    fileSelected = e.target.value.split('\\').pop();
+    if (fileSelected === "") {
+        $(".js-btn-photo span").text(" " + fileDefault)
+        $(".js-btn-photo i").removeClass("fas fa-check")
+        $(".js-btn-photo i").addClass("fas fa-upload")
+    } else {
+        $(".js-btn-photo span").text(" " + fileSelected)
+        $(".js-btn-photo i").removeClass("fas fa-upload")
+        $(".js-btn-photo i").addClass("fas fa-check")
+    }
+})
 
 // ####################
 //      FUNCTIONS
