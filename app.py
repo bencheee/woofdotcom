@@ -295,6 +295,9 @@ def post_delete(post_id):
             mongo.db.users.update_one(
                 {"username": user["username"]},
                 {"$set": {"liked_posts": user["liked_posts"]}})
+    # Delete post image filepath for all except default images
+    if post["img_id"] != "default":
+        MY_BUCKET.Object(post["img_filename"]).delete()
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
