@@ -174,8 +174,17 @@ li {
     margin: 0 auto;
 }
 
+.hr--card,
 .hr--form {
     margin: 35px auto;
+}
+
+.hr--dark {
+    border-color: var(--hr-dark);
+}
+
+.hr--light {
+    border-color: var(--hr-light);   
 }
 
 /* Buttons */
