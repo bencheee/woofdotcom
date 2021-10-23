@@ -1,3 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Banner -->
+<section class="banner">
+  <img class="banner__img" src="/static/images/banner_index.webp" alt="">
+  <div class="title-section">
+    <h1 class="title-section__title">Title</h1>
+    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
+  </div>
+</section>
+<!-- Posts container -->
+<section class="container container--light">
+  <h2 class="container__title">Latest posts</h2>
+  {% if posts|length < 1 %}
+    <p class="no-posts">Ooops, seems like there are no posts yet!</p>
+  {% else %}
+    <div class="mobile-container">
+      {% for post in posts %}
+        <div class="card">
+          <a href="{{ url_for('post_page', post_id=post._id) }}">
+            <div class="card__img img--rounded js-img-mobile"
+              style="background-image: url({{post.img_path}});" alt="">
+            </div>
+            <h3 class="card__title card__title--dark">{{ post.title }}</h3>
+          </a>
+          <p class="card__summary">{{ post.summary }}</p>
+          <hr class="hr hr--card hr--dark">
+        </div>
+      {% endfor %}
+    </div>
+    <a class="btn" href=#>View more</a>
+  {% endif %}
+</section>
 {% endblock %}
