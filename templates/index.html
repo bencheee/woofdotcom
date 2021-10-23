@@ -31,4 +31,27 @@
     <a class="btn" href=#>View more</a>
   {% endif %}
 </section>
+<!-- Dogs container -->
+<section class="container container--dark">
+  <h2 class="container__title">Newest dogs</h2>
+  {% if dogs|length < 1 %}
+    <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
+  {% else %}
+    <div class="mobile-container">
+      {% for dog in dogs %}
+        <div class="card">
+          <a href="{{ url_for('dog_page', dog_id=dog._id) }}">
+            <div class="card__img img--rounded js-img-mobile"
+              style="background-image: url({{dog.img_path}});" alt="">
+            </div>
+            <h3 class="card__title card__title--light">{{dog.name.capitalize()}}</h3>
+          </a>
+          <p class="card__summary">"{{ dog.greeting }}"</p>
+          <hr class="hr hr--card hr--light">
+        </div>
+      {% endfor %}
+    </div>
+    <a class="btn btn--invert" href=#>View more</a>
+  {% endif %}
+</section>
 {% endblock %}
