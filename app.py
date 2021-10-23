@@ -67,7 +67,15 @@ def generate_photo(item, collection):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    # Sort posts by date/time
+    posts = sorted(
+        list(mongo.db.posts.find()), key=lambda k: k['created'], reverse=True)
+    dogs = sorted(
+        list(mongo.db.dogs.find()), key=lambda k: k['created'], reverse=True)
+    # Limit posts/dogs to newest 3 items
+    posts = posts[0:3]
+    dogs = dogs[0:3]
+    return render_template("index.html", posts=posts, dogs=dogs)
 
 
 @app.route("/alert/<response>")
