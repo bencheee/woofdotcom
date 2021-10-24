@@ -10,6 +10,13 @@
 </section>
 <!-- Dogs container -->
 <section class="container container--light">
+  <p class="filter-toggle js-filter-toggle"><i class="fas fa-cogs"></i>Filter dogs</p>
+  {% if no_dogs == True %}
+    <p class="filter-caption">Couldn't find any dogs with given criteria!</p>
+  {% else %}
+    <p class="filter-caption">Showing {{ cur_len }} out of {{ tot_len }} total dogs</p>
+  {% endif %}
+
   <form class="form form-toggle form--dogs-tablet js-form-toggle"
     action="{{ url_for('dog_main') }}" method="POST">
     <input class="form__input" name="name" placeholder="Search by dog's name">
