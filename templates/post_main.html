@@ -26,7 +26,7 @@
         <option value="Select category"
           selected disabled hidden>By category</option>
         {% for category in categories %}
-          <option value="{{ category }}">{{ category }}</option>
+          <option value="{{ category.name }}">{{ category.name }}</option>
         {% endfor %}
       </select>
 
@@ -52,26 +52,30 @@
     </div>
   </form>
 
+  {% if no_posts == True %}
+    <p class="filter-caption">Couldn't find any posts with given criteria!</p>
+  {% else %}
   <div class="mobile-container">
     {% for post in posts %}
-      <div class="card">
-        <a href="{{ url_for('post_main', post_id=post._id) }}">
-          <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post.img_path }});" alt="">
-          </div>
-          <h3 class="card__title">{{ post.title }}</h3>
-        </a>
-        <p class="card__info">
-          <span>
-            <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
-          </span>
-          <span>
-            <span>Category: </span><span>{{ post.category }}</span>
-          </span>
-        </p>
-        <p class="card__summary">{{ post.summary }}</p>
-        <hr class="hr hr--card hr--dark">
-      </div>
-    {% endfor %}
-  </div>
+        <div class="card">
+          <a href="{{ url_for('post_main', post_id=post._id) }}">
+            <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post.img_path }});" alt="">
+            </div>
+            <h3 class="card__title">{{ post.title }}</h3>
+          </a>
+          <p class="card__info">
+            <span>
+              <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+            </span>
+            <span>
+              <span>Category: </span><span>{{ post.category }}</span>
+            </span>
+          </p>
+          <p class="card__summary">{{ post.summary }}</p>
+          <hr class="hr hr--card hr--dark">
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
 </section>
 {% endblock %}

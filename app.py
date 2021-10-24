@@ -226,15 +226,52 @@ def contact():
 
 @app.route("/post_main", methods=["GET", "POST"])
 def post_main():
+    categories = list(mongo.db.categories.find())
+    users = list(mongo.db.users.find())
     # Sort posts by date/time
     posts = sorted(
         list(mongo.db.posts.find()), key=lambda k: k['created'], reverse=True)
     # Return to index if no posts
-    if len(posts) < 1:
+    if len(posts) == 0:
         flash("There are no posts to show!")
+        no_posts = True
         return redirect(url_for("index"))
+    else:
+        no_posts = False
+
+    if request.method == "POST":
+        category = request.form.get("category")
+        author = request.form.get("author")
+        sort_by = request.form.get("sort")
+        # Sort posts by category and author
+        if category is None and author is None:
+            posts = list(mongo.db.posts.find())
+        elif category is None:
+            posts = list(mongo.db.posts.find({"author": author}))
+        elif author is None:
+            posts = list(mongo.db.posts.find({"category": category}))
+        else:
+            posts = list(mongo.db.posts.find(
+                {"category": category, "author": author}))
+
+        def get_date(item):
+            return item.get('created')
+
+        def get_likes(item):
+            return item.get('likes')
+
+        # Sort posts from new to old by default
+        posts.sort(key=get_date, reverse=True)
+        # Sort posts by date/time and number of likes (user's choice)
+        if sort_by == "New to old":
+            posts.sort(key=get_date, reverse=True)
+        elif sort_by == "Old to new":
+            posts.sort(key=get_date)
+        elif sort_by == "Most popular":
+            posts.sort(key=get_likes, reverse=True)
     return render_template(
-        "post_main.html", posts=posts)
+        "post_main.html", posts=posts, no_posts=no_posts,
+        users=users, categories=categories)
 
 
 @app.route("/post_new", methods=["GET", "POST"])
