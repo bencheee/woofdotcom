@@ -10,6 +10,57 @@
 </section>
 <!-- Dogs container -->
 <section class="container container--light">
+  <form class="form form-toggle form--dogs-tablet js-form-toggle"
+    action="{{ url_for('dog_main') }}" method="POST">
+    <input class="form__input" name="name" placeholder="Search by dog's name">
+
+    <select class="form__input" name="age" id="age">
+      <option value="" selected disabled hidden>Select age</option>
+      <option value="0-3">0-3 years</option>
+      <option value="4-7">4-7 years</option>
+      <option value="8+">8+ years</option>
+    </select>
+
+    <select class="form__input" name="gender" id="gender">
+      <option value="" selected disabled hidden>Select gender</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+
+    <select class="form__input" name="size" id="size">
+      <option value="" selected disabled hidden>Select size</option>
+      <option>Small</option>
+      <option>Medium</option>
+      <option>Large</option>
+    </select>
+
+    <div class="checkbox">
+      <p class="checkbox__title">Other options</p>
+      <ul>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="kids">
+          <label for="good_with">Good with kids</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="family">
+          <label for="good_with">Suitable for families</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="pets">
+          <label for="good_with">Good with other pets</label>
+        </li>
+        <li>
+          <input type="checkbox" name="good_with" id="good_with" value="single">
+          <label for="good_with">Prefers only one owner</label>
+        </li>
+      </ul>
+    </div>
+
+    <button class="btn btn--invert btn--center btn--filter-reset"
+      type="reset">Reset</button>
+    <button class="btn btn--center btn--filter" type="submit">SEARCH</button>
+  </form>
+
   {% if no_dogs == False %}
   <div class="mobile-container">
     {% for dog in dogs %}
