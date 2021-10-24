@@ -513,6 +513,35 @@ li {
 
 /* post_main.html */
 
+.filter-toggle {
+    text-align: right;
+    margin: 35px auto 35px auto;
+    font-weight: 100;
+}
+
+.filter-caption {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 100;
+}
+
+.form-toggle {
+    display: none;
+}
+
+.wrapper--filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn--filter-reset {
+    margin: 20px auto 15px auto;
+}
+
+.btn--filter {
+    margin-bottom: 35px;
+}
+
 .card__info {
     display: flex;
     justify-content: space-between;
