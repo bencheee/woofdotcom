@@ -422,8 +422,12 @@ def dog_main():
         return redirect(url_for("index"))
     else:
         no_dogs = False
+    # total number of dogs in DB
+    tot_len = len(dogs)
+    cur_len = len(dogs)
     return render_template(
-        "dog_main.html", dogs=dogs, no_dogs=no_dogs)
+        "dog_main.html", dogs=dogs, no_dogs=no_dogs, tot_len=tot_len,
+        cur_len=cur_len)
 
 
 @app.route("/dog_new", methods=["GET", "POST"])
