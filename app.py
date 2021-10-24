@@ -238,7 +238,6 @@ def post_main():
         return redirect(url_for("index"))
     else:
         no_posts = False
-
     if request.method == "POST":
         category = request.form.get("category")
         author = request.form.get("author")
@@ -409,6 +408,22 @@ def post_like(post_id):
         {"username": session["user"]},
         {"$set": {"liked_posts": user["liked_posts"]}})
     return redirect(url_for("post_page", post_id=post_id))
+
+
+@app.route("/dog_main", methods=["GET", "POST"])
+def dog_main():
+    # Sort dogs by date/time
+    dogs = sorted(
+        list(mongo.db.dogs.find()), key=lambda k: k['created'], reverse=True)
+    # Returns to index if no dogs
+    if len(dogs) == 0:
+        no_dogs = True
+        flash("There are no dogs to show!")
+        return redirect(url_for("index"))
+    else:
+        no_dogs = False
+    return render_template(
+        "dog_main.html", dogs=dogs, no_dogs=no_dogs)
 
 
 @app.route("/dog_new", methods=["GET", "POST"])
