@@ -224,6 +224,19 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/post_main", methods=["GET", "POST"])
+def post_main():
+    # Sort posts by date/time
+    posts = sorted(
+        list(mongo.db.posts.find()), key=lambda k: k['created'], reverse=True)
+    # Return to index if no posts
+    if len(posts) < 1:
+        flash("There are no posts to show!")
+        return redirect(url_for("index"))
+    return render_template(
+        "post_main.html", posts=posts)
+
+
 @app.route("/post_new", methods=["GET", "POST"])
 def post_new():
     categories = list(mongo.db.categories.find())
