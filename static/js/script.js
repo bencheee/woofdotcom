@@ -39,6 +39,13 @@ $(".js-btn-back").click(function () {
     window.location.href = document.referrer;
 })
 
+// Toggles post filter on post_main.html
+$(".js-filter-toggle").click(
+    function () {
+        $(".js-form-toggle").slideToggle();
+        $(".js-form-toggle").css("display", "flex")
+    })
+
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
     disableScroll();
