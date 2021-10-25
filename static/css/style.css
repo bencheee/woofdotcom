@@ -683,6 +683,42 @@ li {
     padding: 0 10px;
 }
 
+.inbox--requests {
+    display: none;
+}
+
+#title-requests {
+    display: none;
+}
+
+.switch {
+    border: 1px solid var(--color3);
+    border-radius: 5px;
+    overflow: hidden;
+    width: fit-content;
+    margin: 35px auto 0 auto;
+}
+
+.switch__messages,
+.switch__requests {
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 125px;
+    text-align: center;
+    margin: -5px;
+}
+
+.switch-dark {
+    background-color: var(--color3);
+    color: var(--color6);
+}
+
+.switch-light {
+    background-color: var(--color6);
+    color: var(--color2);
+}
+
 /* Navbar and Footer */
 
 .nav {

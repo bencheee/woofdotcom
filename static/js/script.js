@@ -46,6 +46,29 @@ $(".js-filter-toggle").click(
         $(".js-form-toggle").css("display", "flex")
     })
 
+
+// Toggles messages/requests in inbox
+$(".switch span").click(function(){
+    $(this).addClass("switch-dark")
+    $(this).removeClass("switch-light")    
+    $(this).siblings().removeClass("switch-dark")
+    $(this).siblings().addClass("switch-light")
+})
+
+$(".switch__messages").click(function(){
+    $("#title-messages").show();
+    $(".inbox--messages").show();
+    $("#title-requests").hide();
+    $(".inbox--requests").hide();
+})
+
+$(".switch__requests").click(function(){
+    $("#title-messages").hide();
+    $(".inbox--messages").hide();
+    $("#title-requests").show();
+    $(".inbox--requests").show();
+})
+
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
     disableScroll();
