@@ -128,6 +128,8 @@ def user_register():
 
 @app.route("/user_login", methods=["GET", "POST"])
 def user_login():
+    if session.get('user') is not None:
+        return permission_denied()
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username")})
