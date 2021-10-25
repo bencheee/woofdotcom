@@ -677,8 +677,21 @@ def adopt_undo(dog_id):
 
 @app.route("/inbox")
 def inbox():
-    messages = mongo.db.messages.find()
-    return render_template("inbox.html", messages=messages)
+    if session.get('user') is None:
+        return permission_denied()
+
+    user_msgs = list(mongo.db.messages.find({"send_to": session["user"]}))
+
+    # Sort messages from new to old
+    def get_date(item):
+        return item.get('sent_on')
+
+    user_msgs.sort(key=get_date, reverse=True)
+    # Get number of unread messages
+    user_unread_msgs = len(list(mongo.db.messages.find(
+        {"send_to": session["user"], "status": "unread"})))
+    return render_template(
+        "inbox.html", user_msgs=user_msgs, user_unread_msgs=user_unread_msgs)
 
 
 if __name__ == "__main__":

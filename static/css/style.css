@@ -673,6 +673,15 @@ li {
     padding: 5px 0;
 }
 
+.inbox-title {
+    color: var(--color1);
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-align: left;
+    white-space: pre-line;
+    margin: 35px 0;
+    padding: 0 10px;
+}
 
 /* Navbar and Footer */
 

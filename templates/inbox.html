@@ -2,24 +2,25 @@
 
 {% block content %}
 <section class="container container--light container--extended">
+  <h4 class="inbox-title" id="title-messages">Hi {{session.user}},
+    You have {{user_unread_msgs}} unread messages!</h4>
 
-  {% for message in messages %}
+  {% for msg in user_msgs %}
   <a href=#>
     <div class="inbox inbox--messages">
-      {% if message.status == "unread" %}
-        <span class="inbox__subject">{{message.subject}}</span>
+      {% if msg.status == "unread" %}
+        <span class="inbox__subject">{{msg.subject}}</span>
       {% else %}
-        <span class="inbox__subject inbox__subject--read">{{message.subject}}</span>
+        <span class="inbox__subject inbox__subject--read">{{msg.subject}}</span>
       {% endif %}
       <div class="inbox__details">
-        <span>Sent on {{ message.create_date }} at {{ message.create_time }} by {{ message.sent_by }}</span>
-        {% if message.replied == True %}
+        <span>Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}</span>
+        {% if msg.replied == True %}
           <span><i class="far fa-check-circle"></i> Replied</span>
         {% endif %}
       </div>
     </div>
   </a>
   {% endfor %}
-
 </section>
 {% endblock %}
