@@ -87,6 +87,8 @@ def alert(response):
 
 @app.route("/user_register", methods=["GET", "POST"])
 def user_register():
+    if session.get('user') is not None:
+        return permission_denied()
     if request.method == "POST":
         # Check if username/email exist
         existing_user = mongo.db.users.find_one(
