@@ -643,6 +643,37 @@ li {
     text-align: center;
 }
 
+/* inbox.html */
+
+.inbox {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color3);
+    color: var(--color6);
+    padding: 10px 5px;
+    margin: 0 4px 4px 4px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.inbox__subject {
+    color: var(--color6);
+    font-weight: 900;
+}
+
+.inbox__subject--read {
+    font-weight: 100;
+}
+
+.inbox__details {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 100;
+    font-size: 0.9rem;
+    padding: 5px 0;
+}
+
+
 /* Navbar and Footer */
 
 .nav {

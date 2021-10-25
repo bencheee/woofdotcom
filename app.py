@@ -675,6 +675,12 @@ def adopt_undo(dog_id):
         url_for('dog_page', dog_id=dog_id))
 
 
+@app.route("/inbox")
+def inbox():
+    messages = mongo.db.messages.find()
+    return render_template("inbox.html", messages=messages)
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
