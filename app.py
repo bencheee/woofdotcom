@@ -680,18 +680,33 @@ def inbox():
     if session.get('user') is None:
         return permission_denied()
 
+    # Get all messages / adoption requests
+    admin_msgs = list(mongo.db.messages.find(
+        {"type": "standard", "send_to": "Admin"}))
+    admin_reqs = list(mongo.db.messages.find(
+        {"type": "adoption", "send_to": "Admin"}))
     user_msgs = list(mongo.db.messages.find({"send_to": session["user"]}))
 
     # Sort messages from new to old
     def get_date(item):
         return item.get('sent_on')
 
+    admin_msgs.sort(key=get_date, reverse=True)
+    admin_reqs.sort(key=get_date, reverse=True)
     user_msgs.sort(key=get_date, reverse=True)
-    # Get number of unread messages
+    # Get number of unread messages / adoption requests
+    admin_unread_msgs = len(list(mongo.db.messages.find(
+        {"type": "standard", "send_to": "Admin", "status": "unread"})))
+    admin_unread_reqs = len(list(mongo.db.messages.find(
+        {"type": "adoption", "send_to": "Admin", "status": "unread"})))
     user_unread_msgs = len(list(mongo.db.messages.find(
         {"send_to": session["user"], "status": "unread"})))
+
     return render_template(
-        "inbox.html", user_msgs=user_msgs, user_unread_msgs=user_unread_msgs)
+        "inbox.html", admin_msgs=admin_msgs, admin_reqs=admin_reqs,
+        user_msgs=user_msgs, admin_unread_msgs=admin_unread_msgs,
+        admin_unread_reqs=admin_unread_reqs,
+        user_unread_msgs=user_unread_msgs)
 
 
 if __name__ == "__main__":

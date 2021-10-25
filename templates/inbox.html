@@ -2,9 +2,57 @@
 
 {% block content %}
 <section class="container container--light container--extended">
+  {% if session.user == "Admin" %}
   <h4 class="inbox-title" id="title-messages">Hi {{session.user}},
+
+    You have {{admin_unread_msgs}} unread messages!</h4>
+  <h4 class="inbox-title" id="title-requests">Hi {{session.user}},
+
+    You have {{admin_unread_reqs}} new adoption requests!</h4>
+
+    <!-- Admin message inbox -->
+  {% for msg in admin_msgs %}
+  <a href=#>
+    <div class="inbox inbox--messages">
+      {% if msg.status == "unread" %}
+        <span class="inbox__subject">{{msg.subject}}</span>
+      {% else %}
+        <span class="inbox__subject inbox__subject--read">{{msg.subject}}</span>
+      {% endif %}
+      <div class="inbox__details">
+        <span>Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}</span>
+        {% if msg.replied == True %}
+          <span><i class="far fa-check-circle"></i> Replied</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+
+  <!-- Adoption requests inbox -->
+  {% for req in admin_reqs %}
+  <a href=#>
+    <div class="inbox inbox--requests">
+      {% if req.status == "unread" %}
+        <span class="inbox__subject">{{req.subject}}</span>
+      {% else %}
+        <span class="inbox__subject inbox__subject--read">{{req.subject}}</span>
+      {% endif %}
+      <div class="inbox__details">
+        <span>Sent on {{ req.create_date }} at {{ req.create_time }} by {{ req.sent_by }}</span>
+        {% if req.replied == True %}
+          <span><i class="far fa-check-circle"></i> Replied</span>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+  {% else %}
+  <h4 class="inbox-title" id="title-messages">Hi {{session.user}},
+
     You have {{user_unread_msgs}} unread messages!</h4>
 
+  <!-- User message inbox -->
   {% for msg in user_msgs %}
   <a href=#>
     <div class="inbox inbox--messages">
@@ -22,5 +70,6 @@
     </div>
   </a>
   {% endfor %}
+  {% endif %}
 </section>
 {% endblock %}
