@@ -150,6 +150,8 @@ def user_login():
 
 @app.route("/user_logout")
 def user_logout():
+    if session.get('user') is None:
+        return permission_denied()
     session.pop("user")
     flash("You have been logged out sucessfully!")
     return redirect(url_for("index"))
