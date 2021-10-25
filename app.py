@@ -425,6 +425,41 @@ def dog_main():
     # total number of dogs in DB
     tot_len = len(dogs)
     cur_len = len(dogs)
+    if request.method == "POST":
+        name = request.form.get("name").lower()
+        gender = request.form.get("gender")
+        size = request.form.get("size")
+        gwith = request.form.getlist("good_with")
+        if request.form.get("name") != "":
+            dogs = list(mongo.db.dogs.find({"name": {"$regex": name}}))
+            # Sort dogs by date/time
+            dogs = sorted(dogs, key=lambda k: k['created'], reverse=True)
+        # Get dogs matching requested age
+        if request.form.get("age") is not None:
+            if request.form.get("age") == "0-3":
+                dogs = [item for item in dogs if int(item["age"]) <= 3]
+            elif request.form.get("age") == "4-7":
+                dogs = [item for item in dogs if 3 < int(item["age"]) < 8]
+            else:
+                dogs = [item for item in dogs if int(item["age"]) > 7]
+        # Get dogs matching requested gender
+        if request.form.get("gender") is not None:
+            dogs = [item for item in dogs if item["gender"] == gender]
+        # Get dogs matching requested size
+        if request.form.get("size") is not None:
+            dogs = [item for item in dogs if item["size"] == size]
+        # Iterate through dogs_copy list and save changes to dogs list
+        if request.form.getlist("good_with") != []:
+            dogs_copy = dogs.copy()
+            for item in gwith:
+                for dog in dogs_copy:
+                    if item not in dog["good_with"]:
+                        try:
+                            dogs.remove(dog)
+                        except ValueError:
+                            pass
+        # Number of dogs after all filters are applied
+        cur_len = len(dogs)
     return render_template(
         "dog_main.html", dogs=dogs, no_dogs=no_dogs, tot_len=tot_len,
         cur_len=cur_len)
