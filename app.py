@@ -159,6 +159,8 @@ def user_logout():
 
 @app.route("/user_profile", methods=["GET", "POST"])
 def user_profile():
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     # Form to change the user password
     if request.method == "POST" and "password" in request.form:
