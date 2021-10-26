@@ -795,6 +795,30 @@ def message_delete(msg_id):
     return redirect(url_for('inbox'))
 
 
+@app.context_processor
+def global_vars():
+    if session.get('user') is None:
+        user = False
+    else:
+        user = True
+
+    unread_msgs = 0
+    unread_reqs = 0
+
+    if user:
+        # Get the number of unread messages in inbox
+        unread_msgs = len(list(mongo.db.messages.find(
+            {"subject": {"$ne": "Adoption"}, "send_to": session["user"],
+                "status": "unread"})))
+        # Get the number of unread adoption requests (admin only)
+        unread_reqs = len(list(mongo.db.messages.find(
+            {"subject": "Adoption", "status": "unread"})))
+    return {
+        # msgs_reqs are for admin only
+        'msgs': unread_msgs,
+        'msgs_reqs': unread_msgs + unread_reqs}
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
