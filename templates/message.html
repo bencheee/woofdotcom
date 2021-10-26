@@ -51,12 +51,13 @@
     {% else %}
       <p class="message__content">{{message.message}}</p>
     {% endif %}
+    <div class="message__btns">
+      <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
+      <div class="message__reply"><i class="fas fa-reply"></i><span>Reply</span></div>
+      <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
+    </div>
   {% endif %}
-  <div class="message__btns">
-    <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
-    <div class="message__reply"><i class="fas fa-reply"></i><span>Reply</span></div>
-    <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
-  </div>
+
   <form class="form form--message"
     action="{{url_for('reply', receiver=message.sent_by, msg_id=message._id)}}"
     method="POST">
@@ -68,10 +69,8 @@
     </div>
   </form>
 </section>
-
-{% block popup %}
-<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}"
-    style="display: none;">Delete</a>
 {% endblock %}
 
+{% block popup %}
+<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}" style="display: none;">Delete</a>
 {% endblock %}

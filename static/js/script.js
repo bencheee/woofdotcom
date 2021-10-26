@@ -82,6 +82,18 @@ $(".btn--cancel").click(function(){
     $(".message__btns").show()
 })
 
+// Deletes message from inbox
+$(".btn--delete").click(function(){
+    disableScroll();
+    $(".popup__container").css("display", "flex");
+    $(".popup__text").text("You are about to delete message. Do you wish to proceed ?");
+    $(`#btn-delete-confirm`).show();
+    $(".btn--popup").click(function () {
+        $(".popup__container").hide();
+    });
+    enableScroll();
+})
+
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
     disableScroll();
