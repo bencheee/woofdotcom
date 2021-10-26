@@ -55,9 +55,23 @@
         <a href=/user_profile>
           <li>View profile</li>
         </a>
-        <a href=/inbox>
-          <li>Inbox</li>
-        </a>
+        {% if session.user == "Admin" %}
+          <a href=/inbox>
+            {% if msgs_reqs == 0 %}
+              <li>Inbox ({{ msgs_reqs }})</li>
+            {% else %}
+              <li><strong>Inbox ({{ msgs_reqs }})</strong></li>
+            {% endif %}
+          </a>
+        {% else %}
+          <a href=/inbox>
+            {% if msgs == 0 %}
+              <li>Inbox ({{ msgs }})</li>
+            {% else %}
+              <li><strong>Inbox ({{ msgs }})</strong></li>
+            {% endif %}
+          </a>
+        {% endif %}
         <a href=/user_logout>
           <li>Logout</li>
         </a>
