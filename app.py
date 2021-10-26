@@ -721,6 +721,10 @@ def message(msg_id):
     except KeyError:
         dog = None
         dog_id = None
+    # Message status in database is changed from 'unread' to 'read'
+    mongo.db.messages.update_one(
+        {"_id": ObjectId(msg_id)},
+        {"$set": {"status": "read"}})
     return render_template(
         "message.html", message=message_item, dog=dog, dog_id=dog_id)
 
