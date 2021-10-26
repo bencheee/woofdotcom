@@ -18,7 +18,7 @@
 
     <!-- Admin message inbox -->
   {% for msg in admin_msgs %}
-  <a href=#>
+  <a href="{{url_for('message', msg_id=msg._id)}}">
     <div class="inbox inbox--messages">
       {% if msg.status == "unread" %}
         <span class="inbox__subject">{{msg.subject}}</span>
@@ -37,7 +37,7 @@
 
   <!-- Adoption requests inbox -->
   {% for req in admin_reqs %}
-  <a href=#>
+  <a href="{{url_for('message', msg_id=req._id)}}">
     <div class="inbox inbox--requests">
       {% if req.status == "unread" %}
         <span class="inbox__subject">{{req.subject}}</span>
@@ -60,7 +60,7 @@
 
   <!-- User message inbox -->
   {% for msg in user_msgs %}
-  <a href=#>
+  <a href="{{url_for('message', msg_id=msg._id)}}">
     <div class="inbox inbox--messages">
       {% if msg.status == "unread" %}
         <span class="inbox__subject">{{msg.subject}}</span>
