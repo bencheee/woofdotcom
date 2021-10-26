@@ -69,6 +69,19 @@ $(".switch__requests").click(function(){
     $(".inbox--requests").show();
 })
 
+// Toggles reply message in inbox
+$(document).ready(function(){
+    $(".form--message").hide()
+});
+$(".message__reply").click(function(){
+    $(".form--message").show();
+    $(".message__btns").hide()
+})
+$(".btn--cancel").click(function(){
+    $(".form--message").hide();
+    $(".message__btns").show()
+})
+
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
     disableScroll();
