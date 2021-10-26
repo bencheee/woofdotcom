@@ -11,6 +11,11 @@
 
     /* Transparent 10% */
     --color3-10: #33b4ab18;
+
+    /* hr */
+    --hr-dark: #0237331f;
+    --hr-light: #f2f9f981;
+
 }
 
 /* FONTS */
