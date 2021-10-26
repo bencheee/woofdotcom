@@ -5,6 +5,9 @@
 <section class="message container container--light container--extended">
   <div class="message__subject">
     <p><span>{{message.subject}}</span></p>
+    {% if message.replied == True %}
+      <p class="message__replied">Replied <i class="far fa-check-circle"></i></p>
+    {% endif %}
   </div>
   <div class="message__details">
     <p><span>Sent by: </span>{{ message.sent_by }}</p>
@@ -45,5 +48,15 @@
       <p class="message__content">{{message.message}}</p>
     {% endif %}
   {% endif %}
+  <form class="form form--message"
+    action="{{url_for('reply', receiver=message.sent_by, msg_id=message._id)}}"
+    method="POST">
+    <textarea class="form__textarea textarea--reply" name="message" 
+      id="message" maxlength="10000"></textarea>
+    <div class="msg__form-btns">
+        <button class="btn btn--form btn--reply">Reply</button>
+        <div class="btn btn--cancel">Cancel</div>
+    </div>
+  </form>
 </section>
 {% endblock %}

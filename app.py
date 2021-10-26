@@ -729,6 +729,57 @@ def message(msg_id):
         "message.html", message=message_item, dog=dog, dog_id=dog_id)
 
 
+@app.route("/reply/<receiver>/<msg_id>", methods=["GET", "POST"])
+def reply(receiver, msg_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    orig_msg = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Puts 'Re:' to message subject when replying
+    if orig_msg["subject"][0:3] == "Re:":
+        subject = orig_msg["subject"]
+    else:
+        subject = f"Re: {orig_msg['subject']}"
+    # Standard message
+    if orig_msg["type"] == "standard":
+        message_item = {
+            "sent_by": user["username"],
+            "send_to": receiver,
+            "sent_on": datetime.today().timetuple(),
+            "create_date": datetime.now().strftime("%d/%m/%Y"),
+            "create_time": datetime.now().strftime("%H:%M"),
+            "subject": subject,
+            "message": request.form.get("message"),
+            "registered": True,
+            "status": "unread",
+            "replied": False,
+            "type": "standard"
+        }
+    # Adoption request message
+    else:
+        message_item = {
+            "sent_by": user["username"],
+            "send_to": receiver,
+            "sent_on": datetime.today().timetuple(),
+            "create_date": datetime.now().strftime("%d/%m/%Y"),
+            "create_time": datetime.now().strftime("%H:%M"),
+            "subject": subject,
+            "message": request.form.get("message"),
+            "dog_name": orig_msg["dog_name"],
+            "dog_id": orig_msg["dog_id"],
+            "sender_fname": orig_msg["sender_fname"],
+            "sender_lname": orig_msg["sender_lname"],
+            "sender_email": orig_msg["sender_email"],
+            "sender_phone": orig_msg["sender_phone"],
+            "registered": True,
+            "status": "unread",
+            "replied": False,
+            "type": "adoption"
+        }
+    mongo.db.messages.update_one(
+        {"_id": ObjectId(msg_id)},
+        {"$set": {"replied": True}})
+    mongo.db.messages.insert_one(message_item)
+    return redirect(url_for("alert", response="message sent"))
+
 
 if __name__ == "__main__":
     app.run(

@@ -755,6 +755,16 @@ li {
     padding: 0;
 }
 
+.message__replied {
+    color: var(--color2);
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.textarea--reply {
+    margin-top: 35px;
+}
+
 .dog-unavailable {
     color: red;
     margin: 15px 0;
