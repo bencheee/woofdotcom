@@ -719,6 +719,47 @@ li {
     color: var(--color2);
 }
 
+/* message.html */
+
+.message__subject {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin: 35px 0;
+    padding: 0 10px;
+}
+
+.message__details {
+    font-weight: 100;
+    margin-bottom: 35px;
+    padding: 0 10px;
+}
+
+.message__details span {
+    font-weight: 900;
+}
+
+.message__nonuser {
+    text-align: justify;
+    padding: 0 10px;
+}
+
+.message__content {
+    padding: 0 10px;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+.message__content--adopt {
+    padding: 0;
+}
+
+.dog-unavailable {
+    color: red;
+    margin: 15px 0;
+}
+
 /* Navbar and Footer */
 
 .nav {

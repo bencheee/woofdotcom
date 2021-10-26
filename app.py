@@ -709,6 +709,23 @@ def inbox():
         user_unread_msgs=user_unread_msgs)
 
 
+@app.route("/message/<msg_id>")
+def message(msg_id):
+    message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Dog variable is needed by adoption requests
+    try:
+        dog = mongo.db.dogs.find_one(
+            {"_id": ObjectId(message_item["dog_id"])})
+        dog_id = message_item["dog_id"]
+    # If normal message dog variable is none
+    except KeyError:
+        dog = None
+        dog_id = None
+    return render_template(
+        "message.html", message=message_item, dog=dog, dog_id=dog_id)
+
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
