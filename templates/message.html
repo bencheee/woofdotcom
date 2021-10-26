@@ -68,4 +68,10 @@
     </div>
   </form>
 </section>
+
+{% block popup %}
+<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}"
+    style="display: none;">Delete</a>
+{% endblock %}
+
 {% endblock %}
