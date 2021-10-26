@@ -18,6 +18,10 @@
   </div>
   {% if message.registered == False %}
     <p class="message__content">{{message.message}}</p>
+    <div class="message__btns">
+      <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
+      <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
+    </div>
     <p class="message__nonuser">Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: <u><a href="mailto:{{message.sender_email}}">{{message.sender_email}}</a></u> from your email client.</p>
   {% else %}
     {% if message.type == "adoption" %}
@@ -48,6 +52,11 @@
       <p class="message__content">{{message.message}}</p>
     {% endif %}
   {% endif %}
+  <div class="message__btns">
+    <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
+    <div class="message__reply"><i class="fas fa-reply"></i><span>Reply</span></div>
+    <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
+  </div>
   <form class="form form--message"
     action="{{url_for('reply', receiver=message.sent_by, msg_id=message._id)}}"
     method="POST">

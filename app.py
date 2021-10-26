@@ -784,6 +784,12 @@ def reply(receiver, msg_id):
 @app.route("/message_delete/<msg_id>")
 def message_delete(msg_id):
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Call function only if message exists
+    if message_item is None:
+        return redirect(url_for("alert", response="message error"))
+    # Allow only intended receiver to delete message
+    if session["user"] != message_item["send_to"]:
+        return permission_denied()
     mongo.db.messages.delete_one({"_id": ObjectId(msg_id)})
     flash("Message deleted !")
     return redirect(url_for('inbox'))
