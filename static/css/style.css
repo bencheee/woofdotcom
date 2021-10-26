@@ -765,6 +765,10 @@ li {
     margin-top: 35px;
 }
 
+.message__btns {
+    display: flex;
+    justify-content: center;
+}
 
 .message__btns div {
     font-size: 0.9rem;
