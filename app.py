@@ -781,6 +781,14 @@ def reply(receiver, msg_id):
     return redirect(url_for("alert", response="message sent"))
 
 
+@app.route("/message_delete/<msg_id>")
+def message_delete(msg_id):
+    message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    mongo.db.messages.delete_one({"_id": ObjectId(msg_id)})
+    flash("Message deleted !")
+    return redirect(url_for('inbox'))
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
