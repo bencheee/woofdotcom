@@ -905,6 +905,10 @@ li {
         display: none;
     }
 
+    .container {
+        margin: 0 25px;
+    }
+
     .wrapper__row {
         display: flex;
     }
@@ -987,7 +991,7 @@ li {
 
     .container--regcard {
         padding: 0;
-        margin: 50px;
+        margin: 50px 25px;
     }
 
     .reg-card--dark {
