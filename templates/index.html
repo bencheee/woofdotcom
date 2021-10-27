@@ -162,32 +162,38 @@
 
 {% if not session.user %}
 <!-- Registration card -->
-<section class="container container--light">
-  <h2 class="container__title">Why register?</h2>
-  <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
-  <ul class="reg-card__list">
-    <li class="reg-card__item">
-      <i class="far fa-check-circle"></i>
-      <span>Unlimited access to all blogs</span>
-    </li>
-    <li class="reg-card__item">
-      <i class="far fa-check-circle"></i>
-      <span>Write your own posts</span>
-    </li>
-    <li class="reg-card__item">
-      <i class="far fa-check-circle"></i>
-      <span>Unlimited access to dog database</span>
-    </li>
-    <li class="reg-card__item">
-      <i class="far fa-check-circle"></i>
-      <span>Place ads for dog rehoming</span>
-    </li>
-    <li class="reg-card__item">
-      <i class="far fa-check-circle"></i>
-      <span>Send requests for dog adoption</span>
-    </li>
-  </ul>
-  <a class="btn btn--invert" href="{{ url_for('user_register') }}">Register for free</a>
+<section class="container container--light container--regcard">
+  <div class="reg-card wrapper__row">
+    <div class="reg-card--left wrapper__column">
+      <h2 class="container__title">Why register?</h2>
+      <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
+    </div>
+    <div class="reg-card--right wrapper__column">
+      <ul class="reg-card__list">
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Unlimited access to all blogs</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Write your own posts</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Unlimited access to dog database</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Place ads for dog rehoming</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Send requests for dog adoption</span>
+        </li>
+      </ul>
+      <a class="btn" href="{{ url_for('user_register') }}">Register for free</a>
+    </div>
+  </div>
 </section>
 {% endif %}
 {% endblock %}
