@@ -39,7 +39,9 @@
               <h3 class="card__title card__title--dark">{{ posts[0].title }}</h3>
             </a>
             <p class="card__summary">{{ posts[0].summary }}</p>
-            <hr class="hr hr--card hr--dark">
+            {% if posts|length > 1 %}
+              <hr class="hr hr--card hr--dark">
+            {% endif %}
           </div>
           {% if posts|length > 1 %}
             <div class="wrapper__row wrapper--space-between">
@@ -75,7 +77,7 @@
 <!-- Dogs container -->
 <section class="container container--dark">
   <h2 class="container__title">Newest dogs</h2>
-  {% if dogs|length < 1 %}
+  {% if dogs|length == 0 %}
     <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
   {% else %}
     <div class="mobile-container">
@@ -92,6 +94,57 @@
         </div>
       {% endfor %}
     </div>
+    {% if dogs|length > 0 %}
+      <div class="tablet-container">
+        <div class="wrapper__column">
+          <div class="card">
+            <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}">
+              <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[0].img_path}});" alt="">
+              </div>
+              <h3 class="card__title card__title--light">{{ dogs[0].name.capitalize() }}</h3>
+            </a>
+            <p class="card__summary">"{{ dogs[0].greeting }}"</p>
+            {% if dogs|length > 1 %}
+              <hr class="hr hr--card hr--light">
+            {% endif %}
+          </div>
+          {% if dogs|length > 1 %}
+            <div class="wrapper__row wrapper--space-between">
+              {% if dogs|length == 2 %}
+                <div class="card">
+                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[1].img_path}});" alt="">
+                    </div>
+                    <h3 class="card__title card__title--light">{{ dogs[1].name.capitalize() }}</h3>
+                  </a>
+                  <p class="card__summary">"{{ dogs[1].greeting }}"</p>
+                </div>
+              {% else %}
+                <div class="card card--medium">
+                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[1].img_path}});"
+                      alt=""></div>
+                    <h3 class="card__title card__title--light">{{ dogs[1].name.capitalize() }}</h3>
+                  </a>
+                  <p class="card__summary">"{{ dogs[1].greeting }}"</p>
+                </div>
+              {% endif %}
+              {% if dogs|length > 2 %}
+                <div class="card card--medium">
+                  <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[2].img_path}});"
+                      alt=""></div>
+                    <h3 class="card__title card__title--light">{{ dogs[2].name.capitalize() }}</h3>
+                  </a>
+                  <p class="card__summary">"{{ dogs[2].greeting }}"</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <hr class="hr hr--card hr--light">
+      </div>
+    {% endif %}
     <a class="btn btn--invert" href=#>View more</a>
   {% endif %}
 </section>
