@@ -87,6 +87,49 @@
       </div>
     {% endfor %}
   </div>
+  <div class="tablet-container">
+    <div class="card">
+      <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">
+        <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dog_top.img_path}});" alt="">
+        </div>
+        <h3 class="card__title">{{ dog_top.name.capitalize() }}</h3>
+      </a>
+      <p class="card__info">
+        {% if dog_top.age == "0" %}
+          <span>Less than year | {{ dog_top.gender }}</span>
+        {% else %}
+          <span>{{ dog_top.age }} yr | {{ dog_top.gender }}</span>
+        {% endif %}
+      </p>
+      <p class="card__summary">"{{ dog_top.greeting }}"</p>
+      <hr class="hr hr--card hr--dark">
+    </div>
+    {% if dogs|length > 1 %}
+      {% for dog in dogs %}
+        <div class="card">
+          <div class="wrapper__row">
+            <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}">
+              <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dog.img_path}});" alt="">
+              </div>
+            </a>
+            <div class="wrapper__column card__info-wrapper">
+              <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}">
+                <h3 class="card__title">{{ dog.name.capitalize() }}</h3>
+              </a>
+              <p class="card__info">
+                {% if dog.age == "0" %}
+                  <span>Less than year | {{ dog.gender }}</span>
+                {% else %}
+                  <span>{{ dog.age }} yr | {{ dog.gender }}</span>
+                {% endif %}
+              </p>
+              <p class="card__summary">"{{ dog.greeting }}"</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
   {% endif %}
 </section>
 {% if not session.user %}
@@ -126,3 +169,19 @@
 </section>
 {% endif %}
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

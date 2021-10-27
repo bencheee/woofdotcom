@@ -468,9 +468,18 @@ def dog_main():
                             pass
         # Number of dogs after all filters are applied
         cur_len = len(dogs)
+
+    if len(dogs) == 0:
+        no_dogs = True
+        dog_top = None
+    else:
+        dog_top = dogs[0]
+        dogs.pop(0)
+
     return render_template(
-        "dog_main.html", dogs=dogs, no_dogs=no_dogs, tot_len=tot_len,
-        cur_len=cur_len)
+        "dog_main.html", dogs=dogs, tot_len=tot_len, cur_len=cur_len,
+        no_dogs=no_dogs, dog_top=dog_top)
+
 
 
 @app.route("/dog_new", methods=["GET", "POST"])
