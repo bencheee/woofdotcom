@@ -1,3 +1,5 @@
+@import url('tablet.css') only screen and (min-width: 576px);
+
 /* COLORS */
 
 :root {
@@ -42,6 +44,11 @@ h2,
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+}
+
+.tablet-container,
+.desktop-container {
+    display: none;
 }
 
 body {

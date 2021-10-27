@@ -1,0 +1,47 @@
+/* GLOBAL RULES & CLASSES */
+
+.tablet-container {
+    display: block;
+}
+
+.mobile-container {
+    display: none;
+}
+
+.wrapper__row {
+    display: flex;
+}
+
+.wrapper__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper--center {
+    justify-content: center;
+}
+
+.wrapper--space-between {
+    justify-content: space-between;
+}
+
+/* Title section */
+
+.banner {
+    display: flex;
+}
+
+.banner__img {
+    width: 60%;
+}
+
+.title-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%
+}
+
+.title-section__title {
+    margin-top: 80px;
+}

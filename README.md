@@ -67,7 +67,7 @@
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS) 
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
-- [Python 3.8] (https://en.wikipedia.org/wiki/Python_(programming_language))
+- [Python 3.8](https://en.wikipedia.org/wiki/Python_(programming_language))
 
 ### 3.2 Frameworks, libraries and programs
 
