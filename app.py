@@ -276,9 +276,16 @@ def post_main():
             posts.sort(key=get_date)
         elif sort_by == "Most popular":
             posts.sort(key=get_likes, reverse=True)
+    if len(posts) == 0:
+        no_posts = True
+        post_top = None
+    else:
+        post_top = posts[0]
+        posts.pop(0)
     return render_template(
-        "post_main.html", posts=posts, no_posts=no_posts,
-        users=users, categories=categories)
+        "post_main.html", users=users, posts=posts, categories=categories,
+        post_top=post_top, no_posts=no_posts)
+
 
 
 @app.route("/post_new", methods=["GET", "POST"])

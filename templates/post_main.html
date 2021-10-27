@@ -76,6 +76,50 @@
         </div>
       {% endfor %}
     </div>
+
+    <div class="tablet-container">
+      <div class="card">
+        <a href="{{ url_for('post_page', post_id=post_top._id) }}">
+          <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{ post_top.img_path }});"
+            alt=""></div>
+          <h3 class="card__title">{{ post_top.title }}</h3>
+        </a>
+        <p class="card__info">
+          <span>
+            <span>{{ post_top.create_date }} </span>by<span> {{ post_top.author }}</span>
+          </span>
+          <span>
+            <span>Category: </span><span>{{ post_top.category }}</span>
+          </span>
+        </p>
+        <p class="card__summary">{{ post_top.summary }}</p>
+        <hr class="hr hr--card hr--dark">
+      </div>
+      {% for post in posts %}
+        <div class="card">
+          <div class="wrapper__row">
+            <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
+              <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{ post.img_path }});"
+                alt=""></div>
+            </a>
+            <div class="wrapper__column card__info-wrapper">
+              <a href="{{ url_for('post_page', post_id=post._id) }}">
+                <h3 class="card__title">{{ post.title }}</h3>
+              </a>
+              <p class="card__info">
+                <span>
+                  <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+                </span>
+                <span>
+                  <span>Category: </span><span>{{ post.category }}</span>
+                </span>
+              </p>
+              <p class="card__summary">{{ post.summary }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   {% endif %}
 </section>
 {% if not session.user %}
