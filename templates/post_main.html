@@ -56,6 +56,22 @@
     <p class="filter-caption">Couldn't find any posts with given criteria!</p>
   {% else %}
   <div class="mobile-container">
+    <div class="card">
+      <a href="{{ url_for('post_page', post_id=post_top._id) }}">
+          <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post_top.img_path }});" alt=""></div>
+          <h3 class="card__title">{{ post_top.title }}</h3>
+      </a>
+      <p class="card__info">
+          <span>
+              <span>{{ post_top.create_date }} </span>by<span> {{ post_top.author }}</span>
+          </span>
+          <span>
+              <span>Category: </span><span>{{ post_top.category }}</span>
+          </span>
+      </p>
+      <p class="card__summary">{{ post_top.summary }}</p>
+      <hr class="hr hr--card hr--dark">
+    </div>
     {% for post in posts %}
         <div class="card">
           <a href="{{ url_for('post_main', post_id=post._id) }}">

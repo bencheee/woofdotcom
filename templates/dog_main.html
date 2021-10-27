@@ -70,6 +70,21 @@
 
   {% if no_dogs == False %}
   <div class="mobile-container">
+    <div class="card">
+      <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">
+          <div class="card__img img--rounded js-img-mobile" style="background-image: url({{dog_top.img_path}});" alt=""></div>
+          <h3 class="card__title">{{ dog_top.name.capitalize() }}</h3>
+      </a>
+      <p class="card__info">
+          {% if dog_top.age == "0" %}
+              <span>Less than year | {{ dog_top.gender }}</span>
+          {% else %}
+              <span>{{ dog_top.age }} yr | {{ dog_top.gender }}</span>
+          {% endif %}
+      </p>
+      <p class="card__summary">"{{ dog_top.greeting }}"</p>
+      <hr class="hr hr--card hr--dark">
+    </div>
     {% for dog in dogs %}
       <div class="card">
         <a href="{{ url_for('dog_page', dog_id=dog._id) }}">
