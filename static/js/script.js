@@ -162,7 +162,7 @@ function passToggle() {
     if (pass.type === "password") {
         pass.type = "text";
         $("#password").css({
-            "font-weight": "100",
+            "font-weight": "400",
             "letter-spacing": "0"
         });
         $("#pass_icon").removeClass("fa-eye");
