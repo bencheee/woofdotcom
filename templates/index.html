@@ -45,14 +45,25 @@
           </div>
           {% if posts|length > 1 %}
             <div class="wrapper__row wrapper--space-between">
-              <div class="card card--medium">
-                <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
-                  <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[1].img_path}});"
-                    alt=""></div>
-                  <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
-                </a>
-                <p class="card__summary">{{ posts[1].summary }}</p>
-              </div>
+              {% if posts|length == 2 %}
+                <div class="card">
+                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[1].img_path}});"
+                      alt=""></div>
+                    <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
+                  </a>
+                  <p class="card__summary">{{ posts[1].summary }}</p>
+                </div>
+              {% else %}
+                <div class="card card--medium">
+                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[1].img_path}});"
+                      alt=""></div>
+                    <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
+                  </a>
+                  <p class="card__summary">{{ posts[1].summary }}</p>
+                </div>
+              {% endif %}
               {% if posts|length > 2 %}
                 <div class="card card--medium">
                   <a href="{{ url_for('post_page', post_id=posts[2]._id) }}">
