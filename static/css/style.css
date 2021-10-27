@@ -996,4 +996,20 @@ li {
         padding-left: 10px;
     }
 
+    /* Forms */
+
+    .form {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .btn--center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container--login {
+        margin: 0 15%;
+    }
+
 }

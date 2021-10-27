@@ -17,7 +17,7 @@
     <p class="filter-caption">Showing {{ cur_len }} out of {{ tot_len }} total dogs</p>
   {% endif %}
 
-  <form class="form form-toggle form--dogs-tablet js-form-toggle"
+  <form class="form form-toggle js-form-toggle"
     action="{{ url_for('dog_main') }}" method="POST">
     <input class="form__input" name="name" placeholder="Search by dog's name">
 
