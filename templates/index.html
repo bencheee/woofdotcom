@@ -11,7 +11,7 @@
 <!-- Posts container -->
 <section class="container container--light">
   <h2 class="container__title">Latest posts</h2>
-  {% if posts|length < 1 %}
+  {% if posts|length == 0 %}
     <p class="no-posts">Ooops, seems like there are no posts yet!</p>
   {% else %}
     <div class="mobile-container">
@@ -28,9 +28,50 @@
         </div>
       {% endfor %}
     </div>
+
+    {% if posts|length > 0 %}
+      <div class="tablet-container">
+        <div class="wrapper__column">
+          <div class="card">
+            <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
+              <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[0].img_path}});"
+                alt=""></div>
+              <h3 class="card__title card__title--dark">{{ posts[0].title }}</h3>
+            </a>
+            <p class="card__summary">{{ posts[0].summary }}</p>
+            <hr class="hr hr--card hr--dark">
+          </div>
+          {% if posts|length > 1 %}
+            <div class="wrapper__row wrapper--space-between">
+              <div class="card card--medium">
+                <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
+                  <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[1].img_path}});"
+                    alt=""></div>
+                  <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
+                </a>
+                <p class="card__summary">{{ posts[1].summary }}</p>
+              </div>
+              {% if posts|length > 2 %}
+                <div class="card card--medium">
+                  <a href="{{ url_for('post_page', post_id=posts[2]._id) }}">
+                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[2].img_path}});"
+                      alt=""></div>
+                    <h3 class="card__title card__title--dark">{{ posts[2].title }}</h3>
+                  </a>
+                  <p class="card__summary">{{ posts[2].summary }}</p>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <hr class="hr hr--card hr--dark">
+      </div>
+    {% endif %}
+
     <a class="btn" href=#>View more</a>
   {% endif %}
 </section>
+
 <!-- Dogs container -->
 <section class="container container--dark">
   <h2 class="container__title">Newest dogs</h2>

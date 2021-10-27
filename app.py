@@ -366,7 +366,7 @@ def post_delete(post_id):
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
-    return redirect("index")
+    return redirect(url_for("index"))
 
 
 @app.route("/post_page/<post_id>")

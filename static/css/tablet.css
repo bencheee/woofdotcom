@@ -45,3 +45,33 @@
 .title-section__title {
     margin-top: 80px;
 }
+
+/* Card */
+
+.card--medium {
+    width: 49%;
+}
+
+.card__img {
+    margin-bottom: 0;
+}
+
+.card__img-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+}
+
+.card__title {
+    margin: 0 0 5px 0
+}
+
+.card__info {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.card__info-wrapper {
+    width: 70%;
+}

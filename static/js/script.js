@@ -27,10 +27,14 @@ $(".btn--surrender").click(function () {
 // Controls image sizes to 16:9 ratio
 $(window).resize(function () {
     resizeImg($(".js-img-mobile"))
+    resizeImg($(".js-img-tablet-l"))
+    resizeImg($(".js-img-tablet-m"))
     resizeImg($(".post__img"))
     resizeImg($(".dog__img"))
 })
 resizeImg($(".js-img-mobile"))
+resizeImg($(".js-img-tablet-l"))
+resizeImg($(".js-img-tablet-m"))
 resizeImg($(".post__img"))
 resizeImg($(".dog__img"))
 
