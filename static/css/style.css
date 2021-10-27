@@ -897,6 +897,8 @@ li {
 
     .tablet-container {
         display: block;
+        width: 85%;
+        margin: 0 auto;
     }
 
     .mobile-container {
@@ -985,6 +987,7 @@ li {
 
     .container--regcard {
         padding: 0;
+        margin: 50px;
     }
 
     .reg-card--dark {
