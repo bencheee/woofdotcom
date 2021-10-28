@@ -164,6 +164,21 @@ def user_register():
 
 @app.route("/user_login", methods=["GET", "POST"])
 def user_login():
+    """Routes to user_login.html and adds user to the session
+
+    In case of POST request gets the data from the form and checks if
+    document for specified user exists in database. If so, checks if
+    provided password matches the password record from user document in
+    database.
+
+    Returns:
+        render template for user_login.html
+        redirect to index.html if sucessfully logged in
+        redirect to user_login.html if provided password don't match
+            with the one in database or if username couldn't be found
+            in database.
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is not None:
         return permission_denied()
     if request.method == "POST":
