@@ -339,6 +339,9 @@ def post_edit(post_id):
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    # Show 'post not available' error page
+    if post is None:
+        return redirect(url_for("alert", response="post error"))
     # Show page only to post author or admin
     if session["user"] != post["author"] and session["user"] != "Admin":
         return permission_denied()
@@ -373,6 +376,9 @@ def post_delete(post_id):
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    # Allow code to run only if post exists in database
+    if post is None:
+        return redirect(url_for("alert", response="post error"))
     # Allow only to post author or admin to delete post
     if post["author"] != session["user"] and session["user"] != "Admin":
         return permission_denied()
@@ -391,13 +397,15 @@ def post_delete(post_id):
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
-    return redirect(url_for("index"))
+    return redirect(url_for("post_main"))
 
 
 @app.route("/post_page/<post_id>")
 def post_page(post_id):
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-    user = mongo.db.users.find_one({"username": session["user"]})
+    # Allow code to run only if post exists in database
+    if post is None:
+        return redirect(url_for("alert", response="post error"))
     # Create a string with update date if exists in database
     if post["update_date"] != "":
         day = post["update_date"][2]
@@ -432,6 +440,9 @@ def post_like(post_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    # Call function only if post exists
+    if post is None:
+        return redirect(url_for("alert", response="post error"))
     # # Prevent post author or admin from calling the function
     if post["author"] == session["user"] or session["user"] == "Admin":
         return permission_denied()
@@ -574,6 +585,9 @@ def dog_edit(dog_id):
 
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Allow code to run only if dog exists in database
+    if dog is None:
+        return redirect(url_for("alert", response="dog error"))
     #  Allow only original poster or admin to see the page
     if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
         return permission_denied()
@@ -615,6 +629,9 @@ def dog_delete(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     users = list(mongo.db.users.find())
+    # Allow code to run only if dog exists in database
+    if dog is None:
+        return redirect(url_for("alert", response="dog error"))
     # Allow only dog owner or admin to delete the dog
     if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
         return permission_denied()
@@ -660,6 +677,10 @@ def dog_delete(dog_id):
 
 @app.route("/dog_page/<dog_id>")
 def dog_page(dog_id):
+    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Allow code to run only if dog exists in database
+    if dog is None:
+        return redirect(url_for("alert", response="dog error"))
     if session.get('user') is None:
         adoption_request = None
         user_info = None
@@ -686,7 +707,6 @@ def dog_page(dog_id):
     else:
         user_info = True
     # Check if user already applied for adoption
-    dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     if dog["_id"] in user["adoption_requests"]:
         adoption_request = True
     else:
@@ -703,6 +723,9 @@ def adopt(dog_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Allow code to run only if dog exists in database
+    if dog is None:
+        return redirect(url_for("alert", response="dog error"))
     # Prevent users with incomplete profile to call function
     if (user["fname"] == "" or
         user["lname"] == "" or
@@ -752,6 +775,9 @@ def adopt_undo(dog_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Allow code to run only if dog exists in database
+    if dog is None:
+        return redirect(url_for("alert", response="dog error"))
     # Allow everyone except dog owner or admin to call this function
     if user["_id"] == dog["owner_id"] or session["user"] == "Admin":
         return permission_denied()
@@ -805,6 +831,9 @@ def message(msg_id):
     if session.get('user') is None:
         return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Allow user to open mesage only if message exists
+    if message_item is None:
+        return redirect(url_for("alert", response="message error"))
     # Allow only intended receivers to see the message
     if session["user"] != message_item["send_to"]:
         return permission_denied()
