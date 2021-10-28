@@ -306,6 +306,15 @@ def contact():
 
 @app.route("/post_main", methods=["GET", "POST"])
 def post_main():
+    """Routes to post_main.html
+
+    In case of POST request, searches for documents in posts collection
+    from database by specific criteria. Sorts documents by 'created' or
+    'likes' records.
+
+    Returns:
+        render template for post_main.html
+    """
     categories = list(mongo.db.categories.find())
     users = list(mongo.db.users.find())
     # Sort posts by date/time
