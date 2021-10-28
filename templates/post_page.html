@@ -48,13 +48,13 @@
 
 {% if not session.user %}
 <!-- Registration card -->
-<section class="container container--dark container--regcard">
+<section class="container container--light container--regcard">
   <div class="reg-card wrapper__row">
     <div class="reg-card--left wrapper__column">
       <h2 class="container__title">Why register?</h2>
       <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
     </div>
-    <div class="reg-card--right reg-card--dark wrapper__column">
+    <div class="reg-card--right wrapper__column">
       <ul class="reg-card__list">
         <li class="reg-card__item">
           <i class="far fa-check-circle"></i>
@@ -77,7 +77,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--invert" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
     </div>
   </div>
 </section>

@@ -196,11 +196,17 @@ def user_profile():
 
 @app.route("/dog_surrender")
 def dog_surrender():
+    if session.get('user') is None:
+        flash(
+            "You have to be logged in in order to place an ad for rehoming \
+            a dog.")
     return render_template("dog_surrender.html")
 
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if session.get('user') == "Admin":
+        return permission_denied()
     if request.method == "POST":
         # Use existing data for registered users
         if session.get("user") is None:
@@ -290,6 +296,8 @@ def post_main():
 
 @app.route("/post_new", methods=["GET", "POST"])
 def post_new():
+    if session.get('user') is None:
+        return permission_denied()
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
         if list(request.files['photo']) == []:
@@ -328,6 +336,8 @@ def post_new():
 
 @app.route("/post_edit/<post_id>", methods=["GET", "POST"])
 def post_edit(post_id):
+    if session.get('user') is None:
+        return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
@@ -357,6 +367,8 @@ def post_edit(post_id):
 
 @app.route("/post_delete/<post_id>")
 def post_delete(post_id):
+    if session.get('user') is None:
+        return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     users = list(mongo.db.users.find())
     # Delete post from 'liked_posts' list for all users
@@ -390,6 +402,13 @@ def post_page(post_id):
         update_date = f"{day}/{mon}/{year} at {hour}:{mins}"
     else:
         update_date = ""
+
+    if session.get('user') is None:
+        liked_post = None
+        user = None
+    else:
+        user = mongo.db.users.find_one({"username": session["user"]})
+
     # Check if session user has liked this post before
     if user is not None:
         if post["_id"] in user["liked_posts"]:
@@ -403,6 +422,8 @@ def post_page(post_id):
 
 @app.route("/post_like/<post_id>")
 def post_like(post_id):
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     likes = int(post["likes"])
@@ -491,6 +512,8 @@ def dog_main():
 
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
+    if session.get('user') is None:
+        return permission_denied()
     if request.method == "POST":
         if list(request.files['photo']) == []:
             img_path = "/static/images/dog_default.webp"
@@ -528,6 +551,10 @@ def dog_new():
 
 @app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
 def dog_edit(dog_id):
+    if session.get('user') is None:
+        return permission_denied()
+
+    user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     if request.method == "POST":
         if list(request.files['photo']) != [] and dog["img_id"] != "default":
@@ -561,6 +588,8 @@ def dog_edit(dog_id):
 
 @app.route("/dog_delete/<dog_id>")
 def dog_delete(dog_id):
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     users = list(mongo.db.users.find())
@@ -605,8 +634,18 @@ def dog_delete(dog_id):
 
 @app.route("/dog_page/<dog_id>")
 def dog_page(dog_id):
+    if session.get('user') is None:
+        adoption_request = None
+        user_info = None
+        flash(
+            """
+            In order to apply for dog adoption you need to have \
+            registered account and provide all necessary details \
+            about yourself. Please register before applying.
+            """)
+    else:
+        user = mongo.db.users.find_one({"username": session["user"]})
     # Prevent users with incomplete profile from adopting
-    user = mongo.db.users.find_one({"username": session["user"]})
     if (user["fname"] == "" or
             user["lname"] == "" or
             user["phone"] == "" or
@@ -634,6 +673,8 @@ def dog_page(dog_id):
 
 @app.route("/adopt/<dog_id>")
 def adopt(dog_id):
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     # Prevent users with incomplete profile to call function
@@ -678,6 +719,8 @@ def adopt(dog_id):
 
 @app.route("/adopt_undo/<dog_id>")
 def adopt_undo(dog_id):
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     # Delete users request from database
@@ -727,6 +770,8 @@ def inbox():
 
 @app.route("/message/<msg_id>")
 def message(msg_id):
+    if session.get('user') is None:
+        return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
     # Dog variable is needed by adoption requests
     try:
@@ -747,6 +792,8 @@ def message(msg_id):
 
 @app.route("/reply/<receiver>/<msg_id>", methods=["GET", "POST"])
 def reply(receiver, msg_id):
+    if session.get('user') is None:
+        return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     orig_msg = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
     # Puts 'Re:' to message subject when replying
@@ -799,6 +846,8 @@ def reply(receiver, msg_id):
 
 @app.route("/message_delete/<msg_id>")
 def message_delete(msg_id):
+    if session.get('user') is None:
+        return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
     # Call function only if message exists
     if message_item is None:
