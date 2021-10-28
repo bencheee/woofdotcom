@@ -615,6 +615,10 @@ def dog_delete(dog_id):
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     users = list(mongo.db.users.find())
+    # Allow only dog owner or admin to delete the dog
+    if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
+        return permission_denied()
+
     for user in users:
         # Send message about dog deletion to all applicants
         if ObjectId(dog_id) in user["adoption_requests"]:
