@@ -805,6 +805,9 @@ def message(msg_id):
     if session.get('user') is None:
         return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Allow only intended receivers to see the message
+    if session["user"] != message_item["send_to"]:
+        return permission_denied()
     # Dog variable is needed by adoption requests
     try:
         dog = mongo.db.dogs.find_one(
@@ -828,6 +831,9 @@ def reply(receiver, msg_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     orig_msg = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
+    # Alow only intended receiver to reply to message
+    if session["user"] != orig_msg["send_to"]:
+        return permission_denied()
     # Puts 'Re:' to message subject when replying
     if orig_msg["subject"][0:3] == "Re:":
         subject = orig_msg["subject"]
