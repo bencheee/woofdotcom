@@ -82,6 +82,14 @@ def generate_photo(item, collection):
 
 @app.route("/")
 def index():
+    """Routes to index.html
+
+    Returns max 3 item per collection (posts / dogs) and sorts them
+    from newest to oldest.
+
+    Returns:
+        render_template for index.html
+    """
     # Sort posts by date/time
     posts = sorted(
         list(mongo.db.posts.find()), key=lambda k: k['created'], reverse=True)
