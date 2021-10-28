@@ -339,6 +339,9 @@ def post_edit(post_id):
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    # Show page only to post author or admin
+    if session["user"] != post["author"] and session["user"] != "Admin":
+        return permission_denied()
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
         if list(request.files['photo']) != [] and post["img_id"] != "default":
