@@ -574,6 +574,10 @@ def dog_edit(dog_id):
 
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    #  Allow only original poster or admin to see the page
+    if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
+        return permission_denied()
+
     if request.method == "POST":
         if list(request.files['photo']) != [] and dog["img_id"] != "default":
             MY_BUCKET.Object(dog["img_filename"]).delete()
