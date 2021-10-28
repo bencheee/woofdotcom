@@ -373,7 +373,7 @@ def post_delete(post_id):
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
-        # Allow only to post author or admin to delete post
+    # Allow only to post author or admin to delete post
     if post["author"] != session["user"] and session["user"] != "Admin":
         return permission_denied()
     users = list(mongo.db.users.find())
@@ -432,6 +432,9 @@ def post_like(post_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+    # # Prevent post author or admin from calling the function
+    if post["author"] == session["user"] or session["user"] == "Admin":
+        return permission_denied()
     likes = int(post["likes"])
     # Remove like
     if post["_id"] in user["liked_posts"]:
