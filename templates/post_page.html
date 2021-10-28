@@ -20,7 +20,7 @@
         <p class="post__likes">Starred: {{ post.likes}} times</p>
       {% endif %}
     </div>
-    <hr class="hr hr--dark hr--post">
+    <hr class="hr hr--post">
     {% if session.user %}
       <div class="control-buttons">
         {% if session.user == post.author or session.user == "Admin" %}

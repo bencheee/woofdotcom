@@ -83,7 +83,7 @@
           {% endif %}
       </p>
       <p class="card__summary">"{{ dog_top.greeting }}"</p>
-      <hr class="hr hr--card hr--dark">
+      <hr class="hr hr--card">
     </div>
     {% for dog in dogs %}
       <div class="card">
@@ -117,7 +117,7 @@
         {% endif %}
       </p>
       <p class="card__summary">"{{ dog_top.greeting }}"</p>
-      <hr class="hr hr--card hr--dark">
+      <hr class="hr hr--card">
     </div>
     {% if dogs|length > 1 %}
       {% for dog in dogs %}

@@ -24,7 +24,7 @@
             <h3 class="card__title">{{ post.title }}</h3>
           </a>
           <p class="card__summary">{{ post.summary }}</p>
-          <hr class="hr hr--card hr--dark">
+          <hr class="hr hr--card">
         </div>
       {% endfor %}
     </div>
@@ -40,7 +40,7 @@
             </a>
             <p class="card__summary">{{ posts[0].summary }}</p>
             {% if posts|length > 1 %}
-              <hr class="hr hr--card hr--dark">
+              <hr class="hr hr--card">
             {% endif %}
           </div>
           {% if posts|length > 1 %}
@@ -77,7 +77,7 @@
             </div>
           {% endif %}
         </div>
-        <hr class="hr hr--card hr--dark">
+        <hr class="hr hr--card">
       </div>
     {% endif %}
 
@@ -101,7 +101,7 @@
             <h3 class="card__title">{{dog.name.capitalize()}}</h3>
           </a>
           <p class="card__summary">"{{ dog.greeting }}"</p>
-          <hr class="hr hr--card hr--light">
+          <hr class="hr hr--card">
         </div>
       {% endfor %}
     </div>
@@ -116,7 +116,7 @@
             </a>
             <p class="card__summary">"{{ dogs[0].greeting }}"</p>
             {% if dogs|length > 1 %}
-              <hr class="hr hr--card hr--light">
+              <hr class="hr hr--card">
             {% endif %}
           </div>
           {% if dogs|length > 1 %}
@@ -153,7 +153,7 @@
             </div>
           {% endif %}
         </div>
-        <hr class="hr hr--card hr--light">
+        <hr class="hr hr--card">
       </div>
     {% endif %}
     <a class="btn btn--invert" href=#>View more</a>
