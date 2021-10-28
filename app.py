@@ -426,6 +426,30 @@ def post_new():
 
 @app.route("/post_edit/<post_id>", methods=["GET", "POST"])
 def post_edit(post_id):
+    """Routes to post_edit.html and modifies the post
+
+    Gets document from 'posts' collection in database and pre populates
+    the form on the page. In case of POST request, modifies 'post'
+    document in database. In case new photo is uploaded, deletes old
+    photo from cloud.
+
+    Args:
+        post_id (str): '_id' record of document from 'posts' collection
+            in database
+
+    Returns:
+        render_template for post_edit.html
+        redirect to post_page.html when modified post is uploaded to
+            the database
+        call permission_denied function if not requested by
+            admin or post author, or if there is no user in session
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+
+    Raises:
+        UnidentifiedImageError - Prevents user from uploading non image
+            documents. Returns redirect to post_new.html.
+    """
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
