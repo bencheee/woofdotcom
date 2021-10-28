@@ -368,9 +368,24 @@ def post_main():
         post_top=post_top, no_posts=no_posts)
 
 
-
 @app.route("/post_new", methods=["GET", "POST"])
 def post_new():
+    """Routes to post_new.html and creates new post
+
+    In case of POST request checks if user has uploaded the photo. If
+    not, sets up image parameters as default image. If yes, calls
+    generate_photo fuction. Creates new_post dictionary and uploads it
+    as new document in 'posts' collection in database.
+
+    Returns:
+        render template for post_new.html
+        redirect to post_main.html when post is uploaded to database
+        call permission_denied function if there is no user in session
+
+    Raises:
+        UnidentifiedImageError - Prevents user from uploading non image
+            documents. Returns redirect to post_new.html.
+    """
     if session.get('user') is None:
         return permission_denied()
     categories = list(mongo.db.categories.find())
