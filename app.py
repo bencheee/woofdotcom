@@ -42,6 +42,21 @@ def permission_denied():
 
 
 def generate_photo(item, collection):
+    """Resizes photo uploaded by user and uploads photo to cloud
+
+    Returns unique strings for uploaded photo (id, filename and path).
+    Uses PIL to process and convert photo. Uses BytesIO to temporarily
+    store converted image before uploading it to cloud.
+
+    Args:
+        item (str): Value should be ‘post’ or ‘dog’
+        collection (list): ‘posts’ or ‘dogs’ collection from database
+
+    Returns:
+        img_id (str): Unique ID for every uploaded photo
+        img_filename (str): Name of the uploaded photo file
+        img_path (str): URL of the uploaded photo
+    """
     image = Image.open(request.files['photo'])
     image.thumbnail((768, 432))
     img_id = round(random.random() * 1000000)
