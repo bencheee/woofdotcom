@@ -373,6 +373,9 @@ def post_delete(post_id):
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
+        # Allow only to post author or admin to delete post
+    if post["author"] != session["user"] and session["user"] != "Admin":
+        return permission_denied()
     users = list(mongo.db.users.find())
     # Delete post from 'liked_posts' list for all users
     # in users collection
