@@ -201,6 +201,12 @@ def user_login():
 
 @app.route("/user_logout")
 def user_logout():
+    """Routes to index.html and removes user from the session
+
+    Returns:
+        redirect to index.html
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     session.pop("user")
