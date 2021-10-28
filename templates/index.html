@@ -21,7 +21,7 @@
             <div class="card__img img--rounded js-img-mobile"
               style="background-image: url({{post.img_path}});" alt="">
             </div>
-            <h3 class="card__title card__title--dark">{{ post.title }}</h3>
+            <h3 class="card__title">{{ post.title }}</h3>
           </a>
           <p class="card__summary">{{ post.summary }}</p>
           <hr class="hr hr--card hr--dark">
@@ -36,7 +36,7 @@
             <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
               <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[0].img_path}});"
                 alt=""></div>
-              <h3 class="card__title card__title--dark">{{ posts[0].title }}</h3>
+              <h3 class="card__title">{{ posts[0].title }}</h3>
             </a>
             <p class="card__summary">{{ posts[0].summary }}</p>
             {% if posts|length > 1 %}
@@ -50,7 +50,7 @@
                   <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[1].img_path}});"
                       alt=""></div>
-                    <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
+                    <h3 class="card__title">{{ posts[1].title }}</h3>
                   </a>
                   <p class="card__summary">{{ posts[1].summary }}</p>
                 </div>
@@ -59,7 +59,7 @@
                   <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[1].img_path}});"
                       alt=""></div>
-                    <h3 class="card__title card__title--dark">{{ posts[1].title }}</h3>
+                    <h3 class="card__title">{{ posts[1].title }}</h3>
                   </a>
                   <p class="card__summary">{{ posts[1].summary }}</p>
                 </div>
@@ -69,7 +69,7 @@
                   <a href="{{ url_for('post_page', post_id=posts[2]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[2].img_path}});"
                       alt=""></div>
-                    <h3 class="card__title card__title--dark">{{ posts[2].title }}</h3>
+                    <h3 class="card__title">{{ posts[2].title }}</h3>
                   </a>
                   <p class="card__summary">{{ posts[2].summary }}</p>
                 </div>
@@ -98,7 +98,7 @@
             <div class="card__img img--rounded js-img-mobile"
               style="background-image: url({{dog.img_path}});" alt="">
             </div>
-            <h3 class="card__title card__title--light">{{dog.name.capitalize()}}</h3>
+            <h3 class="card__title">{{dog.name.capitalize()}}</h3>
           </a>
           <p class="card__summary">"{{ dog.greeting }}"</p>
           <hr class="hr hr--card hr--light">
@@ -112,7 +112,7 @@
             <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}">
               <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[0].img_path}});" alt="">
               </div>
-              <h3 class="card__title card__title--light">{{ dogs[0].name.capitalize() }}</h3>
+              <h3 class="card__title">{{ dogs[0].name.capitalize() }}</h3>
             </a>
             <p class="card__summary">"{{ dogs[0].greeting }}"</p>
             {% if dogs|length > 1 %}
@@ -126,7 +126,7 @@
                   <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[1].img_path}});" alt="">
                     </div>
-                    <h3 class="card__title card__title--light">{{ dogs[1].name.capitalize() }}</h3>
+                    <h3 class="card__title">{{ dogs[1].name.capitalize() }}</h3>
                   </a>
                   <p class="card__summary">"{{ dogs[1].greeting }}"</p>
                 </div>
@@ -135,7 +135,7 @@
                   <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[1].img_path}});"
                       alt=""></div>
-                    <h3 class="card__title card__title--light">{{ dogs[1].name.capitalize() }}</h3>
+                    <h3 class="card__title">{{ dogs[1].name.capitalize() }}</h3>
                   </a>
                   <p class="card__summary">"{{ dogs[1].greeting }}"</p>
                 </div>
@@ -145,7 +145,7 @@
                   <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}">
                     <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[2].img_path}});"
                       alt=""></div>
-                    <h3 class="card__title card__title--light">{{ dogs[2].name.capitalize() }}</h3>
+                    <h3 class="card__title">{{ dogs[2].name.capitalize() }}</h3>
                   </a>
                   <p class="card__summary">"{{ dogs[2].greeting }}"</p>
                 </div>
@@ -191,7 +191,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
     </div>
   </div>
 </section>

@@ -4,9 +4,9 @@
     /* Solid colors */
     --color1: #023733;
     --color2: #047e75;
-    --color3: #5bb1ab;
-    --color4: #8bd9d4;
-    --color5: #b3e4e0;
+    --color3: #5eaaa5;
+    --color4: #c2e4e1;
+    --color5: #ebf5f4;
     --color6: #f2f9f9;
 
     /* Transparent 10% */
@@ -99,6 +99,11 @@ li {
     border: 1px solid var(--color2);
 }
 
+.btn--transparent {
+    background-color: transparent;
+    border: 1px solid var(--color6);
+}
+
 .btn--bottom {
     font-size: 0.9rem;
     font-weight: 400;
@@ -132,17 +137,10 @@ li {
 .card__title {
     display: block;
     margin: 10px auto;
+    color: var(--color1);
     font-size: 1.5rem;
     font-weight: 900;
     padding: 0 10px;
-}
-
-.card__title--light {
-    color: var(--color6);
-}
-
-.card__title--dark {
-    color: var(--color1);
 }
 
 .card__summary {
@@ -244,13 +242,13 @@ li {
 }
 
 .container--light {
-    background-color: var(--color6);
-    color: var(--color1);
+    background-color: var(--color5);
+    color: black;
 }
 
 .container--dark {
-    background-color: var(--color3);
-    color: var(--color6);
+    background-color: var(--color4);
+    color: black;
 }
 
 .container--extended {
@@ -730,7 +728,7 @@ li {
 }
 
 .switch-dark {
-    background-color: var(--color3);
+    background-color: var(--color4);
     color: var(--color6);
 }
 
@@ -985,8 +983,13 @@ li {
         width: 50%;
     }
 
-    .reg-card--right {
+    .reg-card--left {
         background-color: var(--color5);
+    }
+
+    .reg-card--right {
+        background-color: var(--color3);
+        color: white;
     }
 
     .container--regcard {
