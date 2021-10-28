@@ -216,6 +216,15 @@ def user_logout():
 
 @app.route("/user_profile", methods=["GET", "POST"])
 def user_profile():
+    """Routes to user_profile.html
+
+    In case of POST request there are two forms on the page. First form
+    changes the password, and second form updates user details.
+
+    Returns:
+        render_template for user_profile.html
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
