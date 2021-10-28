@@ -523,6 +523,16 @@ def dog_main():
 def dog_new():
     if session.get('user') is None:
         return permission_denied()
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # Prevent users with incomplete info from posting dog ads
+    if (user["fname"] == "" or
+            user["lname"] == "" or
+            user["phone"] == "" or
+            user["about"] == ""):
+        user_info = False
+    else:
+        user_info = True
+
     if request.method == "POST":
         if list(request.files['photo']) == []:
             img_path = "/static/images/dog_default.webp"
@@ -536,7 +546,6 @@ def dog_new():
                 return redirect(url_for("dog_new"))
             dogs = mongo.db.dogs.find()
             img_id, img_filename, img_path = generate_photo("dog", dogs)
-        user = mongo.db.users.find_one({"username": session["user"]})
         # Create new dog entry and upload to database
         dog = {
             "name": request.form.get("name").lower(),
@@ -554,8 +563,8 @@ def dog_new():
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
-        return redirect(url_for("index"))
-    return render_template("dog_new.html")
+        return redirect(url_for("dog_main"))
+    return render_template("dog_new.html", user_info=user_info)
 
 
 @app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
