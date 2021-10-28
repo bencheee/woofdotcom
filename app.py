@@ -110,6 +110,19 @@ def alert(response):
 
 @app.route("/user_register", methods=["GET", "POST"])
 def user_register():
+    """Routes to user_register.html
+
+    In case of POST request gets the data from the form and stores it
+    in database. Checks if username or email already exist in database,
+    and checks if inputted passwords match.
+
+    Returns:
+        render template for user_register.html
+        redirect to index.html if sucessfully registered
+        redirect to user_register.html if passwords don't match or
+            username / email already exist in database
+        call permission_denied function if there is user in session
+    """
     if session.get('user') is not None:
         return permission_denied()
     if request.method == "POST":
