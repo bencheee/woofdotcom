@@ -655,7 +655,7 @@ def dog_delete(dog_id):
     # Remove dog from database
     mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
     flash("Dog sucessfully removed from database !")
-    return redirect(url_for('index'))
+    return redirect(url_for('dog_main'))
 
 
 @app.route("/dog_page/<dog_id>")
@@ -708,6 +708,9 @@ def adopt(dog_id):
         user["lname"] == "" or
         user["phone"] == "" or
             user["about"] == ""):
+        return permission_denied()
+    # Allow everyone except dog owner or admin to call this function
+    if user["_id"] == dog["owner_id"] or session["user"] == "Admin":
         return permission_denied()
     # Send adoption request to admin inbox
     message_item = {
