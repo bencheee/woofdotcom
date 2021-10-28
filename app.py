@@ -752,6 +752,9 @@ def adopt_undo(dog_id):
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
+    # Allow everyone except dog owner or admin to call this function
+    if user["_id"] == dog["owner_id"] or session["user"] == "Admin":
+        return permission_denied()
     # Delete users request from database
     user["adoption_requests"].remove(dog["_id"])
     mongo.db.messages.delete_one({"dog_id": dog_id})
