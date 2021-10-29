@@ -271,6 +271,16 @@ def dog_surrender():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    """Routes to contact.html
+
+    In case of POST request makes new document of 'messages' collection
+    in database.
+
+    Returns:
+        render_template for contact.html
+        redirect to alert.html when message is sent
+        call permission_denied function to prevent admin from seeing the page
+    """
     if session.get('user') == "Admin":
         return permission_denied()
     if request.method == "POST":
