@@ -1086,6 +1086,15 @@ def adopt_undo(dog_id):
 
 @app.route("/inbox")
 def inbox():
+    """Routes to inbox.html
+
+    Displays all messages on the page from newest to oldest. Messages
+    are divided separately for users and admin, and admin messages are
+    divided into standard messages and adoption requests.
+
+    Returns:
+        render_template for inbox.html
+    """
     if session.get('user') is None:
         return permission_denied()
 
