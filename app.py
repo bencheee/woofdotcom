@@ -837,6 +837,23 @@ def dog_edit(dog_id):
 
 @app.route("/dog_delete/<dog_id>")
 def dog_delete(dog_id):
+    """Deletes the dog record from posts collection in database
+
+    Checks 'liked_posts' record of all documents from 'users' collection
+    in database. If it contains provided dog_id, then this dog_id is
+    deleted from the list. Deletes photo from cloud.
+
+    Args:
+        dog_id (str): '_id' record of document from 'dogs' collection
+            in database
+
+    Returns:
+        render_template for dog_main.html
+        call permission_denied function if not requested by
+            admin or dog owner, or if there is no user in session
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
