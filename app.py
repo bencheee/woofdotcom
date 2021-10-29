@@ -1268,6 +1268,13 @@ def message_delete(msg_id):
 
 @app.context_processor
 def global_vars():
+    """Gets number of unread messages in inbox
+
+    Returns:
+        msgs (int): number of unread messages for standard user
+        msgs_reqs (int): total number of messages + adoption requests
+            for admin
+    """
     if session.get('user') is None:
         user = False
     else:
