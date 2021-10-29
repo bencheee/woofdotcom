@@ -105,12 +105,88 @@
 
 ## 6. DEPLOYMENT
 
+### 6.1 Creating repository on GitHub
+
+Repository for this project was created using following steps:
+
+1. Sign in to [GitHub account](https://github.com/bencheee) and click on the "New" button in the top right corner of the page
+
+![Deployment 1](/static/documentation/deployment/001.png)
+
+2. Choose Code Institute gitpod template from dropdown menu, type in the repository name and click on "Create repository" button at the bottom of the page
+
+![Deployment 2](/static/documentation/deployment/002.png)
+
+### 6.2 Deploying project on Heroku
+
+This project was deployed to GitHub Pages using following steps:
+
+1. Sign in to [Heroku](https://www.heroku.com/) and create new app by clicking on "New" button in top right corner
+
+![Deployment 3](/static/documentation/deployment/003.png)
+
+2. Choose app name and region and click on "Create app" button
+
+![Deployment 4](/static/documentation/deployment/004.png)
+
+3. Go to "Settings" tab and and click on "Reveal Config Vars" button. Update all variables from env.py file.
+
+![Deployment 5](/static/documentation/deployment/005.png)
+
+4. Click on "Deploy" tab and choose GitHub as deployment method
+
+![Deployment 6](/static/documentation/deployment/006.PNG)
+
+5. Enter GitHub repository name and click on "Search" button. When repository is loaded click on "Connect" button.
+
+![Deployment 7](/static/documentation/deployment/007.PNG)
+
+![Deployment 8](/static/documentation/deployment/008.PNG)
+
+6. Choose main branch and click on "Enable Automatic Deploys" button. Click on "Deploy Branch" button.
+
+![Deployment 9](/static/documentation/deployment/009.PNG)
+
+*Make sure to have Procfile and requirements.txt updated in project repository, otherwise app will not run.
+ 
+### 6.3 Forking repository
+
+To fork the repository use the following steps:
+
+1. Sign in to GitHub and open [woof(dot)com](https://github.com/bencheee/woofdotcom)
+
+2. Click on the *Fork* icon in the top right corner of the page
+
+![Deployment 10](/static/documentation/deployment/010.PNG)
+
+### 6.4 Cloning repository
+
+To make a local clone of the repository use the following steps:
+
+1. Sign in to GitHub and open [woofdotcom](https://github.com/bencheee/woofdotcom)
+
+2. At the top of the repository click on the *Code* icon
+
+3. Copy the provided HTTPS link
+
+4. Open Git Bash and change the current working directory to the location where the cloned directory should be made
+
+5. Type *git clone* and then paste the copied URL
+
+```
+$ git clone https://github.com/bencheee/woofdotcom.git
+```
+
+6. Press *Enter* and local clone of the repository will be created
+
+![Deployment 11](/static/documentation/deployment/011.png)
+
 ---
 
 ## 7. CREDITS
 
 ### 7.1 Acknowledgements
 
-- My mentor Rohit Sharma for continuous helpful feedback
+- My mentor for continuous helpful feedback
 
 - Tutor support at Code Institute for their support 
