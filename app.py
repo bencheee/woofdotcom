@@ -907,6 +907,17 @@ def dog_delete(dog_id):
 
 @app.route("/dog_page/<dog_id>")
 def dog_page(dog_id):
+    """Routes to dog_page.html
+
+    Args:
+        dog_id (str): '_id' record of document from 'dogs' collection
+            in database
+
+    Returns:
+        render_template for dog_page.html
+        redirect to alert.html if requested 'dog' document does not
+            exist in database
+    """
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     # Allow code to run only if dog exists in database
     if dog is None:
