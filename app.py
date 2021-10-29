@@ -770,6 +770,29 @@ def dog_new():
 
 @app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
 def dog_edit(dog_id):
+    """Routes to dog_edit.html
+
+    Gets document from 'dogs' collection in database and pre populates
+    the form on the page. In case of POST request, modifies 'dog'
+    document in database. In case new photo is uploaded, deletes old
+    photo from cloud.
+
+    Args:
+        dog_id (str): '_id' record of document from 'dogs' collection
+            in database
+
+    Returns:
+        render_template for dog_edit.html
+        redirect to dog.html when edited dog is uploaded to database
+        call permission_denied function if not requested by
+            admin or dog owner, or if there is no user in session
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+
+    Raises:
+        UnidentifiedImageError - Prevents user from uploading non image
+            documents. Returns redirect to dog_new.html.
+    """
     if session.get('user') is None:
         return permission_denied()
 
