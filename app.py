@@ -534,6 +534,17 @@ def post_delete(post_id):
 
 @app.route("/post_page/<post_id>")
 def post_page(post_id):
+    """Routes to post.html
+
+    Args:
+        post_id (str): '_id' record of document from 'posts' collection
+            in database
+
+    Returns:
+        render_template for post.html
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+    """
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
     # Allow code to run only if post exists in database
     if post is None:
