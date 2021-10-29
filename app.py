@@ -1225,6 +1225,19 @@ def reply(receiver, msg_id):
 
 @app.route("/message_delete/<msg_id>")
 def message_delete(msg_id):
+    """Deletes the message from database
+
+    Returns:
+        redirect to inbox.html
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+        call permission_denied function if message is not intended for
+            current user, or if there is no user in session
+
+    Raises:
+        KeyError - Prevents logged out users from calling the function.
+            Calls permission_denied function instead.
+    """
     if session.get('user') is None:
         return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
