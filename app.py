@@ -103,6 +103,15 @@ def index():
 
 @app.route("/alert/<response>")
 def alert(response):
+    """Routes to alert.html
+
+    Args:
+        response (string): Value is returned to Jinja template which
+            then decides on which message to display on screen
+
+    Returns:
+        render_template for alert.html
+    """
     response_received = response
     return render_template(
         "alert.html", response=response_received)
