@@ -960,6 +960,23 @@ def dog_page(dog_id):
 
 @app.route("/adopt/<dog_id>")
 def adopt(dog_id):
+    """Creates dog adoption request for the user
+
+    Saves new adoption request as a document of 'messages' collection
+    in database. Adds 'dog_id' to 'adoption_requests' record of
+    document in 'users' collection in database.
+
+    Args:
+        dog_id (str): '_id' record of document from 'dogs' collection
+            in database
+
+    Returns:
+        redirect to dog.html
+        call permission_denied function if not requested by admin or
+        dog owner, or if user object in database does not have full
+        info (fname, lname, phone, about)
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
