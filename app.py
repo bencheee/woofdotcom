@@ -704,9 +704,24 @@ def dog_main():
         no_dogs=no_dogs, dog_top=dog_top)
 
 
-
 @app.route("/dog_new", methods=["GET", "POST"])
 def dog_new():
+    """Routes to dog_new.html
+
+    In case of POST request checks if user has uploaded the photo. If
+    not, sets up image parameters as default image. If yes, calls
+    generate_photo fuction. Creates new_dog dictionary and uploads it
+    as new document in 'dogs' collection in database.
+
+    Returns:
+        render template for dog_new.html
+        redirect to dog_main.html when post is uploaded to database
+        call permission_denied function if there is no user in session
+
+    Raises:
+        UnidentifiedImageError - Prevents user from uploading non image
+            documents. Returns redirect to dog_new.html.
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
