@@ -1029,6 +1029,21 @@ def adopt(dog_id):
 
 @app.route("/adopt_undo/<dog_id>")
 def adopt_undo(dog_id):
+    """Removes dog adoption request for the user
+
+    Deletes adoption request represented as a document of 'messages'
+    collection in database. Removes 'dog_id' from 'adoption_requests'
+    record of document in 'users' collection in database.
+
+    Args:
+        dog_id (str): '_id' record of document from 'dogs' collection
+            in database
+
+    Returns:
+        redirect to dog_page.html
+        call permission_denied function if not requested by
+            admin or dog owner, or if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
