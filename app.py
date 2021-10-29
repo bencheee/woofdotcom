@@ -487,6 +487,24 @@ def post_edit(post_id):
 
 @app.route("/post_delete/<post_id>")
 def post_delete(post_id):
+    """Deletes document from 'posts' collection in database
+
+    Checks 'liked_posts' record of all documents from 'users' collection
+    in database. If it contains provided post_id, then this post_id is
+    deleted from the list. Deletes photo from cloud.
+
+    Args:
+        post_id (str): '_id' record of document from 'posts' collection
+            in database
+
+    Returns:
+        render_template for post_main.html
+        call permission_denied function if not requested by
+            admin or post author
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     post = mongo.db.posts.find_one({"_id": ObjectId(post_id)})
