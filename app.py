@@ -579,6 +579,24 @@ def post_page(post_id):
 
 @app.route("/post_like/<post_id>")
 def post_like(post_id):
+    """Updates number of likes for the post
+
+    Gets 'likes' record of document from 'posts' collection in
+    database and updates it. Updates 'liked_posts' record of document
+    from 'users' collection.
+
+    Args:
+        post_id (str): '_id' record of document from 'posts' collection
+            in database
+
+    Returns:
+        redirect for post.html
+        call permission_denied function if requested by admin or
+            post author
+        redirect to alert.html if requested 'post' document does not
+            exist in database
+        call permission_denied function if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
