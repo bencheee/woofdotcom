@@ -629,6 +629,20 @@ def post_like(post_id):
 
 @app.route("/dog_main", methods=["GET", "POST"])
 def dog_main():
+    """Routes to dog_main.html
+
+    Sorts documents from 'dogs' collection from newest to oldest. In
+    case of POST request, creates new list depending on search criteria
+    received in form.
+
+    Returns:
+        render_template for dogs_main.html
+        redirect to index.html if dogs collection in database is empty
+
+    Raises:
+        ValueError - Does not return value. Used to prevent error if
+            document is not found in 'dogs' collection in database.
+    """
     # Sort dogs by date/time
     dogs = sorted(
         list(mongo.db.dogs.find()), key=lambda k: k['created'], reverse=True)
