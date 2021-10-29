@@ -1129,6 +1129,17 @@ def inbox():
 
 @app.route("/message/<msg_id>")
 def message(msg_id):
+    """Routes to message.html
+
+    Returns:
+        render_template for message.html
+        call permission_denied function if there is no user in session
+
+    Raises:
+        KeyError - In case of normal message (not adoption request),
+            value of 'dog' and 'dog_id' variables is set to None.
+
+    """
     if session.get('user') is None:
         return permission_denied()
     message_item = mongo.db.messages.find_one({"_id": ObjectId(msg_id)})
