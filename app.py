@@ -1168,6 +1168,20 @@ def message(msg_id):
 
 @app.route("/reply/<receiver>/<msg_id>", methods=["GET", "POST"])
 def reply(receiver, msg_id):
+    """Sends reply message
+
+    Creates and uploads new document to 'messages' collection in
+    database. Message type can be normal or adoption request.
+
+    Args:
+        receiver (str): username to which reply is sent
+        msg_id (str): '_id' record of original message from database
+
+    Returns:
+        redirect to alert.html when message is sent
+        call permission_denied function if current user is not intended
+            receiver, or if there is no user in session
+    """
     if session.get('user') is None:
         return permission_denied()
     user = mongo.db.users.find_one({"username": session["user"]})
