@@ -141,16 +141,16 @@ def user_register():
         existing_email = mongo.db.users.find_one(
             {"email": request.form.get("email")})
         if existing_user:
-            flash("Username already in use!")
+            flash("Username already in use!", "error")
             return redirect(url_for("user_register"))
         if existing_email:
-            flash("Email already in use!")
+            flash("Email already in use!", "error")
             return redirect(url_for("user_register"))
         # Check if passwords match
         password1 = request.form.get("password")
         password2 = request.form.get("password2")
         if password1 != password2:
-            flash("Passwords don't match!")
+            flash("Passwords don't match!", "error")
             return redirect(url_for("user_register"))
         # Save user details to database
         new_user = {
@@ -417,7 +417,7 @@ def post_new():
             try:
                 Image.open(request.files['photo'])
             except UnidentifiedImageError:
-                flash("Image type not supported.")
+                flash("Image type not supported.", "error")
                 return redirect(url_for("post_new"))
             posts = mongo.db.posts.find()
             img_id, img_filename, img_path = generate_photo("post", posts)
@@ -485,7 +485,7 @@ def post_edit(post_id):
         try:
             Image.open(request.files['photo'])
         except UnidentifiedImageError:
-            flash("Image type not supported.")
+            flash("Image type not supported.", "error")
             return redirect(url_for("post_edit"))
         posts = mongo.db.posts.find()
         img_id, img_filename, img_path = generate_photo("post", posts)
@@ -762,7 +762,7 @@ def dog_new():
             try:
                 Image.open(request.files['photo'])
             except UnidentifiedImageError:
-                flash("Image type not supported.")
+                flash("Image type not supported.", "error")
                 return redirect(url_for("dog_new"))
             dogs = mongo.db.dogs.find()
             img_id, img_filename, img_path = generate_photo("dog", dogs)
@@ -830,7 +830,7 @@ def dog_edit(dog_id):
         try:
             Image.open(request.files['photo'])
         except UnidentifiedImageError:
-            flash("Image type not supported.")
+            flash("Image type not supported.", "error")
             return redirect(url_for("dog_edit"))
         dogs = mongo.db.dogs.find()
         img_id, img_filename, img_path = generate_photo("dog", dogs)

@@ -124,19 +124,41 @@
       </a>
     </ul>
     <p class="footer__copyright">©2021, Made by Sandro Bencinic</p>
-</footer>
+  </footer>
 
-<div class="popup__container">
-  <div class="popup">
+  <div class="popup__container">
+    <div class="popup">
       <p class="popup__text">TEXT</p>
       <div class="popup__btn-container">
-          <button class="btn btn--popup" id="">Cancel</button>
-          {% block popup %}
-          {% endblock %}
+        <button class="btn btn--popup" id="">Cancel</button>
+        {% block popup %}
+        {% endblock %}
       </div>
+    </div>
   </div>
-</div>
 
+  <!-- CODE CREDIT: https://stackoverflow.com/a/51274004 -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash__container" style="display: flex;">
+        <div class="flash">
+          {% for category, message in messages%}
+            <li class="flash__text">{{ message }}</li><br>
+            <div class="flash__btn-container">
+              {% if category == "error" %}
+                <div class="btn btn--flash" id="flash-back">Go back</div>
+              {% else %}
+                <a class="btn btn--flash" id="flash-continue" href="/">Continue</a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <script>
+        disableScroll()
+      </script>
+    {% endif %}
+  {% endwith %}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="/static/js/script.js"></script>

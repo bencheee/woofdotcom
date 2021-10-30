@@ -16,14 +16,6 @@ $(".navbar__toggle").click(function () {
     $(".nav__mobile").slideToggle();
 })
 
-// Shows flash message
-$(".flash").slideToggle();
-
-// Hides flash message
-$("#flash-close").click(function () {
-    $(".flash").slideUp();
-})
-
 // Toggles password visibility
 $("#pass_icon").click(passToggle);
 
@@ -144,6 +136,23 @@ $(".inputfile").change(function (e) {
         $(".js-btn-photo i").addClass("fas fa-check")
     }
 })
+
+// Changes ID of flash-back button depending on which form called the function
+$(document).ready(function () {
+    if (window.localStorage.length > 0) {
+        switch (localStorage.getItem("origin")) {
+            case 'register':
+                $("#flash-back").attr("id", "flash-back-register")
+                break;
+            case 'post':
+                $("#flash-back").attr("id", "flash-back-post")
+                break;
+            case 'dog':
+                $("#flash-back").attr("id", "flash-back-dog")
+                break;
+        }
+    }
+});
 
 // Gets values from local storage and fills in the form
 // This is used to keep the previous user values on form refresh
