@@ -144,6 +144,27 @@ $(document).on('click', '#flash-back-register', getLocalRegister)
 $(document).on('click', '#flash-back-post', getLocalPost)
 $(document).on('click', '#flash-back-dog', getLocalDog)
 
+// Compares highest previous position of scroll bar with current position of scroll bar and dependion on the outcome decides if user is scrolling up or down. Since this is mainly mobile functionality and on some phones it is possible to scrol even further the max height of the screen, function needs to compensate this with 80px on top and calculate scrollLimit on the bottom.
+let scrollTop = -1; 
+let scrollCurrent;
+let containerHeight = $(".main-container").height()
+let bodyHeight = $("body").height()
+let scrollLimit = containerHeight - bodyHeight
+$(window).scroll(function() {
+    // Hides navbar only if page is higher than screen height
+    if (scrollLimit > 0) {
+        scrollCurrent = $(window).scrollTop();
+        if (scrollCurrent >= scrollTop && scrollCurrent > 80) {
+            $(".nav").css("top", "-80px");
+        } else if (scrollCurrent > scrollLimit) {
+            $(".nav").css("top", "-80px");
+        } else {
+            $(".nav").css("top", "0");
+        }
+        scrollTop = scrollCurrent;
+    }
+})
+
 
 // ####################
 //      FUNCTIONS
