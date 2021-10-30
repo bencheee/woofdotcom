@@ -4,7 +4,15 @@
 
 
 // Navbar toggle
+// Calling toggle() before and after is(:visible) method because it returns True or False instantly. Using slideToggle after for smooth transition. Function prevents scrolling on the page when navbar is visible.
 $(".navbar__toggle").click(function () {
+    $(".nav__mobile").toggle();
+    if ($(".nav__mobile").is(":visible")) {
+        disableScroll()
+    } else {
+        enableScroll()
+    }
+    $(".nav__mobile").toggle();
     $(".nav__mobile").slideToggle();
 })
 
