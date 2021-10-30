@@ -52,21 +52,21 @@ $(".js-filter-toggle").click(
 
 
 // Toggles messages/requests in inbox
-$(".switch span").click(function(){
+$(".switch span").click(function () {
     $(this).addClass("switch-dark")
-    $(this).removeClass("switch-light")    
+    $(this).removeClass("switch-light")
     $(this).siblings().removeClass("switch-dark")
     $(this).siblings().addClass("switch-light")
 })
 
-$(".switch__messages").click(function(){
+$(".switch__messages").click(function () {
     $("#title-messages").show();
     $(".inbox--messages").show();
     $("#title-requests").hide();
     $(".inbox--requests").hide();
 })
 
-$(".switch__requests").click(function(){
+$(".switch__requests").click(function () {
     $("#title-messages").hide();
     $(".inbox--messages").hide();
     $("#title-requests").show();
@@ -74,20 +74,20 @@ $(".switch__requests").click(function(){
 })
 
 // Toggles reply message in inbox
-$(document).ready(function(){
+$(document).ready(function () {
     $(".form--message").hide()
 });
-$(".message__reply").click(function(){
+$(".message__reply").click(function () {
     $(".form--message").show();
     $(".message__btns").hide()
 })
-$(".btn--cancel").click(function(){
+$(".btn--cancel").click(function () {
     $(".form--message").hide();
     $(".message__btns").show()
 })
 
 // Deletes message from inbox
-$(".btn--delete").click(function(){
+$(".btn--delete").click(function () {
     disableScroll();
     $(".popup__container").css("display", "flex");
     $(".popup__text").text("You are about to delete message. Do you wish to proceed ?");
@@ -136,6 +136,14 @@ $(".inputfile").change(function (e) {
         $(".js-btn-photo i").addClass("fas fa-check")
     }
 })
+
+// Gets values from local storage and fills in the form
+// This is used to keep the previous user values on form refresh
+// in case of error
+$(document).on('click', '#flash-back-register', getLocalRegister)
+$(document).on('click', '#flash-back-post', getLocalPost)
+$(document).on('click', '#flash-back-dog', getLocalDog)
+
 
 // ####################
 //      FUNCTIONS
@@ -200,3 +208,88 @@ function popUp(msg, id) {
     });
     enableScroll();
 };
+
+// Saves values from form to local storage
+function setLocalRegister() {
+    localStorage.setItem("origin", "register")
+    localStorage.setItem("username", $("#username").val())
+    localStorage.setItem("email", $("#email").val())
+    localStorage.setItem("fname", $("#fname").val())
+    localStorage.setItem("lname", $("#lname").val())
+    localStorage.setItem("phone", $("#phone").val())
+    localStorage.setItem("about", $("#about").val())
+}
+
+// Gets values from local storage and fills in the form
+function getLocalRegister() {
+    $("#username").val(localStorage.getItem("username"))
+    $("#email").val(localStorage.getItem("email"))
+    $("#fname").val(localStorage.getItem("fname"))
+    $("#lname").val(localStorage.getItem("lname"))
+    $("#phone").val(localStorage.getItem("phone"))
+    $("#about").val(localStorage.getItem("about"))
+    $(".flash__container").hide();
+    localStorage.clear();
+}
+
+// Saves values from form to local storage
+function setLocalPost() {
+    localStorage.setItem("origin", "post")
+    localStorage.setItem("category", $("#category").val())
+    localStorage.setItem("title", $("#title").val())
+    localStorage.setItem("summary", $("#summary").val())
+    localStorage.setItem("content", $("#content").val())
+}
+
+// Gets values from local storage and fills in the form
+function getLocalPost() {
+    $("#category").val(localStorage.getItem("category"))
+    $("#title").val(localStorage.getItem("title"))
+    $("#summary").val(localStorage.getItem("summary"))
+    $("#content").val(localStorage.getItem("content"))
+    $(".flash__container").hide();
+    localStorage.clear();
+}
+
+// Saves values from form to local storage
+function setLocalDog() {
+    localStorage.setItem("origin", "dog")
+    localStorage.setItem("name", $("#name").val())
+    localStorage.setItem("gender", $("#gender").val())
+    localStorage.setItem("age", $("#age").val())
+    localStorage.setItem("size", $("#size").val())
+    localStorage.setItem("greeting", $("#greeting").val())
+    localStorage.setItem("description", $("#description").val())
+    // Stores checkbox values in local storage
+    // CODE CREDIT: https://stackoverflow.com/a/590040
+    let goodWith = []
+    $(".js-good_with:checked").each(function () {
+        goodWith.push($(this).val());
+    });
+    localStorage.setItem("good_with", goodWith)
+}
+
+// Gets values from local storage and fills in the form
+function getLocalDog() {
+    $("#name").val(localStorage.getItem("name"))
+    $("#gender").val(localStorage.getItem("gender"))
+    $("#age").val(localStorage.getItem("age"))
+    $("#size").val(localStorage.getItem("size"))
+    $("#greeting").val(localStorage.getItem("greeting"))
+    $("#description").val(localStorage.getItem("description"))
+    // Values of checked boxes are put in array
+    let goodWith = localStorage.getItem("good_with").split(',');
+    // Compares values of all checkboxes with values of checked ones. If match then marks them as checked again
+    // CODE CREDIT: https://learn.jquery.com/using-jquery-core/faq/how-do-i-check-uncheck-a-checkbox-input-or-radio-button/
+    i = 0
+    $(".js-good_with").each(function () {
+        if ($(this).val() === goodWith[i]) {
+            $(this).prop("checked", true);
+            i++
+        } else {
+            $(this).prop("checked", false);
+        }
+    });
+    $(".flash__container").hide();
+    localStorage.clear();
+}

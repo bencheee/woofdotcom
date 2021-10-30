@@ -11,7 +11,7 @@
 <!-- Edit dog details form -->
 <section class="container container--light container--dog">
   <form class="form" action="{{url_for('dog_edit', dog_id=dog._id)}}"
-    method="POST" enctype="multipart/form-data">
+    method="POST" enctype="multipart/form-data" onsubmit="setLocalDog()">
     <label class="form__label" for="name">Name</label>
     <input class="form__input" type="text" name="name" id="name" minlength="2"
       maxlength="15" pattern="^[a-zA-Z]{2,15}}$" value="{{dog.name.capitalize()}}" required>

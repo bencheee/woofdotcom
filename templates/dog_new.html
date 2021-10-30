@@ -11,7 +11,7 @@
 <!-- Dog rehoming form -->
 <section class="container container--light container--dog">
   <form class="form" action="{{ url_for('dog_new') }}" method="POST"
-    enctype="multipart/form-data">
+    enctype="multipart/form-data" onsubmit="setLocalDog()">
 
     <label class="form__label" for="name">Name</label>
     <input class="form__input" type="text" name="name" id="name" minlength="2"

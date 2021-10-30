@@ -4,7 +4,8 @@
 <!-- Registration form -->
 <section
   class="container container--light container--extended">
-  <form class="form" action="{{ url_for('user_register') }}" method="POST">
+  <form class="form" action="{{ url_for('user_register') }}" method="POST" 
+    onsubmit="setLocalRegister()">
     <p class="form__title">New user</p>
     <label class="form__label" for="username">Username</label>
     <input class="form__input" type="text" id="username" name="username" 
