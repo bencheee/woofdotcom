@@ -101,7 +101,27 @@
         </div>
         <span class="nav__username">{{session.user}}</span>
         <a class="nav__icon" href="{{url_for('inbox')}}">
-          <i class="far fa-envelope-open"></i>
+          {% if session.user == "Admin" %}
+            {% if msgs_reqs == 0 %}
+              <i class="far fa-envelope-open"></i>
+              <div class="message-count">{{ msgs_reqs }}</div>
+            {% else %}
+              <i class="far fa-envelope"></i>
+              <div class="message-count">{{ msgs_reqs }}</div>
+            {% endif %}
+          {% else %}
+            {% if msgs == 0 %}
+              <i class="far fa-envelope-open"></i>
+              <div class="message-count">{{ msgs }}</div>
+            {% else %}
+              <i class="far fa-envelope"></i>
+              <div class="message-count">{{ msgs }}</div>
+            {% endif %}
+          {% endif %}
+
+
+
+          
         </a>
         {% endif %}
       </div>

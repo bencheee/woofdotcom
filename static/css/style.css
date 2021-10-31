@@ -1063,6 +1063,18 @@ li {
     .navbar__logo {
         color: var(--color1);
     }
+    .message-count {
+        position: absolute;
+        top: 15px;
+        right: -7px;
+        background-color: var(--color2);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        text-align: center;
+        height: 1rem;
+        width: 1rem;
+    }
 
     .main-container {
         width: 85%;
