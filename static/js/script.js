@@ -182,6 +182,19 @@ $(window).scroll(function() {
     }
 })
 
+// Navbar dropdown on desktop size
+$(".nav__username").mouseover(
+    function () {
+        $(".nav__dropdown").slideDown();
+        $(".nav__dropdown").css("display", "flex")
+    })
+
+$(".desk-nav").mouseleave(
+    function () {
+        $(".nav__dropdown").slideUp();
+        // $(".nav__dropdown").css("display", "none")
+    })
+
 
 // ####################
 //      FUNCTIONS

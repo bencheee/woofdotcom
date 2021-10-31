@@ -86,13 +86,19 @@
 
   <div class="desktop-container">
     <nav class="desk-nav">
-      <form action="POST">
-        <i class="icon-nav fas fa-user"></i>
-        <input class="input-nav" type="text" placeholder="Username">
-        <i class="icon-nav fas fa-unlock"></i>
-        <input class="input-nav" type="password" placeholder="Password">
-        <button class="btn-nav" type="submit">Login</button>
-      </form>
+      {% if not session.user %}
+        <a class="nav__btn" href="{{url_for('user_login')}}">Login</a>
+        <a class="nav__btn nav__btn--register" href="{{url_for('user_register')}}">Sign up</a>
+      {% else %}
+      <div class="nav__dropdown">
+        <a class="nav__link" href="{{url_for('user_profile')}}">Account settings<a>
+        <a class="nav__link" href="{{url_for('user_logout')}}">Logout</a>
+      </div>
+      <span class="nav__username">{{session.user}}</span>
+      <a class="nav__icon" href="{{url_for('inbox')}}">
+        <i class="far fa-envelope-open"></i>
+      </a>
+      {% endif %}
     </nav>
   </div>
 
