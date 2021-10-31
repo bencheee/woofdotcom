@@ -24,14 +24,30 @@ $(".btn--surrender").click(function () {
     $(this).next().slideToggle();
 })
 
+// Adds banner__img--desk class to banner__img on desktop size
+if (window.innerWidth > 992) {
+    $(".banner__img").addClass("banner__img--desk")
+} else {
+    $(".banner__img").removeClass("banner__img--desk")
+    $(".banner__img").css("height", "auto")
+}
+
 // Controls image sizes to 16:9 ratio
 $(window).resize(function () {
+    if (window.innerWidth > 992) {
+        $(".banner__img").addClass("banner__img--desk")
+    } else {
+        $(".banner__img").removeClass("banner__img--desk")
+        $(".banner__img").css("height", "auto")
+    }
+    resizeImg($(".banner__img--desk"))
     resizeImg($(".js-img-mobile"))
     resizeImg($(".js-img-tablet-l"))
     resizeImg($(".js-img-tablet-m"))
     resizeImg($(".post__img"))
     resizeImg($(".dog__img"))
 })
+resizeImg($(".banner__img--desk"))
 resizeImg($(".js-img-mobile"))
 resizeImg($(".js-img-tablet-l"))
 resizeImg($(".js-img-tablet-m"))

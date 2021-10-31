@@ -1081,6 +1081,19 @@ li {
         margin: 0 auto;
     }
 
+    .banner {
+        top: 80px;
+        margin-bottom: 100px;
+    }
+
+    .title-section__title {
+        margin-top: 0;
+    }
+
+    .title-section__text {
+        padding: 0 10px;
+    }
+
     .footer {
         width: 85%;
         margin: 0 auto;
