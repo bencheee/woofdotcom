@@ -1015,7 +1015,7 @@ li {
         width: 85%;
         background-color: var(--color6);
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         z-index: 1;
     }
@@ -1039,6 +1039,11 @@ li {
         background-color: var(--color1);
     }
 
+    .nav__container {
+        display: flex;
+        align-items: center;
+    }
+
     .nav__icon,
     .nav__username {
         font-size: 1.3rem;
@@ -1049,11 +1054,14 @@ li {
 
     .nav__dropdown {
         display: none;
-        padding: 10px;
     }
 
     .nav__link {
         margin-left: 20px;
+    }
+
+    .navbar__logo {
+        color: var(--color1);
     }
 
     .main-container {
