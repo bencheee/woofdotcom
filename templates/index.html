@@ -99,7 +99,44 @@
       </div>
     {% endif %}
 
-    <a class="btn" href=#>View more</a>
+    <div class="desktop-container content-index">
+      {% if posts|length == 0 %}
+        <p class="no-posts">Ooops, seems like there are no posts yet!</p>
+      {% else %}
+        <div class="card card--index">
+          <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
+            <div class="card__img img--rounded js-img-desk"
+              style="background-image: url({{posts[0].img_path}});" alt="">
+            <div class="img-overlay"></div>`
+              <div class="card__text-container">
+                <h3 class="card__title card__title--index">{{ posts[0].title }}</h3>
+                <p class="card__summary card__summary--index">{{ posts[0].summary }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% if posts|length > 1 %}
+          <div class="content-latest">
+            <div class="content-box">
+              <p class="content-category">{{posts[1].category}}</p>
+              <p class="content-title">{{posts[1].title}}</p>
+              <p class="content-summary">{{posts[1].summary}}</p>
+            </div>
+            {% if posts|length > 2 %}
+              <div class="content-box">
+                <p class="content-category">{{posts[2].category}}</p>
+                <p class="content-title">{{posts[2].title}}</p>
+                <p class="content-summary">{{posts[2].summary}}</p>
+              </div>
+            {% endif %}
+            <hr class="hr">
+            <a class="btn btn--content-index" href=#>View more</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+
+
   {% endif %}
 </section>
 
