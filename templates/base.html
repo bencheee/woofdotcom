@@ -19,7 +19,7 @@
 </head>
 
 <body>
-  <!-- Navbar -->
+  <!-- Navbar for mobile & tablet -->
   <nav class="nav">
     <div class="navbar">
       <a class="navbar__logo" href="{{ url_for('index') }}">
@@ -83,6 +83,18 @@
       {% endif %}
     </ul>
   </nav>
+
+  <div class="desktop-container">
+    <nav class="desk-nav">
+      <form action="POST">
+        <i class="icon-nav fas fa-user"></i>
+        <input class="input-nav" type="text" placeholder="Username">
+        <i class="icon-nav fas fa-unlock"></i>
+        <input class="input-nav" type="password" placeholder="Password">
+        <button class="btn-nav" type="submit">Login</button>
+      </form>
+    </nav>
+  </div>
 
   <div class="main-container">
     {% with messages = get_flashed_messages() %}
