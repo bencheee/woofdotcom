@@ -8,6 +8,24 @@
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
+
+<div class="desktop-container">
+  <ul class="page-links">
+    <a class="page-link" href="{{url_for('dog_main')}}">
+      <li>Adopt a dog</li>
+    </a>
+    <a class="page-link" href="{{url_for('dog_surrender')}}">
+      <li>Give up a dog</li>
+    </a>
+    <a class="page-link" href="{{url_for('post_new')}}">
+      <li>Post new article</li>
+    </a>
+    <a class="page-link" href="{{url_for('contact')}}">
+      <li>Contact us</li>
+    </a>
+  </ul>
+</div>
+
 <!-- Edit dog details form -->
 <section class="container container--light container--dog">
   <form class="form" action="{{url_for('dog_edit', dog_id=dog._id)}}"
