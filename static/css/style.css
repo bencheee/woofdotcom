@@ -648,6 +648,20 @@ li {
     overflow: hidden;
 }
 
+.inbox__header {
+    position: fixed;
+    top: 80px;
+    width: 100%;
+    padding-top: 70px;
+    background-color: var(--color6);
+    z-index: 1;
+}
+
+.container--inbox {
+    top: 370px;
+    margin-bottom: 370px;
+}
+
 .inbox__subject {
     color: var(--color6);
     font-weight: 900;
@@ -684,18 +698,12 @@ li {
 }
 
 .switch {
-    top: 150px;
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 100px;
 }
 
 .switch__requests {
     color: #0000004d;
-}
-
-.hr--inbox {
-    display: none;
 }
 
 /* message.html */
@@ -782,7 +790,7 @@ li {
     width: 100%;
     background-color: var(--color1);
     height: 80px;
-    z-index: 1;
+    z-index: 2;
     transition: 0.5s;
 }
 
@@ -1002,6 +1010,10 @@ li {
 
     .container--login {
         margin: 0 15%;
+    }
+
+    .container--inbox {
+        margin-bottom: 370px;
     }
 
 }
@@ -1284,17 +1296,16 @@ li {
     }
 
     .switch {
-        position: fixed;
-        top: 150px;
-        width: 85%;
         text-align: center;
         font-size: 3rem;
     }
 
     .inbox {
-        background-color: var(--color4);
+        background: linear-gradient(
+            90deg, rgba(144,206,201,0.2049194677871149) 0%, rgb(144 206 201 / 20%) 35%, rgba(242,249,249,1) 100%);
         width: 90%;
         margin: 25px auto;
+        border-radius: 10px;
     }
 
     .inbox-title {
@@ -1332,6 +1343,11 @@ li {
 
     .hr--inbox {
         display: block;
+    }
+
+    .container--inbox {
+        margin-bottom: 370px;
+        background: none;
     }
 
 }
