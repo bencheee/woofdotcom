@@ -9,7 +9,7 @@
   </div>
 </section>
 
-<div class="desktop-container">
+<div class="desktop-content">
   <ul class="page-links">
     <a class="page-link" href="{{url_for('dog_main')}}">
       <li>Adopt a dog</li>
@@ -32,7 +32,7 @@
   {% if posts|length == 0 %}
     <p class="no-posts">Ooops, seems like there are no posts yet!</p>
   {% else %}
-    <div class="mobile-container">
+    <div class="mobile-content">
       {% for post in posts %}
         <div class="card">
           <a href="{{ url_for('post_page', post_id=post._id) }}">
@@ -48,7 +48,7 @@
     </div>
 
     {% if posts|length > 0 %}
-      <div class="tablet-container">
+      <div class="tablet-content">
         <div class="wrapper__column">
           <div class="card">
             <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
@@ -99,7 +99,7 @@
       </div>
     {% endif %}
 
-    <div class="desktop-container content-index">
+    <div class="desktop-content content-index">
       {% if posts|length == 0 %}
         <p class="no-posts">Ooops, seems like there are no posts yet!</p>
       {% else %}
@@ -135,8 +135,7 @@
         {% endif %}
       {% endif %}
     </div>
-
-
+    <a class="btn mobile-content tablet-content" href=#>View more</a>
   {% endif %}
 </section>
 
@@ -146,7 +145,7 @@
   {% if dogs|length == 0 %}
     <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
   {% else %}
-    <div class="mobile-container">
+    <div class="mobile-content">
       {% for dog in dogs %}
         <div class="card">
           <a href="{{ url_for('dog_page', dog_id=dog._id) }}">
@@ -161,7 +160,7 @@
       {% endfor %}
     </div>
     {% if dogs|length > 0 %}
-      <div class="tablet-container">
+      <div class="tablet-content">
         <div class="wrapper__column">
           <div class="card">
             <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}">
@@ -211,7 +210,44 @@
         <hr class="hr hr--card">
       </div>
     {% endif %}
-    <a class="btn btn--invert" href=#>View more</a>
+    <a class="btn btn--invert mobile-content tablet-content" href=#>View more</a>
+
+    <div class="desktop-content content-index">
+      {% if dogs|length == 0 %}
+        <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
+      {% else %}
+        <div class="card card--index">
+          <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}">
+            <div class="card__img img--rounded js-img-desk"
+              style="background-image: url({{dogs[0].img_path}});" alt="">
+            <div class="img-overlay"></div>`
+              <div class="card__text-container">
+                <h3 class="card__title card__title--index">{{ dogs[0].name.capitalize() }}</h3>
+                <p class="card__summary card__summary--index">{{ dogs[0].greeting }}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% if dogs|length > 1 %}
+          <div class="content-latest">
+            <div class="content-box">
+              <p class="content-category">Age: {{dogs[1].age}}, {{dogs[1].gender}}</p>
+              <p class="content-title">{{dogs[1].name.capitalize()}}</p>
+              <p class="content-summary">{{dogs[1].greeting}}</p>
+            </div>
+            {% if dogs|length > 2 %}
+            <div class="content-box">
+              <p class="content-category">Age: {{dogs[2].age}}, {{dogs[2].gender}}</p>
+              <p class="content-title">{{dogs[2].name.capitalize()}}</p>
+              <p class="content-summary">{{dogs[2].greeting}}</p>
+            </div>
+            {% endif %}
+            <hr class="hr">
+            <a class="btn btn--content-index" href=#>View more</a>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
   {% endif %}
 </section>
 

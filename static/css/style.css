@@ -42,8 +42,8 @@ h2,
     margin: 0;
 }
 
-.tablet-container,
-.desktop-container {
+.tablet-content,
+.desktop-content {
     display: none;
 }
 
@@ -859,14 +859,12 @@ li {
 
     /* GLOBAL RULES & CLASSES */
 
-    .tablet-container {
-        display: block;
-        width: 85%;
-        margin: 0 auto;
+    .mobile-content {
+        display: none;
     }
 
-    .mobile-container {
-        display: none;
+    .tablet-content {
+        display: block;
     }
 
     .container {
@@ -991,17 +989,15 @@ li {
 
 @media only screen and (min-width: 992px) {
 
-    .desktop-container {
+    .desktop-content {
         display: block;
-        width: 85%;
-        margin: 0 auto;
     }
 
-    .mobile-container {
+    .mobile-content {
         display: none;
     }
 
-    .tablet-container {
+    .tablet-content {
         display: none;
     }
 
@@ -1013,6 +1009,7 @@ li {
         position: fixed;
         height: 80px;
         width: 85%;
+        margin-left: 7.5%;
         background-color: var(--color6);
         display: flex;
         justify-content: space-between;
@@ -1086,6 +1083,7 @@ li {
     }
 
     .banner {
+        flex-direction: row-reverse;
         top: 80px;
         margin-bottom: 100px;
     }
