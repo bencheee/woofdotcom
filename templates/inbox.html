@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="switch">
+  <span class="switch__messages">Messages</span>
+  <span> / </span>
+  <span class="switch__requests">Requests</span>
+</div>
+
 <section class="container container--light container--extended">
   <!-- Switches between messages / adoption requests -->
-  <div class="switch">
-    <span class="switch__messages switch-dark">Messages</span>
-    <span class="switch__requests switch-light">Requests</span>
-  </div>
 
   {% if session.user == "Admin" %}
     <h4 class="inbox-title" id="title-messages">Hi Admin,
@@ -17,7 +20,7 @@
 
     You have {{admin_unread_reqs}} new adoption requests!</h4>
 
-    <hr>
+    <hr class="hr--inbox">
 
     <!-- Admin message inbox -->
     {% for msg in admin_msgs %}
@@ -72,6 +75,8 @@
   <h4 class="inbox-title" id="title-messages">Hi {{session.user}},
 
     You have {{user_unread_msgs}} unread messages!</h4>
+
+  <hr class="hr--inbox">
 
   <!-- User message inbox -->
   {% for msg in user_msgs %}

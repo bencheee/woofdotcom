@@ -28,7 +28,9 @@ h2,
 .banner__description,
 .navbar__logo span,
 .footer__title,
-.form__title {
+.form__title,
+.switch__messages,
+.switch__requests {
     font-family: 'Fredericka the Great', cursive;
     font-weight: 100;
 }
@@ -680,31 +682,18 @@ li {
 }
 
 .switch {
-    border: 1px solid var(--color3);
-    border-radius: 5px;
-    overflow: hidden;
-    width: fit-content;
-    margin: 35px auto 0 auto;
-}
-
-.switch__messages,
-.switch__requests {
-    display: inline-block;
-    font-size: 1.2rem;
-    padding: 10px;
-    width: 125px;
+    top: 150px;
+    font-size: 2rem;
     text-align: center;
-    margin: -5px;
+    margin-bottom: 100px;
 }
 
-.switch-dark {
-    background-color: var(--color4);
-    color: var(--color6);
+.switch__requests {
+    color: #0000004d;
 }
 
-.switch-light {
-    background-color: var(--color6);
-    color: var(--color2);
+.hr--inbox {
+    display: none;
 }
 
 /* message.html */
@@ -1273,6 +1262,14 @@ li {
         font-size: 1vw;
     }
 
+    .switch {
+        position: fixed;
+        top: 150px;
+        width: 85%;
+        text-align: center;
+        font-size: 3rem;
+    }
+
     .inbox {
         background-color: var(--color4);
         margin: 25px 0;
@@ -1309,4 +1306,9 @@ li {
         overflow: hidden;
         margin-top: 25px;
     }
+
+    .hr--inbox {
+        display: block;
+    }
+
 }

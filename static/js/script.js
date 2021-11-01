@@ -70,13 +70,10 @@ $(".js-filter-toggle").click(
         $(".js-form-toggle").css("display", "flex")
     })
 
-
 // Toggles messages/requests in inbox
 $(".switch span").click(function () {
-    $(this).addClass("switch-dark")
-    $(this).removeClass("switch-light")
-    $(this).siblings().removeClass("switch-dark")
-    $(this).siblings().addClass("switch-light")
+    $(this).css({"color": "black", "transition": "0.5s"});
+    $(this).siblings().css({"color": "#0000004d", "transition": "0.5s"});
 })
 
 $(".switch__messages").click(function () {
