@@ -11,7 +11,7 @@
   </div>
 </section>
 
-<div class="desktop-container">
+<div class="desktop-content">
   <ul class="page-links">
     <a class="page-link" href="{{url_for('dog_main')}}">
       <li>Adopt a dog</li>
@@ -30,49 +30,98 @@
 
 <!-- Posts main section -->
 <section class="container container--light">
-  <p class="filter-toggle js-filter-toggle">
+  <p class="filter-toggle js-filter-toggle mobile-content tablet-content">
     <i class="fas fa-cogs"></i>
     <span>Filter posts</span>
   </p>
 
-  <form class="form form-toggle js-form-toggle"
-    action="{{ url_for('post_main') }}" method="POST">
-    <div class="wrapper__row wrapper--filter">
-      <select class="form__input form__input--filter" name="category"
-        id="category">
-        <option value="Select category"
-          selected disabled hidden>By category</option>
-        {% for category in categories %}
-          <option value="{{ category.name }}">{{ category.name }}</option>
-        {% endfor %}
-      </select>
-
-      <select class="form__input form__input--filter" name="author" id="author">
-        <option value="Select author"
-          selected disabled hidden>By author</option>
-        {% for user in users %}
-          <option value="{{ user.username }}">{{ user.username }}</option>
-        {% endfor %}
-      </select>
-
-      <select class="form__input form__input--filter" name="sort" id="sort">
-        <option value="Sort by" selected disabled hidden>Sort by</option>
-        <option value="New to old">New to old</option>
-        <option value="Old to new">Old to new</option>
-        <option value="Most popular">Most popular</option>
-      </select>
+  <div class="postmain-desk-wrapper">
+    <div class="desktop-content content-postmain">
+      {% if posts|length == 0 %}
+        <p class="no-posts">Ooops, seems like there are no posts yet!</p>
+      {% else %}
+        <div class="card">
+          <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
+            <div class="card__img img--rounded js-img-desk"
+              style="background-image: url({{posts[0].img_path}});" alt="">
+            <div class="img-overlay"></div>`
+              <div class="card__text-container">
+                <h3 class="card__title card__title--index">{{ posts[0].title }}</h3>
+                <p class="card__summary card__summary--index">{{ posts[0].summary}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endif %}
     </div>
-    <div class="wrapper__row wrapper--filter">
-      <button class="btn btn--invert btn--filter-reset"
-        type="reset">Reset</button>
-      <button class="btn btn--filter" type="submit">SEARCH</button>
-    </div>
-  </form>
+
+    <form class="form form-toggle js-form-toggle"
+      action="{{ url_for('post_main') }}" method="POST">
+      <div class="wrapper__row wrapper--filter">
+        <select class="form__input form__input--filter" name="category"
+          id="category">
+          <option value="Select category"
+            selected disabled hidden>By category</option>
+          {% for category in categories %}
+            <option value="{{ category.name }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+
+        <select class="form__input form__input--filter" name="author" id="author">
+          <option value="Select author"
+            selected disabled hidden>By author</option>
+          {% for user in users %}
+            <option value="{{ user.username }}">{{ user.username }}</option>
+          {% endfor %}
+        </select>
+
+        <select class="form__input form__input--filter" name="sort" id="sort">
+          <option value="Sort by" selected disabled hidden>Sort by</option>
+          <option value="New to old">New to old</option>
+          <option value="Old to new">Old to new</option>
+          <option value="Most popular">Most popular</option>
+        </select>
+      </div>
+      <div class="wrapper__row wrapper--filter">
+        <button class="btn btn--invert btn--filter-reset"
+          type="reset">Reset</button>
+        <button class="btn btn--filter" type="submit">SEARCH</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="desktop-content">
+    {% for post in posts %}
+      <div class="card">
+        <div class="wrapper__row">
+          <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
+            <div class="card__img img--rounded js-img-desk-m" style="background-image: url({{post.img_path}});"
+              alt=""></div>
+          </a>
+          <div class="wrapper__column card__info-wrapper">
+            <a href="{{ url_for('post_page', post_id=post._id) }}">
+              <h3 class="card__title card__title--postmain">{{ post.title }}</h3>
+            </a>
+            <p class="card__info card__info--postmain">
+              <span>
+                <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+              </span>
+              <span>
+                <span>Category: </span><span>{{ post.category }}</span>
+              </span>
+            </p>
+            <p class="card__summary card__summary--postmain">{{ post.summary }}</p>
+          </div>
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
 
   {% if no_posts == True %}
     <p class="filter-caption">Couldn't find any posts with given criteria!</p>
   {% else %}
-  <div class="mobile-container">
+  <div class="mobile-content">
     <div class="card">
       <a href="{{ url_for('post_page', post_id=post_top._id) }}">
           <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post_top.img_path }});" alt=""></div>
@@ -110,10 +159,10 @@
       {% endfor %}
     </div>
 
-    <div class="tablet-container">
+    <div class="tablet-content">
       <div class="card">
         <a href="{{ url_for('post_page', post_id=post_top._id) }}">
-          <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{ post_top.img_path }});"
+          <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{post_top.img_path}});"
             alt=""></div>
           <h3 class="card__title">{{ post_top.title }}</h3>
         </a>
@@ -151,6 +200,7 @@
             </div>
           </div>
         </div>
+        <hr>
       {% endfor %}
     </div>
   {% endif %}

@@ -911,6 +911,10 @@ li {
 
     /* Card */
 
+    .card {
+        margin-top: 10px;
+    }
+
     .card--medium {
         width: 49%;
     }
@@ -937,6 +941,9 @@ li {
 
     .card__info-wrapper {
         width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     /* reg-card section */
@@ -1204,5 +1211,35 @@ li {
     }
 
 
+    .postmain-desk-wrapper {
+        display: flex;
+        margin-bottom: 50px;
+    }
+
+    .content-postmain {
+        width: 70%;
+    }
+
+    .form-toggle {
+        display: flex;
+        background-color: var(--color4);
+        width: 30%;
+        margin: 0 0 10px 20px;
+        padding: 10px;
+        height: auto;
+        justify-content: space-evenly;
+    }
+
+    .card__title--postmain {
+        font-size: 2vw;
+    }
+
+    .card__info--postmain {
+        font-size: 1vw;
+    }
+
+    .card__summary--postmain {
+        font-size: 1.5vw;
+    }
 
 }
