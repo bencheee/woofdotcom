@@ -41,13 +41,13 @@
         <p class="no-posts">Ooops, seems like there are no posts yet!</p>
       {% else %}
         <div class="card">
-          <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
+          <a href="{{ url_for('post_page', post_id=post_top._id) }}">
             <div class="card__img img--rounded js-img-desk"
-              style="background-image: url({{posts[0].img_path}});" alt="">
+              style="background-image: url({{post_top.img_path}});" alt="">
             <div class="img-overlay"></div>`
               <div class="card__text-container">
-                <h3 class="card__title card__title--index">{{ posts[0].title }}</h3>
-                <p class="card__summary card__summary--index">{{ posts[0].summary}}</p>
+                <h3 class="card__title card__title--index">{{ post_top.title }}</h3>
+                <p class="card__summary card__summary--index">{{ post_top.summary}}</p>
               </div>
             </div>
           </a>
@@ -58,7 +58,7 @@
     <form class="form form-toggle js-form-toggle"
       action="{{ url_for('post_main') }}" method="POST">
       <div class="wrapper__row wrapper--filter">
-        <select class="form__input form__input--filter" name="category"
+        <select class="form__input form__input--filter form__input--posts" name="category"
           id="category">
           <option value="Select category"
             selected disabled hidden>By category</option>
@@ -67,7 +67,7 @@
           {% endfor %}
         </select>
 
-        <select class="form__input form__input--filter" name="author" id="author">
+        <select class="form__input form__input--filter form__input--posts" name="author" id="author">
           <option value="Select author"
             selected disabled hidden>By author</option>
           {% for user in users %}
@@ -75,7 +75,7 @@
           {% endfor %}
         </select>
 
-        <select class="form__input form__input--filter" name="sort" id="sort">
+        <select class="form__input form__input--filter form__input--posts" name="sort" id="sort">
           <option value="Sort by" selected disabled hidden>Sort by</option>
           <option value="New to old">New to old</option>
           <option value="Old to new">Old to new</option>

@@ -47,6 +47,10 @@ h2,
     display: none;
 }
 
+.mobile-content {
+    display: block;
+}
+
 body {
     height: 100vh;
     display: flex;
@@ -1211,12 +1215,14 @@ li {
     }
 
 
-    .postmain-desk-wrapper {
+    .postmain-desk-wrapper,
+    .dogmain-desk-wrapper {
         display: flex;
         margin-bottom: 50px;
     }
 
-    .content-postmain {
+    .content-postmain,
+    .content-dogmain {
         width: 70%;
     }
 
@@ -1230,16 +1236,41 @@ li {
         justify-content: space-evenly;
     }
 
-    .card__title--postmain {
+    .card__title--postmain,
+    .card__title--dogmain {
         font-size: 2vw;
     }
 
-    .card__info--postmain {
+    .card__info--postmain,
+    .card__info--dogmain {
         font-size: 1vw;
     }
 
-    .card__summary--postmain {
+    .card__summary--postmain,
+    .card__summary--dogmain {
         font-size: 1.5vw;
+    }
+
+    .btn--dogmain {
+        margin: 0.1vw auto;
+    }
+
+    .form__input {
+        font-size: 1.3vw;
+        height: 2vw;
+        margin: 0;
+    }
+
+    .form__input::placeholder {
+        font-size: 1.3vw;
+    }
+
+    .form__input--posts {
+        margin: 15px 0;
+    }
+
+    .checkbox {
+        font-size: 1vw;
     }
 
 }
