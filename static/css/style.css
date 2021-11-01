@@ -1273,4 +1273,40 @@ li {
         font-size: 1vw;
     }
 
+    .inbox {
+        background-color: var(--color4);
+        margin: 25px 0;
+    }
+
+    .inbox-title {
+        font-size: 1.5rem;
+    }
+
+    .inbox__subject {
+        color: var(--color1);
+        width: 60%;
+        font-size: 1.4rem;
+    }
+
+    .inbox__container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .inbox__details {
+        color: var(--color1);
+        font-size: 1.1rem;
+        text-align: end;
+    }
+
+    .inbox__preview {
+        color: var(--color1);
+        font-size: 1.2rem;
+        font-weight: 100;
+        font-style: italic;
+        text-align: justify;
+        height: 1.6rem;
+        overflow: hidden;
+        margin-top: 25px;
+    }
 }
