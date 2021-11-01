@@ -1272,7 +1272,8 @@ li {
 
     .inbox {
         background-color: var(--color4);
-        margin: 25px 0;
+        width: 90%;
+        margin: 25px auto;
     }
 
     .inbox-title {
@@ -1283,6 +1284,7 @@ li {
         color: var(--color1);
         width: 60%;
         font-size: 1.4rem;
+        overflow: hidden;
     }
 
     .inbox__container {
