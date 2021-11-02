@@ -1,3 +1,13 @@
+$(document).ready(function(){
+$('.carousel').slick({
+    arrows: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear'
+  });
+});
 // ####################
 //        EVENTS
 // ####################

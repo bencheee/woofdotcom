@@ -37,7 +37,8 @@ h2,
 .footer__title,
 .form__title,
 .switch__messages,
-.switch__requests {
+.switch__requests,
+.surrender__title-main {
     font-family: 'Fredericka the Great', cursive;
     font-weight: 100;
 }
@@ -425,44 +426,76 @@ li {
 
 /* dog_surrender.html */
 
+.carousel {
+    padding: 50px;
+    padding-bottom: 80px;
+    margin: 50px 0;
+    background-color: var(--color1);
+    color: var(--color6);
+    border-radius: 10px;
+}
+
+.slick-prev {
+    left: 10px;
+}
+
+.slick-next {
+    right: 20px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px;
+}
+
 .surrender {
-    padding: 0 10px;
+    margin: 0 10px;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
 }
 
 .surrender__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
     text-align: justify;
-    font-size: 1.1rem;
-    font-weight: 100;
-    margin: 35px 0;
 }
 
-.surrender__title {
-    font-size: 1.2rem;
+.surrender__title-main {
     text-align: center;
-    margin-bottom: 35px;
+    font-size: 2rem;
+    margin-bottom: 50px;
+}
+
+.surrender__title-item {
+    text-align: center;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 .surrender__item {
-    display: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 1.1rem;
-    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.surrender__item-text {
     text-align: justify;
-    margin-bottom: 20px;
 }
 
 .surrender__alert {
+    background-color: rgba(255, 48, 48, 0.3);
+    color: rgb(139, 51, 51);
     text-align: justify;
-    font-weight: 100;
-    color: red;
-    margin-top: 35px;
+    margin: 50px 10px;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .surrender__alert a {
-    border-bottom: 1px solid #ff7575;
-    font-weight: 100;
-    color: red;
+    color: rgb(97, 13, 13);
+    text-shadow: 2px 2px 2px #00000091;
 }
 
 .btn--surrender {
@@ -1377,6 +1410,25 @@ li {
     .popup__text {
         color: var(--color0);
         margin-bottom: 25px;
+    }
+
+    .carousel {
+        background: linear-gradient(180deg, rgb(35 121 115 / 100%) 0%, rgba(35,121,115,0.4234068627450981) 80%, rgba(242,249,249,1) 100%);
+        text-shadow: 2px 2px 3px #00000052;
+    }
+    
+    .surrender {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .surrender__alert {
+        background: linear-gradient(
+            90deg, rgba(255, 48, 48, 0.3) 0%, rgba(255, 48, 48,0.3) 35%, rgba(242,249,249,1) 100%);
+        text-shadow: 2px 2px 3px #00000052;
+        box-shadow: 5px 5px 10px -10px black;
+        width: 50%;
+        margin: 50px auto;
     }
 
 }
