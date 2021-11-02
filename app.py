@@ -952,25 +952,25 @@ def dog_page(dog_id):
             """)
     else:
         user = mongo.db.users.find_one({"username": session["user"]})
-    # Prevent users with incomplete profile from adopting
-    if (user["fname"] == "" or
-            user["lname"] == "" or
-            user["phone"] == "" or
-            user["about"] == ""):
-        flash(
-            """
-            In order to apply for dog adoption you need to provide \
-            more details about yourself. Please update your \
-            profile before applying.
-            """)
-        user_info = False
-    else:
-        user_info = True
-    # Check if user already applied for adoption
-    if dog["_id"] in user["adoption_requests"]:
-        adoption_request = True
-    else:
-        adoption_request = False
+        # Prevent users with incomplete profile from adopting
+        if (user["fname"] == "" or
+                user["lname"] == "" or
+                user["phone"] == "" or
+                user["about"] == ""):
+            flash(
+                """
+                In order to apply for dog adoption you need to provide \
+                more details about yourself. Please update your \
+                profile before applying.
+                """)
+            user_info = False
+        else:
+            user_info = True
+        # Check if user already applied for adoption
+        if dog["_id"] in user["adoption_requests"]:
+            adoption_request = True
+        else:
+            adoption_request = False
     owner = mongo.db.users.find_one({"_id": dog["owner_id"]})
     return render_template(
         "dog_page.html", dog=dog, owner=owner, user_info=user_info,
