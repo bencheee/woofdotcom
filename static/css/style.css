@@ -427,7 +427,7 @@ li {
 /* dog_surrender.html */
 
 .carousel {
-    padding: 50px;
+    padding: 20px;
     padding-bottom: 80px;
     margin: 50px 0;
     background-color: var(--color1);
@@ -436,11 +436,15 @@ li {
 }
 
 .slick-prev {
-    left: 10px;
+    top: auto;
+    left: 80px;
+    bottom: 20px;
 }
 
 .slick-next {
-    right: 20px;
+    top: auto;
+    right: 90px;
+    bottom: 20px;
 }
 
 .slick-prev:before,
@@ -1413,8 +1417,19 @@ li {
     }
 
     .carousel {
+        padding: 50px;
         background: linear-gradient(180deg, rgb(35 121 115 / 100%) 0%, rgba(35,121,115,0.4234068627450981) 80%, rgba(242,249,249,1) 100%);
         text-shadow: 2px 2px 3px #00000052;
+    }
+    
+    .slick-prev {
+        top: 50%;
+        left: 10px;
+    }
+    
+    .slick-next {
+        top: 50%;
+        right: 20px;
     }
     
     .surrender {
