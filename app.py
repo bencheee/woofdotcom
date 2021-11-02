@@ -167,7 +167,7 @@ def user_register():
         }
         mongo.db.users.insert_one(new_user)
         flash("You are now registered!")
-        return redirect(url_for("index"))
+        return redirect(url_for("user_login"))
     return render_template("user_register.html")
 
 
@@ -250,10 +250,13 @@ def user_profile():
                     {"username": session["user"]},
                     {"$set": {"password": new_password}})
                 flash("Password changed!")
+                return redirect(url_for("user_profile"))
             else:
                 flash("New passwords don't match!")
+                return redirect(url_for("user_profile"))
         else:
             flash("Current password wrong!")
+            return redirect(url_for("user_profile"))
     # Form to edit user details
     elif request.method == "POST" and "fname" in request.form:
         fname = request.form.get("fname")
@@ -265,7 +268,7 @@ def user_profile():
             {"$set": {"fname": fname, "lname": lname,
                       "phone": phone, "about": about}})
         flash("Info updated!")
-        return redirect(url_for("index"))
+        return redirect(url_for("user_profile"))
     return render_template("user_profile.html", user=user)
 
 
@@ -548,7 +551,7 @@ def post_delete(post_id):
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
-    return redirect(url_for("post_main"))
+    return redirect(url_for("index"))
 
 
 @app.route("/post_page/<post_id>")
@@ -783,7 +786,7 @@ def dog_new():
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
-        return redirect(url_for("dog_main"))
+        return redirect(url_for("index"))
     return render_template("dog_new.html", user_info=user_info)
 
 
@@ -921,7 +924,7 @@ def dog_delete(dog_id):
     # Remove dog from database
     mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
     flash("Dog sucessfully removed from database !")
-    return redirect(url_for('dog_main'))
+    return redirect(url_for('index'))
 
 
 @app.route("/dog_page/<dog_id>")

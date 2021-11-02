@@ -63,6 +63,11 @@ $(".js-btn-back").click(function () {
     window.location.href = document.referrer;
 })
 
+// Continue popup button
+$("#flash-continue").click(function(){
+    $(".flash__container").hide()
+})
+
 // Toggles post filter on post_main.html
 $(".js-filter-toggle").click(
     function () {
@@ -110,7 +115,7 @@ $(".btn--delete").click(function () {
     $(".popup__text").text("You are about to delete message. Do you wish to proceed ?");
     $(`#btn-delete-confirm`).show();
     $(".btn--popup").click(function () {
-        $(".popup__container").hide();
+        $(".popup__container").hide()
     });
     enableScroll();
 })

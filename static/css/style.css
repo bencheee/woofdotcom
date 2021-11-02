@@ -1355,4 +1355,28 @@ li {
         margin: 20px auto 80px auto;
     }
 
+    .popup__container,
+    .flash__container {
+        background-color: rgb(0 0 0 / 35%);
+    }
+
+    .flash,
+    .popup {
+        background-color: var(--color6);
+        width: 50vw;
+        height: 30vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 10px;
+        margin: 0 auto;
+        box-shadow: 2px 2px 5px hsl(0deg 0% 0% / 40%);
+    }
+
+    .flash__text,
+    .popup__text {
+        color: var(--color0);
+        margin-bottom: 25px;
+    }
+
 }

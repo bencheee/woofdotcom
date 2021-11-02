@@ -125,20 +125,6 @@
   </div>
 
   <div class="main-container">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <ul class="flash">
-          {% for message in messages %}
-            <li>{{ message }}</li><br> 
-          {% endfor %}
-          <p id="flash-close">
-            <span>Close </span>
-            <i class="fas fa-times"></i>
-          </p>
-        </ul>
-      {% endif %}
-    {% endwith %}
-
   {% block content %}
   
   {% endblock %}
@@ -188,8 +174,10 @@
             <div class="flash__btn-container">
               {% if category == "error" %}
                 <div class="btn btn--flash" id="flash-back">Go back</div>
+              {% elif category == "index" %}
+                <a class="btn btn--flash" href="/">Back to home page</a>
               {% else %}
-                <a class="btn btn--flash" id="flash-continue" href="/">Continue</a>
+                <div class="btn btn--flash" id="flash-continue">Continue</div>
               {% endif %}
             </div>
           {% endfor %}
