@@ -1,13 +1,3 @@
-$(document).ready(function(){
-$('.carousel').slick({
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: 'linear'
-  });
-});
 // ####################
 //        EVENTS
 // ####################
@@ -224,6 +214,19 @@ $(".desk-nav").mouseleave(
     function () {
         $(".nav__dropdown").slideUp();
     })
+
+// Adds carousel to dog_surrender.html
+//CODE CREDIT: https://kenwheeler.github.io/slick/
+$(document).ready(function(){
+    $('.carousel').slick({
+        arrows: true,
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear'
+      });
+    });
 
 
 // ####################

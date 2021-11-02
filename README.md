@@ -81,6 +81,8 @@
 
 - [Google Fonts](https://fonts.google.com/) were used to import 'Frederick the Great' and 'Libre Franklin' fonts which were used throughout the site.
 
+- [Slick](https://kenwheeler.github.io/slick/) is jQuery plugin which was used to create carousel effect.
+
 - [Gitpod](https://www.gitpod.io/) was used to write all the HTML, CSS, JavaScript and Python code for the site.
 
 - [Git](https://git-scm.com/) was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub
