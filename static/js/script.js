@@ -122,7 +122,6 @@ $(".btn--delete").click(function () {
 
 // Changes ID of 'action' button in popup and calls popup function
 $(".popup-main-btn").click(function () {
-    disableScroll();
     let id = $(this).attr("id");
     switch (id) {
         case "post-edit":
@@ -143,6 +142,11 @@ $(".popup-main-btn").click(function () {
             break
     }
 })
+
+// Enables and disables scroll on popup/flash message
+$(document).on('click', '.popup-main-btn', disableScroll)
+$(document).on('click', '.btn--popup', enableScroll)
+$(document).on('click', '.btn--flash', enableScroll)
 
 // Changes text for 'upload photo' button
 $(".inputfile").change(function (e) {
@@ -290,7 +294,6 @@ function popUp(msg, id) {
         $(".popup__container").hide();
         $(`#${id}-confirm`).hide();
     });
-    enableScroll();
 };
 
 // Saves values from form to local storage

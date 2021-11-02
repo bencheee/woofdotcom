@@ -188,9 +188,6 @@
           {% endfor %}
         </div>
       </div>
-      <script>
-        disableScroll()
-      </script>
     {% endif %}
   {% endwith %}
 
@@ -200,6 +197,13 @@
 
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="/static/js/script.js"></script>
+
+  <!-- Disables scroll when flash message appears -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+      <script>disableScroll()</script>
+  {% endif %}
+  {% endwith %}
 
 </body>
 
