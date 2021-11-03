@@ -22,7 +22,9 @@
         </fieldset>
       {% endif %}
     </div>
-    <hr class="hr hr--dog">
+    {% if session.user != "Admin" %}
+      <hr class="hr hr--dog">
+    {% endif %}
     {% if session.user == owner.username or session.user == "Admin" %}
       <div class="control-buttons">
         <i id="dog-edit" class="far fa-edit popup-main-btn"></i>
