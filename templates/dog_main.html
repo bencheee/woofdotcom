@@ -12,18 +12,22 @@
 
 <div class="desktop-content">
   <ul class="page-links">
-    <a class="page-link page-link--active" href="{{url_for('dog_main')}}">
+    <a class="page-link" href="{{url_for('dog_main')}}">
       <li>Adopt a dog</li>
     </a>
     <a class="page-link" href="{{url_for('dog_surrender')}}">
       <li>Give up a dog</li>
     </a>
-    <a class="page-link" href="{{url_for('post_new')}}">
-      <li>Post new article</li>
-    </a>
+    {% if session.user %}
+      <a class="page-link" href="{{url_for('post_new')}}">
+        <li>Post new article</li>
+      </a>
+    {% endif %}
+    {% if session.user != "Admin"%}
     <a class="page-link" href="{{url_for('contact')}}">
       <li>Contact us</li>
     </a>
+    {% endif %}
   </ul>
 </div>
 
@@ -38,7 +42,7 @@
 
   <div class="dogmain-desk-wrapper">
     <div class="desktop-content content-dogmain">
-      {% if dogs|length == 0 %}
+      {% if no_dogs == True%}
         <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
       {% else %}
         <div class="card">

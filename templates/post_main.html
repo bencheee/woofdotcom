@@ -20,12 +20,16 @@
     <a class="page-link" href="{{url_for('dog_surrender')}}">
       <li>Give up a dog</li>
     </a>
-    <a class="page-link" href="{{url_for('post_new')}}">
-      <li>Post new article</li>
-    </a>
+    {% if session.user %}
+      <a class="page-link" href="{{url_for('post_new')}}">
+        <li>Post new article</li>
+      </a>
+    {% endif %}
+    {% if session.user != "Admin"%}
     <a class="page-link" href="{{url_for('contact')}}">
       <li>Contact us</li>
     </a>
+    {% endif %}
   </ul>
 </div>
 
@@ -38,7 +42,7 @@
 
   <div class="postmain-desk-wrapper">
     <div class="desktop-content content-postmain">
-      {% if posts|length == 0 %}
+      {% if no_posts == True %}
         <p class="no-posts">Ooops, seems like there are no posts yet!</p>
       {% else %}
         <div class="card">

@@ -4,7 +4,7 @@
   <div class="dog">
     <h3 class="dog__name">{{ dog.name.capitalize() }}</h3>
     <p class="dog__greeting">"{{ dog.greeting}}"</p>
-    <img class="dog__img" style="background-image: url(/static/images/dog_default.webp);" alt="">
+    <img class="dog__img" style="background-image: url({{dog.img_path}});" alt="">
     <div class="dog__info">
       {% if dog.age == "0" %}
         <p><span>Age: </span>Less than a year</p>

@@ -1290,6 +1290,14 @@ li {
         padding: 10px;
     }
 
+    .content-empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
     .content-box {
         color: var(--color0);
         background: linear-gradient(

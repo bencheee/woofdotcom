@@ -18,12 +18,16 @@
     <a class="page-link" href="{{url_for('dog_surrender')}}">
       <li>Give up a dog</li>
     </a>
-    <a class="page-link" href="{{url_for('post_new')}}">
-      <li>Post new article</li>
-    </a>
+    {% if session.user %}
+      <a class="page-link" href="{{url_for('post_new')}}">
+        <li>Post new article</li>
+      </a>
+    {% endif %}
+    {% if session.user != "Admin"%}
     <a class="page-link" href="{{url_for('contact')}}">
       <li>Contact us</li>
     </a>
+    {% endif %}
   </ul>
 </div>
 
@@ -116,6 +120,11 @@
             </div>
           </a>
         </div>
+        {% if posts|length == 1 %}
+        <div class="content-latest content-empty">
+          <p>Still waiting for more :)</p>
+        </div>
+        {% endif %}
         {% if posts|length > 1 %}
           <div class="content-latest">
             <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
@@ -233,6 +242,11 @@
             </div>
           </a>
         </div>
+        {% if dogs|length == 1 %}
+        <div class="content-latest content-empty">
+          <p>Still waiting for more :)</p>
+        </div>
+        {% endif %}
         {% if dogs|length > 1 %}
           <div class="content-latest">
             <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
