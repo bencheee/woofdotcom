@@ -806,7 +806,7 @@ def dog_new():
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
         return redirect(url_for("index"))
-    return render_template("dog_new.html", user_info=user_info)
+    return render_template("dog_new.html")
 
 
 @app.route("/dog_edit/<dog_id>", methods=["GET", "POST"])
