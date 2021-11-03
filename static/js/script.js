@@ -232,7 +232,18 @@ $(document).ready(function(){
       });
     });
 
+// Adds black and white images on card touch
+// https://stackoverflow.com/a/15595893
+$('.card__img').on(
+    { 'touchstart' : function(){ $(this).css(
+        {filter: "grayscale(100%)", transform: "scale(0.95)"}) } 
+    });
+$('.card__img').on(
+    { 'touchend' : function(){ $(this).css(
+        {filter: "grayscale(0%)", transform: "scale(1)"}) } 
+    });
 
+    
 // ####################
 //      FUNCTIONS
 // ####################

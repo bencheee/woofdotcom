@@ -285,7 +285,21 @@ def dog_surrender():
         flash(
             "You have to be logged in in order to place an ad for rehoming \
             a dog.")
-    return render_template("dog_surrender.html")
+        return redirect(url_for("dog_surrender"))
+    # Prevent users with incomplete info from posting dog ads
+    user = mongo.db.users.find_one({"username": session["user"]})
+    if (user["fname"] == "" or
+            user["lname"] == "" or
+            user["phone"] == "" or
+            user["about"] == ""):
+        user_info = False
+        flash(
+            "To post new dog ads you need to complete your profile. \
+            You can do this in your account settings under 'optional \
+            info' section.")
+    else:
+        user_info = True
+    return render_template("dog_surrender.html", user_info=user_info)
 
 
 @app.route("/contact", methods=["GET", "POST"])
@@ -759,9 +773,7 @@ def dog_new():
             user["lname"] == "" or
             user["phone"] == "" or
             user["about"] == ""):
-        user_info = False
-    else:
-        user_info = True
+        return permission_denied()
 
     if request.method == "POST":
         if list(request.files['photo']) == []:

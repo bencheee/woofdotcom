@@ -68,11 +68,9 @@
       </div>
 
     </div>
-
-
-
+ 
   </div>
-  {% if session.user %}
+  {% if (session.user) and (user_info == True) %}
     <a class="btn btn--rehome" href="/dog_new">Rehome your dog</a>
   {% endif %}
 </section>
