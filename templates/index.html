@@ -118,17 +118,21 @@
         </div>
         {% if posts|length > 1 %}
           <div class="content-latest">
-            <div class="content-box">
-              <p class="content-category">{{posts[1].category}}</p>
-              <p class="content-title">{{posts[1].title}}</p>
-              <p class="content-summary">{{posts[1].summary}}</p>
-            </div>
+            <a href="{{ url_for('post_page', post_id=posts[1]._id) }}">
+              <div class="content-box">
+                <p class="content-category">{{posts[1].category}}</p>
+                <p class="content-title">{{posts[1].title}}</p>
+                <p class="content-summary">{{posts[1].summary}}</p>
+              </div>
+            </a>
             {% if posts|length > 2 %}
+            <a href="{{ url_for('post_page', post_id=posts[2]._id) }}">
               <div class="content-box">
                 <p class="content-category">{{posts[2].category}}</p>
                 <p class="content-title">{{posts[2].title}}</p>
                 <p class="content-summary">{{posts[2].summary}}</p>
               </div>
+            </a>
             {% endif %}
             <hr class="hr">
             <a class="btn btn--content-index" href=#>View more</a>
@@ -231,17 +235,21 @@
         </div>
         {% if dogs|length > 1 %}
           <div class="content-latest">
-            <div class="content-box">
-              <p class="content-category">Age: {{dogs[1].age}}, {{dogs[1].gender}}</p>
-              <p class="content-title">{{dogs[1].name.capitalize()}}</p>
-              <p class="content-summary">{{dogs[1].greeting}}</p>
-            </div>
+            <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
+              <div class="content-box">
+                <p class="content-category">Age: {{dogs[1].age}}, {{dogs[1].gender}}</p>
+                <p class="content-title">{{dogs[1].name.capitalize()}}</p>
+                <p class="content-summary">{{dogs[1].greeting}}</p>
+              </div>
+            </a>
             {% if dogs|length > 2 %}
-            <div class="content-box">
-              <p class="content-category">Age: {{dogs[2].age}}, {{dogs[2].gender}}</p>
-              <p class="content-title">{{dogs[2].name.capitalize()}}</p>
-              <p class="content-summary">{{dogs[2].greeting}}</p>
-            </div>
+            <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}">
+              <div class="content-box">
+                <p class="content-category">Age: {{dogs[2].age}}, {{dogs[2].gender}}</p>
+                <p class="content-title">{{dogs[2].name.capitalize()}}</p>
+                <p class="content-summary">{{dogs[2].greeting}}</p>
+              </div>
+            </a>
             {% endif %}
             <hr class="hr">
             <a class="btn btn--content-index" href=#>View more</a>

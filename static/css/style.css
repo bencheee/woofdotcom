@@ -103,6 +103,7 @@ li {
     font-size: 1rem;
     font-weight: 400;
     border: none;
+    cursor: pointer;
 }
 
 .btn--invert {
@@ -122,6 +123,7 @@ li {
     width: 90px;
     padding: 10px;
     margin: 35px auto 0 auto;
+    cursor: pointer;
 }
 
 /* Card */
@@ -411,6 +413,10 @@ li {
     font-weight: 400;
 }
 
+#pass_icon {
+    cursor: pointer;
+}
+
 /* user_profile.html */
 
 .textarea--profile-info {
@@ -648,6 +654,10 @@ li {
     margin: 0 15px 0 0;
 }
 
+.control-buttons * {
+    cursor: pointer;
+}
+
 .popup-main-btn {
     margin-left: 10px;
 }
@@ -740,6 +750,11 @@ li {
     text-align: center;
 }
 
+.switch__requests,
+.switch__messages {
+    cursor: pointer;
+}
+
 .switch__requests {
     color: #0000004d;
 }
@@ -793,6 +808,10 @@ li {
 .message__btns {
     display: flex;
     justify-content: center;
+}
+
+.message__btns * {
+    cursor: pointer;
 }
 
 .message__btns div {
