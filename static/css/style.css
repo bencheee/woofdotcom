@@ -2,12 +2,6 @@
 
 :root {
     /* Solid colors */
-    /* --color1: #023733;
-    --color2: #047e75;
-    --color3: #5eaaa5;
-    --color4: #d5ebe8;
-    --color5: #ebf5f4;
-    --color6: #f2f9f9; */
     --color0: #023733;
     --color1: #237973;
     --color2: #3B8E88;
@@ -1174,6 +1168,10 @@ li {
         font-weight: 900;
         margin-left: 20px;
         cursor: pointer;
+    }
+
+    .nav__username {
+        cursor: default;
     }
 
     .nav__dropdown {
