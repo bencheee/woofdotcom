@@ -1258,7 +1258,7 @@ li {
     .content-box {
         color: var(--color1);
         background: linear-gradient(
-            180deg, rgba(242,249,249,1) 50%, rgb(198 234 233) 150%);
+            180deg, rgba(242,249,249,1) 50%, rgb(198, 234, 233) 150%);
         padding: 10px;
         border-radius: 10px;
     }
@@ -1295,7 +1295,7 @@ li {
 
     .form-toggle {
         display: flex;
-        background-color: var(--color4);
+        background: linear-gradient(180deg, rgba(242,249,249,1) 0%, rgba(158,212,208,0.6) 30%, transparent 100%);
         width: 30%;
         margin: 0 0 10px 20px;
         padding: 10px;
