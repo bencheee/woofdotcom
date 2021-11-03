@@ -510,7 +510,7 @@ def post_edit(post_id):
             Image.open(request.files['photo'])
         except UnidentifiedImageError:
             flash("Image type not supported.", "error")
-            return redirect(url_for("post_edit"))
+            return redirect(url_for("post_edit", post_id=post_id))
         posts = mongo.db.posts.find()
         img_id, img_filename, img_path = generate_photo("post", posts)
         title = request.form.get("title")
@@ -853,7 +853,7 @@ def dog_edit(dog_id):
             Image.open(request.files['photo'])
         except UnidentifiedImageError:
             flash("Image type not supported.", "error")
-            return redirect(url_for("dog_edit"))
+            return redirect(url_for("dog_edit", dog_id=dog_id))
         dogs = mongo.db.dogs.find()
         img_id, img_filename, img_path = generate_photo("dog", dogs)
         # Get all values from form and update database
