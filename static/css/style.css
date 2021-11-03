@@ -1056,7 +1056,9 @@ li {
 
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) and (orientation: landscape) {
+
+    /* General styles */
 
     .desktop-content {
         display: block;
@@ -1069,6 +1071,27 @@ li {
     .tablet-content {
         display: none;
     }
+
+    .container {
+        margin: 20px 0
+    }
+
+    .container__title {
+        font-size: 3rem;
+    }
+
+    .main-container {
+        width: 85%;
+        margin: 0 auto;
+    }
+
+    .no-posts {
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    /* Navbar */
 
     .nav {
         display: none;
@@ -1142,14 +1165,7 @@ li {
         width: 1rem;
     }
 
-    .container {
-        margin: 20px 0
-    }
-
-    .main-container {
-        width: 85%;
-        margin: 0 auto;
-    }
+    /* Banner */
 
     .banner {
         flex-direction: row-reverse;
@@ -1164,6 +1180,8 @@ li {
     .title-section__text {
         padding: 0 10px;
     }
+
+    /* Main links (under banner) */
 
     .page-links {
         display: flex;
@@ -1186,9 +1204,7 @@ li {
         font-weight: 900;
     }
 
-    .container__title {
-        font-size: 3rem;
-    }
+    /* Index.html */
 
     .img-overlay {
         background-image: linear-gradient(180deg, transparent 0%, transparent 65%, #000000 100%);
@@ -1214,12 +1230,6 @@ li {
 
     .card__summary--index {
         font-size: 1.5rem;
-    }
-
-    .no-posts {
-        width: 100%;
-        text-align: center;
-        font-size: 2rem;
     }
 
     .content-index {
@@ -1269,10 +1279,7 @@ li {
         font-style: italic;
     }
 
-    .footer {
-        width: 85%;
-        margin: 0 auto;
-    }
+    /* post_main.html & dog_main.html */
 
 
     .postmain-desk-wrapper,
@@ -1314,14 +1321,14 @@ li {
     .btn--dogmain {
         margin: 0.1vw auto;
     }
-
-    .form__input {
+    
+    .form__input--filter {
         font-size: 1.3vw;
         height: 2vw;
         margin: 0;
     }
 
-    .form__input::placeholder {
+    .form__input--filter::placeholder {
         font-size: 1.3vw;
     }
 
@@ -1329,9 +1336,11 @@ li {
         margin: 15px 0;
     }
 
-    .checkbox {
+    .checkbox--filter {
         font-size: 1vw;
     }
+
+    /* Inbox */
 
     .switch {
         text-align: center;
@@ -1393,6 +1402,8 @@ li {
         margin: 20px auto 80px auto;
     }
 
+    /* Flash messages / popups */
+
     .popup__container,
     .flash__container {
         background-color: rgb(0 0 0 / 35%);
@@ -1416,6 +1427,8 @@ li {
         color: var(--color0);
         margin-bottom: 25px;
     }
+
+    /* dog_surrender.html */
 
     .carousel {
         padding: 50px;
@@ -1445,6 +1458,11 @@ li {
         box-shadow: 5px 5px 10px -10px black;
         width: 50%;
         margin: 50px auto;
+    }
+
+    .footer {
+        width: 85%;
+        margin: 0 auto;
     }
 
 }

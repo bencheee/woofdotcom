@@ -58,29 +58,29 @@
 
     <form class="form form-toggle js-form-toggle"
     action="{{ url_for('dog_main') }}" method="POST">
-      <input class="form__input" name="name" placeholder="Search by dog's name">
+      <input class="form__input form__input--filter" name="name" placeholder="Search by dog's name">
 
-      <select class="form__input" name="age" id="age">
+      <select class="form__input form__input--filter" name="age" id="age">
         <option value="" selected disabled hidden>Select age</option>
         <option value="0-3">0-3 years</option>
         <option value="4-7">4-7 years</option>
         <option value="8+">8+ years</option>
       </select>
 
-      <select class="form__input" name="gender" id="gender">
+      <select class="form__input form__input--filter" name="gender" id="gender">
         <option value="" selected disabled hidden>Select gender</option>
         <option>Male</option>
         <option>Female</option>
       </select>
 
-      <select class="form__input" name="size" id="size">
+      <select class="form__input form__input--filter" name="size" id="size">
         <option value="" selected disabled hidden>Select size</option>
         <option>Small</option>
         <option>Medium</option>
         <option>Large</option>
       </select>
 
-      <div class="checkbox">
+      <div class="checkbox checkbox--filter">
         <p class="checkbox__title">Other options</p>
         <ul>
           <li>
