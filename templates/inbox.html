@@ -2,12 +2,13 @@
 
 {% block content %}
 <div class="inbox__header">
-  <div class="switch">
-    <span class="switch__messages">Messages</span>
-    <span> / </span>
-    <span class="switch__requests">Requests</span>
-  </div>
   {% if session.user == "Admin" %}
+    <div class="switch">
+      <span class="switch__messages">Messages</span>
+      <span> / </span>
+      <span class="switch__requests">Requests</span>
+    </div>
+    
     <h4 class="inbox-title" id="title-messages">Hi Admin,
     
       You have {{admin_unread_msgs}} unread messages!</h4>
@@ -16,6 +17,7 @@
     
     You have {{admin_unread_reqs}} new adoption requests!</h4>
   {% else %}
+    <h2 class="container__title">Inbox</h2>
     <h4 class="inbox-title" id="title-messages">Hi {{session.user}},
     
       You have {{user_unread_msgs}} unread messages!</h4>

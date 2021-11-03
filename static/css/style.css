@@ -1397,6 +1397,10 @@ li {
         border-radius: 10px;
     }
 
+    .inbox__header {
+        width: 85%;
+    }
+
     .inbox-title {
         font-size: 1.5rem;
     }
