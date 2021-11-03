@@ -144,12 +144,12 @@
             </a>
             {% endif %}
             <hr class="hr">
-            <a class="btn btn--content-index" href=#>View more</a>
+            <a class="btn btn--content-index" href="{{url_for('post_main')}}">View more</a>
           </div>
         {% endif %}
       {% endif %}
     </div>
-    <a class="btn mobile-content tablet-content" href=#>View more</a>
+    <a class="btn mobile-content tablet-content" href="{{url_for('post_main')}}">View more</a>
   {% endif %}
 </section>
 
@@ -224,7 +224,7 @@
         <hr class="hr hr--card">
       </div>
     {% endif %}
-    <a class="btn btn--invert mobile-content tablet-content" href=#>View more</a>
+    <a class="btn btn--invert mobile-content tablet-content" href="{{url_for('dog_main')}}">View more</a>
 
     <div class="desktop-content content-index">
       {% if dogs|length == 0 %}
@@ -266,7 +266,7 @@
             </a>
             {% endif %}
             <hr class="hr">
-            <a class="btn btn--content-index" href=#>View more</a>
+            <a class="btn btn--content-index" href="{{url_for('dog_main')}}">View more</a>
           </div>
         {% endif %}
       {% endif %}
