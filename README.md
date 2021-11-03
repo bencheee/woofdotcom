@@ -60,16 +60,20 @@
 
 ---
 
-## 3. TECHNOLOGIES USED
+## 3. DATABASE SCHEMA
 
-### 3.1 Languages
+![Database Schema](static/documentation/db_schema.png)
+
+## 4. TECHNOLOGIES USED
+
+### 4.1 Languages
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
 - [CSS3](https://en.wikipedia.org/wiki/CSS) 
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Python 3.8](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### 3.2 Frameworks, libraries and programs
+### 4.2 Frameworks, libraries and programs
 
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes during the site design process.
 
@@ -97,17 +101,17 @@
 
 ---
 
-## 4. DESIGN
+## 5. DESIGN
 
 ---
 
-## 5. TESTING
+## 6. TESTING
 
 ---
 
-## 6. DEPLOYMENT
+## 7. DEPLOYMENT
 
-### 6.1 Creating repository on GitHub
+### 7.1 Creating repository on GitHub
 
 Repository for this project was created using following steps:
 
@@ -119,7 +123,7 @@ Repository for this project was created using following steps:
 
 ![Deployment 2](/static/documentation/deployment/002.png)
 
-### 6.2 Deploying project on Heroku
+### 7.2 Deploying project on Heroku
 
 This project was deployed to GitHub Pages using following steps:
 
@@ -151,7 +155,7 @@ This project was deployed to GitHub Pages using following steps:
 
 *Make sure to have Procfile and requirements.txt updated in project repository, otherwise app will not run.
  
-### 6.3 Forking repository
+### 7.3 Forking repository
 
 To fork the repository use the following steps:
 
@@ -161,7 +165,7 @@ To fork the repository use the following steps:
 
 ![Deployment 10](/static/documentation/deployment/010.PNG)
 
-### 6.4 Cloning repository
+### 7.4 Cloning repository
 
 To make a local clone of the repository use the following steps:
 
@@ -185,9 +189,9 @@ $ git clone https://github.com/bencheee/woofdotcom.git
 
 ---
 
-## 7. CREDITS
+## 8. CREDITS
 
-### 7.1 Acknowledgements
+### 8.1 Acknowledgements
 
 - My mentor for continuous helpful feedback
 
