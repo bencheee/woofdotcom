@@ -36,6 +36,13 @@ IMG_FOLDER = os.environ.get("IMG_FOLDER")
 mongo = PyMongo(app)
 
 
+@app.errorhandler(403)
+@app.errorhandler(404)
+@app.errorhandler(500)
+def page_error(e):
+    return redirect(url_for("alert", response="page error"))
+
+
 def permission_denied():
     flash("Permission denied.")
     return redirect(url_for("index"))
