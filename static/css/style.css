@@ -237,7 +237,7 @@ li {
 .container__title {
     text-align: center;
     margin: 30px auto 35px auto;
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 .no-posts {
@@ -963,6 +963,10 @@ li {
 
     .margin-extended {
         margin-bottom: 80px;
+    }
+
+    .container__title {
+        font-size: 2rem;
     }
 
     /* Title section */

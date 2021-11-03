@@ -5,7 +5,7 @@
   <img class="banner__img desktop-content" src="/static/images/banner_contact_l.webp" alt="">
   <img class="banner__img mobile-content tablet-content" src="/static/images/banner_contact_s.webp" alt="">
   <div class="title-section">
-    <h1 class="title-section__title">Title</h1>
+    <h1 class="title-section__title">Contact us</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
@@ -29,6 +29,7 @@
 
 <!-- Contact form -->
 <section class="container container--light container--contact">
+  <h2 class="container__title">We want to hear from you!</h2>
   <form class="form" action="{{ url_for('contact') }}" method="POST">
 
     {% if not session.user %}
