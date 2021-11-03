@@ -1,21 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <section class="container container--light container--center container--extended">
-    {% if response == "None" %}
-      <p>Nothin to show here. Move along!</p>
-      <a class="btn" href="{{url_for('index')}}">Back to index</a>
-    {% endif %}
     {% if response == "dog error" %}
       <p class="alert-info">This dog is deleted from the database. It might be that dog was rehomed by someone else, or owner changed his mind about giving up on his dog. We are sorry for this but there are plenty of other dogs who need a new home. Check it out!</p>
       <a class="btn" href="{{url_for('dog_main')}}">Back to dogs</a>
     {% elif response == "post error" %}
-      <p class="alert-info alert-post">Post not found!</p>
+      <p class="alert-info alert-center">Post not found!</p>
       <a class="btn" href="{{url_for('post_main')}}">Back to posts</a>
-    {% elif response == "message_error" %}
-      <p class="alert-info alert-post">Message not found!</p>
+    {% elif response == "message error" %}
+      <p class="alert-info alert-center">Message not found!</p>
       <a class="btn" href="{{url_for('inbox')}}">Back to inbox</a>
-    {% elif response == "message_sent" %}
-      <p class="alert-info alert-message-sent">Message sent!</p>
+    {% elif response == "message sent" %}
+      <p class="alert-info alert-center">Message sent!</p>
         {% if session.user %}
           <a class="btn" href="{{url_for('inbox')}}">Go to inbox</a>
         {% else %}
