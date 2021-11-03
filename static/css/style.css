@@ -146,7 +146,7 @@ li {
 .card__title {
     display: block;
     margin: 10px auto;
-    color: var(--color1);
+    color: var(--color0);
     font-size: 1.5rem;
     font-weight: 900;
     padding: 0 10px;
@@ -728,7 +728,7 @@ li {
 }
 
 .inbox-title {
-    color: var(--color1);
+    color: var(--color0);
     font-size: 1.1rem;
     font-weight: 900;
     text-align: left;
@@ -1291,7 +1291,7 @@ li {
     }
 
     .content-box {
-        color: var(--color1);
+        color: var(--color0);
         background: linear-gradient(
             180deg, rgba(242,249,249,1) 50%, rgb(198, 234, 233) 150%);
         padding: 10px;
