@@ -1102,7 +1102,7 @@ li {
     .form {
         width: 50%;
     }
-    
+
     /* Navbar */
 
     .nav {
@@ -1261,7 +1261,7 @@ li {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.1) 35%, rgba(255,255,255,0) 100%);
+        background: linear-gradient(180deg, transparent 0%, rgba(158,212,208,0.6) 30%, transparent 100%);
         width: 30%;
         margin: 0 0 10px 20px;
         padding: 10px;
@@ -1281,7 +1281,8 @@ li {
     }
 
     .content-title {
-        font-size: 1.6vw;
+        font-size: 1.2vw;
+        font-weight: 900;
     }
 
     .content-summary {
