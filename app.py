@@ -282,23 +282,24 @@ def user_profile():
 @app.route("/dog_surrender")
 def dog_surrender():
     if session.get('user') is None:
+        user_info = None
         flash(
             "You have to be logged in in order to place an ad for rehoming \
             a dog.")
-        return redirect(url_for("dog_surrender"))
-    # Prevent users with incomplete info from posting dog ads
-    user = mongo.db.users.find_one({"username": session["user"]})
-    if (user["fname"] == "" or
-            user["lname"] == "" or
-            user["phone"] == "" or
-            user["about"] == ""):
-        user_info = False
-        flash(
-            "To post new dog ads you need to complete your profile. \
-            You can do this in your account settings under 'optional \
-            info' section.")
     else:
-        user_info = True
+        # Prevent users with incomplete info from posting dog ads
+        user = mongo.db.users.find_one({"username": session["user"]})
+        if (user["fname"] == "" or
+                user["lname"] == "" or
+                user["phone"] == "" or
+                user["about"] == ""):
+            user_info = False
+            flash(
+                "To post new dog ads you need to complete your profile. \
+                You can do this in your account settings under 'optional \
+                info' section.")
+        else:
+            user_info = True
     return render_template("dog_surrender.html", user_info=user_info)
 
 
@@ -374,7 +375,7 @@ def post_main():
         category = request.form.get("category")
         author = request.form.get("author")
         sort_by = request.form.get("sort")
-        # Sort posts by category and author
+        # Filter posts by category and author
         if category is None and author is None:
             posts = list(mongo.db.posts.find())
         elif category is None:
@@ -849,11 +850,11 @@ def dog_edit(dog_id):
     if request.method == "POST":
         if list(request.files['photo']) != [] and dog["img_id"] != "default":
             MY_BUCKET.Object(dog["img_filename"]).delete()
-        try:
-            Image.open(request.files['photo'])
-        except UnidentifiedImageError:
-            flash("Image type not supported.", "error")
-            return redirect(url_for("dog_edit", dog_id=dog_id))
+            try:
+                Image.open(request.files['photo'])
+            except UnidentifiedImageError:
+                flash("Image type not supported.", "error")
+                return redirect(url_for("dog_edit", dog_id=dog_id))
         dogs = mongo.db.dogs.find()
         img_id, img_filename, img_path = generate_photo("dog", dogs)
         # Get all values from form and update database
@@ -931,8 +932,8 @@ def dog_delete(dog_id):
                 "type": "adoption"
             }
             mongo.db.messages.insert_one(message_item)
-    # Delete dog from user's adoption requests in database
-    user["adoption_requests"].remove(dog["_id"])
+            # Delete dog from user's adoption requests in database
+            user["adoption_requests"].remove(dog["_id"])
     mongo.db.users.update_one(
         {"username": user["username"]},
         {"$set": {

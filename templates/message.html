@@ -62,7 +62,7 @@
     action="{{url_for('reply', receiver=message.sent_by, msg_id=message._id)}}"
     method="POST">
     <textarea class="form__textarea textarea--reply" name="message" 
-      id="message" maxlength="10000"></textarea>
+      id="message" maxlength="10000" required></textarea>
     <div class="msg__form-btns">
         <button class="btn btn--form btn--reply">Reply</button>
         <div class="btn btn--invert btn--cancel">Cancel</div>
