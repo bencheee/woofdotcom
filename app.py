@@ -434,13 +434,14 @@ def post_new():
         return permission_denied()
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
-        if list(request.files['photo']) == []:
+        photo = request.files['photo']
+        if photo.filename == "":
             img_path = "/static/images/post_default.webp"
             img_id = "default"
             img_filename = "post_img_default.webp"
         else:
             try:
-                Image.open(request.files['photo'])
+                Image.open(photo)
             except UnidentifiedImageError:
                 flash("Image type not supported.", "error")
                 return redirect(url_for("post_new"))
@@ -505,15 +506,21 @@ def post_edit(post_id):
         return permission_denied()
     categories = list(mongo.db.categories.find())
     if request.method == "POST":
-        if list(request.files['photo']) != [] and post["img_id"] != "default":
+        photo = request.files['photo']
+        if photo.filename != "" and post["img_id"] != "default":
             MY_BUCKET.Object(post["img_filename"]).delete()
-        try:
-            Image.open(request.files['photo'])
-        except UnidentifiedImageError:
-            flash("Image type not supported.", "error")
-            return redirect(url_for("post_edit", post_id=post_id))
-        posts = mongo.db.posts.find()
-        img_id, img_filename, img_path = generate_photo("post", posts)
+        if photo.filename != "":
+            try:
+                Image.open(photo)
+            except UnidentifiedImageError:
+                flash("Image type not supported.", "error")
+                return redirect(url_for("post_edit", post_id=post_id))
+            posts = mongo.db.posts.find()
+            img_id, img_filename, img_path = generate_photo("post", posts)
+        else:
+            img_id = post["img_id"]
+            img_filename = post["img_filename"]
+            img_path = post["img_path"]
         title = request.form.get("title")
         summary = request.form.get("summary")
         content = request.form.get("content")
@@ -777,13 +784,14 @@ def dog_new():
         return permission_denied()
 
     if request.method == "POST":
-        if list(request.files['photo']) == []:
+        photo = request.files['photo']
+        if photo.filename == "":
             img_path = "/static/images/dog_default.webp"
             img_id = "default"
             img_filename = "dog_img_default.webp"
         else:
             try:
-                Image.open(request.files['photo'])
+                Image.open(photo)
             except UnidentifiedImageError:
                 flash("Image type not supported.", "error")
                 return redirect(url_for("dog_new"))
@@ -848,15 +856,21 @@ def dog_edit(dog_id):
         return permission_denied()
 
     if request.method == "POST":
-        if list(request.files['photo']) != [] and dog["img_id"] != "default":
+        photo = request.files['photo']
+        if photo.filename != "" and dog["img_id"] != "default":
             MY_BUCKET.Object(dog["img_filename"]).delete()
+        if photo.filename != "":
             try:
-                Image.open(request.files['photo'])
+                Image.open(photo)
             except UnidentifiedImageError:
                 flash("Image type not supported.", "error")
                 return redirect(url_for("dog_edit", dog_id=dog_id))
-        dogs = mongo.db.dogs.find()
-        img_id, img_filename, img_path = generate_photo("dog", dogs)
+            dogs = mongo.db.dogs.find()
+            img_id, img_filename, img_path = generate_photo("dog", dogs)
+        else:
+            img_id = dog["img_id"]
+            img_filename = dog["img_filename"]
+            img_path = dog["img_path"]
         # Get all values from form and update database
         name = request.form.get("name").lower()
         gender = request.form.get("gender")
