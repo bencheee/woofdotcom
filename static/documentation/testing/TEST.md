@@ -609,3 +609,27 @@ Expected inputs:
 * Message (required) is max 10000 characters long
 
 **All tests passed!**
+
+## 4. User permissions
+
+Goal of this test is to make sure that certain pages and functions can be accessed only by authorized users. To perform this test, a temporary halper page was made. This page contained links to all pages / functions and it made testing process much faster.
+
+All tests were made for following scenarios:
+
+* If user who is trying to get access is anonymous (not registered or logged in)
+* If user who is trying to get access is registered
+* If registered user is author of posted content
+* If registered user is not author of posted content
+* If registered user has full profile info
+* If registered user does not have full profile info
+* If user is admin
+
+**Screenshot of testing table with links:**
+
+![testing table links](/static/documentation/testing/images/069.webp)
+
+**Results of all tests:**
+
+![testing pages permissions](/static/documentation/testing/images/070.webp)
+
+![testing functions permissions](/static/documentation/testing/images/071.webp)

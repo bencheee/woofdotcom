@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <tbody>
+      <tr>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('index')}}">index.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('post_main')}}">post_main.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('post_page', post_id='616aa6f9a9e14d9d37a240ac')}}">post_page.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('post_new')}}">post_new.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('post_edit', post_id='616aa6f9a9e14d9d37a240ac')}}">post_edit.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('dog_main')}}">dog_main.html</a></td>
+      </tr>
+      <tr>
+
+        <td class="tg-0lax"><a class="btn" href="{{url_for('dog_page', dog_id='616aa717a9e14d9d37a240ad')}}">dog_page.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('dog_surrender')}}">dog_surrender.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('dog_new')}}">dog_new.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('dog_edit', dog_id='616aa717a9e14d9d37a240ad')}}">dog_edit.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('alert', response='None')}}">alert.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('contact')}}">contact.html</a></td>
+      </tr>
+      <tr>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('inbox')}}">inbox.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('message', msg_id='616abcafbfb74ba612d33d82')}}">message.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('user_register')}}">user_register.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('user_login')}}">user_login.html</a></td>
+        <td class="tg-0lax"><a class="btn" href="{{url_for('user_profile')}}">user_profile.html</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('user_logout')}}">user_logout</a></td>
+      </tr>
+      <tr>
+
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('post_delete', post_id='616ad20c9d9e8d929cddb895')}}">post_delete</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('post_like', post_id='616ad20c9d9e8d929cddb895')}}">post_like</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('dog_delete', dog_id='616aa717a9e14d9d37a240ad')}}">dog_delete</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('adopt', dog_id='616aa717a9e14d9d37a240ad')}}">adopt</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('adopt_undo', dog_id='616aa717a9e14d9d37a240ad')}}">adopt_undo</a></td>
+        <td class="tg-0lax"><a class="btn btn--test" href="{{url_for('message_delete', msg_id='616abcafbfb74ba612d33d82')}}">message_delete</a></td>  
+    </tr>
+    </tbody>
+    </table>
+
+    {% endblock %}

@@ -1512,3 +1512,11 @@ li {
     }
 
 }
+
+.btn--test {
+    background-color: #3B8E88;
+}
+
+.tg td {
+    border: none !important;
+}
