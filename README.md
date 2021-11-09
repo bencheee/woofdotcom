@@ -107,6 +107,7 @@
 
 ## 6. TESTING
 
+Due to extensive testing, this section is provided in separate file which can be found on the following [link](/static/documentation/testing/TEST.md).
 ---
 
 ## 7. DEPLOYMENT
