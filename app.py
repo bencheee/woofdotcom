@@ -453,6 +453,7 @@ def post_new():
             posts = mongo.db.posts.find()
             img_id, img_filename, img_path = generate_photo("post", posts)
         # Create new post and upload to database
+        temp_id = round(random.random() * 1000000)
         new_post = {
             "title": request.form.get("title"),
             "summary": request.form.get("summary"),
@@ -466,11 +467,20 @@ def post_new():
             "likes": 0,
             "img_id": img_id,
             "img_filename": img_filename,
-            "img_path": img_path
+            "img_path": img_path,
+            "temp_id": temp_id
         }
         mongo.db.posts.insert_one(new_post)
         flash("New post added!")
-        return redirect(url_for("index"))
+        # temp_id is used to identify the just added post, in order to get
+        # post_id from database so post_page can be called. temp_id record is
+        # deleted from database immediately after post_id is obtained
+        new_db_post = mongo.db.posts.find_one({"temp_id": temp_id})
+        post_id = new_db_post["_id"]
+        mongo.db.posts.update_one(
+            {"temp_id": temp_id},
+            {"$unset": {"temp_id": ""}})
+        return redirect(url_for("post_page", post_id=post_id))
     return render_template("post_new.html", categories=categories)
 
 
@@ -803,6 +813,7 @@ def dog_new():
             dogs = mongo.db.dogs.find()
             img_id, img_filename, img_path = generate_photo("dog", dogs)
         # Create new dog entry and upload to database
+        temp_id = round(random.random() * 1000000)
         dog = {
             "name": request.form.get("name").lower(),
             "gender": request.form.get("gender"),
@@ -815,11 +826,20 @@ def dog_new():
             "owner_id": user["_id"],
             "img_id": img_id,
             "img_filename": img_filename,
-            "img_path": img_path
+            "img_path": img_path,
+            "temp_id": temp_id
         }
         mongo.db.dogs.insert_one(dog)
         flash("New dog added!")
-        return redirect(url_for("index"))
+        # temp_id is used to identify the just added dog, in order to get
+        # dog_id from database so dog_page can be called. temp_id record is
+        # deleted from database immediately after dog_id is obtained
+        new_db_dog = mongo.db.dogs.find_one({"temp_id": temp_id})
+        dog_id = new_db_dog["_id"]
+        mongo.db.dogs.update_one(
+            {"temp_id": temp_id},
+            {"$unset": {"temp_id": ""}})
+        return redirect(url_for("dog_page", dog_id=dog_id))
     return render_template("dog_new.html")
 
 
