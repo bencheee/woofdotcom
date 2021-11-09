@@ -243,11 +243,59 @@ $('.card__img').on(
         {filter: "grayscale(0%)", transform: "scale(1)"}) } 
     });
 
+
+// Hides posts on post/dog main page if there is more than 10 posts 
+if (($(".card").length) / 3 > 5) {
+    hidePosts($(".card-mobile"));
+    hidePosts($(".card-tablet"));
+    hidePosts($(".card-desktop"));
+    button = "<button class='btn load-more' style='margin-top: 50px'>Load more posts</button>";
+    $(".js-card-mobile").append(button);
+    $(".js-card-tablet").append(button);
+    $(".js-card-desktop").append(button);
+}
+
+// Shows posts on post/dog main page when button is clicked
+$(".load-more").click(function () {
+    showPosts($(".card-mobile:hidden"));
+    showPosts($(".card-tablet:hidden"));
+    showPosts($(".card-desktop:hidden"));
+})
+
     
 // ####################
 //      FUNCTIONS
 // ####################
 
+// Hides posts on post/dog main page
+// CODE CREDIT: https://stackoverflow.com/a/38811844  
+function hidePosts(selector){
+    i = selector.length
+    while (i > 5) {
+        selector.eq(i-1).hide();
+        selector.eq(i-1).next().hide();
+        i--;
+    }  
+}
+
+// Shows posts on post/dog main page
+function showPosts(selector){
+    if (selector) {
+        if (selector.length > 5) {
+            i = 0
+            while (i < 5) {
+                selector.eq(i).show();
+                selector.eq(i).next().show();
+                i++;
+            } 
+        } else {
+            selector.show();
+            $(".load-more").remove();
+        }
+    } else {
+        $(".load-more").remove()
+    }
+}
 
 // Enables scrolling on the page
 function enableScroll() {

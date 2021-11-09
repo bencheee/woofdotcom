@@ -45,7 +45,7 @@
       {% if no_dogs == True%}
         <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
       {% else %}
-        <div class="card">
+        <div class="card card-desktop">
           <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{dog_top.img_path}});" alt="">
@@ -112,9 +112,9 @@
     </form>
   </div>
 
-  <div class="desktop-content">
+  <div class="desktop-content js-card-desktop">
     {% for dog in dogs %}
-      <div class="card">
+      <div class="card card-desktop">
         <div class="wrapper__row">
           <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}">
             <div class="card__img img--rounded js-img-desk-m" style="background-image: url({{dog.img_path}});" alt="">
@@ -140,8 +140,8 @@
   </div>
 
   {% if no_dogs == False %}
-  <div class="mobile-content">
-    <div class="card">
+  <div class="mobile-content js-card-mobile">
+    <div class="card card-mobile">
       <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">
           <div class="card__img img--rounded js-img-mobile" style="background-image: url({{dog_top.img_path}});" alt=""></div>
           <h3 class="card__title">{{ dog_top.name.capitalize() }}</h3>
@@ -157,7 +157,7 @@
       <hr class="hr hr--card">
     </div>
     {% for dog in dogs %}
-      <div class="card">
+      <div class="card card-mobile">
         <a href="{{ url_for('dog_page', dog_id=dog._id) }}">
           <div class="card__img img--rounded js-img-mobile" style="background-image: url({{dog.img_path}});" alt=""></div>
           <h3 class="card__title">{{ dog.name.capitalize() }}</h3>
@@ -174,8 +174,8 @@
       </div>
     {% endfor %}
   </div>
-  <div class="tablet-content">
-    <div class="card">
+  <div class="tablet-content js-card-tablet">
+    <div class="card card-tablet">
       <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">
         <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dog_top.img_path}});" alt="">
         </div>
@@ -192,7 +192,7 @@
       <hr class="hr hr--card">
     </div>
     {% for dog in dogs %}
-      <div class="card">
+      <div class="card card-tablet">
         <div class="wrapper__row">
           <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}">
             <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dog.img_path}});" alt="">

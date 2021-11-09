@@ -45,7 +45,7 @@
       {% if no_posts == True %}
         <p class="no-posts">Ooops, seems like there are no posts yet!</p>
       {% else %}
-        <div class="card">
+        <div class="card card-desktop">
           <a href="{{ url_for('post_page', post_id=post_top._id) }}">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{post_top.img_path}});" alt="">
@@ -95,9 +95,9 @@
     </form>
   </div>
 
-  <div class="desktop-content">
+  <div class="desktop-content js-card-desktop">
     {% for post in posts %}
-      <div class="card">
+      <div class="card card-desktop">
         <div class="wrapper__row">
           <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
             <div class="card__img img--rounded js-img-desk-m" style="background-image: url({{post.img_path}});"
@@ -126,8 +126,8 @@
   {% if no_posts == True %}
     <p class="filter-caption">Couldn't find any posts with given criteria!</p>
   {% else %}
-  <div class="mobile-content">
-    <div class="card">
+  <div class="mobile-content js-card-mobile">
+    <div class="card card-mobile">
       <a href="{{ url_for('post_page', post_id=post_top._id) }}">
           <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post_top.img_path }});" alt=""></div>
           <h3 class="card__title">{{ post_top.title }}</h3>
@@ -144,7 +144,7 @@
       <hr class="hr hr--card">
     </div>
     {% for post in posts %}
-        <div class="card">
+        <div class="card card-mobile">
           <a href="{{ url_for('post_main', post_id=post._id) }}">
             <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post.img_path }});" alt="">
             </div>
@@ -164,8 +164,8 @@
       {% endfor %}
     </div>
 
-    <div class="tablet-content">
-      <div class="card">
+    <div class="tablet-content js-card-tablet">
+      <div class="card card-tablet">
         <a href="{{ url_for('post_page', post_id=post_top._id) }}">
           <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{post_top.img_path}});"
             alt=""></div>
@@ -183,7 +183,7 @@
         <hr class="hr hr--card">
       </div>
       {% for post in posts %}
-        <div class="card">
+        <div class="card card-tablet">
           <div class="wrapper__row">
             <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
               <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{ post.img_path }});"
