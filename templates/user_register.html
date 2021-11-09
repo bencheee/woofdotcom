@@ -51,21 +51,6 @@
     <label class="form__label" for="password2">Repeat password</label>
     <input class="form__input form__input--bold" type="password" id="password2"
       name="password2" minlength="8" maxlength="16" pattern="([^\s]+)" required>
-    <p class="regform__option">Optional info</p>
-    <p class="regform__option regform__option--small">* required in case of dog adoption applications *</p>
-    <hr class="hr hr--form">
-    <label class="form__label" for="fname">First name</label>
-    <input class="form__input" type="text" id="fname" name="fname"
-      maxlength="20" pattern="^[a-zA-Z]{1,20}}$">
-    <label class="form__label" for="lname">Last name</label>
-    <input class="form__input" type="text" id="lname" name="lname"
-      maxlength="20" pattern="^[a-zA-Z]{1,20}}$">
-    <label class="form__label" for="phone">Mobile number (Irish numbers only)</label>
-    <input class="form__input" type="tel" id="phone" name="phone" min="10"
-      max="10" pattern="(08)[3579]{1}[0-9]{7}" placeholder="format: 08XXXXXXXX">
-    <label class="form__label" for="about">About info</label>
-    <textarea class="form__textarea form__textarea--registration" name="about"
-      id="about" maxlength="10000" pattern="([^\s]+)"></textarea>
     <button class="btn btn--register" type="submit">REGISTER</button>
     <p class="register-link">Already have an account? Log in <a href="{{url_for('user_login')}}">HERE</a></p>
   </form>

@@ -489,3 +489,4 @@ This function returns variables which contain number of unread messages in inbox
 Testing screenshots:
 
 ![example64](/static/documentation/testing/images/063.webp)
+

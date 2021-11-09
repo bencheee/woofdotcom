@@ -14,15 +14,15 @@
     <label class="form__label" for="password">Old password</label>
     <input class="form__input form__input--bold" type="password" id="password"
       name="password" minlength="8" maxlength="16" pattern="([^\s]+)"
-      autocomplete="new-password">
+      autocomplete="new-password" required>
     <label class="form__label" for="password2">New password</label>
     <input class="form__input form__input--bold" type="password" id="password2"
       name="password2" minlength="8" maxlength="16" pattern="([^\s]+)"
-      autocomplete="new-password">
+      autocomplete="new-password" required>
     <label class="form__label" for="password2">Repeat new password</label>
     <input class="form__input form__input--bold" type="password" id="password3"
       name="password3" minlength="8" maxlength="16" pattern="([^\s]+)"
-      autocomplete="new-password">
+      autocomplete="new-password" required>
     <button class="btn btn--form btn--profile"
       type="submit">Change password</button>
   </form>
@@ -34,19 +34,18 @@
     <hr class="hr hr--profile">
     <label class="form__label" for="fname">First name</label>
     <input class="form__input" type="text" id="fname" name="fname"
-      minlength="2" maxlength="20" pattern="^[a-zA-Z]{2,20}$"
+      minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$"
       value="{{ user.fname }}" required>
     <label class="form__label" for="lname">Last name</label>
     <input class="form__input" type="text" id="lname" name="lname" 
-      minlength="2" maxlength="20" pattern="^[a-zA-Z]{2,20}$"
+      minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$"
       value="{{ user.lname }}" required>
-    <label class="form__label" for="phone">Mobile number</label>
+    <label class="form__label" for="phone">Mobile number (irish numbers only)</label>
     <input class="form__input" type="tel" id="phone" name="phone" min="10"
-      max="10" pattern="(08)[3579]{1}[0-9]{7}" placeholder="format: 08XXXXXXXX"
-      value="{{ user.phone }}" required>
+      maxlength="10" pattern="(08)[3579]{1}[0-9]{7}" placeholder="format: 08XXXXXXXX" value="{{ user.phone }}" required>
     <label class="form__label" for="about">About info</label>
     <textarea class="form__textarea textarea--profile-info" name="about"
-      id="about" maxlength="10000" pattern="([^\s]+)"
+      id="about" minlength="10" maxlength="10000"
       required>{{ user.about }}</textarea>
     <button class="btn btn--form" type="submit">Change profile info</button>
   </form>

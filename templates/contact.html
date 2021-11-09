@@ -39,7 +39,7 @@
     {% if not session.user %}
       <label class="form__label" for="name">First name</label>
       <input class="form__input" type="text" id="name" name="name"
-        minlength="2" maxlength="20" pattern="^[a-zA-Z_]{2,20}$">
+        minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$">
 
       <label class="form__label" for="email">Your email address</label>
       <input class="form__input" type="email" id="email" name="email" required>
@@ -47,12 +47,11 @@
 
     <label class="form__label" for="subject">Subject</label>
     <textarea class="form__textarea textarea--contact-subject" id="subject"
-      name="subject" maxlength="40" pattern="^[a-zA-Z0-9]{1,40}$"
-      required></textarea>
+      name="subject" maxlength="40" required></textarea>
 
     <label class="form__label" for="message">Message</label>
     <textarea class="form__textarea" name="message" id="message"
-      maxlength="10000" pattern="^[a-zA-Z0-9]{1,1000}$" required></textarea>
+      maxlength="10000" required></textarea>
 
     <button class="btn btn--contact">Send message</button>
   </form>
