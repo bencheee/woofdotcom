@@ -490,3 +490,122 @@ Testing screenshots:
 
 ![example64](/static/documentation/testing/images/063.webp)
 
+## 3. Form validation
+
+All forms on the website are tested to ensure correct data is passed on to the server side. Expected input and and result of the test outcome is logged for each form.
+
+### 3.1 user_register
+
+On submit, form method is POST and the ‘user_register’ python function is called. Also on submit, javascript ‘setLocalRegister’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh.
+
+Expected inputs:
+
+* Username (required) is between 4 and 16 characters long, does not contain spaces or special characters 
+* Email address (required) is in correct email format
+* Password (required) is between 8 and 16 characters long and does not contain spaces
+
+**All tests passed!**
+
+### 3.2 user_login
+
+On submit, form method is POST and the ‘user_login’ python function is called. 
+
+Expected inputs:
+
+* Username (required) does not have any validation restrictions*
+* Password (required) does not have any validation restrictions*
+
+**All tests passed!**
+
+### 3.3 user_profile
+
+There are two forms on this page. First form allows user to change password only, and the other form allows change of profile information. If previous data exists, info in form 2 is pre populated on load. On submit, method is POST and the ‘user_login’ python function is called for both forms. 
+
+Expected inputs for Form 1:
+
+* Username is pre populated and disabled by default
+* Email is pre populated and disabled by default
+* Password (required) is between 8 and 16 characters long and does not contain spaces
+
+Expected inputs for Form2:
+
+* First name (required) is between 2 and 20 characters long, does not contain spaces, numbers or special characters 
+* Last name (required) is between 2 and 20 characters long, does not contain spaces, numbers or special characters 
+* Phone is exactly 10 numbers long, it starts with 08 and third number is 3, 5, 7 or 9
+* About is min 10 and max 10000 characters long
+
+**All tests passed!**
+
+### 3.4 post_main
+
+On submit, form method is POST and the ‘post_main’ python function is called.  
+
+Expected inputs:
+
+* Category does not have any validation restrictions*
+* Author name does not have any validation restrictions*
+* Sort by does not have any validation restrictions*
+
+### 3.5 dog_main
+
+On submit, form method is POST and the ‘dog_main’ python function is called.
+
+Expected inputs:
+
+* Dog name does not have any validation restrictions*
+* Dog age does not have any validation restrictions*
+* Dog gender does not have any validation restrictions*
+* Dog size does not have any validation restrictions*
+* Checkbox inputs do not have any validation restrictions*
+
+### 3.6 post_new / post_edit
+
+On submit, form method is POST and the ‘post_new / post_edit’ python function is called. Also on submit, javascript ‘setLocalPost’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded. If post_edit function is called, all form fields are pre populated from the database.
+
+Expected inputs:
+
+* Select category (required) does not have any validation restrictions and all options are pre populated by documents in 'categories' collection from database
+* Post title (required) is between 2 and 25 characters long
+* Summary (required) is min 10 and max 150 characters long
+* Post content (required) is min 250 and max 10000 characters long
+* Upload photo - validation is done within python code
+
+**All tests passed!**
+
+### 3.7 dog_new / dog_edit
+
+On submit, form method is POST and the ‘dog_new / dog_edit’ python function is called. Also on submit, javascript ‘setLocalDog’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded.  If dog_edit function is called, all form fields are pre populated from the database.
+
+Expected inputs:
+
+* Dog name (required) is between 2 and 15 characters long
+* Gender (required) has two options - 'male' and 'female'
+* Age (required) is between 1 and 2 characters long, only numbers allowed
+* Size (required) has three options - 'small', 'medium' and 'large'
+* Other options is a checkbox input with four options - 'Good with kids', 'Suitable for families', 'Good with other pets', and 'Prefers one owner'
+* Greeting (required) is min 10 and max 150 characters long
+* Dog description (required) is min 150 and max 10000 characters long
+* Upload photo - validation is done within python code
+
+**All tests passed!**
+
+### 3.8 message_reply
+
+On submit, form method is POST and the ‘reply’ python function is called. Also, 'receiver' and 'msg_id' variables are sent to the server side for further actions.
+
+Expected inputs:
+
+* Message (required) is max 10000 characters long.
+
+**All tests passed!**
+
+### 3.9 contact
+
+Expected inputs:
+
+* First name (required) is between 2 and 20 characters long, does not contain spaces or special characters 
+* Email address (required) is in correct email format
+* Subject (required) is max 40 characters long
+* Message (required) is max 10000 characters long
+
+**All tests passed!**
