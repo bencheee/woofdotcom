@@ -1,8 +1,10 @@
 # woof(dot)com
 
-[Click for live website demo](http://woofdotcom.herokuapp.com/)
+[Click for live website](http://woofdotcom.herokuapp.com/)
 
 **woof(dot)com** is web portal for dog lovers and it is part of my 3nd milestone project in **Code Institute's Full Stack Software Development Course**. This site is intended for all dog lovers to share their posts with community, to find new homes for their dogs in case they can not keep them anymore, and for those who would like to adopt a dog.
+
+![mockup](/static/documentation/testing/images/mockup.PNG)
 
 ---
 
