@@ -1116,6 +1116,7 @@ li {
         width: 100%;
         text-align: center;
         font-size: 2rem;
+        margin-bottom: 0;
     }
 
     .margin-extended {
@@ -1355,6 +1356,9 @@ li {
     .content-postmain,
     .content-dogmain {
         width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .form-toggle {

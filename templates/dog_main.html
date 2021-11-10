@@ -35,15 +35,17 @@
 <section class="container container--light">
   <p class="filter-toggle js-filter-toggle mobile-content tablet-content"><i class="fas fa-cogs"></i>Filter dogs</p>
   {% if no_dogs == True %}
-    <p class="filter-caption">Couldn't find any dogs with given criteria!</p>
+    <p class="filter-caption">Couldn't find any dogs!</p>
+  {% elif cur_len == 1 %}
+    <p class="filter-caption">Found only one dog!</p>
   {% else %}
-    <p class="filter-caption">Showing {{ cur_len }} out of {{ tot_len }} total dogs</p>
+    <p class="filter-caption">Found {{ cur_len }} dogs in total!</p>
   {% endif %}
 
   <div class="dogmain-desk-wrapper">
     <div class="desktop-content content-dogmain">
       {% if no_dogs == True%}
-        <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
+        <p class="no-posts">Ooops, we couldn't find any dog ads!</p>
       {% else %}
         <div class="card card-desktop">
           <a href="{{ url_for('dog_page', dog_id=dog_top._id) }}">

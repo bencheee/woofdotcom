@@ -43,7 +43,7 @@
   <div class="postmain-desk-wrapper">
     <div class="desktop-content content-postmain">
       {% if no_posts == True %}
-        <p class="no-posts">Ooops, seems like there are no posts yet!</p>
+        <p class="no-posts">Ooops, we couldn't find any posts!</p>
       {% else %}
         <div class="card card-desktop">
           <a href="{{ url_for('post_page', post_id=post_top._id) }}">
