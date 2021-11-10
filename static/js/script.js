@@ -292,7 +292,9 @@ if (($(".card").length) / 3 > 5) {
     hidePosts($(".card-mobile"));
     hidePosts($(".card-tablet"));
     hidePosts($(".card-desktop"));
-    button = "<button class='btn load-more' style='margin-top: 50px'>Load more posts</button>";
+    button = 
+        `<button class='btn load-more'
+        style='margin-top: 50px'>Show more </button>`;
     $(".js-card-mobile").append(button);
     $(".js-card-tablet").append(button);
     $(".js-card-desktop").append(button);
