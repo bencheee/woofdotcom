@@ -222,6 +222,34 @@
 
   [Example 19](/static/documentation/testing/user_stories/017.webp)
 
+### 6.2 Further testing
+
+* The website was viewed on a mobile, tablet and laptop devices such as iPhone XR, Huawei Media Pad T3 and HP Elitebook 840.
+
+  - iPhone XR
+
+  ![mobile](/static/documentation/testing/responsiveness/mobile.webp)
+
+  - Huawei Media Pad T3
+
+  ![tablet](/static/documentation/testing/responsiveness/tablet.webp)
+
+  - HP Elitebook 840
+
+  ![laptop 1](/static/documentation/testing/responsiveness/laptop1.webp)
+
+  ![laptop 2](/static/documentation/testing/responsiveness/laptop2.webp)
+
+  ![laptop 3](/static/documentation/testing/responsiveness/laptop3.webp)
+
+  ![laptop 4](/static/documentation/testing/responsiveness/laptop4.webp)
+
+* The website was tested on desktop and laptop computers on a variety of screen sizes using device toolbar option in Google Chrome developer tools.
+
+  -  Google Chrome developer tools
+
+  ![responsive](/static/documentation/testing/responsiveness/desktop.webp)
+
 ### Manual testing
 
 Due to extensive testing, this section is provided in separate file which can be found on the following [link](/static/documentation/testing/TEST.md).
