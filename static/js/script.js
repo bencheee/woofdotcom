@@ -1,7 +1,22 @@
 // ####################
 //        EVENTS
 // ####################
+$(".js-form-toggle *").hide()
+filterButton = 
+    `<div class="desktop-filter" style="font-size: 2rem; text-align: center;"
+        tabindex="0">
+        <i class='fas fa-cogs'></i>
+        <p>Search filter</p>
+    </div>`
+$(".js-form-toggle").append(filterButton)
 
+$(".desktop-filter").click(function(){
+    $(".desktop-filter").addClass("animate__animated animate__flipOutY")
+    $(".desktop-filter").remove();
+    $(".js-form-toggle *").show()
+    $(".js-form-toggle").addClass("animate__animated animate__flipInY")
+    
+})
 
 // Navbar toggle
 // Calling toggle() before and after is(:visible) method because it returns True or False instantly. Using slideToggle after for smooth transition. Function prevents scrolling on the page when navbar is visible.

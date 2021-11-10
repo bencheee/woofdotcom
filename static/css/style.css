@@ -1587,8 +1587,15 @@ li {
         transition: 0.3s;
     }
 
+    .desktop-filter {
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
     .nav__username:hover,
-    .nav__username:focus-visible {
+    .nav__username:focus-visible,
+    .desktop-filter:hover,
+    .desktop-filter:focus-visible {
         transform: scale(1.1);
         outline: none;
         transition: 0.3s;
