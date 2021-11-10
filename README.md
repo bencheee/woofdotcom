@@ -141,6 +141,8 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   - [app.py](/static/documentation/testing/images/python.PNG)
 
+    - All tests passed with no major issues
+
 ### 6.1 Testing User Stories from User Experience (UX) Section
 
 #### First time visitors's goals
