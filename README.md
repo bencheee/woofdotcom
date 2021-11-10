@@ -115,6 +115,24 @@
 
 ## 6. TESTING
 
+The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) services were used to validate the HTML and CSS code of the project to ensure there were no syntax errors. [jsHint](https://jshint.com/) was used to test JavaScript code.
+
+* HTML Code Test Results:
+
+* CSS Code Test Results:
+
+* JavaScript Code Testing:
+
+  - Following settings were used to test the code
+
+  - [Test Settings](documentation/testing/images/code_validation/js_test_settings.JPG)
+
+  - *script.js* test results:
+
+  - [script.js](/static/documentation/testing/images/javascript.PNG)
+
+    - All tests passed with no major issues (3 unused variables are called from HTML forms using "onsubmit" event attribute)
+
 ### 6.1 Testing User Stories from User Experience (UX) Section
 
 #### First time visitors's goals
