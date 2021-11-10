@@ -73,7 +73,7 @@
 - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 - [Python 3.8](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### 4.2 Frameworks, libraries and programs
+### 4.2 Frameworks, libraries, programs and websites
 
 - [Balsamiq](https://balsamiq.com/) was used to create the wireframes during the site design process.
 
@@ -81,11 +81,17 @@
 
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python which was used to create this app.
 
+- [Pypi](https://pypi.org/) was used to find and download Python packages.
+
 - [Heroku](https://www.heroku.com/) is a cloud platform which was used to deploy the project.
 
 - [Google Fonts](https://fonts.google.com/) were used to import 'Frederick the Great' and 'Libre Franklin' fonts which were used throughout the site.
 
+- [Amazon Web Services](https://aws.amazon.com/) was used to store images uploaded via forms on the website.
+
 - [Slick](https://kenwheeler.github.io/slick/) is jQuery plugin which was used to create carousel effect.
+
+- [CSS Animate](https://animate.style/) was used to create animated effects.
 
 - [Gitpod](https://www.gitpod.io/) was used to write all the HTML, CSS, JavaScript and Python code for the site.
 
@@ -94,6 +100,8 @@
 - [GitHub](https://github.com/) is used to store the projects code after being pushed from Git.
 
 - [Photopea](https://www.photopea.com/) is free online photo editor which was used to edit and optimize background image, logo and all card images.
+
+- [Redketchup](https://redketchup.io/bulk-image-resizer) was used to convert large number of images.
 
 - [Font Awesome](https://fontawesome.com/) was used to add icons for aesthetic and UX purposes.
 
