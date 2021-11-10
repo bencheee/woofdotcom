@@ -304,6 +304,6 @@ $ git clone https://github.com/bencheee/woofdotcom.git
 
 ### 8.1 Acknowledgements
 
-- My mentor for continuous helpful feedback
+- My mentor Felipe Souza Alarcon for continuous helpful feedback
 
 - Tutor support at Code Institute for their support 
