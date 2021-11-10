@@ -1,9 +1,8 @@
-import pdb
 import os
 import random
 from io import BytesIO
-from PIL import Image, UnidentifiedImageError
 from datetime import datetime
+from PIL import Image, UnidentifiedImageError
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -908,7 +907,7 @@ def dog_edit(dog_id):
             {"_id": ObjectId(dog_id)},
             {"$set": {"name": name, "gender": gender, "age": age,
                       "size": size, "description": description,
-                      "greeting": greeting, "good_with": good_with, 
+                      "greeting": greeting, "good_with": good_with,
                       "img_path": img_path, "img_filename": img_filename,
                       "img_id": img_id}})
         flash("Changes are saved !")
@@ -1364,4 +1363,3 @@ if __name__ == "__main__":
         host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
         debug=True)
-

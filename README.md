@@ -115,7 +115,7 @@
 
 ## 6. TESTING
 
-The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) services were used to validate the HTML and CSS code of the project to ensure there were no syntax errors. [jsHint](https://jshint.com/) was used to test JavaScript code.
+The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) services were used to validate the HTML and CSS code of the project to ensure there were no syntax errors. [jsHint](https://jshint.com/) was used to test JavaScript code. [pep8online](http://pep8online.com/) was used to check if Python code is PEP8 compliant.
 
 * HTML Code Test Results:
 
@@ -136,6 +136,10 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
   - [script.js](/static/documentation/testing/images/javascript.PNG)
 
     - All tests passed with no major issues (3 unused variables are called from HTML forms using "onsubmit" event attribute)
+
+* Python Code Testing
+
+  - [app.py](/static/documentation/testing/images/python.PNG)
 
 ### 6.1 Testing User Stories from User Experience (UX) Section
 
