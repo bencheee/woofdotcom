@@ -125,7 +125,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   - Following settings were used to test the code
 
-  - [Test Settings](documentation/testing/images/code_validation/js_test_settings.JPG)
+  - [Test Settings](/static/documentation/testing/images/javascript_settings.PNG)
 
   - *script.js* test results:
 
