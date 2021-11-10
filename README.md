@@ -121,6 +121,10 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
 * CSS Code Test Results:
 
+  - [CSS](/static/documentation/testing/images/css.webp)
+
+    - No errors were found in CSS code. 
+
 * JavaScript Code Testing:
 
   - Following settings were used to test the code
