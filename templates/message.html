@@ -18,9 +18,9 @@
   </div>
   {% if message.registered == False %}
     <p class="message__content">{{message.message}}</p>
-    <div class="message__btns">
-      <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
-      <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
+    <div class="message__btns" tabindex="0">
+      <div class="js-btn-back" tabindex="0"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
+      <div class="message__delete btn--delete" id="message-delete" tabindex="0"><i class="fas fa-times"></i><span>Delete</span></div>
     </div>
     <p class="message__nonuser">Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: <u><a href="mailto:{{message.sender_email}}">{{message.sender_email}}</a></u> from your email client.</p>
   {% else %}
@@ -52,9 +52,9 @@
       <p class="message__content">{{message.message}}</p>
     {% endif %}
     <div class="message__btns">
-      <div class="js-btn-back"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
-      <div class="message__reply"><i class="fas fa-reply"></i><span>Reply</span></div>
-      <div class="message__delete btn--delete" id="message-delete"><i class="fas fa-times"></i><span>Delete</span></div>
+      <div class="js-btn-back" tabindex="0"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
+      <div class="message__reply" tabindex="0"><i class="fas fa-reply"></i><span>Reply</span></div>
+      <div class="message__delete btn--delete" id="message-delete" tabindex="0"><i class="fas fa-times"></i><span>Delete</span></div>
     </div>
   {% endif %}
 
@@ -65,7 +65,7 @@
       id="message" maxlength="10000" required></textarea>
     <div class="msg__form-btns">
         <button class="btn btn--form btn--reply">Reply</button>
-        <div class="btn btn--invert btn--cancel">Cancel</div>
+        <div class="btn btn--invert btn--cancel" tabindex="0">Cancel</div>
     </div>
   </form>
 </section>

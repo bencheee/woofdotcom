@@ -111,7 +111,7 @@
         <div class="card card--index">
           <a href="{{ url_for('post_page', post_id=posts[0]._id) }}">
             <div class="card__img img--rounded js-img-desk"
-              style="background-image: url({{posts[0].img_path}});" alt="">
+              style="background-image: url({{posts[0].img_path}});" alt="" >
             <div class="img-overlay"></div>`
               <div class="card__text-container">
                 <h3 class="card__title card__title--index">{{ posts[0].title }}</h3>
@@ -305,7 +305,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
     </div>
   </div>
 </section>

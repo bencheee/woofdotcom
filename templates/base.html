@@ -97,14 +97,14 @@
       </a>
       <div class="nav__container">
         {% if not session.user %}
-          <a class="nav__btn" href="{{url_for('user_login')}}">Login</a>
+          <a class="nav__btn nav__btn--login" href="{{url_for('user_login')}}">Login</a>
           <a class="nav__btn nav__btn--register" href="{{url_for('user_register')}}">Sign up</a>
         {% else %}
         <div class="nav__dropdown">
           <a class="nav__link" href="{{url_for('user_profile')}}">Account settings<a>
           <a class="nav__link" href="{{url_for('user_logout')}}">Logout</a>
         </div>
-        <span class="nav__username">{{session.user}}</span>
+        <span class="nav__username" tabindex="0">{{session.user}}</span>
         <a class="nav__icon" href="{{url_for('inbox')}}">
           {% if session.user == "Admin" %}
             {% if msgs_reqs == 0 %}
@@ -162,7 +162,7 @@
     <div class="popup">
       <p class="popup__text">TEXT</p>
       <div class="popup__btn-container">
-        <button class="btn btn--popup" id="">Cancel</button>
+        <button class="btn btn--popup" id="" tabindex="1">Cancel</button>
         {% block popup %}
         {% endblock %}
       </div>
@@ -178,11 +178,11 @@
             <li class="flash__text">{{ message }}</li><br>
             <div class="flash__btn-container">
               {% if category == "error" %}
-                <div class="btn btn--flash" id="flash-back">Go back</div>
+                <div class="btn btn--flash" id="flash-back" tabindex="1">Go back</div>
               {% elif category == "index" %}
-                <a class="btn btn--flash" href="/">Back to home page</a>
+                <a class="btn btn--flash" href="/" tabindex="1">Back to home page</a>
               {% else %}
-                <div class="btn btn--flash" id="flash-continue">Continue</div>
+                <div class="btn btn--flash" id="flash-continue" tabindex="1">Continue</div>
               {% endif %}
             </div>
           {% endfor %}

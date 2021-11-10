@@ -104,7 +104,7 @@
               alt=""></div>
           </a>
           <div class="wrapper__column card__info-wrapper">
-            <a href="{{ url_for('post_page', post_id=post._id) }}">
+            <a href="{{ url_for('post_page', post_id=post._id) }}" tabindex="-1">
               <h3 class="card__title card__title--postmain">{{ post.title }}</h3>
             </a>
             <p class="card__info card__info--postmain">
@@ -241,7 +241,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
     </div>
   </div>
 </section>

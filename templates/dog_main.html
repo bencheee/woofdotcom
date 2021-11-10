@@ -121,7 +121,7 @@
             </div>
           </a>
           <div class="wrapper__column card__info-wrapper">
-            <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}">
+            <a class="card__img-link" href="{{ url_for('dog_page', dog_id=dog._id) }}" tabindex="-1">
               <h3 class="card__title card__title--dogmain">{{ dog.name.capitalize() }}</h3>
             </a>
             <p class="card__info card__info--dogmain">
@@ -249,7 +249,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
     </div>
   </div>
 </section>

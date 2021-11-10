@@ -76,24 +76,46 @@ $(".js-filter-toggle").click(
     })
 
 // Toggles messages/requests in inbox
-$(".switch span").click(function () {
+function changeSwitchColor(){
     $(this).css({"color": "black", "transition": "0.5s"});
     $(this).siblings().css({"color": "#0000004d", "transition": "0.5s"});
-})
+}
 
-$(".switch__messages").click(function () {
+$(".switch span").click(changeSwitchColor)
+$(".switch span").on('keypress',function(e) {
+    if(e.which == 13) {
+        changeSwitchColor();
+    }
+});
+
+function showMessages(){
     $("#title-messages").show();
     $(".inbox--messages").show();
     $("#title-requests").hide();
     $(".inbox--requests").hide();
-})
+}
 
-$(".switch__requests").click(function () {
+$(".switch__messages").click(showMessages)
+$(".switch__messages").on('keypress',function(e) {
+    if(e.which == 13) {
+        showMessages();
+    }
+});
+
+function showRequests(){
     $("#title-messages").hide();
     $(".inbox--messages").hide();
     $("#title-requests").show();
     $(".inbox--requests").show();
-})
+}
+
+$(".switch__requests").click(showRequests)
+$(".switch__requests").on('keypress',function(e) {
+    if(e.which == 13) {
+        showRequests();
+    }
+});
+
 
 // Toggles reply message in inbox
 $(document).ready(function () {
@@ -218,6 +240,12 @@ $(".desk-nav").mouseleave(
     function () {
         $(".nav__dropdown").slideUp();
     })
+
+$(".nav__username").focusin(
+    function () {
+        $(".nav__dropdown").slideDown();
+    })
+
 
 // Adds carousel to dog_surrender.html
 //CODE CREDIT: https://kenwheeler.github.io/slick/

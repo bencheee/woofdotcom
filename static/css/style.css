@@ -98,6 +98,7 @@ li {
     font-weight: 400;
     border: none;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .btn--invert {
@@ -118,12 +119,14 @@ li {
     padding: 10px;
     margin: 35px auto 0 auto;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 /* Card */
 
 .card {
     margin-bottom: 10px;
+    transition: 0.3s;
 }
 
 .card__img {
@@ -747,6 +750,7 @@ li {
 .switch__requests,
 .switch__messages {
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .switch__requests {
@@ -857,6 +861,7 @@ li {
 .navbar__logo {
     color: var(--color6);
     font-size: 2rem;
+    transition: 0.3s;
 }
 
 .navbar__toggle {
@@ -902,7 +907,8 @@ li {
 }
 
 .footer a {
-    color: var(--color6);
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
 }
 
 .footer__copyright {
@@ -1141,10 +1147,8 @@ li {
     .nav__btn {
         font-size: 1.3rem;
         font-weight: 900;
-        border: none;
         background-color: var(--color6);
         padding: 10px;
-        margin-left: 20px;
     }
 
     .nav__btn:focus-visible {
@@ -1152,9 +1156,17 @@ li {
         box-shadow: 0px 0px 1px 0px black;
     }
 
+    .nav__btn--login {
+        border: 1px solid var(--color6);
+        transition: 0.5s;
+        padding: 10px 20px;
+    }
+
     .nav__btn--register {
         color: var(--color6);
         background-color: var(--color1);
+        border: 1px solid var(--color1);
+        transition: 0.5s;
     }
 
     .nav__container {
@@ -1168,6 +1180,11 @@ li {
         font-weight: 900;
         margin-left: 20px;
         cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .nav__icon {
+        transition: 0.3s;
     }
 
     .nav__username {
@@ -1179,7 +1196,9 @@ li {
     }
 
     .nav__link {
+        display: inline-block;
         margin-left: 20px;
+        transition: 0.3s;
     }
 
     .navbar__logo {
@@ -1228,9 +1247,11 @@ li {
         padding-bottom: 5px;
     }
 
-    .page-link:hover {
+    .page-link:hover,
+    .page-link:focus-visible {
         box-shadow: 0px 10px 15px -13px black;
         transition: 0.5s;
+        outline: none;
     }
 
     .page-link--active {
@@ -1302,6 +1323,7 @@ li {
             180deg, rgba(242,249,249,1) 50%, rgb(198, 234, 233) 150%);
         padding: 10px;
         border-radius: 10px;
+        transition: 0.3s;
     }
 
     .content-category {
@@ -1395,6 +1417,7 @@ li {
         width: 90%;
         margin: 25px auto;
         border-radius: 10px;
+        transition: 0.3s;
     }
 
     .inbox__header {
@@ -1510,6 +1533,117 @@ li {
         width: 85%;
         margin: 0 auto;
     }
+
+    /* Hover effects */
+
+    .btn:hover,
+    .btn:focus-visible,
+    .btn--bottom:hover,
+    .btn--bottom:focus-visible,
+    .message__reply:hover,
+    .message__reply:focus-visible,
+    .message__delete:hover,
+    .message__delete:focus-visible,
+    .js-btn-back:hover,
+    .js-btn-back:focus-visible {
+        box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.4);
+        transition: 0.3s;
+        outline: none;
+    }
+
+    .navbar__logo:hover,
+    .navbar__logo:focus-visible,
+    .switch__messages:hover,
+    .switch__messages:focus-visible,
+    .switch__requests:hover,
+    .switch__requests:focus-visible {
+        text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.4);
+        transition: 0.3s;
+        outline: none;
+    }
+
+    .nav__btn--login:hover,
+    .nav__btn--login:focus-visible {
+        border: 1px solid black;
+        transition: 0.5s;
+        outline: none;
+    }
+
+    .nav__btn--register:hover,
+    .nav__btn--register:focus-visible {
+        color: var(--color1);
+        background-color: var(--color6);
+        border: 1px solid var(--color1);
+        transition: 0.5s;
+        outline: none;
+    }
+    
+    .nav__icon:hover,
+    .nav__icon:focus-visible,
+    .nav__link:hover,
+    .nav__link:focus-visible {
+        transform: scale(1.2);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .nav__username:hover,
+    .nav__username:focus-visible {
+        transform: scale(1.1);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .card a {
+        display: block;
+    }
+
+    .card:hover,
+    .card a:focus-visible,
+    .content-box:hover,
+    .content-latest a:focus-visible {
+        transform: scale(0.97);
+        filter: grayscale(0.5);
+        transition: 0.3s;
+        outline: none;
+    }
+
+    .inbox-link {
+        display: block;
+        transition: 0.3s;
+    }
+
+    .inbox-link:focus-visible {
+        transform: scale(0.97);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .inbox:hover {
+        transform: scale(0.97);
+        background: linear-gradient(
+            90deg, rgba(52, 133, 126, 0.205) 0%, rgb(144 206 201 / 20%) 35%, rgba(242,249,249,1) 100%);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .btn--regcard:hover,
+    .btn--regcard:focus-visible {
+        background-color: var(--color6);
+        color: var(--color3);
+        border: 1px solid var(--color2);
+        transition: 0.3s;
+        outline: none;
+    }
+
+    .footer a:hover,
+    .footer a:focus-visible {
+        color: white;
+        transition: 0.3s;
+        outline: none;
+    }
+
+
 
 }
 
