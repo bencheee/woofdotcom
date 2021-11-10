@@ -51,11 +51,11 @@
 
     <label class="form__label" for="summary">Summary</label>
     <textarea class="form__textarea textarea--post-summary" name="summary"
-      id="summary" minlength="10" maxlength="150" required> {{- post.summary -}} </textarea>
+      id="summary" maxlength="150" required> {{- post.summary -}} </textarea>
 
     <label class="form__label" for="content">Post content</label>
     <textarea class="form__textarea" name="content" id="content"
-      minlength="250" maxlength="10000" required> {{- post.content -}} </textarea>
+      maxlength="10000" required> {{- post.content -}} </textarea>
 
     <label class="btn btn--invert btn--post js-btn-photo" for="photo">
       <i class="fas fa-upload"></i><span> Upload photo</span>

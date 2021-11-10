@@ -566,8 +566,8 @@ Expected inputs:
 
 * Select category (required) does not have any validation restrictions and all options are pre populated by documents in 'categories' collection from database
 * Post title (required) is between 2 and 25 characters long
-* Summary (required) is min 10 and max 150 characters long
-* Post content (required) is min 250 and max 10000 characters long
+* Summary (required) is max 150 characters long
+* Post content (required) is max 10000 characters long
 * Upload photo - validation is done within python code
 
 **All tests passed!**
@@ -583,8 +583,8 @@ Expected inputs:
 * Age (required) is between 1 and 2 characters long, only numbers allowed
 * Size (required) has three options - 'small', 'medium' and 'large'
 * Other options is a checkbox input with four options - 'Good with kids', 'Suitable for families', 'Good with other pets', and 'Prefers one owner'
-* Greeting (required) is min 10 and max 150 characters long
-* Dog description (required) is min 150 and max 10000 characters long
+* Greeting (required) is max 150 characters long
+* Dog description (required) is max 10000 characters long
 * Upload photo - validation is done within python code
 
 **All tests passed!**
