@@ -78,7 +78,7 @@ function changeSwitchColor() {
 }
 
 $(".switch span").click(changeSwitchColor);
-$(".switch span").on('keypress', function (e) {
+$(".switch span").on("keypress", function (e) {
     if (e.which == 13) {
         changeSwitchColor();
     }
@@ -92,7 +92,7 @@ function showMessages() {
 }
 
 $(".switch__messages").click(showMessages);
-$(".switch__messages").on('keypress', function (e) {
+$(".switch__messages").on("keypress", function (e) {
     if (e.which == 13) {
         showMessages();
     }
@@ -106,7 +106,7 @@ function showRequests() {
 }
 
 $(".switch__requests").click(showRequests);
-$(".switch__requests").on('keypress', function (e) {
+$(".switch__requests").on("keypress", function (e) {
     if (e.which == 13) {
         showRequests();
     }
@@ -163,14 +163,14 @@ $(".popup-main-btn").click(function () {
 });
 
 // Enables and disables scroll on popup/flash message
-$(document).on('click', '.popup-main-btn', disableScroll);
-$(document).on('click', '.btn--popup', enableScroll);
-$(document).on('click', '.btn--flash', enableScroll);
+$(document).on("click", ".popup-main-btn", disableScroll);
+$(document).on("click", ".btn--popup", enableScroll);
+$(document).on("click", ".btn--flash", enableScroll);
 
 // Changes text for 'upload photo' button
 $(".inputfile").change(function (e) {
     let fileDefault = "No file selected";
-    let fileSelected = e.target.value.split('\\').pop();
+    let fileSelected = e.target.value.split("\\").pop();
     if (fileSelected === "") {
         $(".js-btn-photo span").text(" " + fileDefault);
         $(".js-btn-photo i").removeClass("fas fa-check");
@@ -186,13 +186,13 @@ $(".inputfile").change(function (e) {
 $(document).ready(function () {
     if (window.localStorage.length > 0) {
         switch (localStorage.getItem("origin")) {
-            case 'register':
+            case "register":
                 $("#flash-back").attr("id", "flash-back-register");
                 break;
-            case 'post':
+            case "post":
                 $("#flash-back").attr("id", "flash-back-post");
                 break;
-            case 'dog':
+            case "dog":
                 $("#flash-back").attr("id", "flash-back-dog");
                 break;
         }
@@ -202,9 +202,9 @@ $(document).ready(function () {
 // Gets values from local storage and fills in the form
 // This is used to keep the previous user values on form refresh
 // in case of error
-$(document).on('click', '#flash-back-register', getLocalRegister);
-$(document).on('click', '#flash-back-post', getLocalPost);
-$(document).on('click', '#flash-back-dog', getLocalDog);
+$(document).on("click", "#flash-back-register", getLocalRegister);
+$(document).on("click", "#flash-back-post", getLocalPost);
+$(document).on("click", "#flash-back-dog", getLocalDog);
 
 // Compares highest previous position of scroll bar with current position of scroll bar and dependion on the outcome decides if user is scrolling up or down. Since this is mainly mobile functionality and on some phones it is possible to scrol even further the max height of the screen, function needs to compensate this with 80px on top and calculate scrollLimit on the bottom.
 let scrollTop = -1;
@@ -244,20 +244,20 @@ $(".nav__username").focusin(function () {
 // Adds carousel to dog_surrender.html
 // CODE CREDIT: https://kenwheeler.github.io/slick/
 $(document).ready(function () {
-    $('.carousel').slick({
+    $(".carousel").slick({
         arrows: true,
         dots: false,
         infinite: true,
         speed: 500,
         fade: true,
-        cssEase: 'linear'
+        cssEase: "linear"
     });
 });
 
 // Adds black and white images on card touch
 // CODE CREDIT: https://stackoverflow.com/a/15595893
-$('.card__img').on({
-    'touchstart': function () {
+$(".card__img").on({
+    "touchstart": function () {
         $(this).css({
             filter: "grayscale(100%)",
             transform: "scale(0.95)"
@@ -265,8 +265,8 @@ $('.card__img').on({
     }
 });
 
-$('.card__img').on({
-    'touchend': function () {
+$(".card__img").on({
+    "touchend": function () {
         $(this).css({
             filter: "grayscale(0%)",
             transform: "scale(1)"
@@ -281,8 +281,8 @@ if (($(".card").length) / 3 > 5) {
     hidePosts($(".card-tablet"));
     hidePosts($(".card-desktop"));
     let button =
-        `<button class='btn load-more'
-        style='margin-top: 50px'>Show more </button>`;
+        `<button class="btn load-more"
+        style="margin-top: 50px">Show more </button>`;
     $(".js-card-mobile").append(button);
     $(".js-card-tablet").append(button);
     $(".js-card-desktop").append(button);
@@ -313,7 +313,7 @@ $(".js-form-toggle *").hide();
 let filterButton =
     `<div class="desktop-filter" style="font-size: 2rem; text-align: center;"
         tabindex="0">
-        <i class='fas fa-cogs'></i>
+        <i class="fas fa-cogs"></i>
         <p>Search filter</p>
     </div>`;
 $(".js-form-toggle").append(filterButton);
@@ -364,14 +364,14 @@ function showPosts(selector) {
 
 // Enables scrolling on the page
 function enableScroll() {
-    $('html, body').css({
+    $("html, body").css({
         "overflow": "visible",
     });
 }
 
 // Disables scrolling on the page
 function disableScroll() {
-    $('html, body').css({
+    $("html, body").css({
         "overflow": "hidden",
     });
 }
