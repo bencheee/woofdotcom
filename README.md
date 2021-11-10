@@ -40,11 +40,9 @@
 
 #### 1.1.3 Site owner's goals
 
-- *As a site owner*, I want to provide a platform for users to shair their knowledge, experiences, advices and passion for dogs
+- *As a site owner*, I want to provide a platform for users to share their knowledge, experiences, advices and passion for dogs
 
 - *As a site owner*, I want to provide service and support for dog owners to re-home their dogs if they can not keep them for any reason anymore
-
-- *As a site owner*, I want to make all data easily accessible and to implement tools for more detailed searches
 
 - *As a site owner*, I want to provide messaging tools between site users and myself as integrated part of the site
 
@@ -107,7 +105,117 @@
 
 ## 6. TESTING
 
+### 6.1 Testing User Stories from User Experience (UX) Section
+
+#### First time visitors's goals
+
+* As a first time visitor, I want to clearly see the purpose of the site and to easily navigate throughout the site.
+
+  -  Theme of the website is visible through it’s name (woofdotcom) and there are various dog photos in banner section throughout the site. Pages have title sections with brief description of the purpose of the page. For first time visitors (unregistered users) there is register section displayed which invites user to create account and explains additional benefits of being a member.
+
+  [Example 1](/static/documentation/testing/user_stories/001.webp)
+
+* As a first time visitor, I want to see dog content which is divided into easily understandable and well structured sections.
+
+  -  On index page there are two sections. First one, section with latest posts, shows 3 most recent posts added to the website. Second section contains 3 most recent dogs advertised for adoption. Both sections have “view more” buttons which redirect users to dedicated page for posts or dog ads. On desktop size, users can browse through different website sections by using tabs which are placed below title/banner. On mobile and tablet those links are part of navigation menu which can be accessed by pressing the toggle button in upper right corner of the page. 
+
+  [Example 2](/static/documentation/testing/user_stories/002.webp)
+  [Example 3](/static/documentation/testing/user_stories/003.webp)
+
+* As a first time visitor, I want to be able to use search tools to filter content by specific criteria
+
+  -  On main page dedicated for posts/dogs there is a “filter” button which toggles search controls. Controls consist of text input fields, dropdown select elements, checkboxes, reset and submit buttons. Posts can be filtered by category and author, and they can be sorted by date or popularity (number of likes). Dogs can be filtered by name, gender, age, size, owner preferences, and they are sorted from newest to oldest.
+
+  [Example 4](/static/documentation/testing/user_stories/004.webp)
+
+* As a first time visitor, I want to be able to contact the site owner
+
+  -  Contact us page provides contact form which sends user’s message to admin inbox.
+
+  [Example 5](/static/documentation/testing/user_stories/005.webp)
+
+* As a first time visitor, I want to be able to create account which will give me more options on the site
+
+  -  Register section is displayed on pages throughout the website to unregistered users. Also, there is a link for registration form in navigation menu.
+
+  [Example 6](/static/documentation/testing/user_stories/006.webp)
+
+#### Frequent user's goals
+
+* As a frequent user, I want to be able to write my own content and to share it with other users of the site
+
+  -  Registered users can add their own posts to the website. On desktop size there is navigation tab “Add new post” below the title/banner. On mobile and tablet size this link is in the navigation menu.
+
+  [Example 7](/static/documentation/testing/user_stories/007.webp)
+
+* As a frequent user, I want to be able to add dogs and their info to the dog database on the site
+
+  -  Registered users can add their dog ads to the website. On desktop size there is navigation tab “Surrender a dog” below the title/banner. On mobile and tablet size this link is in the navigation menu. This link redirects users to a page with tips and advices on rehoming a dog, and if user wants to proceed with posting an ad, there is a link on the bottom of the page. However, only registered users with full profile info can post dog ads. If user did not provide full info, flash message is displayed.
+
+  [Example 8](/static/documentation/testing/user_stories/008.webp)
+  [Example 9](/static/documentation/testing/user_stories/009.webp)
+
+* As a frequent user, I want to be able to edit or delete all the content created by myself at any time
+
+  -  Registered users can edit or delete own content. On post/dog page there are edit and delete buttons which will display a pop up message for user to confirm the action. 
+
+  [Example 10](/static/documentation/testing/user_stories/010.webp)
+
+* As a frequent user, I want to be able to give positive feedback to other users who are posting their content to the site
+
+  -  Registered users can give positive feedback to other posts by pressing “star icon” on posts page. This action can also be undone by pressing the icon again. Users can not give feedback to own posts.
+
+  [Example 11](/static/documentation/testing/user_stories/011.webp)
+
+* As a frequent user, I want to be able to send and withdraw applications for adopting dogs
+
+  -  Registered users can apply for dog adoption. There is “Apply for adoption” button on the bottom of each dog’s page. However, only registered users with full profile info can apply for dog adoption. If user did not provide full info, flash message is displayed. Once clicked, flash message is displayed to the user, and adoption request message with user’s details is sent to admin. This action can also be undone by pressing the “Withdraw application” button. Users can not send applications for own dogs.
+
+  [Example 12](/static/documentation/testing/user_stories/012.webp)
+  [Example 13](/static/documentation/testing/user_stories/013.webp)
+
+* As a frequent user, I want to be able to easily communicate with site owner or admin
+
+  -  Contact us page provides contact form which sends user’s message to admin inbox. Registered users have access to their inbox where they can see all previous messages received from admin. From there they can chose to reply to the message directly.
+
+  [Example 14](/static/documentation/testing/user_stories/014.webp)
+
+* As a frequent user, I want to be able to make changes to my profile
+
+  -  On desktop size there is “Update profile” tab below title/banner. On mobile and tablet sizes there is a link in navigation menu. This link redirects users to the profile page where they can change password or update additional info required for posting dog ads or applying for dog adoption.
+
+  [Example 15](/static/documentation/testing/user_stories/015.webp)
+
+#### Site owner's goals
+
+* As a site owner, I want to provide a platform for users to share their knowledge, experiences, advices and passion for dogs
+
+  -  Registered users can write their own posts and publish them on the website. Posts are divided in categories, which makes it easier for other users to see what is the purpose of the post.
+
+  [Example 16](/static/documentation/testing/user_stories/007.webp)
+
+* As a site owner, I want to provide service and support for dog owners to re-home their dogs if they can not keep them for any reason anymore
+
+  -  Website has a “Surrender dog” page which helps dog owners with tips and advices for abandoning a dog. Owners are encouraged to change their mind and keep the dog, but in case this is not an option they can try to rehome a dog by posting and ad rather than giving the dog straight to the shelter.
+
+  [Example 17](/static/documentation/testing/user_stories/008.webp)
+
+* As a site owner, I want to provide messaging tools between site users and myself as integrated part of the site
+
+  -  Messaging is available only between admin and user. Messages can be sent by contact form or by replying to existing message in inbox. In case of applications for dog adoption, message is generated automatically and sent to admin inbox.
+
+  [Example 18](/static/documentation/testing/user_stories/016.webp)
+
+* As a site owner, I want to promote social media links to grow the community
+
+  -  The footer contains links to the Facebook, Instagram, Twitter, Snapchat  and Youtube websites. Each link will be opened in new tab to ensure that users can easily get back to the website.
+
+  [Example 19](/static/documentation/testing/user_stories/017.webp)
+
+### Manual testing
+
 Due to extensive testing, this section is provided in separate file which can be found on the following [link](/static/documentation/testing/TEST.md).
+
 ---
 
 ## 7. DEPLOYMENT
