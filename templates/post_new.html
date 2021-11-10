@@ -19,7 +19,7 @@
       <li>Give up a dog</li>
     </a>
     {% if session.user %}
-      <a class="page-link" href="{{url_for('post_new')}}">
+      <a class="page-link page-link--active" href="{{url_for('post_new')}}">
         <li>Post new article</li>
       </a>
     {% endif %}
