@@ -250,10 +250,62 @@
 
   ![responsive](/static/documentation/testing/responsiveness/desktop.webp)
 
-### Manual testing
+### 6.3 Manual testing
 
 Due to extensive testing, this section is provided in separate file which can be found on the following [link](/static/documentation/testing/TEST.md).
 
+### 6.4 Known bugs
+
+* Website does not work in Internet Explorer 11 which causes page elements to display incorrectly on load, and none of the events work.
+
+* Images are not displaying on older iPhone devices using Safari versions lower than v14 as webp image format is not supported.
+
+### 6.5 Fixed bugs
+
+* On mobile and tablet devices navbar toggle button was disabling scrolling on the page.
+
+Solution:
+
+```
+$(".navbar__toggle").click(function () {
+    $(".nav__mobile").toggle();
+    if ($(".nav__mobile").is(":visible")) {
+        disableScroll()
+    } else {
+        enableScroll()
+    }
+    $(".nav__mobile").toggle();
+    $(".nav__mobile").slideToggle();
+})
+```
+
+* On mobile and tablet navbar was not hiding properly. This was fixed by adding some test code which calculates position of navbar (image attached), which helped to write javascript code which fixed it.
+
+![bug1](/static/documentation/testing/images/bug1.webp)
+
+Solution:
+
+```
+let scrollTop = -1; 
+let scrollCurrent;
+let containerHeight = $(".main-container").height()
+let bodyHeight = $("body").height()
+let scrollLimit = containerHeight - bodyHeight
+$(window).scroll(function() {
+    // Hides navbar only if page is higher than screen height
+    if (scrollLimit > 0) {
+        scrollCurrent = $(window).scrollTop();
+        if (scrollCurrent >= scrollTop && scrollCurrent > 80) {
+            $(".nav").css("top", "-80px");
+        } else if (scrollCurrent > scrollLimit) {
+            $(".nav").css("top", "-80px");
+        } else {
+            $(".nav").css("top", "0");
+        }
+        scrollTop = scrollCurrent;
+    }
+})
+```
 ---
 
 ## 7. DEPLOYMENT
