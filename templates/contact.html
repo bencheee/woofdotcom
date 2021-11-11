@@ -1,37 +1,48 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_contact_l.webp" alt="banner - Huskey and Labrador on snow field">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_contact_s.webp" alt="banner - Huskey and Labrador on snow field">
+  <img class="banner__img desktop-content" 
+    src="/static/images/banner_contact_l.webp"
+    alt="banner - Huskey and Labrador on snow field">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_contact_s.webp"
+    alt="banner - Huskey and Labrador on snow field">
   <div class="title-section">
     <h1 class="title-section__title">Contact us</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}"
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}" aria-label="link to new post page">
+        <a class="page-link" href="{{url_for('post_new')}}"
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link page-link--active" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link page-link--active" href="{{url_for('contact')}}" 
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -43,15 +54,14 @@
 <section class="container container--light container--contact">
   <h2 class="container__title">We want to hear from you!</h2>
   <form class="form" action="{{ url_for('contact') }}" method="POST">
+  {% if not session.user %}
+    <label class="form__label" for="name">First name</label>
+    <input class="form__input" type="text" id="name" name="name"
+      minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$">
 
-    {% if not session.user %}
-      <label class="form__label" for="name">First name</label>
-      <input class="form__input" type="text" id="name" name="name"
-        minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$">
-
-      <label class="form__label" for="email">Your email address</label>
-      <input class="form__input" type="email" id="email" name="email" required>
-    {% endif%}
+    <label class="form__label" for="email">Your email address</label>
+    <input class="form__input" type="email" id="email" name="email" required>
+  {% endif%}
 
     <label class="form__label" for="subject">Subject</label>
     <textarea class="form__textarea textarea--contact-subject" id="subject"
@@ -64,6 +74,7 @@
     <button class="btn btn--contact">Send message</button>
   </form>
 </section>
+
 {% if not session.user %}
 <!-- Registration card -->
 <section class="container container--light container--regcard">
@@ -95,9 +106,14 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
+      <a class="btn btn--regcard btn--transparent"
+        href="{{ url_for('user_register') }}"
+        aria-label="link to user register page">
+        Register for free
+      </a>
     </div>
   </div>
 </section>
 {% endif %}
+
 {% endblock %}

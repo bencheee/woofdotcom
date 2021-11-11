@@ -1,14 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<!-- Inbox header -->
 <div class="inbox__header">
   {% if session.user == "Admin" %}
+    <!-- Mesages / Requests Switch -->
     <div class="switch">
-      <span class="switch__messages" tabindex="0">Messages</span>
-      <span> / </span>
-      <span class="switch__requests" tabindex="0">Requests</span>
+      <span class="switch__messages" tabindex="0">
+        Messages
+      </span>
+      <span>
+         / 
+      </span>
+      <span class="switch__requests" tabindex="0">
+        Requests
+      </span>
     </div>
     
+    <!-- Welcome message -->
     <h4 class="inbox-title" id="title-messages">Hi Admin,
     
       You have {{admin_unread_msgs}} unread messages!</h4>
@@ -25,30 +35,42 @@
   <hr class="hr--inbox">
 </div>
 
-
-<section class="container container--light container--extended container--inbox">
-  <!-- Switches between messages / adoption requests -->
-
+<section class="container container--light container--extended 
+  container--inbox">
   {% if session.user == "Admin" %}
     <!-- Admin message inbox -->
     {% for msg in admin_msgs %}
-      <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link" aria-label="link to open message {{msg.subject}}">
+      <a href="{{url_for('message', msg_id=msg._id)}}"
+        class="inbox--messages inbox-link"
+        aria-label="link to open message {{msg.subject}}">
         <div class="inbox">
           <div class="inbox__container">
             {% if msg.status == "unread" %}
-              <span class="inbox__subject">{{msg.subject}}</span>
+              <span class="inbox__subject">
+                {{msg.subject}}
+              </span>
             {% else %}
-              <span class="inbox__subject inbox__subject--read">{{msg.subject}}</span>
+              <span class="inbox__subject inbox__subject--read">
+                {{msg.subject}}
+              </span>
             {% endif %}
             <div class="inbox__details">
-              <span>Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}</span>
+              <span>
+                Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}
+              </span>
               {% if msg.replied == True %}
-                <span class="mobile-content tablet-content"><i class="far fa-check-circle"></i> Replied</span>
+                <span class="mobile-content tablet-content">
+                  <i class="far fa-check-circle"></i> 
+                  Replied
+                </span>
               {% endif %}
             </div>
           </div>
           {% if msg.replied == True %}
-            <span class="message__replied desktop-content"><i class="far fa-check-circle"></i> Replied</span>
+            <span class="message__replied desktop-content">
+              <i class="far fa-check-circle"></i> 
+              Replied
+            </span>
           {% endif %}
           <p class="inbox__preview desktop-content">{{msg.message}}</p>
         </div>
@@ -57,53 +79,81 @@
 
     <!-- Adoption requests inbox -->
     {% for req in admin_reqs %}
-      <a href="{{url_for('message', msg_id=req._id)}}" class="inbox-link" aria-label="link to open message {{req.subject}}">
+      <a href="{{url_for('message', msg_id=req._id)}}" class="inbox-link" 
+        aria-label="link to open message {{req.subject}}">
         <div class="inbox inbox--requests">
           <div class="inbox__container">
             {% if req.status == "unread" %}
-              <span class="inbox__subject">{{req.subject}}</span>
+              <span class="inbox__subject">
+                {{req.subject}}
+              </span>
             {% else %}
-              <span class="inbox__subject inbox__subject--read">{{req.subject}}</span>
+              <span class="inbox__subject inbox__subject--read">
+                {{req.subject}}
+              </span>
             {% endif %}
             <div class="inbox__details">
-              <span>Sent on {{ req.create_date }} at {{ req.create_time }} by {{ req.sent_by }}</span>
+              <span>
+                Sent on {{ req.create_date }} at {{ req.create_time }} by {{ req.sent_by }}
+              </span>
               {% if req.replied == True %}
-                <span class="mobile-content tablet-content"><i class="far fa-check-circle"></i> Replied</span>
+                <span class="mobile-content tablet-content">
+                  <i class="far fa-check-circle"></i> 
+                  Replied
+                </span>
               {% endif %}
             </div>
           </div>
           {% if req.replied == True %}
-            <span class="message__replied desktop-content"><i class="far fa-check-circle"></i> Replied</span>
+            <span class="message__replied desktop-content">
+              <i class="far fa-check-circle"></i> 
+              Replied
+            </span>
           {% endif %}
           <p class="inbox__preview desktop-content">{{req.message}}</p>
         </div>
       </a>
     {% endfor %}
   {% else %}
-  <!-- User message inbox -->
-  {% for msg in user_msgs %}
-    <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link" aria-label="link to open message {{msg.subject}}">
-      <div class="inbox">
-        <div class="inbox__container">
-          {% if msg.status == "unread" %}
-            <span class="inbox__subject">{{msg.subject}}</span>
-          {% else %}
-            <span class="inbox__subject inbox__subject--read">{{msg.subject}}</span>
-          {% endif %}
-          <div class="inbox__details">
-            <span>Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}</span>
-            {% if msg.replied == True %}
-              <span class="mobile-content tablet-content"><i class="far fa-check-circle"></i> Replied</span>
+    <!-- User message inbox -->
+    {% for msg in user_msgs %}
+      <a href="{{url_for('message', msg_id=msg._id)}}"
+        class="inbox--messages inbox-link"
+        aria-label="link to open message {{msg.subject}}">
+        <div class="inbox">
+          <div class="inbox__container">
+            {% if msg.status == "unread" %}
+              <span class="inbox__subject">
+                {{msg.subject}}
+              </span>
+            {% else %}
+              <span class="inbox__subject inbox__subject--read">
+                {{msg.subject}}
+              </span>
             {% endif %}
+            <div class="inbox__details">
+              <span>
+                Sent on {{ msg.create_date }} at {{ msg.create_time }} by {{ msg.sent_by }}
+              </span>
+              {% if msg.replied == True %}
+                <span class="mobile-content tablet-content">
+                  <i class="far fa-check-circle"></i> 
+                  Replied
+                </span>
+              {% endif %}
+            </div>
           </div>
+          {% if msg.replied == True %}
+            <span class="message__replied desktop-content">
+              <i class="far fa-check-circle"></i> 
+              Replied
+            </span>
+          {% endif %}
+          <p class="inbox__preview desktop-content">{{msg.message}}</p>
         </div>
-        {% if msg.replied == True %}
-          <span class="message__replied desktop-content"><i class="far fa-check-circle"></i> Replied</span>
-        {% endif %}
-        <p class="inbox__preview desktop-content">{{msg.message}}</p>
-      </div>
-    </a>
-  {% endfor %}
+      </a>
+    {% endfor %}
   {% endif %}
 </section>
+
 {% endblock %}

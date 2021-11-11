@@ -3,37 +3,45 @@
 {% block content %}
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_post_main_l.webp" alt="banner dog lying on the edge of swimming pool">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_post_main_s.webp" alt="banner dog lying on the edge of swimming pool">
+  <img class="banner__img desktop-content"
+    src="/static/images/banner_post_main_l.webp"
+    alt="banner dog lying on the edge of swimming pool">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_post_main_s.webp"
+    alt="banner dog lying on the edge of swimming pool">
   <div class="title-section">
     <h1 class="title-section__title">Posts collection</h1>
-    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec
-      ultrices porta.</p>
+    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex necultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}"
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}" aria-label="link to new post page">
+        <a class="page-link" href="{{url_for('post_new')}}"
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}"
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -48,19 +56,25 @@
     <span>Filter posts</span>
   </p>
 
+  <!-- Posts desktop -->
   <div class="postmain-desk-wrapper">
     <div class="desktop-content content-postmain">
       {% if no_posts == True %}
         <p class="no-posts">Ooops, we couldn't find any posts!</p>
       {% else %}
         <div class="card card-desktop">
-          <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
+          <a href="{{ url_for('post_page', post_id=post_top._id) }}" 
+            aria-label="link to post page">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{post_top.img_path}});">
-            <div class="img-overlay"></div>`
+              <div class="img-overlay"></div>`
               <div class="card__text-container">
-                <h3 class="card__title card__title--index">{{ post_top.title }}</h3>
-                <p class="card__summary card__summary--index">{{ post_top.summary}}</p>
+                <h3 class="card__title card__title--index">
+                  {{ post_top.title }}
+                </h3>
+                <p class="card__summary card__summary--index">
+                  {{ post_top.summary}}
+                </p>
               </div>
             </div>
           </a>
@@ -68,61 +82,103 @@
       {% endif %}
     </div>
 
+    <!-- Search filter -->
     <form class="form form-toggle js-form-toggle"
       action="{{ url_for('post_main') }}" method="POST">
+      
       <div class="wrapper__row wrapper--filter">
-        <select class="form__input form__input--filter form__input--posts" name="category"
-          id="category">
-          <option value="Select category"
-            selected disabled hidden>By category</option>
+        <select class="form__input form__input--filter form__input--posts" 
+          name="category" id="category">
+          <option value="Select category" selected disabled hidden>
+            By category
+          </option>
           {% for category in categories %}
-            <option value="{{ category.name }}">{{ category.name }}</option>
+            <option value="{{ category.name }}">
+              {{ category.name }}
+            </option>
           {% endfor %}
         </select>
 
-        <select class="form__input form__input--filter form__input--posts" name="author" id="author">
-          <option value="Select author"
-            selected disabled hidden>By author</option>
+        <select class="form__input form__input--filter form__input--posts" 
+          name="author" id="author">
+          <option value="Select author" selected disabled hidden>
+            By author
+          </option>
           {% for user in users %}
-            <option value="{{ user.username }}">{{ user.username }}</option>
+            <option value="{{ user.username }}">
+              {{ user.username }}
+            </option>
           {% endfor %}
         </select>
 
-        <select class="form__input form__input--filter form__input--posts" name="sort" id="sort">
-          <option value="Sort by" selected disabled hidden>Sort by</option>
-          <option value="New to old">New to old</option>
-          <option value="Old to new">Old to new</option>
-          <option value="Most popular">Most popular</option>
+        <select class="form__input form__input--filter form__input--posts" 
+          name="sort" id="sort">
+          <option value="Sort by" selected disabled hidden>
+            Sort by
+          </option>
+          <option value="New to old">
+            New to old
+          </option>
+          <option value="Old to new">
+            Old to new
+          </option>
+          <option value="Most popular">
+            Most popular
+          </option>
         </select>
       </div>
+
       <div class="wrapper__row wrapper--filter">
-        <button class="btn btn--invert btn--filter-reset"
-          type="reset">Reset</button>
-        <button class="btn btn--filter" type="submit">SEARCH</button>
+        <button class="btn btn--invert btn--filter-reset" type="reset">
+          Reset
+        </button>
+        <button class="btn btn--filter" type="submit">
+          SEARCH
+        </button>
       </div>
     </form>
   </div>
+
 
   <div class="desktop-content js-card-desktop">
     {% for post in posts %}
       <div class="card card-desktop">
         <div class="wrapper__row">
-          <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
-            <div class="card__img img--rounded js-img-desk-m" style="background-image: url({{post.img_path}});"></div>
+          <a class="card__img-link"
+            href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
+            <div class="card__img img--rounded js-img-desk-m"  
+              style="background-image: url({{post.img_path}});">
+            </div>
           </a>
           <div class="wrapper__column card__info-wrapper">
-            <a href="{{ url_for('post_page', post_id=post._id) }}" tabindex="-1" aria-label="link to post page">
-              <h3 class="card__title card__title--postmain">{{ post.title }}</h3>
+            <a href="{{ url_for('post_page', post_id=post._id) }}"  
+              tabindex="-1" aria-label="link to post page">
+              <h3 class="card__title card__title--postmain">
+                {{ post.title }}
+              </h3>
             </a>
             <p class="card__info card__info--postmain">
               <span>
-                <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+                <span>
+                  {{ post.create_date }} 
+                </span>
+                by
+                <span> 
+                  {{ post.author }}
+                </span>
               </span>
               <span>
-                <span>Category: </span><span>{{ post.category }}</span>
+                <span>
+                  Category: 
+                </span>
+                <span>
+                  {{ post.category }}
+                </span>
               </span>
             </p>
-            <p class="card__summary card__summary--postmain">{{ post.summary }}</p>
+            <p class="card__summary card__summary--postmain">
+              {{ post.summary }}
+            </p>
           </div>
         </div>
       </div>
@@ -133,80 +189,154 @@
   {% if no_posts == True %}
     <p class="filter-caption">Couldn't find any posts with given criteria!</p>
   {% else %}
-  <div class="mobile-content js-card-mobile">
-    <div class="card card-mobile">
-      <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
-          <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post_top.img_path }});"></div>
-          <h3 class="card__title">{{ post_top.title }}</h3>
-      </a>
-      <p class="card__info">
+    <div class="mobile-content js-card-mobile">
+      <!-- Posts mobile -->
+      <div class="card card-mobile">
+        <a href="{{ url_for('post_page', post_id=post_top._id) }}" 
+          aria-label="link to post page">
+          <div class="card__img img--rounded js-img-mobile"  
+            style="background-image: url({{post_top.img_path}});">
+          </div>
+          <h3 class="card__title">
+            {{ post_top.title }}
+          </h3>
+        </a>
+        <p class="card__info">
           <span>
-              <span>{{ post_top.create_date }} </span>by<span> {{ post_top.author }}</span>
+            <span>
+              {{ post_top.create_date }} 
+            </span>
+            by
+            <span> 
+              {{ post_top.author }}
+            </span>
           </span>
           <span>
-              <span>Category: </span><span>{{ post_top.category }}</span>
+            <span>
+              Category: 
+            </span>
+            <span>
+              {{ post_top.category }}
+            </span>
           </span>
-      </p>
-      <p class="card__summary">{{ post_top.summary }}</p>
-      <hr class="hr hr--card">
-    </div>
-    {% for post in posts %}
+        </p>
+        <p class="card__summary">
+          {{ post_top.summary }}
+        </p>
+        <hr class="hr hr--card">
+      </div>
+      {% for post in posts %}
         <div class="card card-mobile">
-          <a href="{{ url_for('post_main', post_id=post._id) }}" aria-label="link to post main page">
-            <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post.img_path }});">
+          <a href="{{ url_for('post_main', post_id=post._id) }}" 
+            aria-label="link to post main page">
+            <div class="card__img img--rounded js-img-mobile" 
+              style="background-image: url({{post.img_path}});">
             </div>
-            <h3 class="card__title">{{ post.title }}</h3>
+            <h3 class="card__title">
+              {{ post.title }}
+            </h3>
           </a>
           <p class="card__info">
             <span>
-              <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+              <span>
+                {{ post.create_date }} 
+              </span>
+              by
+              <span> 
+                {{ post.author }}
+              </span>
             </span>
             <span>
-              <span>Category: </span><span>{{ post.category }}</span>
+              <span>
+                Category: 
+              </span>
+              <span>
+                {{ post.category }}
+              </span>
             </span>
           </p>
-          <p class="card__summary">{{ post.summary }}</p>
+          <p class="card__summary">
+            {{ post.summary }}
+          </p>
           <hr class="hr hr--card">
         </div>
       {% endfor %}
     </div>
 
     <div class="tablet-content js-card-tablet">
+      <!-- Posts tablet -->
       <div class="card card-tablet">
-        <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
-          <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{post_top.img_path}});"></div>
-          <h3 class="card__title">{{ post_top.title }}</h3>
+        <a href="{{ url_for('post_page', post_id=post_top._id) }}" 
+          aria-label="link to post page">
+          <div class="card__img img--rounded js-img-tablet-l" 
+            style="background-image: url({{post_top.img_path}});">
+          </div>
+          <h3 class="card__title">
+            {{ post_top.title }}
+          </h3>
         </a>
         <p class="card__info">
           <span>
-            <span>{{ post_top.create_date }} </span>by<span> {{ post_top.author }}</span>
+            <span>
+              {{ post_top.create_date }} 
+            </span>
+            by
+            <span> 
+              {{ post_top.author }}
+            </span>
           </span>
           <span>
-            <span>Category: </span><span>{{ post_top.category }}</span>
+            <span>
+              Category: 
+            </span>
+            <span>
+              {{ post_top.category }}
+            </span>
           </span>
         </p>
-        <p class="card__summary">{{ post_top.summary }}</p>
+        <p class="card__summary">
+          {{ post_top.summary }}
+        </p>
         <hr class="hr hr--card">
       </div>
       {% for post in posts %}
         <div class="card card-tablet">
           <div class="wrapper__row">
-            <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
-              <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{ post.img_path }});"></div>
+            <a class="card__img-link"
+              href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
+              <div class="card__img img--rounded js-img-tablet-m" 
+                style="background-image: url({{post.img_path}});">
+              </div>
             </a>
             <div class="wrapper__column card__info-wrapper">
-              <a href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
-                <h3 class="card__title">{{ post.title }}</h3>
+              <a href="{{ url_for('post_page', post_id=post._id) }}" 
+                aria-label="link to post page">
+                <h3 class="card__title">
+                  {{ post.title }}
+                </h3>
               </a>
               <p class="card__info">
                 <span>
-                  <span>{{ post.create_date }} </span>by<span> {{ post.author }}</span>
+                  <span>
+                    {{ post.create_date }} 
+                  </span>
+                  by
+                  <span> 
+                    {{ post.author }}
+                  </span>
                 </span>
                 <span>
-                  <span>Category: </span><span>{{ post.category }}</span>
+                  <span>
+                    Category: 
+                  </span>
+                  <span>
+                    {{ post.category }}
+                  </span>
                 </span>
               </p>
-              <p class="card__summary">{{ post.summary }}</p>
+              <p class="card__summary">
+                {{ post.summary }}
+              </p>
             </div>
           </div>
         </div>
@@ -215,40 +345,46 @@
     </div>
   {% endif %}
 </section>
+
 {% if not session.user %}
-<!-- Registration card -->
-<section class="container container--light container--regcard">
-  <div class="reg-card wrapper__row">
-    <div class="reg-card--left wrapper__column">
-      <h2 class="container__title">Why register?</h2>
-      <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
+  <!-- Registration card -->
+  <section class="container container--light container--regcard">
+    <div class="reg-card wrapper__row">
+      <div class="reg-card--left wrapper__column">
+        <h2 class="container__title">Why register?</h2>
+        <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
+      </div>
+      <div class="reg-card--right wrapper__column">
+        <ul class="reg-card__list">
+          <li class="reg-card__item">
+            <i class="far fa-check-circle"></i>
+            <span>Unlimited access to all blogs</span>
+          </li>
+          <li class="reg-card__item">
+            <i class="far fa-check-circle"></i>
+            <span>Write your own posts</span>
+          </li>
+          <li class="reg-card__item">
+            <i class="far fa-check-circle"></i>
+            <span>Unlimited access to dog database</span>
+          </li>
+          <li class="reg-card__item">
+            <i class="far fa-check-circle"></i>
+            <span>Place ads for dog rehoming</span>
+          </li>
+          <li class="reg-card__item">
+            <i class="far fa-check-circle"></i>
+            <span>Send requests for dog adoption</span>
+          </li>
+        </ul>
+        <a class="btn btn--regcard btn--transparent"
+          href="{{ url_for('user_register') }}"
+          aria-label="link to user register page">
+          Register for free
+        </a>
+      </div>
     </div>
-    <div class="reg-card--right wrapper__column">
-      <ul class="reg-card__list">
-        <li class="reg-card__item">
-          <i class="far fa-check-circle"></i>
-          <span>Unlimited access to all blogs</span>
-        </li>
-        <li class="reg-card__item">
-          <i class="far fa-check-circle"></i>
-          <span>Write your own posts</span>
-        </li>
-        <li class="reg-card__item">
-          <i class="far fa-check-circle"></i>
-          <span>Unlimited access to dog database</span>
-        </li>
-        <li class="reg-card__item">
-          <i class="far fa-check-circle"></i>
-          <span>Place ads for dog rehoming</span>
-        </li>
-        <li class="reg-card__item">
-          <i class="far fa-check-circle"></i>
-          <span>Send requests for dog adoption</span>
-        </li>
-      </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
-    </div>
-  </div>
-</section>
+  </section>
 {% endif %}
+
 {% endblock %}

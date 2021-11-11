@@ -1,37 +1,48 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_dog_edit_l.webp" alt="banner cavalier king charles">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_dog_edit_s.webp" alt="banner cavalier king charles">
+  <img class="banner__img desktop-content"
+    src="/static/images/banner_dog_edit_l.webp"
+    alt="banner cavalier king charles">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_dog_edit_s.webp"
+    alt="banner cavalier king charles">
   <div class="title-section">
     <h1 class="title-section__title">Edit dog</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}"
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}"
+          aria-label="link to new post page"></a>> 
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}"
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -43,6 +54,7 @@
 <section class="container container--light container--dog">
   <form class="form" action="{{url_for('dog_edit', dog_id=dog._id)}}"
     method="POST" enctype="multipart/form-data" onsubmit="setLocalDog()">
+
     <label class="form__label" for="name">Name</label>
     <input class="form__input" type="text" name="name" id="name" minlength="2"
       maxlength="15" pattern="^[a-zA-Z0-9-]{2,15}}$" value="{{dog.name.capitalize()}}" required>
@@ -104,16 +116,19 @@
       maxlength="10000" required>{{- dog.description -}}</textarea>
 
     <label class="btn btn--invert btn--post js-btn-photo" for="photo">
-      <i class="fas fa-upload"></i><span> Upload photo</span>
+      <i class="fas fa-upload"></i>
+      <span> Upload photo</span>
       <span class="btn__caption">Recommended size 1024 x 576px</span>
     </label>
     <input class="inputfile" type="file" name="photo" id="photo">
   
     <button class="btn btn--dog" type="submit">POST</button>
   </form>
+
   <div class="btn--bottom js-btn-back">
     <i class="fas fa-angle-double-left"></i>
     <span>Back</span>
   </div>
 </section>
+
 {% endblock %}

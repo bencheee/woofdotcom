@@ -2,75 +2,186 @@
 
 {% block content %}
 
-<section class="message container container--light container--extended margin-extended">
+<!-- Message container -->
+<section class="message container container--light container--extended 
+  margin-extended">
   <div class="message__subject">
-    <p><span>{{message.subject}}</span></p>
+    <p>
+      <span>
+        {{message.subject}}
+      </span>
+    </p>
     {% if message.replied == True %}
-      <p class="message__replied">Replied <i class="far fa-check-circle"></i></p>
+      <p class="message__replied">
+        Replied 
+        <i class="far fa-check-circle"></i>
+      </p>
     {% endif %}
   </div>
   <div class="message__details">
-    <p><span>Sent by: </span>{{ message.sent_by }}</p>
-    <p><span>Sent on: </span>{{ message.create_date }} at {{ message.create_time }}</p>
+    <p>
+      <span>
+        Sent by: 
+      </span>
+      {{ message.sent_by }}
+    </p>
+    <p>
+      <span>
+        Sent on: 
+      </span>
+      {{ message.create_date }} at {{ message.create_time }}
+    </p>
     {% if message.registered == False %}
-      <p><span>Email: </span>{{ message.sender_email }}</p>
+      <p>
+        <span>
+          Email: 
+        </span>
+        {{ message.sender_email }}
+      </p>
     {% endif %}
   </div>
   {% if message.registered == False %}
-    <p class="message__content">{{message.message}}</p>
+    <p class="message__content">
+      {{message.message}}
+    </p>
     <div class="message__btns" tabindex="0">
-      <div class="js-btn-back" tabindex="0"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
-      <div class="message__delete btn--delete" id="message-delete" tabindex="0"><i class="fas fa-times"></i><span>Delete</span></div>
+      <div class="js-btn-back" tabindex="0">
+        <i class="fas fa-angle-double-left"></i>
+        <span>
+          Back
+        </span>
+      </div>
+      <div class="message__delete btn--delete" id="message-delete" 
+        tabindex="0">
+        <i class="fas fa-times"></i>
+        <span>
+          Delete
+        </span>
+      </div>
     </div>
-    <p class="message__nonuser">Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: <u><a href="mailto:{{message.sender_email}}" aria-label="send email to {{message.sender_email}} ">{{message.sender_email}}</a></u> from your email client.</p>
+    <p class="message__nonuser">
+      Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: 
+      <u>
+        <a href="mailto:{{message.sender_email}}"
+          aria-label="send email to {{message.sender_email}} ">
+          {{message.sender_email}}
+        </a>
+      </u> 
+      from your email client.
+      </p>
   {% else %}
     {% if message.type == "adoption" %}
       {% if message.sent_by != "Admin" %}
         <div class="message__details">
           <fieldset class="fieldset">
-            <legend>Application details</legend>
-            <p><span>Full name: </span>{{ message.sender_fname }} {{ message.sender_lname }}</p>
-            <p><span>Email: </span>{{ message.sender_email }}</p>
-            <p><span>Contact number: </span>{{ message.sender_phone }}</p>
-            <p><span>Link to dog: </span><a
-                href="{{url_for('dog_page', dog_id=dog_id)}}" aria-label="link to dog page"><u>{{ message.dog_name.capitalize() }}</u></a></p>
+            <legend>
+              Application details
+            </legend>
+            <p>
+              <span>
+                Full name: 
+              </span>
+              {{ message.sender_fname }} {{ message.sender_lname }}
+            </p>
+            <p>
+              <span>
+                Email: 
+              </span>
+              {{ message.sender_email }}
+            </p>
+            <p>
+              <span>
+                Contact number: 
+              </span>
+              {{ message.sender_phone }}
+            </p>
+            <p>
+              <span>
+                Link to dog: 
+              </span>
+              <a href="{{url_for('dog_page', dog_id=dog_id)}}"
+                aria-label="link to dog page">
+                <u>{{ message.dog_name.capitalize() }}</u>
+              </a>
+            </p>
             {% if dog == None %}
-              <p class="dog-unavailable"><span>This dog is not available anymore!</span></p>
+              <p class="dog-unavailable">
+                <span>
+                  This dog is not available anymore!
+                </span>
+              </p>
             {% endif %}
             {% if message.sender_about %}
               <br>
-              <p><span>About applicant: </span></p><br>
-              <p class="message__content message__content--adopt">{{ message.sender_about }}</p>
+              <p>
+                <span>
+                  About applicant: 
+                </span>
+              </p>
+              <br>
+              <p class="message__content message__content--adopt">
+                {{ message.sender_about }}
+              </p>
             {% endif %}
           </fieldset>
         </div>
       {% endif %}
       {% if not message.sender_about %}
-        <p class="message__content content--adopt">{{ message.message }}</p>
+        <p class="message__content content--adopt">
+          {{ message.message }}
+        </p>
       {% endif %}
     {% else %}
-      <p class="message__content">{{message.message}}</p>
+      <p class="message__content">
+        {{message.message}}
+      </p>
     {% endif %}
     <div class="message__btns">
-      <div class="js-btn-back" tabindex="0"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
-      <div class="message__reply" tabindex="0"><i class="fas fa-reply"></i><span>Reply</span></div>
-      <div class="message__delete btn--delete" id="message-delete" tabindex="0"><i class="fas fa-times"></i><span>Delete</span></div>
+      <div class="js-btn-back" tabindex="0">
+        <i class="fas fa-angle-double-left"></i>
+        <span>
+          Back
+        </span>
+      </div>
+      <div class="message__reply" tabindex="0">
+        <i class="fas fa-reply"></i>
+        <span>
+          Reply
+        </span>
+      </div>
+      <div class="message__delete btn--delete" id="message-delete" 
+        tabindex="0">
+        <i class="fas fa-times"></i>
+        <span>
+          Delete
+        </span>
+      </div>
     </div>
   {% endif %}
 
+  <!-- Reply box -->
   <form class="form form--message"
     action="{{url_for('reply', receiver=message.sent_by, msg_id=message._id)}}"
     method="POST">
     <textarea class="form__textarea textarea--reply" name="message" 
       id="message" maxlength="10000" required></textarea>
     <div class="msg__form-btns">
-        <button class="btn btn--form btn--reply">Reply</button>
-        <div class="btn btn--invert btn--cancel" tabindex="0">Cancel</div>
+        <button class="btn btn--form btn--reply">
+          Reply
+        </button>
+        <div class="btn btn--invert btn--cancel" tabindex="0">
+          Cancel
+        </div>
     </div>
   </form>
 </section>
+
 {% endblock %}
 
 {% block popup %}
-<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}" style="display: none;" aria-label="delete message">Delete</a>
+<a class="btn btn--popup" id="btn-delete-confirm"
+  href="{{ url_for('message_delete', msg_id=message._id) }}"
+  style="display: none;" aria-label="delete message">
+  Delete
+</a>
 {% endblock %}

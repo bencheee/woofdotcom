@@ -1,37 +1,48 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_dog_surrender_l.webp" alt="banner french bulldog in red shirt">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_dog_surrender_s.webp" alt="banner french bulldog in red shirt">
+  <img class="banner__img desktop-content"
+    src="/static/images/banner_dog_surrender_l.webp"
+    alt="banner french bulldog in red shirt">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_dog_surrender_s.webp"
+    alt="banner french bulldog in red shirt">
   <div class="title-section">
     <h1 class="title-section__title">Surrendering a dog</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link page-link--active" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link page-link--active"href="{{url_for('dog_surrender')}}" 
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}"
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}"
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -40,14 +51,23 @@
 </div>
 
 <!-- Dog surrender tips -->
-<p class="surrender__alert">PLEASE, NEVER ABANDON YOUR DOG! If you are unable to find someone who will re-home your dog, we will accept owner surrendered pets by appointment. Please send us a message via <a href="{{url_for('contact')}}" aria-label="link to contact page">contact link</a> and we will get back to you shortly.</p>
+<p class="surrender__alert">
+  PLEASE, NEVER ABANDON YOUR DOG! If you are unable to find someone who will re-home your dog, we will accept owner surrendered pets by appointment. Please send us a message via
+  <a href="{{url_for('contact')}}"
+    aria-label="link to contact page">
+    contact link
+  </a> 
+  and we will get back to you shortly.
+</p>
 
 <section class="container container--light">
   <h2 class="surrender__title-main">Tips for rehoming your dog</h2>
   <div class="surrender">
-    <p class="surrender__text">We understand how difficult the decision can be to give up a dog. If you are struggling, and are at risk of having to surrender, we may be able to help. There are many people looking for a new dog just like yours. Before considering surrendering your dog to a shelter, see if you can find another family who may be interested in giving your dog a new home.</p>
+    <p class="surrender__text">
+      We understand how difficult the decision can be to give up a dog. If you are struggling, and are at risk of having to surrender, we may be able to help. There are many people looking for a new dog just like yours. Before considering surrendering your dog to a shelter, see if you can find another family who may be interested in giving your dog a new home.
+    </p>
     
-    
+    <!-- CODE CREDIT: https://kenwheeler.github.io/slick/ -->
     <div class="carousel">
       <div class="surrender__item">
         <div class="surrender__title-item">Caution</div>
@@ -56,31 +76,42 @@
 
       <div class="surrender__item">
         <div class="surrender__title-item">Time</div>
-        <div class="surrender__item-text">Give yourself time to re-home your dog. It can often take weeks or even months to find a new home.</div>
+        <div class="surrender__item-text">
+          Give yourself time to re-home your dog. It can often take weeks or even months to find a new home.
+        </div>
       </div>
 
       <div class="surrender__item">
         <div class="surrender__title-item">Adoptability</div>
-        <div class="surrender__item-text">Increase your dog's adoptability. Make sure it’s spayed/neutered, groomed, and up-to-date on its vaccinations.</div>
+        <div class="surrender__item-text">
+          Increase your dog's adoptability. Make sure it’s spayed/neutered, groomed, and up-to-date on its vaccinations.
+        </div>
       </div>
 
       <div class="surrender__item">
         <div class="surrender__title-item">Spread the word</div>
-        <div class="surrender__item-text">Tell your friends, family and co-workers. Ask them to spread the word! You never know who may be looking for a new companion.</div>
+        <div class="surrender__item-text">
+          Tell your friends, family and co-workers. Ask them to spread the word! You never know who may be looking for a new companion.
+        </div>
       </div>
 
       <div class="surrender__item">
         <div class="surrender__title-item">Rescue groups</div>
-        <div class="surrender__item-text">Check with local rescue groups.There are many rescue groups who may be able to accept your dog. You can find most of these groups online th.</div>
+        <div class="surrender__item-text">
+          Check with local rescue groups.There are many rescue groups who may be able to accept your dog. You can find most of these groups online.
+        </div>
       </div>
 
     </div>
  
   </div>
+
   {% if (session.user) and (user_info == True) %}
-    <a class="btn btn--rehome" href="{{url_for('dog_new')}}" aria-label="link to new dog page">Rehome your dog</a>
+    <a class="btn btn--rehome" href="{{url_for('dog_new')}}"
+      aria-label="link to new dog page">Rehome your dog</a>
   {% endif %}
 </section>
+
 {% if not session.user %}
 <!-- Registration card -->
 <section class="container container--light container--regcard">
@@ -112,9 +143,14 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
+      <a class="btn btn--regcard btn--transparent"
+        href="{{ url_for('user_register') }}"
+        aria-label="link to user register page">
+        Register for free
+      </a>
     </div>
   </div>
 </section>
 {% endif %}
+
 {% endblock %}

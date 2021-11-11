@@ -2,33 +2,66 @@
 
 {% block content %}
 
-<section class="container container--light container--extended margin-extended 
-container--content">
+<section class="container container--light container--extended
+  margin-extended container--content">
   <div class="post">
-    <h3 class="post__title">{{ post.title }}</h3>
-    <p class="post__summary">{{ post.summary }}</p>
-    <div class="post__img" style="background-image: url({{post.img_path}});"></div>
+    <h3 class="post__title">
+      {{ post.title }}
+    </h3>
+    <p class="post__summary">
+      {{ post.summary }}
+    </p>
+    <div class="post__img"
+      style="background-image: url({{post.img_path}});">
+    </div>
     <div class="post__info">
-      <p><span>Posted on: </span>{{ post.create_date }}</p>
-      <p><span>Author: </span>{{ post.author }}</p>
-      <p><span>Category: </span>{{ post.category }}</p>
+      <p>
+        <span>
+          Posted on: 
+        </span>
+        {{ post.create_date }}
+      </p>
+      <p>
+        <span>
+          Author: 
+        </span>
+        {{ post.author }}
+      </p>
+      <p>
+        <span>
+          Category: 
+        </span>
+        {{ post.category }}
+      </p>
       {% if post.update_date != "" %}
-        <p><span>Last update: </span>{{ update_date }}</p>
+        <p>
+          <span>
+            Last update: 
+          </span>
+          {{ update_date }}
+        </p>
       {% endif %}
+
       {% if post.likes == 0 %}
-        <p class="post__likes">No stars yet</p>
+        <p class="post__likes">
+          No stars yet
+        </p>
       {% else %}
-        <p class="post__likes">Starred: {{ post.likes}} times</p>
+        <p class="post__likes">
+          Starred: {{ post.likes}} times
+        </p>
       {% endif %}
     </div>
     <hr class="hr hr--post">
+    
     {% if session.user %}
       <div class="control-buttons">
         {% if session.user == post.author or session.user == "Admin" %}
           <i id="post-edit" class="far fa-edit popup-main-btn"></i>
           <i id="post-delete" class="far fa-trash-alt popup-main-btn"></i>
         {% else %}
-          <a class="star-button" href="{{ url_for('post_like', post_id=post._id) }}" aria-label="like post button">
+          <a class="star-button"
+            href="{{ url_for('post_like', post_id=post._id) }}" aria-label="like post button">
             {% if liked_post == True %}
               <i class="fas fa-star"></i>
             {% elif liked_post == False %}
@@ -45,6 +78,7 @@ container--content">
     <span>Back</span>
   </div>
 </section>
+
 {% endblock %}
 
 {% if not session.user %}
@@ -78,16 +112,26 @@ container--content">
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
+      <a class="btn btn--regcard btn--transparent"
+        href="{{ url_for('user_register') }}"
+        aria-label="link to user register page">
+        Register for free
+      </a>
     </div>
   </div>
 </section>
 {% endif %}
 
 {% block popup %}
-  <a class="btn btn--popup" id="post-edit-confirm" href="{{ url_for('post_edit', post_id=post._id) }}" aria-label="link to post edit page"
-    style="display: none;">Edit</a>
+  <a class="btn btn--popup" id="post-edit-confirm"
+    href="{{ url_for('post_edit', post_id=post._id) }}"
+    aria-label="link to post edit page"
+    style="display: none;">
+    Edit
+  </a>
   <a class="btn btn--popup" id="post-delete-confirm"
     href="{{ url_for('post_delete', post_id=post._id) }}" 
-    style="display: none;" aria-label="delete post">Delete</a>
+    style="display: none;" aria-label="delete post">
+    Delete
+  </a>
 {% endblock %}

@@ -1,28 +1,37 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <section class="container container--light container--extended margin-extended">
+  
   <!-- Change password form -->
   <form class="form form--profile" action="{{ url_for('user_profile') }}"
     method="POST">
     <p class="form__title">Account settings</p>
+
     <label class="form__label" for="username">Username</label>
     <input class="form__input" type="text" id="username" name="username"
       value="{{user.username}}" disabled>
+
     <label class="form__label" for="email">Email address</label>
     <input class="form__input" type="email" id="email" name="email"
       value="{{user.email}}" disabled>
+
     <label class="form__label" for="password">Old password</label>
     <input class="form__input form__input--bold" type="password" id="password"
       name="password" minlength="8" maxlength="16" pattern="([^\s]+)"
       autocomplete="new-password" required>
+
     <label class="form__label" for="password2">New password</label>
     <input class="form__input form__input--bold" type="password" id="password2"
       name="password2" minlength="8" maxlength="16" pattern="([^\s]+)"
       autocomplete="new-password" required>
+
     <label class="form__label" for="password2">Repeat new password</label>
     <input class="form__input form__input--bold" type="password" id="password3"
       name="password3" minlength="8" maxlength="16" pattern="([^\s]+)"
       autocomplete="new-password" required>
+
     <button class="btn btn--form btn--profile"
       type="submit">Change password</button>
   </form>
@@ -30,24 +39,35 @@
   <!-- Edit profile details form -->
   <form class="form form--profile" action="{{ url_for('user_profile') }}" method="POST">
     <p class="form__title">Profile info</p>
-    <p class="regform__option regform__option--small">* required in case of dog adoption applications *</p>
+    <p class="regform__option regform__option--small">
+      * required in case of dog adoption applications *
+    </p>
     <hr class="hr hr--profile">
+
     <label class="form__label" for="fname">First name</label>
     <input class="form__input" type="text" id="fname" name="fname"
       minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$"
       value="{{ user.fname }}" required>
+
     <label class="form__label" for="lname">Last name</label>
     <input class="form__input" type="text" id="lname" name="lname" 
       minlength="2" maxlength="20" pattern="^[a-zA-Z-]{2,20}$"
       value="{{ user.lname }}" required>
-    <label class="form__label" for="phone">Mobile number (irish numbers only)</label>
+
+    <label class="form__label" for="phone">
+      Mobile number (irish numbers only)
+    </label>
     <input class="form__input" type="tel" id="phone" name="phone" minlength="10"
       maxlength="10" pattern="(08)[3579]{1}[0-9]{7}" placeholder="format: 08XXXXXXXX" value="{{ user.phone }}" required>
+
     <label class="form__label" for="about">About info</label>
     <textarea class="form__textarea textarea--profile-info" name="about"
-      id="about" minlength="10" maxlength="10000"
-      required>{{ user.about }}</textarea>
+      id="about" minlength="10" maxlength="10000" required>
+      {{ user.about }}
+    </textarea>
+    
     <button class="btn btn--form" type="submit">Change profile info</button>
   </form>
 </section>
+
 {% endblock %}

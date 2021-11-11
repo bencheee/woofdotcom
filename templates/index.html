@@ -1,37 +1,48 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_index_l.webp" alt="banner - Dachshund dog in the grass field">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_index_s.webp" alt="banner - Dachshund dog in the grass field">
+  <img class="banner__img desktop-content"
+    src="/static/images/banner_index_l.webp"
+    alt="banner - Dachshund dog in the grass field">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_index_s.webp"
+    alt="banner - Dachshund dog in the grass field">
   <div class="title-section">
     <h1 class="title-section__title">Welcome</h1>
     <p class="title-section__text">Are you looking to get a new dog? Maybe you wish to rehome a dog? Or are you just a dog lover who like to read and write about our furry friends? You are at the right place!</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}"
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}"
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}"
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -45,30 +56,44 @@
   {% if posts|length == 0 %}
     <p class="no-posts">Ooops, seems like there are no posts yet!</p>
   {% else %}
+    
     <div class="mobile-content">
       {% for post in posts %}
+        <!-- Posts mobile -->
         <div class="card">
-          <a href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
+          <a href="{{ url_for('post_page', post_id=post._id) }}" 
+            aria-label="link to post page">
             <div class="card__img img--rounded js-img-mobile"
               style="background-image: url({{post.img_path}});">
             </div>
-            <h3 class="card__title">{{ post.title }}</h3>
+            <h3 class="card__title">
+              {{ post.title }}
+            </h3>
           </a>
-          <p class="card__summary">{{ post.summary }}</p>
+          <p class="card__summary">
+            {{ post.summary }}
+          </p>
           <hr class="hr hr--card">
         </div>
       {% endfor %}
     </div>
 
     {% if posts|length > 0 %}
+      <!-- Posts tablet -->
       <div class="tablet-content">
         <div class="wrapper__column">
           <div class="card">
-            <a href="{{ url_for('post_page', post_id=posts[0]._id) }}" aria-label="link to post page">
-              <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[0].img_path}});"></div>
-              <h3 class="card__title">{{ posts[0].title }}</h3>
+            <a href="{{ url_for('post_page', post_id=posts[0]._id) }}" 
+              aria-label="link to post page">
+              <div class="card__img img--rounded js-img-tablet-l" 
+                style="background-image: url({{posts[0].img_path}});"></div>
+              <h3 class="card__title">
+                {{ posts[0].title }}
+              </h3>
             </a>
-            <p class="card__summary">{{ posts[0].summary }}</p>
+            <p class="card__summary">
+              {{ posts[0].summary }}
+            </p>
             {% if posts|length > 1 %}
               <hr class="hr hr--card">
             {% endif %}
@@ -77,28 +102,49 @@
             <div class="wrapper__row wrapper--space-between">
               {% if posts|length == 2 %}
                 <div class="card">
-                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" aria-label="link to post page">
-                    <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{posts[1].img_path}});"></div>
-                    <h3 class="card__title">{{ posts[1].title }}</h3>
+                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" 
+                    aria-label="link to post page">
+                    <div class="card__img img--rounded js-img-tablet-l" 
+                      style="background-image: url({{posts[1].img_path}});">
+                    </div>
+                    <h3 class="card__title">
+                      {{ posts[1].title }}
+                    </h3>
                   </a>
-                  <p class="card__summary">{{ posts[1].summary }}</p>
+                  <p class="card__summary">
+                    {{ posts[1].summary }}
+                  </p>
                 </div>
               {% else %}
                 <div class="card card--medium">
-                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" aria-label="link to post page">
-                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[1].img_path}});"></div>
-                    <h3 class="card__title">{{ posts[1].title }}</h3>
+                  <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" 
+                    aria-label="link to post page">
+                    <div class="card__img img--rounded js-img-tablet-m" 
+                      style="background-image: url({{posts[1].img_path}});">
+                    </div>
+                    <h3 class="card__title">
+                      {{ posts[1].title }}
+                    </h3>
                   </a>
-                  <p class="card__summary">{{ posts[1].summary }}</p>
+                  <p class="card__summary">
+                    {{ posts[1].summary }}
+                  </p>
                 </div>
               {% endif %}
               {% if posts|length > 2 %}
                 <div class="card card--medium">
-                  <a href="{{ url_for('post_page', post_id=posts[2]._id) }}" aria-label="link to post page">
-                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{posts[2].img_path}});"></div>
-                    <h3 class="card__title">{{ posts[2].title }}</h3>
+                  <a href="{{ url_for('post_page', post_id=posts[2]._id) }}" 
+                    aria-label="link to post page">
+                    <div class="card__img img--rounded js-img-tablet-m" 
+                      style="background-image: url({{posts[2].img_path}});">
+                    </div>
+                    <h3 class="card__title">
+                      {{ posts[2].title }}
+                    </h3>
                   </a>
-                  <p class="card__summary">{{ posts[2].summary }}</p>
+                  <p class="card__summary">
+                    {{ posts[2].summary }}
+                  </p>
                 </div>
               {% endif %}
             </div>
@@ -112,48 +158,75 @@
       {% if posts|length == 0 %}
         <p class="no-posts">Ooops, seems like there are no posts yet!</p>
       {% else %}
+        <!-- Posts desktop -->
         <div class="card card--index">
-          <a href="{{ url_for('post_page', post_id=posts[0]._id) }}" aria-label="link to post page">
+          <a href="{{ url_for('post_page', post_id=posts[0]._id) }}" 
+            aria-label="link to post page">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{posts[0].img_path}});">
-            <div class="img-overlay"></div>`
+              <div class="img-overlay"></div>`
               <div class="card__text-container">
-                <h3 class="card__title card__title--index">{{ posts[0].title }}</h3>
-                <p class="card__summary card__summary--index">{{ posts[0].summary }}</p>
+                <h3 class="card__title card__title--index">
+                  {{ posts[0].title }}
+                </h3>
+                <p class="card__summary card__summary--index">
+                  {{ posts[0].summary }}
+                </p>
               </div>
             </div>
           </a>
         </div>
         {% if posts|length == 1 %}
-        <div class="content-latest content-empty">
-          <p>Still waiting for more :)</p>
-        </div>
+          <div class="content-latest content-empty">
+            <p>Still waiting for more :)</p>
+          </div>
         {% endif %}
         {% if posts|length > 1 %}
           <div class="content-latest">
-            <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" aria-label="link to post page">
+            <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" 
+              aria-label="link to post page">
               <div class="content-box">
-                <p class="content-category">{{posts[1].category}}</p>
-                <p class="content-title">{{posts[1].title}}</p>
-                <p class="content-summary">{{posts[1].summary}}</p>
+                <p class="content-category">
+                  {{posts[1].category}}
+                </p>
+                <p class="content-title">
+                  {{posts[1].title}}
+                </p>
+                <p class="content-summary">
+                  {{posts[1].summary}}
+                </p>
               </div>
             </a>
             {% if posts|length > 2 %}
-            <a href="{{ url_for('post_page', post_id=posts[2]._id) }}" aria-label="link to post page">
-              <div class="content-box">
-                <p class="content-category">{{posts[2].category}}</p>
-                <p class="content-title">{{posts[2].title}}</p>
-                <p class="content-summary">{{posts[2].summary}}</p>
-              </div>
-            </a>
+              <a href="{{ url_for('post_page', post_id=posts[2]._id) }}" 
+                aria-label="link to post page">
+                <div class="content-box">
+                  <p class="content-category">
+                    {{posts[2].category}}
+                  </p>
+                  <p class="content-title">
+                    {{posts[2].title}}
+                  </p>
+                  <p class="content-summary">
+                    {{posts[2].summary}}
+                  </p>
+                </div>
+              </a>
             {% endif %}
             <hr class="hr">
-            <a class="btn btn--content-index" href="{{url_for('post_main')}}" aria-label="link to post main page">View more</a>
+            <a class="btn btn--content-index" href="{{url_for('post_main')}}" 
+              aria-label="link to post main page">
+              View more
+            </a>
           </div>
         {% endif %}
       {% endif %}
     </div>
-    <a class="btn mobile-content tablet-content" href="{{url_for('post_main')}}" aria-label="link to post main page">View more</a>
+    <a class="btn mobile-content tablet-content"
+      href="{{url_for('post_main')}}"
+      aria-label="link to post main page">
+      View more
+    </a>
   {% endif %}
 </section>
 
@@ -165,28 +238,41 @@
   {% else %}
     <div class="mobile-content">
       {% for dog in dogs %}
+        <!-- Dogs mobile -->
         <div class="card">
-          <a href="{{ url_for('dog_page', dog_id=dog._id) }}" aria-label="link to dog page">
+          <a href="{{ url_for('dog_page', dog_id=dog._id) }}"
+            aria-label="link to dog page">
             <div class="card__img img--rounded js-img-mobile"
               style="background-image: url({{dog.img_path}});">
             </div>
-            <h3 class="card__title">{{dog.name.capitalize()}}</h3>
+            <h3 class="card__title">
+              {{dog.name.capitalize()}}
+            </h3>
           </a>
-          <p class="card__summary">"{{ dog.greeting }}"</p>
+          <p class="card__summary">
+            "{{ dog.greeting }}"
+          </p>
           <hr class="hr hr--card">
         </div>
       {% endfor %}
     </div>
     {% if dogs|length > 0 %}
+      <!-- Dogs tablet -->
       <div class="tablet-content">
         <div class="wrapper__column">
           <div class="card">
-            <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}" aria-label="link to dog page">
-              <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[0].img_path}});">
+            <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}" 
+              aria-label="link to dog page">
+              <div class="card__img img--rounded js-img-tablet-l" 
+                style="background-image: url({{dogs[0].img_path}});">
               </div>
-              <h3 class="card__title">{{ dogs[0].name.capitalize() }}</h3>
+              <h3 class="card__title">
+                {{ dogs[0].name.capitalize() }}
+              </h3>
             </a>
-            <p class="card__summary">"{{ dogs[0].greeting }}"</p>
+            <p class="card__summary">
+              "{{ dogs[0].greeting }}"
+            </p>
             {% if dogs|length > 1 %}
               <hr class="hr hr--card">
             {% endif %}
@@ -195,29 +281,49 @@
             <div class="wrapper__row wrapper--space-between">
               {% if dogs|length == 2 %}
                 <div class="card">
-                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}" aria-label="link to dog page">
-                    <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{dogs[1].img_path}});">
+                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}" 
+                    aria-label="link to dog page">
+                    <div class="card__img img--rounded js-img-tablet-l" 
+                      style="background-image: url({{dogs[1].img_path}});">
                     </div>
-                    <h3 class="card__title">{{ dogs[1].name.capitalize() }}</h3>
+                    <h3 class="card__title">
+                      {{ dogs[1].name.capitalize() }}
+                    </h3>
                   </a>
-                  <p class="card__summary">"{{ dogs[1].greeting }}"</p>
+                  <p class="card__summary">
+                    "{{ dogs[1].greeting }}"
+                  </p>
                 </div>
               {% else %}
                 <div class="card card--medium">
-                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}" aria-label="link to dog page">
-                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[1].img_path}});"></div>
-                    <h3 class="card__title">{{ dogs[1].name.capitalize() }}</h3>
+                  <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}" 
+                    aria-label="link to dog page">
+                    <div class="card__img img--rounded js-img-tablet-m" 
+                      style="background-image: url({{dogs[1].img_path}});">
+                    </div>
+                    <h3 class="card__title">
+                      {{ dogs[1].name.capitalize() }}
+                    </h3>
                   </a>
-                  <p class="card__summary">"{{ dogs[1].greeting }}"</p>
+                  <p class="card__summary">
+                    "{{ dogs[1].greeting }}"
+                  </p>
                 </div>
               {% endif %}
               {% if dogs|length > 2 %}
                 <div class="card card--medium">
-                  <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" aria-label="link to dog page">
-                    <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{dogs[2].img_path}});"></div>
-                    <h3 class="card__title">{{ dogs[2].name.capitalize() }}</h3>
+                  <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" 
+                    aria-label="link to dog page">
+                    <div class="card__img img--rounded js-img-tablet-m" 
+                      style="background-image: url({{dogs[2].img_path}});">
+                    </div>
+                    <h3 class="card__title">
+                      {{ dogs[2].name.capitalize() }}
+                    </h3>
                   </a>
-                  <p class="card__summary">"{{ dogs[2].greeting }}"</p>
+                  <p class="card__summary">
+                    "{{ dogs[2].greeting }}"
+                  </p>
                 </div>
               {% endif %}
             </div>
@@ -226,49 +332,75 @@
         <hr class="hr hr--card">
       </div>
     {% endif %}
-    <a class="btn btn--invert mobile-content tablet-content" href="{{url_for('dog_main')}}" aria-label="link to dog main page">View more</a>
 
+    <a class="btn btn--invert mobile-content tablet-content"
+      href="{{url_for('dog_main')}}"
+      aria-label="link to dog main page">
+      View more
+    </a>
+
+    <!-- Dogs desktop -->
     <div class="desktop-content content-index">
       {% if dogs|length == 0 %}
         <p class="no-posts">Ooops, seems like there are no dog ads yet!</p>
       {% else %}
         <div class="card card--index">
-          <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}" aria-label="link to dog page">
+          <a href="{{ url_for('dog_page', dog_id=dogs[0]._id) }}" 
+            aria-label="link to dog page">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{dogs[0].img_path}});">
-            <div class="img-overlay"></div>`
+              <div class="img-overlay"></div>`
               <div class="card__text-container">
-                <h3 class="card__title card__title--index">{{ dogs[0].name.capitalize() }}</h3>
-                <p class="card__summary card__summary--index">{{ dogs[0].greeting }}</p>
+                <h3 class="card__title card__title--index">
+                  {{ dogs[0].name.capitalize() }}
+                </h3>
+                <p class="card__summary card__summary--index">
+                  {{ dogs[0].greeting }}
+                </p>
               </div>
             </div>
           </a>
         </div>
         {% if dogs|length == 1 %}
-        <div class="content-latest content-empty">
-          <p>Still waiting for more :)</p>
-        </div>
+          <div class="content-latest content-empty">
+            <p>Still waiting for more :)</p>
+          </div>
         {% endif %}
         {% if dogs|length > 1 %}
           <div class="content-latest">
-            <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}">
+            <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}"   
+              aria-label="link to dog page">
               <div class="content-box">
-                <p class="content-category">Age: {{dogs[1].age}}, {{dogs[1].gender}}</p>
-                <p class="content-title">{{dogs[1].name.capitalize()}}</p>
-                <p class="content-summary">{{dogs[1].greeting}}</p>
+                <p class="content-category">
+                  Age: {{dogs[1].age}}, {{dogs[1].gender}}
+                </p>
+                <p class="content-title">
+                  {{dogs[1].name.capitalize()}}
+                </p>
+                <p class="content-summary">
+                  {{dogs[1].greeting}}
+                </p>
               </div>
             </a>
             {% if dogs|length > 2 %}
-            <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" aria-label="link to dog page">
-              <div class="content-box">
-                <p class="content-category">Age: {{dogs[2].age}}, {{dogs[2].gender}}</p>
-                <p class="content-title">{{dogs[2].name.capitalize()}}</p>
-                <p class="content-summary">{{dogs[2].greeting}}</p>
-              </div>
-            </a>
+              <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" 
+                aria-label="link to dog page">
+                <div class="content-box">
+                  <p class="content-category">
+                    Age: {{dogs[2].age}}, {{dogs[2].gender}}
+                  </p>
+                  <p class="content-title">
+                    {{dogs[2].name.capitalize()}}
+                  </p>
+                  <p class="content-summary">
+                    {{dogs[2].greeting}}
+                  </p>
+                </div>
+              </a>
             {% endif %}
             <hr class="hr">
-            <a class="btn btn--content-index" href="{{url_for('dog_main')}}" aria-label="link to dog main page">View more</a>
+            <a class="btn btn--content-index" href="{{url_for('dog_main')}}" 
+              aria-label="link to dog main page">View more</a>
           </div>
         {% endif %}
       {% endif %}
@@ -307,9 +439,14 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
+      <a class="btn btn--regcard btn--transparent"
+        href="{{ url_for('user_register') }}"
+        aria-label="link to user register page">
+        Register for free
+      </a>
     </div>
   </div>
 </section>
 {% endif %}
+
 {% endblock %}

@@ -1,37 +1,48 @@
 {% extends "base.html" %}
+
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_post_edit_l.webp" alt="banner dachshund in a cardboard box">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_post_edit_s.webp" alt="banner dachshund in a cardboard box">
+  <img class="banner__img desktop-content" 
+    src="/static/images/banner_post_edit_l.webp" 
+    alt="banner dachshund in a cardboard box">
+  <img class="banner__img mobile-content tablet-content" 
+    src="/static/images/banner_post_edit_s.webp" 
+    alt="banner dachshund in a cardboard box">
   <div class="title-section">
     <h1 class="title-section__title">Edit post</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}"
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}" 
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}"
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -67,8 +78,13 @@
       maxlength="10000" required> {{- post.content -}} </textarea>
 
     <label class="btn btn--invert btn--post js-btn-photo" for="photo">
-      <i class="fas fa-upload"></i><span> Upload photo</span>
-      <span class="btn__caption">Recommended size 1024 x 576px</span>
+      <i class="fas fa-upload"></i>
+      <span> 
+        Upload photo
+      </span>
+      <span class="btn__caption">
+        Recommended size 1024 x 576px
+      </span>
     </label>
     <input class="inputfile" type="file" name="photo" id="photo">
   
@@ -80,4 +96,5 @@
     <span>Back</span>
   </div>
 </section>
+
 {% endblock %}

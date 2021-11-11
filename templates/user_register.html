@@ -1,38 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_user_register_l.webp" alt="banner french bulldog on a kayak">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_user_register_s.webp" alt="banner french bulldog on a kayak">
+  <img class="banner__img desktop-content"
+    src="/static/images/banner_user_register_l.webp"
+    alt="banner french bulldog on a kayak">
+  <img class="banner__img mobile-content tablet-content"
+    src="/static/images/banner_user_register_s.webp"
+    alt="banner french bulldog on a kayak">
   <div class="title-section">
     <h1 class="title-section__title">New user</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
   </div>
 </section>
 
+<!-- Link tabs on desktop -->
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
+      <a class="page-link" href="{{url_for('dog_main')}}"
+        aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
+      <a class="page-link" href="{{url_for('dog_surrender')}}" 
+        aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}" 
+          aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
+        <a class="page-link" href="{{url_for('contact')}}" 
+          aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -41,26 +51,36 @@
 </div>
 
 <!-- Registration form -->
-<section
-  class="container container--light container--extended">
+<section class="container container--light container--extended">
   <form class="form" action="{{ url_for('user_register') }}" method="POST" 
     onsubmit="setLocalRegister()">
     <p class="form__title">Registration form</p>
+
     <label class="form__label" for="username">Username</label>
     <input class="form__input" type="text" id="username" name="username" 
       minlength="4" maxlength="16" pattern="^[a-zA-Z0-9_]{4,16}$"
       autocomplete="new-password" required>
+
     <label class="form__label" for="email">Email address</label>
     <input class="form__input" type="email" id="email" name="email" required>
+
     <label class="form__label" for="password">Choose password</label>
     <input class="form__input form__input--bold" type="password" id="password"
       name="password" minlength="8" maxlength="16" pattern="([^\s]+)"
       autocomplete="new-password" required>
+
     <label class="form__label" for="password2">Repeat password</label>
     <input class="form__input form__input--bold" type="password" id="password2"
       name="password2" minlength="8" maxlength="16" pattern="([^\s]+)" required>
+
     <button class="btn btn--register" type="submit">REGISTER</button>
-    <p class="register-link">Already have an account? Log in <a href="{{url_for('user_login')}}" aria-label="link to login page">HERE</a></p>
+    <p class="register-link">
+      Already have an account? Log in 
+      <a href="{{url_for('user_login')}}"
+       aria-label="link to login page">
+       HERE
+      </a>
+    </p>
   </form>
 </section>
 
