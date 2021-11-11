@@ -594,7 +594,7 @@ def post_delete(post_id):
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
-    return redirect(url_for("index"))
+    return redirect(url_for("post_main"))
 
 
 @app.route("/post_page/<post_id>")
@@ -982,7 +982,7 @@ def dog_delete(dog_id):
     # Remove dog from database
     mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
     flash("Dog sucessfully removed from database !")
-    return redirect(url_for('index'))
+    return redirect(url_for('dog_main'))
 
 
 @app.route("/dog_page/<dog_id>")
