@@ -13,25 +13,25 @@
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}">
+      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}">
+      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}" aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link page-link--active" href="{{url_for('contact')}}">
+        <a class="page-link page-link--active" href="{{url_for('contact')}}" aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -95,7 +95,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
     </div>
   </div>
 </section>

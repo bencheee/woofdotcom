@@ -14,12 +14,12 @@
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}">
+      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}">
+      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
@@ -32,7 +32,7 @@
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}">
+        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -60,7 +60,7 @@
     <input class="form__input form__input--bold" type="password" id="password2"
       name="password2" minlength="8" maxlength="16" pattern="([^\s]+)" required>
     <button class="btn btn--register" type="submit">REGISTER</button>
-    <p class="register-link">Already have an account? Log in <a href="{{url_for('user_login')}}">HERE</a></p>
+    <p class="register-link">Already have an account? Log in <a href="{{url_for('user_login')}}" aria-label="link to login page">HERE</a></p>
   </form>
 </section>
 

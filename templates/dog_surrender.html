@@ -13,12 +13,12 @@
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}">
+      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link page-link--active" href="{{url_for('dog_surrender')}}">
+      <a class="page-link page-link--active" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
@@ -31,7 +31,7 @@
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}">
+        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -40,7 +40,7 @@
 </div>
 
 <!-- Dog surrender tips -->
-<p class="surrender__alert">PLEASE, NEVER ABANDON YOUR DOG! If you are unable to find someone who will re-home your dog, we will accept owner surrendered pets by appointment. Please send us a message via <a href="{{url_for('contact')}}">contact link</a> and we will get back to you shortly.</p>
+<p class="surrender__alert">PLEASE, NEVER ABANDON YOUR DOG! If you are unable to find someone who will re-home your dog, we will accept owner surrendered pets by appointment. Please send us a message via <a href="{{url_for('contact')}}" aria-label="link to contact page">contact link</a> and we will get back to you shortly.</p>
 
 <section class="container container--light">
   <h2 class="surrender__title-main">Tips for rehoming your dog</h2>
@@ -78,7 +78,7 @@
  
   </div>
   {% if (session.user) and (user_info == True) %}
-    <a class="btn btn--rehome" href="/dog_new">Rehome your dog</a>
+    <a class="btn btn--rehome" href="{{url_for('dog_new')}}" aria-label="link to new dog page">Rehome your dog</a>
   {% endif %}
 </section>
 {% if not session.user %}
@@ -112,7 +112,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
     </div>
   </div>
 </section>

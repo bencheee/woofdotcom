@@ -15,25 +15,25 @@
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}">
+      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}">
+      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
     {% if session.user %}
       <li>
-        <a class="page-link" href="{{url_for('post_new')}}">
+        <a class="page-link" href="{{url_for('post_new')}}" aria-label="link to new post page">
           Post new article
         </a>
       </li>
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}">
+        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
           Contact us
         </a>
       </li>
@@ -54,7 +54,7 @@
         <p class="no-posts">Ooops, we couldn't find any posts!</p>
       {% else %}
         <div class="card card-desktop">
-          <a href="{{ url_for('post_page', post_id=post_top._id) }}">
+          <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
             <div class="card__img img--rounded js-img-desk"
               style="background-image: url({{post_top.img_path}});">
             <div class="img-overlay"></div>`
@@ -107,11 +107,11 @@
     {% for post in posts %}
       <div class="card card-desktop">
         <div class="wrapper__row">
-          <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
+          <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
             <div class="card__img img--rounded js-img-desk-m" style="background-image: url({{post.img_path}});"></div>
           </a>
           <div class="wrapper__column card__info-wrapper">
-            <a href="{{ url_for('post_page', post_id=post._id) }}" tabindex="-1">
+            <a href="{{ url_for('post_page', post_id=post._id) }}" tabindex="-1" aria-label="link to post page">
               <h3 class="card__title card__title--postmain">{{ post.title }}</h3>
             </a>
             <p class="card__info card__info--postmain">
@@ -135,7 +135,7 @@
   {% else %}
   <div class="mobile-content js-card-mobile">
     <div class="card card-mobile">
-      <a href="{{ url_for('post_page', post_id=post_top._id) }}">
+      <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
           <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post_top.img_path }});"></div>
           <h3 class="card__title">{{ post_top.title }}</h3>
       </a>
@@ -152,7 +152,7 @@
     </div>
     {% for post in posts %}
         <div class="card card-mobile">
-          <a href="{{ url_for('post_main', post_id=post._id) }}">
+          <a href="{{ url_for('post_main', post_id=post._id) }}" aria-label="link to post main page">
             <div class="card__img img--rounded js-img-mobile" style="background-image: url({{ post.img_path }});">
             </div>
             <h3 class="card__title">{{ post.title }}</h3>
@@ -173,7 +173,7 @@
 
     <div class="tablet-content js-card-tablet">
       <div class="card card-tablet">
-        <a href="{{ url_for('post_page', post_id=post_top._id) }}">
+        <a href="{{ url_for('post_page', post_id=post_top._id) }}" aria-label="link to post page">
           <div class="card__img img--rounded js-img-tablet-l" style="background-image: url({{post_top.img_path}});"></div>
           <h3 class="card__title">{{ post_top.title }}</h3>
         </a>
@@ -191,11 +191,11 @@
       {% for post in posts %}
         <div class="card card-tablet">
           <div class="wrapper__row">
-            <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}">
+            <a class="card__img-link" href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
               <div class="card__img img--rounded js-img-tablet-m" style="background-image: url({{ post.img_path }});"></div>
             </a>
             <div class="wrapper__column card__info-wrapper">
-              <a href="{{ url_for('post_page', post_id=post._id) }}">
+              <a href="{{ url_for('post_page', post_id=post._id) }}" aria-label="link to post page">
                 <h3 class="card__title">{{ post.title }}</h3>
               </a>
               <p class="card__info">
@@ -246,7 +246,7 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
     </div>
   </div>
 </section>

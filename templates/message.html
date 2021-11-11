@@ -22,7 +22,7 @@
       <div class="js-btn-back" tabindex="0"><i class="fas fa-angle-double-left"></i><span>Back</span></div>
       <div class="message__delete btn--delete" id="message-delete" tabindex="0"><i class="fas fa-times"></i><span>Delete</span></div>
     </div>
-    <p class="message__nonuser">Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: <u><a href="mailto:{{message.sender_email}}">{{message.sender_email}}</a></u> from your email client.</p>
+    <p class="message__nonuser">Since sender is not registered member, instant messaging is not available. Please reply directly to sender's email addres: <u><a href="mailto:{{message.sender_email}}" aria-label="send email to {{message.sender_email}} ">{{message.sender_email}}</a></u> from your email client.</p>
   {% else %}
     {% if message.type == "adoption" %}
       {% if message.sent_by != "Admin" %}
@@ -33,7 +33,7 @@
             <p><span>Email: </span>{{ message.sender_email }}</p>
             <p><span>Contact number: </span>{{ message.sender_phone }}</p>
             <p><span>Link to dog: </span><a
-                href="{{url_for('dog_page', dog_id=dog_id)}}"><u>{{ message.dog_name.capitalize() }}</u></a></p>
+                href="{{url_for('dog_page', dog_id=dog_id)}}" aria-label="link to dog page"><u>{{ message.dog_name.capitalize() }}</u></a></p>
             {% if dog == None %}
               <p class="dog-unavailable"><span>This dog is not available anymore!</span></p>
             {% endif %}
@@ -72,5 +72,5 @@
 {% endblock %}
 
 {% block popup %}
-<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}" style="display: none;">Delete</a>
+<a class="btn btn--popup" id="btn-delete-confirm" href="{{ url_for('message_delete', msg_id=message._id) }}" style="display: none;" aria-label="delete message">Delete</a>
 {% endblock %}

@@ -36,9 +36,9 @@
   {% if user_info == True %} 
     {% if session.user != "Admin" and session.user != owner.username %}
       {% if adoption_request == False %}
-        <a class="btn btn--dog" href="{{url_for('adopt', dog_id=dog._id)}}">Apply for adoption</a>
+        <a class="btn btn--dog" href="{{url_for('adopt', dog_id=dog._id)}}" aria-label="link to adopt a dog">Apply for adoption</a>
       {% elif adoption_request == True %}
-        <a class="btn btn--dog" href="{{url_for('adopt_undo', dog_id=dog._id)}}">Withdraw application</a>
+        <a class="btn btn--dog" href="{{url_for('adopt_undo', dog_id=dog._id)}}" aria-label="link to withdraw adopt application">Withdraw application</a>
       {% endif %}
     {% endif %}
   {% endif %}
@@ -80,15 +80,15 @@
           <span>Send requests for dog adoption</span>
         </li>
       </ul>
-      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}">Register for free</a>
+      <a class="btn btn--regcard btn--transparent" href="{{ url_for('user_register') }}" aria-label="link to user register page">Register for free</a>
     </div>
   </div>
 </section>
 {% endif %}
 
 {% block popup %}
-  <a class="btn btn--popup" id="dog-edit-confirm" href="{{ url_for('dog_edit', dog_id=dog._id) }}"
+  <a class="btn btn--popup" id="dog-edit-confirm" href="{{ url_for('dog_edit', dog_id=dog._id) }}" aria-label="link to dog edit page"
     style="display: none;">Edit</a>
-  <a class="btn btn--popup" id="dog-delete-confirm" href="{{ url_for('dog_delete', dog_id=dog._id) }}"
+  <a class="btn btn--popup" id="dog-delete-confirm" href="{{ url_for('dog_delete', dog_id=dog._id) }}" aria-label="link to delete a dog"
     style="display: none;">Delete</a>
 {% endblock %}

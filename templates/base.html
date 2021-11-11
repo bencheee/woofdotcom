@@ -27,7 +27,7 @@
   <!-- Navbar for mobile & tablet -->
   <nav class="nav">
     <div class="navbar">
-      <a class="navbar__logo" href="{{ url_for('index') }}">
+      <a class="navbar__logo" href="{{ url_for('index') }}" aria-label="link to index page">
         <i class="fas fa-paw"></i>
         <span>woof(dot)com</span>
       </a>
@@ -36,20 +36,20 @@
     <ul class="nav__mobile">
       {% if not session.user %}
         <li>
-          <a href="{{url_for('user_register')}}">Register</a>
+          <a href="{{url_for('user_register')}}" aria-label="link to user register page">Register</a>
         </li>
         <li>
-          <a href="{{url_for('user_login')}}">Login</a>
+          <a href="{{url_for('user_login')}}" aria-label="link to login page">Login</a>
         </li>
         <li>
-          <a href="{{url_for('dog_surrender')}}">Give up a dog</a>
+          <a href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">Give up a dog</a>
         </li>
         <li>
-          <a href="{{url_for('contact')}}">Contact us</a>
+          <a href="{{url_for('contact')}}" aria-label="link to contact page">Contact us</a>
         </li>
       {% else %}
         <li>
-          <a href="{{url_for('dog_main')}}">Adopt a dog</a>
+          <a href="{{url_for('dog_main')}}" aria-label="link to dog main page">Adopt a dog</a>
         </li>
         <li>
           <a href="{{url_for('dog_surrender')}}">Give up a dog</a>
@@ -63,30 +63,30 @@
         {% if session.user == "Admin" %}
           {% if msgs_reqs == 0 %}
             <li>
-              <a href="{{url_for('inbox')}}">Inbox ({{ msgs_reqs }})</a>
+              <a href="{{url_for('inbox')}}" aria-label="link to inbox">Inbox ({{ msgs_reqs }})</a>
             </li>
           {% else %}
             <li>
-              <a href="{{url_for('inbox')}}"><strong>Inbox ({{ msgs_reqs }})</strong></a>
+              <a href="{{url_for('inbox')}}" aria-label="link to inbox"><strong>Inbox ({{ msgs_reqs }})</strong></a>
             </li>
           {% endif %}
         {% else %}
           {% if msgs == 0 %}
             <li>
-              <a href="{{url_for('inbox')}}">Inbox ({{ msgs }})</a>
+              <a href="{{url_for('inbox')}}" aria-label="link to inbox">Inbox ({{ msgs }})</a>
             </li>
           {% else %}
             <li>
-              <a href="{{url_for('inbox')}}"><strong>Inbox ({{ msgs }})</strong></a>
+              <a href="{{url_for('inbox')}}" aria-label="link to inbox"><strong>Inbox ({{ msgs }})</strong></a>
             </li>
           {% endif %}
         {% endif %}
           <li>
-            <a href="{{url_for('user_logout')}}">Logout</a>
+            <a href="{{url_for('user_logout')}}" aria-label="link to logout">Logout</a>
           </li>
         {% if session.user != "Admin" %}
           <li>
-            <a href="{{url_for('contact')}}">Contact us</a>
+            <a href="{{url_for('contact')}}" aria-label="link to contact page">Contact us</a>
           </li>
         {% endif %}
       {% endif %}
@@ -95,21 +95,21 @@
 
   <div class="desktop-content">
     <nav class="desk-nav">
-      <a class="navbar__logo" href="{{ url_for('index') }}">
+      <a class="navbar__logo" href="{{ url_for('index') }}" aria-label="link to index page">
         <i class="fas fa-paw"></i>
         <span>woof(dot)com</span>
       </a>
       <div class="nav__container">
         {% if not session.user %}
-          <a class="nav__btn nav__btn--login" href="{{url_for('user_login')}}">Login</a>
-          <a class="nav__btn nav__btn--register" href="{{url_for('user_register')}}">Sign up</a>
+          <a class="nav__btn nav__btn--login" href="{{url_for('user_login')}}" aria-label="link to login page">Login</a>
+          <a class="nav__btn nav__btn--register" href="{{url_for('user_register')}}" aria-label="link to user register page">Sign up</a>
         {% else %}
         <div class="nav__dropdown">
-          <a class="nav__link" href="{{url_for('user_profile')}}">Account settings</a>
-          <a class="nav__link" href="{{url_for('user_logout')}}">Logout</a>
+          <a class="nav__link" href="{{url_for('user_profile')}}" aria-label="link to account settings">Account settings</a>
+          <a class="nav__link" href="{{url_for('user_logout')}}" aria-label="link to logout">Logout</a>
         </div>
         <span class="nav__username" tabindex="0">{{session.user}}</span>
-        <a class="nav__icon" href="{{url_for('inbox')}}">
+        <a class="nav__icon" href="{{url_for('inbox')}}" aria-label="link to inbox">
           {% if session.user == "Admin" %}
             {% if msgs_reqs == 0 %}
               <i class="far fa-envelope-open"></i>
@@ -144,27 +144,27 @@
     <p class="footer__title">Find us on social media</p>
     <ul class="footer__links">
       <li>
-        <a href="https://www.facebook.com/" target="_blank">
+        <a href="https://www.facebook.com/" target="_blank" aria-label="link to facebook (opens in new tab)">
           <i class="fab fa-facebook-square"></i>
         </a>
       </li>
       <li>
-        <a href="https://www.instagram.com/" target="_blank">
+        <a href="https://www.instagram.com/" target="_blank" aria-label="link to instagram (opens in new tab)">
           <i class="fab fa-instagram"></i>
         </a>
       </li>
       <li>
-        <a href="https://twitter.com/" target="_blank">
+        <a href="https://twitter.com/" target="_blank" aria-label="link to twitter (opens in new tab)">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
       <li>
-        <a href="https://www.snapchat.com/" target="_blank">
+        <a href="https://www.snapchat.com/" target="_blank" aria-label="link to snapchat (opens in new tab)">
           <i class="fab fa-snapchat"></i>
         </a>
       </li>
       <li>
-        <a href="https://www.youtube.com/" target="_blank">
+        <a href="https://www.youtube.com/" target="_blank" aria-label="link to youtube (opens in new tab)">
           <i class="fab fa-youtube-square"></i>
         </a>
       </li>
@@ -194,7 +194,7 @@
               {% if category == "error" %}
                 <div class="btn btn--flash" id="flash-back" tabindex="1">Go back</div>
               {% elif category == "index" %}
-                <a class="btn btn--flash" href="/" tabindex="1">Back to home page</a>
+                <a class="btn btn--flash" href="/" tabindex="1" aria-label="link to index page">Back to home page</a>
               {% else %}
                 <div class="btn btn--flash" id="flash-continue" tabindex="1">Continue</div>
               {% endif %}

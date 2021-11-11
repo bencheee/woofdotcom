@@ -13,12 +13,12 @@
 <div class="desktop-content">
   <ul class="page-links">
     <li>
-      <a class="page-link" href="{{url_for('dog_main')}}">
+      <a class="page-link" href="{{url_for('dog_main')}}" aria-label="link to dog main page">
         Adopt a dog
       </a>
     </li>
     <li>
-      <a class="page-link" href="{{url_for('dog_surrender')}}">
+      <a class="page-link" href="{{url_for('dog_surrender')}}" aria-label="link to dog surrender page">
         Give up a dog
       </a>
     </li>
@@ -31,7 +31,7 @@
     {% endif %}
     {% if session.user != "Admin"%}
       <li>
-        <a class="page-link" href="{{url_for('contact')}}">
+        <a class="page-link" href="{{url_for('contact')}}" aria-label="link to contact page">
           Contact us
         </a>
       </li>

@@ -32,7 +32,7 @@
   {% if session.user == "Admin" %}
     <!-- Admin message inbox -->
     {% for msg in admin_msgs %}
-      <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link">
+      <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link" aria-label="link to open message {{msg.subject}}">
         <div class="inbox">
           <div class="inbox__container">
             {% if msg.status == "unread" %}
@@ -57,7 +57,7 @@
 
     <!-- Adoption requests inbox -->
     {% for req in admin_reqs %}
-      <a href="{{url_for('message', msg_id=req._id)}}" class="inbox-link">
+      <a href="{{url_for('message', msg_id=req._id)}}" class="inbox-link" aria-label="link to open message {{req.subject}}">
         <div class="inbox inbox--requests">
           <div class="inbox__container">
             {% if req.status == "unread" %}
@@ -82,7 +82,7 @@
   {% else %}
   <!-- User message inbox -->
   {% for msg in user_msgs %}
-    <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link">
+    <a href="{{url_for('message', msg_id=msg._id)}}" class="inbox--messages inbox-link" aria-label="link to open message {{msg.subject}}">
       <div class="inbox">
         <div class="inbox__container">
           {% if msg.status == "unread" %}
