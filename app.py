@@ -44,10 +44,12 @@ def test():
 @app.errorhandler(404)
 @app.errorhandler(500)
 def page_error(e):
+    """Error handler for most common error codes"""
     return redirect(url_for("alert", response="page error"))
 
 
 def permission_denied():
+    """Flashes permission denied message and redirects to index page"""
     flash("Permission denied.")
     return redirect(url_for("index"))
 
@@ -285,6 +287,7 @@ def user_profile():
 
 @app.route("/dog_surrender")
 def dog_surrender():
+    """Routes to dog_surrender.html"""
     if session.get('user') is None:
         user_info = None
         flash(
