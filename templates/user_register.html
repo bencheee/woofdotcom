@@ -3,8 +3,8 @@
 {% block content %}
 <!-- Banner -->
 <section class="banner">
-  <img class="banner__img desktop-content" src="/static/images/banner_user_register_l.webp" alt="">
-  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_user_register_s.webp" alt="">
+  <img class="banner__img desktop-content" src="/static/images/banner_user_register_l.webp" alt="banner image">
+  <img class="banner__img mobile-content tablet-content" src="/static/images/banner_user_register_s.webp" alt="banner image">
   <div class="title-section">
     <h1 class="title-section__title">New user</h1>
     <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex nec ultrices porta.</p>
@@ -13,21 +13,29 @@
 
 <div class="desktop-content">
   <ul class="page-links">
-    <a class="page-link" href="{{url_for('dog_main')}}">
-      <li>Adopt a dog</li>
-    </a>
-    <a class="page-link" href="{{url_for('dog_surrender')}}">
-      <li>Give up a dog</li>
-    </a>
-    {% if session.user %}
-      <a class="page-link" href="{{url_for('post_new')}}">
-        <li>Post new article</li>
+    <li>
+      <a class="page-link" href="{{url_for('dog_main')}}">
+        Adopt a dog
       </a>
+    </li>
+    <li>
+      <a class="page-link" href="{{url_for('dog_surrender')}}">
+        Give up a dog
+      </a>
+    </li>
+    {% if session.user %}
+      <li>
+        <a class="page-link" href="{{url_for('post_new')}}">
+          Post new article
+        </a>
+      </li>
     {% endif %}
     {% if session.user != "Admin"%}
-    <a class="page-link" href="{{url_for('contact')}}">
-      <li>Contact us</li>
-    </a>
+      <li>
+        <a class="page-link" href="{{url_for('contact')}}">
+          Contact us
+        </a>
+      </li>
     {% endif %}
   </ul>
 </div>

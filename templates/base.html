@@ -35,55 +35,59 @@
     </div>
     <ul class="nav__mobile">
       {% if not session.user %}
-        <a href=/user_register>
-          <li>Register</li>
-        </a>
-        <a href=/user_login>
-          <li>Login</li>
-        </a>
-        <a href=/dog_surrender>
-          <li>Give up a dog</li>
-        </a>
-        <a href=/contact>
-          <li>Contact us</li>
-        </a>
+        <li>
+          <a href="{{url_for('user_register')}}">Register</a>
+        </li>
+        <li>
+          <a href="{{url_for('user_login')}}">Login</a>
+        </li>
+        <li>
+          <a href="{{url_for('dog_surrender')}}">Give up a dog</a>
+        </li>
+        <li>
+          <a href="{{url_for('contact')}}">Contact us</a>
+        </li>
       {% else %}
-        <a href=/dog_main>
-          <li>Adopt a dog</li>
-        </a>
-        <a href=/dog_surrender>
-          <li>Give up a dog</li>
-        </a>
-        <a href=/post_new>
-          <li>Post new article</li>
-        </a>
-        <a href=/user_profile>
-          <li>View profile</li>
-        </a>
+        <li>
+          <a href="{{url_for('dog_main')}}">Adopt a dog</a>
+        </li>
+        <li>
+          <a href="{{url_for('dog_surrender')}}">Give up a dog</a>
+        </li>
+        <li>
+          <a href="{{url_for('post_new')}}">Post new article</a>
+        </li>
+        <li>
+          <a href="{{url_for('user_profile')}}">View profile</a>
+        </li>
         {% if session.user == "Admin" %}
-          <a href=/inbox>
-            {% if msgs_reqs == 0 %}
-              <li>Inbox ({{ msgs_reqs }})</li>
-            {% else %}
-              <li><strong>Inbox ({{ msgs_reqs }})</strong></li>
-            {% endif %}
-          </a>
+          {% if msgs_reqs == 0 %}
+            <li>
+              <a href="{{url_for('inbox')}}">Inbox ({{ msgs_reqs }})</a>
+            </li>
+          {% else %}
+            <li>
+              <a href="{{url_for('inbox')}}"><strong>Inbox ({{ msgs_reqs }})</strong></a>
+            </li>
+          {% endif %}
         {% else %}
-          <a href=/inbox>
-            {% if msgs == 0 %}
-              <li>Inbox ({{ msgs }})</li>
-            {% else %}
-              <li><strong>Inbox ({{ msgs }})</strong></li>
-            {% endif %}
-          </a>
+          {% if msgs == 0 %}
+            <li>
+              <a href="{{url_for('inbox')}}">Inbox ({{ msgs }})</a>
+            </li>
+          {% else %}
+            <li>
+              <a href="{{url_for('inbox')}}"><strong>Inbox ({{ msgs }})</strong></a>
+            </li>
+          {% endif %}
         {% endif %}
-        <a href=/user_logout>
-          <li>Logout</li>
-        </a>
+          <li>
+            <a href="{{url_for('user_logout')}}">Logout</a>
+          </li>
         {% if session.user != "Admin" %}
-          <a href=/contact>
-            <li>Contact us</li>
-          </a>
+          <li>
+            <a href="{{url_for('contact')}}">Contact us</a>
+          </li>
         {% endif %}
       {% endif %}
     </ul>
@@ -101,7 +105,7 @@
           <a class="nav__btn nav__btn--register" href="{{url_for('user_register')}}">Sign up</a>
         {% else %}
         <div class="nav__dropdown">
-          <a class="nav__link" href="{{url_for('user_profile')}}">Account settings<a>
+          <a class="nav__link" href="{{url_for('user_profile')}}">Account settings</a>
           <a class="nav__link" href="{{url_for('user_logout')}}">Logout</a>
         </div>
         <span class="nav__username" tabindex="0">{{session.user}}</span>
@@ -139,21 +143,31 @@
   <footer class="footer">
     <p class="footer__title">Find us on social media</p>
     <ul class="footer__links">
-      <a href="https://www.facebook.com/" target="_blank">
-        <li><i class="fab fa-facebook-square"></i></li>
-      </a>
-      <a href="https://www.instagram.com/" target="_blank">
-        <li><i class="fab fa-instagram"></i></li>
-      </a>
-      <a href="https://twitter.com/" target="_blank">
-        <li><i class="fab fa-twitter"></i></li>
-      </a>
-      <a href="https://www.snapchat.com/" target="_blank">
-        <li><i class="fab fa-snapchat"></i></li>
-      </a>
-      <a href="https://www.youtube.com/" target="_blank">
-        <li><i class="fab fa-youtube-square"></i></li>
-      </a>
+      <li>
+        <a href="https://www.facebook.com/" target="_blank">
+          <i class="fab fa-facebook-square"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.snapchat.com/" target="_blank">
+          <i class="fab fa-snapchat"></i>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/" target="_blank">
+          <i class="fab fa-youtube-square"></i>
+        </a>
+      </li>
     </ul>
     <p class="footer__copyright">©2021, Made by Sandro Bencinic</p>
   </footer>
@@ -162,7 +176,7 @@
     <div class="popup">
       <p class="popup__text">TEXT</p>
       <div class="popup__btn-container">
-        <button class="btn btn--popup" id="" tabindex="1">Cancel</button>
+        <button class="btn btn--popup" tabindex="1">Cancel</button>
         {% block popup %}
         {% endblock %}
       </div>
@@ -175,7 +189,7 @@
       <div class="flash__container" style="display: flex;">
         <div class="flash">
           {% for category, message in messages%}
-            <li class="flash__text">{{ message }}</li><br>
+            <div class="flash__text">{{ message }}</div><br>
             <div class="flash__btn-container">
               {% if category == "error" %}
                 <div class="btn btn--flash" id="flash-back" tabindex="1">Go back</div>
@@ -195,7 +209,7 @@
 
 
 
-  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="/static/js/script.js"></script>
 
   <!-- Disables scroll when flash message appears -->
