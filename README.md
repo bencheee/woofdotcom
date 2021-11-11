@@ -81,7 +81,9 @@
 
 - [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a micro web framework written in Python which was used to create this app.
 
-- [Pypi](https://pypi.org/) was used to find and download Python packages.
+- [Pypi](https://pypi.org/) was used to find and download Python packages ([Flask-PyMongo](https://pypi.org/project/Flask-PyMongo/), [boto3](https://pypi.org/project/boto3/), [Pillow](https://pypi.org/project/Pillow/) ...).
+
+- [MongoDB](https://www.mongodb.com/) was used to create and use the database for this project..
 
 - [Heroku](https://www.heroku.com/) is a cloud platform which was used to deploy the project.
 
