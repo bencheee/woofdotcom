@@ -121,7 +121,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
 * HTML Code Test Results:
 
-  - [HTML](/static/documentation/testing/images/html.PNG)
+  - [HTML](/static/documentation/testing/images/html.png)
 
     - HTML code has only one [error](/static/documentation/testing/images/html_error.PNG) on post_edit and dog_edit page. This error can be fixed by simply adding 'multiple' attribute to select element but this would also change behaviour of select element (it would not show as a dropdown menu). Error comes up because option element with 'selected' attribute is dynamic and it is called from jinja template which affects all possible options. However, since this is a minor error and does not affect user experience, I have decided not to change the code.
 
