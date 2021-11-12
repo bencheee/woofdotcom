@@ -428,11 +428,128 @@ $ git clone https://github.com/bencheee/woofdotcom.git
 
 ## 8. CREDITS
 
-### 8.1 Media
+### 8.1 Code credits
+
+CODE CREDIT: [https://kenwheeler.github.io/slick/](https://kenwheeler.github.io/slick/)
+
+Code is part of the jQuery *Slick* plugin which enables use of carousel effect on the page.
+
+```
+$(document).ready(function () {
+    $(".carousel").slick({
+        arrows: true,
+        dots: false,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: "linear"
+    });
+});
+```
+
+CODE CREDIT: [https://stackoverflow.com/a/15595893](https://stackoverflow.com/a/15595893)
+
+Code was used to trigger touch screen effects on mobile and tablet devices.
+
+```
+$(".card__img").on({
+    "touchstart": function () {
+        $(this).css({
+            filter: "grayscale(100%)",
+            transform: "scale(0.95)"
+        });
+    }
+});
+```
+
+CODE CREDIT: [https://stackoverflow.com/a/38811844](https://stackoverflow.com/a/38811844)
+
+Code was used to call *hide()* and *show()* methods on a specific index from object returned by jQuery class selector.
+
+```
+function hidePosts(selector) {
+    let i = selector.length;
+    while (i > 5) {
+        selector.eq(i - 1).hide();
+        selector.eq(i - 1).next().hide();
+        i--;
+    }
+}
+
+function showPosts(selector) {
+    if (selector) {
+        if (selector.length > 5) {
+            let i = 0;
+            while (i < 5) {
+                selector.eq(i).show();
+                selector.eq(i).next().show();
+                i++;
+            }
+        } else {
+            selector.show();
+            $(".load-more").remove();
+        }
+    } else {
+        $(".load-more").remove();
+    }
+}
+```
+
+CODE CREDIT: [https://stackoverflow.com/a/590040](https://stackoverflow.com/a/590040)
+
+Code was used to store values of selected checkboxes to the local storage.
+
+```
+let goodWith = [];
+$(".js-good_with:checked").each(function () {
+    goodWith.push($(this).val());
+});
+localStorage.setItem("good_with", goodWith);
+```
+
+CODE CREDIT: [https://learn.jquery.com/using-jquery-core/faq/how-do-i-check-uncheck-a-checkbox-input-or-radio-button/](https://learn.jquery.com/using-jquery-core/faq/how-do-i-check-uncheck-a-checkbox-input-or-radio-button/)
+
+Code was used to get values of selected checkboxes from the local storage.
+
+```
+let i = 0;
+$(".js-good_with").each(function () {
+    if ($(this).val() === goodWith[i]) {
+        $(this).prop("checked", true);
+        i++;
+    } else {
+        $(this).prop("checked", false);
+    }
+});
+```
+
+CODE CREDIT: [https://stackoverflow.com/a/51274004](https://stackoverflow.com/a/51274004)
+
+Code was used to add 'category' parameter to flash messages, so different behaviour can be achieved.
+
+```
+{% for category, message in messages%}
+  <div class="flash__text">{{ message }}</div><br>
+  <div class="flash__btn-container">
+    {% if category == "error" %}
+      <div class="btn btn--flash" id="flash-back"
+        tabindex="1">Go back</div>
+    {% elif category == "index" %}
+      <a class="btn btn--flash" href="/" tabindex="1" 
+        aria-label="link to index page">Back to home page</a>
+    {% else %}
+      <div class="btn btn--flash" id="flash-continue" 
+        tabindex="1">Continue</div>
+    {% endif %}
+  </div>
+{% endfor %}
+```
+
+### 8.2 Media
   
   - All images for the website are downloaded from [unsplash](https://unsplash.com/) website with free licence. All texts for the posts are taken from [wikipedia](https://en.wikipedia.org/wiki/Main_Page) or from [mojipsi.com](https://www.mojipsi.com/o-blogu/). Texts are heavily modified and some of them translated to english using google translate. User profile infos were created using [character generator](https://www.character-generator.org.uk/profile/). Dogs for adoption are not real dogs, images are downloaded from [unsplash](https://unsplash.com/) and their biographies from [pet adoption UK website](https://www.petadoptionuk.co.uk/). Dog biographies are modified and names of real dogs are changed.
 
-### 8.2 Acknowledgements
+### 8.3 Acknowledgements
 
 - My mentor Felipe Souza Alarcon for continuous helpful feedback
 
