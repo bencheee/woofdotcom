@@ -428,7 +428,11 @@ $ git clone https://github.com/bencheee/woofdotcom.git
 
 ## 8. CREDITS
 
-### 8.1 Acknowledgements
+### 8.1 Media
+  
+  - All images for the website are downloaded from [unsplash](https://unsplash.com/) website with free licence. All texts for the posts are taken from [wikipedia](https://en.wikipedia.org/wiki/Main_Page) or from [mojipsi.com](https://www.mojipsi.com/o-blogu/). Texts are heavily modified and some of them translated to english using google translate. User profile infos were created using [character generator](https://www.character-generator.org.uk/profile/). Dogs for adoption are not real dogs, images are downloaded from [unsplash](https://unsplash.com/) and their biographies from [pet adoption UK website](https://www.petadoptionuk.co.uk/). Dog biographies are modified and names of real dogs are changed.
+
+### 8.2 Acknowledgements
 
 - My mentor Felipe Souza Alarcon for continuous helpful feedback
 
