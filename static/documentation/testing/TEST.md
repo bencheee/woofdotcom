@@ -500,7 +500,7 @@ On submit, form method is POST and the ‘user_register’ python function is ca
 
 Expected inputs:
 
-* Username (required) is between 4 and 16 characters long, does not contain spaces or special characters 
+* Username (required) is between 2 and 16 characters long, does not contain spaces or special characters 
 * Email address (required) is in correct email format
 * Password (required) is between 8 and 16 characters long and does not contain spaces
 
