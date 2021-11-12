@@ -172,11 +172,11 @@ $(".inputfile").change(function (e) {
     let fileDefault = "No file selected";
     let fileSelected = e.target.value.split("\\").pop();
     if (fileSelected === "") {
-        $(".js-btn-photo span").text(" " + fileDefault);
+        $(".btn__upload-photo").text(" " + fileDefault);
         $(".js-btn-photo i").removeClass("fas fa-check");
         $(".js-btn-photo i").addClass("fas fa-upload");
     } else {
-        $(".js-btn-photo span").text(" " + fileSelected);
+        $(".btn__upload-photo").text(" " + fileSelected);
         $(".js-btn-photo i").removeClass("fas fa-upload");
         $(".js-btn-photo i").addClass("fas fa-check");
     }
