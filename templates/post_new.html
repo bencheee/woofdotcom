@@ -55,8 +55,9 @@
   <form class="form" action="{{ url_for('post_new') }}" method="POST"
     enctype="multipart/form-data" onsubmit="setLocalPost()">
 
+    <label class="form__label" for="category">Category</label>
     <select class="form__select" name="category" id="category" required>
-      <option value="" selected disabled hidden>Select category</option>
+      <option value="" selected disabled hidden>Select</option>
       {% for category in categories %}
         <option value="{{ category.name }}">
           {{ category.name }}
