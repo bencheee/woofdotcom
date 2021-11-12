@@ -170,11 +170,11 @@ def user_register():
             "username": request.form.get("username"),
             "password": generate_password_hash(
                 request.form.get("password")),
-            "email": request.form.get("email"),
-            "fname": request.form.get("fname"),
-            "lname": request.form.get("lname"),
-            "phone": request.form.get("phone"),
-            "about": request.form.get("about"),
+            "email": "",
+            "fname": "",
+            "lname": "",
+            "phone": "",
+            "about": "",
             "liked_posts": [],
             "adoption_requests": []
         }
