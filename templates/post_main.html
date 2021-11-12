@@ -11,7 +11,7 @@
     alt="banner dog lying on the edge of swimming pool">
   <div class="title-section">
     <h1 class="title-section__title">Posts collection</h1>
-    <p class="title-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum ex necultrices porta.</p>
+    <p class="title-section__text">This is the place where all the posts afrom our users are stored. You can filter and sort the posts by using filter tool on the page.</p>
   </div>
 </section>
 
@@ -347,44 +347,56 @@
 </section>
 
 {% if not session.user %}
-  <!-- Registration card -->
-  <section class="container container--light container--regcard">
-    <div class="reg-card wrapper__row">
-      <div class="reg-card--left wrapper__column">
-        <h2 class="container__title">Why register?</h2>
-        <p class="reg-card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus eget enim sit amet tristique. Duis sit amet sagittis risus. Integer scelerisque dolor sed tortor finibus, in tincidunt augue rutrum. Mauris mauris elit, maximus vel tristique ac, fermentum ac odio. Fusce vitae nisi ligula.</p>
-      </div>
-      <div class="reg-card--right wrapper__column">
-        <ul class="reg-card__list">
-          <li class="reg-card__item">
-            <i class="far fa-check-circle"></i>
-            <span>Unlimited access to all blogs</span>
-          </li>
-          <li class="reg-card__item">
-            <i class="far fa-check-circle"></i>
-            <span>Write your own posts</span>
-          </li>
-          <li class="reg-card__item">
-            <i class="far fa-check-circle"></i>
-            <span>Unlimited access to dog database</span>
-          </li>
-          <li class="reg-card__item">
-            <i class="far fa-check-circle"></i>
-            <span>Place ads for dog rehoming</span>
-          </li>
-          <li class="reg-card__item">
-            <i class="far fa-check-circle"></i>
-            <span>Send requests for dog adoption</span>
-          </li>
-        </ul>
-        <a class="btn btn--regcard btn--transparent"
-          href="{{ url_for('user_register') }}"
-          aria-label="link to user register page">
-          Register for free
-        </a>
-      </div>
+<!-- Registration card -->
+<section class="container container--light container--regcard">
+  <div class="reg-card wrapper__row">
+    <div class="reg-card--left wrapper__column">
+      <h2 class="container__title">Why register?</h2>
+      <p class="reg-card__text">
+        Do you want to share your passion for dogs with other members of woof(dot)com community? It's quick and simple. To register click on register button next to this text, or simply click on a link in navigation bar (menu). Registration allows you to choose your own username and password and it is completely free of charge!
+        
+        When you register we ask for certain information from you (e.g. email address, username), and later on you can add more info in your profile. We will use this data only to contact you in case of dog adoption process.
+      </p>
     </div>
-  </section>
+    <div class="reg-card--right wrapper__column">
+      <ul class="reg-card__list">
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Write your own posts</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Place ads for dog rehoming</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Edit or delete your content</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Like other posts</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Send requests for dog adoption</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>Access you personal inbox</span>
+        </li>
+        <li class="reg-card__item">
+          <i class="far fa-check-circle"></i>
+          <span>And more..</span>
+        </li>
+      </ul>
+      <a class="btn btn--regcard btn--transparent"
+        href="{{ url_for('user_register') }}"
+        aria-label="link to user register page">
+        Register for free
+      </a>
+    </div>
+  </div>
+</section>
 {% endif %}
 
 {% endblock %}

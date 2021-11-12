@@ -346,6 +346,7 @@ li {
 
 .reg-card__text {
     text-align: justify;
+    white-space: pre-line;
     font-size: 1.1rem;
     padding: 0 10px;
     margin-bottom: 35px;
