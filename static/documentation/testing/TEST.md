@@ -565,7 +565,7 @@ On submit, form method is POST and the ‘post_new / post_edit’ python functio
 Expected inputs:
 
 * Select category (required) does not have any validation restrictions and all options are pre populated by documents in 'categories' collection from database
-* Post title (required) is between 2 and 25 characters long
+* Post title (required) is between 2 and 50 characters long
 * Summary (required) is max 150 characters long
 * Post content (required) is max 10000 characters long
 * Upload photo - validation is done within python code
