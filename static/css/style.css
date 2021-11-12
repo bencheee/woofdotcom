@@ -1084,6 +1084,10 @@ li {
         margin-bottom: 370px;
     }
 
+    .container--register {
+        margin-bottom: 80px;
+    }
+
 }
 
 @media only screen and (min-width: 992px) and (orientation: landscape) {
@@ -1128,6 +1132,10 @@ li {
 
     .form {
         width: 50%;
+    }
+
+    .container--register {
+        margin-bottom: 80px;
     }
 
     /* Navbar */
