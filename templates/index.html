@@ -183,7 +183,8 @@
         {% endif %}
         {% if posts|length > 1 %}
           <div class="content-latest">
-            <a href="{{ url_for('post_page', post_id=posts[1]._id) }}" 
+            <a class="content-latest-link"
+              href="{{ url_for('post_page', post_id=posts[1]._id) }}" 
               aria-label="link to post page">
               <div class="content-box">
                 <p class="content-category">
@@ -198,7 +199,8 @@
               </div>
             </a>
             {% if posts|length > 2 %}
-              <a href="{{ url_for('post_page', post_id=posts[2]._id) }}" 
+              <a class="content-latest-link"
+                href="{{ url_for('post_page', post_id=posts[2]._id) }}" 
                 aria-label="link to post page">
                 <div class="content-box">
                   <p class="content-category">
@@ -368,7 +370,8 @@
         {% endif %}
         {% if dogs|length > 1 %}
           <div class="content-latest">
-            <a href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}"   
+            <a class="content-latest-link"
+              href="{{ url_for('dog_page', dog_id=dogs[1]._id) }}"   
               aria-label="link to dog page">
               <div class="content-box">
                 <p class="content-category">
@@ -383,7 +386,8 @@
               </div>
             </a>
             {% if dogs|length > 2 %}
-              <a href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" 
+              <a class="content-latest-link"
+                href="{{ url_for('dog_page', dog_id=dogs[2]._id) }}" 
                 aria-label="link to dog page">
                 <div class="content-box">
                   <p class="content-category">

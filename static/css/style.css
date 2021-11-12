@@ -1313,6 +1313,10 @@ li {
         padding: 10px;
     }
 
+    .content-latest-link {
+        min-height: 40%;
+    }
+
     .content-empty {
         display: flex;
         flex-direction: column;
@@ -1326,6 +1330,7 @@ li {
         background: linear-gradient(
             180deg, rgba(242,249,249,1) 50%, rgb(198, 234, 233) 150%);
         padding: 10px;
+        height: 100%;
         border-radius: 10px;
         transition: 0.3s;
     }
