@@ -881,8 +881,11 @@ li {
     margin: 20px 0;
     padding: 5px 15px;
     font-size: 1.5rem;
-    color: var(--color6);
     box-shadow: inset 4px 0px 0px -2px #ffffff61;
+}
+
+.nav__mobile a {
+    color: var(--color6);
 }
 
 .footer {
