@@ -2,7 +2,7 @@
 
 [Click for live website](http://woofdotcom.herokuapp.com/)
 
-**woof(dot)com** is web portal for dog lovers and it is part of my 3nd milestone project in **Code Institute's Full Stack Software Development Course**. This site is intended for all dog lovers to share their posts with community, to find new homes for their dogs in case they can not keep them anymore, and for those who would like to adopt a dog.
+**woof(dot)com** is web portal for dog lovers and it is part of my 3nd milestone project in **Code Institute's Full Stack Software Development Course**. This site is intended for all dog lovers to share their posts with community, to find new homes for their dogs in case they cannot keep them anymore, and for those who would like to adopt a dog.
 
 ![mockup](/static/documentation/testing/images/mockup.PNG)
 
@@ -12,7 +12,7 @@
 
 ### 1.1 User Stories
 
-#### 1.1.1 First time visitors's goals
+#### 1.1.1 First time visitor’s goals
 
 - *As a first time visitor*, I want to clearly see the purpose of the site and to easily navigate throughout the site
 
@@ -44,7 +44,7 @@
 
 - *As a site owner*, I want to provide a platform for users to share their knowledge, experiences, advices and passion for dogs
 
-- *As a site owner*, I want to provide service and support for dog owners to re-home their dogs if they can not keep them for any reason anymore
+- *As a site owner*, I want to provide service and support for dog owners to re-home their dogs if they cannot keep them for any reason anymore
 
 - *As a site owner*, I want to provide messaging tools between site users and myself as integrated part of the site
 
@@ -66,15 +66,15 @@ Database for this project includes 5 collections (*users*, *categories*, *posts*
 
 ### 3.1 Users collection
 
-Document in 'users' collection consists of 10 fields (including default _id field). Fields *liked_posts* and *adoption_requests* are arrays which get their values from documents in *post* and *dog* collections. All other fileds are populated by direct user input.
+Document in 'users' collection consists of 10 fields (including default _id field). Fields *liked_posts* and *adoption_requests* are arrays which get their values from documents in *post* and *dog* collections. All other fields are populated by direct user input.
 
 ### 3.2 Posts collection
 
-Document in 'posts' collection consists of 14 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific post document. Fields *created*, *create_date*, *create_time* and *update_time* are also generated inside python code with datetime module and their purpose is to manipulate posts by time criteria. *Like* field is integer type and it changes depending on users action (like button on post page). *Author* field is populated from a document in 'users' collection. *Category* filed is populated from a document in 'categories' collection. Fields *title*, *summary* and *content* are populated by direct user input.
+Document in 'posts' collection consists of 14 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific post document. Fields *created*, *create_date*, *create_time* and *update_time* are also generated inside python code with *datetime* module and their purpose is to manipulate posts by time criteria. *Like* field is integer type and it changes depending on users action (like button on post page). *Author* field is populated from a document in 'users' collection. *Category* filed is populated from a document in 'categories' collection. Fields *title*, *summary* and *content* are populated by direct user input.
 
 ### 3.3 Dogs collection
 
-Document in 'dogs' collection consists of 13 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific dog document. *Owner_id* field is of ObjectId type and it is received from a document in 'users' collection'. *Created* field is generated inside python code with datetime module and its purpose is to manipulate dogs by time criteria. Fields *name*, *gender*, *age*, *size*, *good_with*, *description* and *greeting* are populated by direct user input.
+Document in 'dogs' collection consists of 13 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific dog document. *Owner_id* field is of *ObjectId* type and it is received from a document in 'users' collection'. *Created* field is generated inside python code with *datetime* module and its purpose is to manipulate dogs by time criteria. Fields *name*, *gender*, *age*, *size*, *good_with*, *description* and *greeting* are populated by direct user input.
 
 ### 3.4 Messages
 
@@ -87,6 +87,8 @@ Document in 'categories' collection consists of 2 fields (including default _id 
 VISUAL REPRESENTATION OF DATABASE SCHEMA MODEL:
 
 ![Database Schema](static/documentation/db_schema.PNG)
+
+---
 
 ## 4. TECHNOLOGIES USED
 
@@ -153,7 +155,116 @@ The ' Libre Franklin ' font is the main font used throughout the whole website w
 
 ---
 
-## 6. TESTING
+## 6. FEATURES AND FUNCTIONALITY
+
+Website can be used by non-registered or registered user. Registered users get some extra features such as posting new content, liking posts, applying for dog adoption and they have access to inbox. It is recommended to register and login with own account for best browsing experience.
+
+### 6.1 Registration
+
+To create an account user has to click on *Sign up* in navigation menu or *Register* button at the bottom of the page. Mandatory fields for every user are *username*, *email address* and *password*.
+
+![001](/static/documentation/features/001.webp)
+![002](/static/documentation/features/002.webp)
+
+### 6.2 Updating profile
+
+Updating profile is simple - hovering over username text in upper right corner of the screen will show *account settings* option. On mobile and tablet devices this option is part of navigation menu. When user is on the page, there are few options that can be changed, such as account password of *optional information*. Optional information is important in cases when user wants to post dog ads or apply for dog adoption.
+
+![003](/static/documentation/features/003.webp)
+![004](/static/documentation/features/004.webp)
+![005](/static/documentation/features/005.webp)
+
+### 6.3 Navigating through the site
+
+Throughout the site there are various links, buttons, icons and clickable photos which help user to navigate through the site. In addition to that, there is a section with link tabs for even easier navigation. It is located just below banner and has four main links - *Adopt a dog*, *Give up a dog*, *Post new article* and *Contact us*. For non registered users *Post new article* link will be hidden. The reason why *Give up a dog* button will stay visible is because it does not redirect straight to *post new dog form*, but instead takes the user to *Dog surrender page* with tips on surrendering and rehoming a dog.
+
+![006](/static/documentation/features/006.webp)
+
+### 6.4 Index page
+
+Index page is starting point of the web portal. It is divided in two main sections - *Latest posts* and *Newest dogs*.
+
+#### 6.4.1 Latest posts
+
+This section is showing 3 latest posts posted by the users, and it is automatically sorted from newest to older posts. On desktop and tablet size top post is bigger than the others and represents featured post. This section includes *view more* button which will take the user to the page with all posts on the website.
+
+![007](/static/documentation/features/007.webp)
+
+#### 6.4.2 Newest dogs
+
+Similarly, this section is showing 3 latest dog ads posted by the users, and it is automatically sorted from newest to older dog ads. On desktop and tablet size top dog is bigger than the others and represents featured dog. This section also includes *view more* button which will take the user to the page with all dogs on the website.
+
+![008](/static/documentation/features/008.webp)
+
+### 6.5 Posts page
+
+This page contains all posts in the database. By default, posts are sorted from newest to oldest, but this can be manipulated by the user. This page has search filter button which reveals filter controls. Posts can be filtered by category and author, and can be sorted by time or by popularity (number of likes per post). If there is more than 5 posts in database page will show only first 5 posts, but *show more* button at the bottom of the posts will load more posts for user to see.
+
+![009](/static/documentation/features/009.webp)
+![010](/static/documentation/features/010.webp)
+
+### 6.6 Dogs page
+
+Similarly do posts page, this page contains all dog ads in the database. By default, dogs are sorted from newest to oldest. This page has search filter button which reveals filter controls. Dogs can be filtered by name, age gender, size and *other* option via checkbox buttons. If there is more than 5 dogs in database page will show only first 5 , but *show more* button at the bottom of the dog ads will load more dogs for user to see.
+
+![011](/static/documentation/features/011.webp)
+![012](/static/documentation/features/012.webp)
+
+### 6.7 Dog surrender page
+
+On this page user can get some tips and advices on surrendering dogs. If page is viewed by registered user with full profile info, *Dog surrender* button will appear at the bottom of the page. If full profile info is not provided user will be notified of that and *Dog surrender* button will be hidden. If page is viewed by non registered user, *Dog surrender* button will be hidden and user will be notified that at this point adoption is not available.
+
+![013](/static/documentation/features/013.webp)
+![014](/static/documentation/features/014.webp)
+![015](/static/documentation/features/015.webp)
+
+### 6.8 Adding new post or new dog ad
+
+Every registered user can add new posts / dog ads. It is a simple form that needs to be filled out and by pressing *POST* button the post gets added to the database. Optionally, user can choose to upload own photo by clicking on *Upload photo* button. If user decides not to upload the photo, default photo will be displayed.
+
+![016](/static/documentation/features/016.webp)
+
+### 6.9 Editing and deleting post or dog ads
+
+By clicking on edit/delete icon in the post/dog page user can access edit form or simply choose to delete content form database.
+
+![017](/static/documentation/features/017.webp)
+![018](/static/documentation/features/018.webp)
+![019](/static/documentation/features/019.webp)
+![020](/static/documentation/features/020.webp)
+
+### 6.10 Liking a post
+
+By clicking a little star icon on post page, user can give the 'like' to the post. This action will increase likes count for this post by 1, and vice versa, if user clicks on the star icon again counter will drop by one. Users can not like own posts, in that case star icon is hidden. The same goes for unregistered users.
+
+![021](/static/documentation/features/021.webp)
+
+### 6.11 Adopting a dog
+
+By clicking on the *Apply for adoption* button on a dog page, user can apply for dog adoption. This action will send automated message to admin inbox and user will be notified of this action by flash message. If user clicks on *Withdraw application* button, message will be deleted from the database and the whole action will be undone. Users can not apply to adopt their own dogs, in that case button is hidden. The same goes for unregistered users.
+
+![023](/static/documentation/features/023.webp)
+![024](/static/documentation/features/024.webp)
+![025](/static/documentation/features/025.webp)
+![026](/static/documentation/features/026.webp)
+
+### 6.12 Contact form
+
+By clicking on *contact us* link in link tabs, contact page will open. If user is registered then only message subject and message is needed. If user is not registered then also user first name and email address is required.
+
+![027](/static/documentation/features/027.webp)
+
+### 6.13 Inbox
+
+Every registered user has access to inbox by clicking on envelope icon in the top right corner on desktop, or selecting it from navigation menu on mobile/tablet. Messages in inbox are sorted from newest to oldest. By clicking on the message it automatically gets 'read' status and slightly changes visual preview of the message in inbox (font weight is lighter). Admin inbox has an extra feature where messages are divided in standard messages and adoption requests, which is also indicated by the messages tab in the middle of the screen. Users can read, reply to and delete messages. If user replies to the message, this message gets a small *replied* icon next to message subject.
+
+![028](/static/documentation/features/028.webp)
+![029](/static/documentation/features/029.webp)
+![030](/static/documentation/features/030.webp)
+
+---
+
+## 7. TESTING
 
 The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) services were used to validate the HTML and CSS code of the project to ensure there were no syntax errors. [jsHint](https://jshint.com/) was used to test JavaScript code. [pep8online](http://pep8online.com/) was used to check if Python code is PEP8 compliant.
 
@@ -187,13 +298,13 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
     - All tests passed with no major issues
 
-### 6.1 Testing User Stories from User Experience (UX) Section
+### 7.1 Testing User Stories from User Experience (UX) Section
 
-#### First time visitors's goals
+#### First time visitor’s goals
 
 * As a first time visitor, I want to clearly see the purpose of the site and to easily navigate throughout the site.
 
-  -  Theme of the website is visible through it’s name (woofdotcom) and there are various dog photos in banner section throughout the site. Pages have title sections with brief description of the purpose of the page. For first time visitors (unregistered users) there is register section displayed which invites user to create account and explains additional benefits of being a member.
+  -  Theme of the website is visible through its name (woofdotcom) and there are various dog photos in banner section throughout the site. Pages have title sections with brief description of the purpose of the page. For first time visitors (unregistered users) there is register section displayed which invites user to create account and explains additional benefits of being a member.
 
   [Example 1](/static/documentation/testing/user_stories/001.webp)
 
@@ -294,7 +405,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   [Example 19](/static/documentation/testing/user_stories/017.webp)
 
-### 6.2 Further testing
+### 7.2 Further testing
 
 * The website was tested on [Google Chrome](/static/documentation/testing/images/chrome.PNG), [Microsoft Edge]((/static/documentation/testing/images/edge.PNG)), [Mozilla Firefox]((/static/documentation/testing/images/firefox.PNG)) and [Opera]((/static/documentation/testing/images/opera.PNG)) browsers.
 
@@ -326,17 +437,17 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   ![responsive](/static/documentation/testing/responsiveness/desktop.webp)
 
-### 6.3 Manual testing
+### 7.3 Manual testing
 
 Due to extensive testing, this section is provided in separate file which can be found on the following [link](/static/documentation/testing/TEST.md).
 
-### 6.4 Known bugs
+### 7.4 Known bugs
 
 * Website does not work in Internet Explorer 11 which causes page elements to display incorrectly on load, and none of the events work.
 
 * Images are not displaying on older iPhone devices using Safari versions lower than v14 as webp image format is not supported.
 
-### 6.5 Fixed bugs
+### 7.5 Fixed bugs
 
 * On mobile and tablet devices navbar toggle button was disabling scrolling on the page.
 
@@ -382,11 +493,12 @@ $(window).scroll(function() {
     }
 })
 ```
+
 ---
 
-## 7. DEPLOYMENT
+## 8. DEPLOYMENT
 
-### 7.1 Creating repository on GitHub
+### 8.1 Creating repository on GitHub
 
 Repository for this project was created using following steps:
 
@@ -398,7 +510,7 @@ Repository for this project was created using following steps:
 
 ![Deployment 2](/static/documentation/deployment/002.png)
 
-### 7.2 Deploying project on Heroku
+### 8.2 Deploying project on Heroku
 
 This project was deployed to GitHub Pages using following steps:
 
@@ -430,7 +542,7 @@ This project was deployed to GitHub Pages using following steps:
 
 *Make sure to have Procfile and requirements.txt updated in project repository, otherwise app will not run.
  
-### 7.3 Forking repository
+### 8.3 Forking repository
 
 To fork the repository use the following steps:
 
@@ -440,7 +552,7 @@ To fork the repository use the following steps:
 
 ![Deployment 10](/static/documentation/deployment/010.PNG)
 
-### 7.4 Cloning repository
+### 8.4 Cloning repository
 
 To make a local clone of the repository use the following steps:
 
@@ -464,9 +576,9 @@ $ git clone https://github.com/bencheee/woofdotcom.git
 
 ---
 
-## 8. CREDITS
+## 9. CREDITS
 
-### 8.1 Code credits
+### 9.1 Code credits
 
 CODE CREDIT: [https://kenwheeler.github.io/slick/](https://kenwheeler.github.io/slick/)
 
@@ -583,12 +695,13 @@ Code was used to add 'category' parameter to flash messages, so different behavi
 {% endfor %}
 ```
 
-### 8.2 Media
+### 9.2 Media
   
-  - All images for the website are downloaded from [unsplash](https://unsplash.com/) website with free licence. All texts for the posts are taken from [wikipedia](https://en.wikipedia.org/wiki/Main_Page) or from [mojipsi.com](https://www.mojipsi.com/o-blogu/). Texts are heavily modified and some of them translated to english using google translate. User profile infos were created using [character generator](https://www.character-generator.org.uk/profile/). Dogs for adoption are not real dogs, images are downloaded from [unsplash](https://unsplash.com/) and their biographies from [pet adoption UK website](https://www.petadoptionuk.co.uk/). Dog biographies are modified and names of real dogs are changed.
+  - All images for the website are downloaded from [unsplash](https://unsplash.com/) website with free licence. All texts for the posts are taken from [wikipedia](https://en.wikipedia.org/wiki/Main_Page) or from [mojipsi.com](https://www.mojipsi.com/o-blogu/). Texts are heavily modified and some of them translated to English using Google translate. User profile infos were created using [character generator](https://www.character-generator.org.uk/profile/). Dogs for adoption are not real dogs, images are downloaded from [unsplash](https://unsplash.com/) and their biographies from [pet adoption UK website](https://www.petadoptionuk.co.uk/). Dog biographies are modified and names of real dogs are changed.
 
-### 8.3 Acknowledgements
+### 9.3 Acknowledgements
 
 - My mentor Felipe Souza Alarcon for continuous helpful feedback
 
 - Tutor support at Code Institute for their support 
+
