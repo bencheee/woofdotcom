@@ -1,10 +1,53 @@
-# Manual testing
+# MANUAL TESTING
 
 Testing is done for all pages on the website by explaining what is the purpose of each page, expected outcome of back end code and then logging if the result is ‘pass’ or ‘fail’. Same is used in testing of the python functions. Forms are tested to make sure correct data is sent to the server side. Also, page restrictions are tested as part of the defensive programming principles to minimize number of bugs and problems.
 
-## 1. Pages tests
+# TABLE OF CONTENTS:
 
-### 1.1 user_register
+-  [PAGES TESTS](#[pages-tests])
+  -  [user register](#user-register)
+  -  [user login](#user-login)
+  -  [user profile](#user-profile)
+  -  [index](#index)
+  -  [post main](#post-main)
+  -  [dog main](#dog-main)
+  -  [post page](#post-page)
+  -  [dog page](#dog-page)
+  -  [post new](#post-new)
+  -  [dog new](#dog-new)
+  -  [post edit](#post-edit)
+  -  [dog edit](#dog-edit)
+  -  [dog surrender](#dog-surrender)
+  -  [inbox](#inbox)
+  -  [message](#message)
+  -  [alert](#alert)
+  -  [contact](#contact)
+-  [FUNCTIONS TESTS](#function-tests)
+  -  [post delete](#post-delete)
+  -  [dog delete](#dog-delete)
+  -  [reply](#reply)
+  -  [message delete](#message-delete)
+  -  [generate photo](#generate-photo)
+  -  [adopt](#adopt)
+  -  [adopt undo](#adopt-undo)
+  -  [global vars](#global-vars)
+-  [FORM VALIDATION](#form-validation)
+  -  [user register](#user-register)
+  -  [user login](#user-login)
+  -  [user profile](#user-profile)
+  -  [post main](#post-main)
+  -  [dog main](#dog-main)
+  -  [post new and post edit](#post-new-and-post-edit)
+  -  [dog new and dog edit](#dog-new-and-dog-edit)
+  -  [message reply](#message-reply)
+  -  [contact](#contact)
+-  [USER PERMISSIONS](#user-permissions)
+
+---
+
+# PAGES TESTS
+
+## user register
 
 This page allows user to create own account.
 
@@ -17,7 +60,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#user-register) 
 
 Testing screenshots:
 
@@ -26,7 +69,7 @@ Testing screenshots:
 ![example3](/static/documentation/testing/images/003.webp)
 ![example4](/static/documentation/testing/images/004.webp)
 
-### 1.2 user_login
+## user login
 
 This page allows user to log in to own account.
 
@@ -38,14 +81,14 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#user-login) 
 
 Testing screenshots:
 
 ![example5](/static/documentation/testing/images/005.webp)
 ![example6](/static/documentation/testing/images/006.webp)
 
-### 1.3 user_profile
+## user profile
 
 This page allows the user to change password or to edit profile info.
 
@@ -58,7 +101,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#user-profile) 
 
 Testing screenshots:
 
@@ -67,7 +110,7 @@ Testing screenshots:
 ![example9](/static/documentation/testing/images/009.webp)
 ![example10](/static/documentation/testing/images/010.webp)
 
-### 1.4 index
+## index
 
 This page shows latest posts and dog ads.
 
@@ -88,7 +131,7 @@ Testing screenshots:
 ![example13](/static/documentation/testing/images/014.webp)
 ![example14](/static/documentation/testing/images/015.webp)
 
-### 1.5 post_main
+## post main
 
 This page shows all posts stored in the database and allows user to perform post search by providing search criteria. All posts are sorted from newest to oldest by default.
 
@@ -107,7 +150,7 @@ Testing screenshots:
 ![example15](/static/documentation/testing/images/066.webp)
 ![example16](/static/documentation/testing/images/017.webp)
 
-### 1.6 dog_main
+## dog main
 
 This page shows all dogs stored in the database and allows user to perform dog search by providing search criteria. All dogs are sorted from newest to oldest by default.
 
@@ -126,7 +169,7 @@ Testing screenshots:
 ![example17](/static/documentation/testing/images/067.webp)
 ![example18](/static/documentation/testing/images/019.webp)
 
-### 1.7 post_page
+## post page
 
 This page shows a specific post.
 
@@ -148,7 +191,7 @@ Testing screenshots:
 ![example21](/static/documentation/testing/images/023.webp)
 ![example22](/static/documentation/testing/images/024.webp)
 
-### 1.8 dog_page
+## dog page
 
 This page shows a specific dog page.
 
@@ -177,7 +220,7 @@ Testing screenshots:
 ![example28](/static/documentation/testing/images/030.webp)
 ![example29](/static/documentation/testing/images/031.webp)
 
-### 1.9 post_new
+## post new
 
 This page allows user to add new post and to upload image from own machine.
 
@@ -190,14 +233,14 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#post-new-and-post-edit) 
 
 Testing screenshots:
 
 ![example30](/static/documentation/testing/images/032.webp)
 ![example31](/static/documentation/testing/images/033.webp)
 
-### 1.10 dog_new
+## dog new
 
 This page allows user to add new dog ad and to upload image from own machine.
 
@@ -210,13 +253,13 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#dog-new-and-dog-edit) 
 
 Testing screenshots:
 
 ![example32](/static/documentation/testing/images/034.webp)
 
-### 1.11 post_edit
+## post edit
 
 This page allows post author or admin to edit post and to change post image.
 
@@ -230,14 +273,14 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#post-new-and-post-edit) 
 
 Testing screenshots:
 
 ![example33](/static/documentation/testing/images/037.webp)
 ![example34](/static/documentation/testing/images/038.webp)
 
-### 1.12 dog_edit
+## dog edit
 
 This page allows dog owner or admin to edit dog ad and to change dog image.
 
@@ -251,13 +294,13 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#dog-new-and-dog-edit) 
 
 Testing screenshots:
 
 ![example35](/static/documentation/testing/images/068.webp)
 
-### 1.13 dog_surrender
+## dog surrender
 
 This page shows tips for the user when surrendering a dog.
 
@@ -273,7 +316,7 @@ Testing screenshots:
 ![example36](/static/documentation/testing/images/035.webp)
 ![example37](/static/documentation/testing/images/036.webp)
 
-### 1.14 inbox
+## inbox
 
 This page shows all messages sent to the user. Messages are sorted from newest to oldest by default.
 
@@ -292,7 +335,7 @@ Testing screenshots:
 ![example38](/static/documentation/testing/images/043.webp)
 ![example39](/static/documentation/testing/images/044.webp)
 
-### 1.15 message
+## message
 
 This page shows the message content and info about the sender. User can reply to the message and delete the message.
 
@@ -311,7 +354,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#message-reply) 
 
 Testing screenshots:
 
@@ -321,7 +364,7 @@ Testing screenshots:
 ![example43](/static/documentation/testing/images/048.webp)
 ![example44](/static/documentation/testing/images/049.webp)
 
-### 1.16 alert
+## alert
 
 Shows a message on the screen depending on the received response formthe server.
 
@@ -344,7 +387,7 @@ Testing screenshots:
 ![example49](/static/documentation/testing/images/054.webp)
 ![example50](/static/documentation/testing/images/055.webp)
 
-### 1.17 contact
+## contact
 
 This page allows users to send messages to admin inbox.
 
@@ -355,16 +398,18 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** Results 
+**Form validation test:** [Results](#contact) 
 
 Testing screenshots:
 
 ![example51](/static/documentation/testing/images/056.webp)
 ![example52](/static/documentation/testing/images/057.webp)
 
-## 2. Functions tests
+---
 
-### 2.1 post_delete
+# FUNCTIONS TESTS
+
+## post delete
 
 This function deletes the post from the database.
 
@@ -381,7 +426,7 @@ Testing screenshots:
 ![example53](/static/documentation/testing/images/039.webp)
 ![example54](/static/documentation/testing/images/040.webp)
 
-### 2.2 dog_delete
+## dog delete
 
 This function deletes the dog from the database.
 
@@ -399,7 +444,7 @@ Testing screenshots:
 ![example56](/static/documentation/testing/images/042.webp)
 ![example57](/static/documentation/testing/images/064.webp)
 
-### 2.3 reply
+## reply
 
 This function sends a reply to an existing message in users inbox.
 
@@ -415,7 +460,7 @@ Testing screenshots:
 
 ![example58](/static/documentation/testing/images/053.webp)
 
-### 2.4 message_delete
+## message delete
 
 This function deletes the message from the database.
 
@@ -431,7 +476,7 @@ Testing screenshots:
 ![example59](/static/documentation/testing/images/058.webp)
 ![example60](/static/documentation/testing/images/059.webp)
 
-### 2.5 generate_photo
+## generate photo
 
 This function uploads the image from users machine, converts it to fixed size and webp format. Saves the image with unique file name to cloud storage.
 
@@ -448,7 +493,7 @@ Testing screenshots:
 
 ![example61](/static/documentation/testing/images/060.webp)
 
-### 2.6 adopt
+## adopt
 
 This function sends dog adoption request to admin inbox.
 
@@ -464,7 +509,7 @@ Testing screenshots:
 
 ![example62](/static/documentation/testing/images/061.webp)
 
-### 2.7 adopt_undo
+## adopt undo
 
 This function withdraws dog adoption application and deletes request from admin inbox.
 
@@ -480,7 +525,7 @@ Testing screenshots:
 
 ![example63](/static/documentation/testing/images/062.webp)
 
-### 2.8 global_vars
+## global vars
 
 This function returns variables which contain number of unread messages in inbox for admin and standard users. This variables are used by base.html to show this numbers in navigation bar by the inbox link.
 
@@ -490,11 +535,13 @@ Testing screenshots:
 
 ![example64](/static/documentation/testing/images/063.webp)
 
-## 3. Form validation
+---
+
+# FORM VALIDATION
 
 All forms on the website are tested to ensure correct data is passed on to the server side. Expected input and and result of the test outcome is logged for each form.
 
-### 3.1 user_register
+## user register
 
 On submit, form method is POST and the ‘user_register’ python function is called. Also on submit, javascript ‘setLocalRegister’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh.
 
@@ -506,7 +553,7 @@ Expected inputs:
 
 **All tests passed!**
 
-### 3.2 user_login
+## user login
 
 On submit, form method is POST and the ‘user_login’ python function is called. 
 
@@ -517,7 +564,7 @@ Expected inputs:
 
 **All tests passed!**
 
-### 3.3 user_profile
+## user profile
 
 There are two forms on this page. First form allows user to change password only, and the other form allows change of profile information. If previous data exists, info in form 2 is pre populated on load. On submit, method is POST and the ‘user_login’ python function is called for both forms. 
 
@@ -536,7 +583,7 @@ Expected inputs for Form2:
 
 **All tests passed!**
 
-### 3.4 post_main
+## post main
 
 On submit, form method is POST and the ‘post_main’ python function is called.  
 
@@ -546,7 +593,7 @@ Expected inputs:
 * Author name does not have any validation restrictions*
 * Sort by does not have any validation restrictions*
 
-### 3.5 dog_main
+## dog main
 
 On submit, form method is POST and the ‘dog_main’ python function is called.
 
@@ -558,7 +605,7 @@ Expected inputs:
 * Dog size does not have any validation restrictions*
 * Checkbox inputs do not have any validation restrictions*
 
-### 3.6 post_new / post_edit
+## post new and post edit
 
 On submit, form method is POST and the ‘post_new / post_edit’ python function is called. Also on submit, javascript ‘setLocalPost’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded. If post_edit function is called, all form fields are pre populated from the database.
 
@@ -572,7 +619,7 @@ Expected inputs:
 
 **All tests passed!**
 
-### 3.7 dog_new / dog_edit
+## dog new and dog edit
 
 On submit, form method is POST and the ‘dog_new / dog_edit’ python function is called. Also on submit, javascript ‘setLocalDog’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded.  If dog_edit function is called, all form fields are pre populated from the database.
 
@@ -589,7 +636,7 @@ Expected inputs:
 
 **All tests passed!**
 
-### 3.8 message_reply
+## message reply
 
 On submit, form method is POST and the ‘reply’ python function is called. Also, 'receiver' and 'msg_id' variables are sent to the server side for further actions.
 
@@ -599,7 +646,7 @@ Expected inputs:
 
 **All tests passed!**
 
-### 3.9 contact
+## contact
 
 Expected inputs:
 
@@ -610,7 +657,9 @@ Expected inputs:
 
 **All tests passed!**
 
-## 4. User permissions
+---
+
+# USER PERMISSIONS
 
 Goal of this test is to make sure that certain pages and functions can be accessed only by authorized users. To perform this test, a temporary halper page was made. This page contained links to all pages / functions and it made testing process much faster.
 

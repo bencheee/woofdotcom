@@ -67,7 +67,7 @@
 
 ---
 
-## USER EXPERIENCE (UX)
+## USER EXPERIENCE
 
 ### User Stories
 
