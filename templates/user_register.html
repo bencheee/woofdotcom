@@ -59,16 +59,16 @@
 
     <label class="form__label" for="username">Username</label>
     <input class="form__input" type="text" id="username" name="username" 
-      minlength="2" maxlength="16" pattern="^[a-zA-Z0-9_]{2,16}$"
+      minlength="2" maxlength="30" pattern="^[a-zA-Z0-9_]{2,30}$"
       autocomplete="new-password" required>
 
     <label class="form__label" for="email">Email address</label>
     <input class="form__input" type="email" id="email" name="email" required>
 
     <label class="form__label" for="password">Choose password</label>
-    <input class="form__input form__input--bold" type="password" id="password"
-      name="password" minlength="8" maxlength="16" pattern="([^\s]+)"
-      autocomplete="new-password" required>
+    <input class="form__input form__input--bold input-placeholder" 
+      type="password" id="password" name="password" minlength="8" maxlength="16" pattern="([^\s]+)" autocomplete="new-password"
+      placeholder="required length 8-16 characters (no spaces)" required>
 
     <label class="form__label" for="password2">Repeat password</label>
     <input class="form__input form__input--bold" type="password" id="password2"

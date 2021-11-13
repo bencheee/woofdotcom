@@ -441,6 +441,11 @@ li {
     font-size: 0.9rem;
 }
 
+.input-placeholder::placeholder {
+    font-weight: 100;
+    letter-spacing: normal;
+}
+
 /* user_login.html */
 
 .container--login {

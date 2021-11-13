@@ -500,7 +500,7 @@ On submit, form method is POST and the ‘user_register’ python function is ca
 
 Expected inputs:
 
-* Username (required) is between 2 and 16 characters long, does not contain spaces or special characters 
+* Username (required) is between 2 and 30 characters long, does not contain spaces or special characters 
 * Email address (required) is in correct email format
 * Password (required) is between 8 and 16 characters long and does not contain spaces
 
@@ -529,8 +529,8 @@ Expected inputs for Form 1:
 
 Expected inputs for Form2:
 
-* First name (required) is between 2 and 20 characters long, does not contain spaces, numbers or special characters 
-* Last name (required) is between 2 and 20 characters long, does not contain spaces, numbers or special characters 
+* First name (required) is between 2 and 30 characters long, does not contain spaces, numbers or special characters 
+* Last name (required) is between 2 and 30 characters long, does not contain spaces, numbers or special characters 
 * Phone is exactly 10 numbers long, it starts with 08 and third number is 3, 5, 7 or 9
 * About is min 10 and max 10000 characters long
 
@@ -578,7 +578,7 @@ On submit, form method is POST and the ‘dog_new / dog_edit’ python function 
 
 Expected inputs:
 
-* Dog name (required) is between 2 and 15 characters long
+* Dog name (required) is between 2 and 30 characters long
 * Gender (required) has two options - 'male' and 'female'
 * Age (required) is between 1 and 2 characters long, only numbers allowed
 * Size (required) has three options - 'small', 'medium' and 'large'
@@ -603,7 +603,7 @@ Expected inputs:
 
 Expected inputs:
 
-* First name (required) is between 2 and 20 characters long, does not contain spaces or special characters 
+* First name (required) is between 2 and 30 characters long, does not contain spaces or special characters 
 * Email address (required) is in correct email format
 * Subject (required) is max 80 characters long
 * Message (required) is max 10000 characters long
