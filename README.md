@@ -29,7 +29,7 @@
   -  [Colour scheme](#colour-scheme)
   -  [Imagery](#imagery)
   -  [Typography](#typography)
-* [FEATURES AND FUNCTIONALITY](#features-and-functionality)
+- [FEATURES AND FUNCTIONALITY](#features-and-functionality)
   -  [Registration](#registration)
   -  [Updating profile](#updating-profile)
   -  [Navigating through the site](#navigating-through-the-site)
