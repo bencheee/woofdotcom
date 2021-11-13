@@ -46,6 +46,7 @@ Testing is done for all pages on the website by explaining what is the purpose o
 ---
 
 # PAGES TESTS
+[Back to table of contents](#table-of-contents)
 
 ## user register
 
@@ -408,6 +409,7 @@ Testing screenshots:
 ---
 
 # FUNCTIONS TESTS
+[Back to table of contents](#table-of-contents)
 
 ## post delete
 
@@ -538,6 +540,7 @@ Testing screenshots:
 ---
 
 # FORM VALIDATION
+[Back to table of contents](#table-of-contents)
 
 All forms on the website are tested to ensure correct data is passed on to the server side. Expected input and and result of the test outcome is logged for each form.
 
@@ -660,6 +663,7 @@ Expected inputs:
 ---
 
 # USER PERMISSIONS
+[Back to table of contents](#table-of-contents)
 
 Goal of this test is to make sure that certain pages and functions can be accessed only by authorized users. To perform this test, a temporary halper page was made. This page contained links to all pages / functions and it made testing process much faster.
 
