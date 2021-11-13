@@ -137,6 +137,20 @@ VISUAL REPRESENTATION OF DATABASE SCHEMA MODEL:
 
 ## 5. DESIGN
 
+### 5.1 Colour scheme
+
+Website uses different shades of green  color  throughout all pages. In addition to main colors, website also uses black and white color for some of the text content.
+
+![Color palette](static/documentation/palette.webp)
+
+### 5.2 Imagery
+
+Images in title sections are showing various types of dogs. Purpose of images is to give clear idea of the website theme  and also to make it visually attractive. There are also default placeholder images for posts and dog ads in case user decides not to upload any own photos.
+
+### 5.3 Typography
+
+The ' Libre Franklin ' font is the main font used throughout the whole website with 'Sans Serif' as the fallback font in case for any reason the font isn't being imported into the site correctly. On most of the headings  ' Fredericka the Great ' font is
+
 ---
 
 ## 6. TESTING
