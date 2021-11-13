@@ -854,6 +854,11 @@ li {
     transition: 0.3s;
 }
 
+.switch__requests:focus-visible,
+.switch__messages:focus-visible {
+    outline: none;
+}
+
 .switch__requests {
     color: rgba(0, 0, 0, 0.3);
 }
