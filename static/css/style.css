@@ -789,7 +789,7 @@ li {
 
 .inbox__header {
     position: fixed;
-    top: 80px;
+    top: 0;
     width: 100%;
     padding-top: 70px;
     background-color: var(--color6);
@@ -797,8 +797,8 @@ li {
 }
 
 .container--inbox {
-    top: 370px;
-    margin-bottom: 370px;
+    top: 220px;
+    margin-bottom: 190px;
 }
 
 .inbox__subject {
@@ -828,7 +828,7 @@ li {
     font-weight: 900;
     text-align: left;
     white-space: pre-line;
-    margin: 35px 0;
+    margin: 10px 0;
     padding: 0 10px;
 }
 
@@ -841,6 +841,7 @@ li {
 }
 
 .switch {
+    margin-top: 20px;
     font-size: 2rem;
     text-align: center;
 }
@@ -1260,7 +1261,8 @@ li {
     }
 
     .container--inbox {
-        margin-bottom: 370px;
+        top: 200px;
+        margin-bottom: 180px;
     }
 
     .container--register {
@@ -1726,6 +1728,7 @@ li {
     /* Inbox */
 
     .switch {
+        margin: 0 auto;
         text-align: center;
         font-size: 3rem;
     }
@@ -1752,11 +1755,19 @@ li {
     }
 
     .inbox__header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 20px;
         width: 85%;
+        top: 80px;
     }
 
     .inbox-title {
+        margin: 0 auto;
         font-size: 1.5rem;
+        width: 100%;
+        padding-bottom: 20px;
     }
 
     .inbox__subject {
@@ -1797,7 +1808,8 @@ li {
     }
 
     .container--inbox {
-        margin-bottom: 370px;
+        top: 240px;
+        margin-bottom: 200px;
         background: none;
     }
 
