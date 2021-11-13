@@ -22,7 +22,7 @@ Testing is done for all pages on the website by explaining what is the purpose o
    -  [message](#message)
    -  [alert](#alert)
    -  [contact](#contact)
--  [FUNCTIONS TESTS](#function-tests)
+-  [FUNCTIONS TESTS](#functions-tests)
    -  [post delete](#post-delete)
    -  [dog delete](#dog-delete)
    -  [reply](#reply)
@@ -32,15 +32,15 @@ Testing is done for all pages on the website by explaining what is the purpose o
    -  [adopt undo](#adopt-undo)
    -  [global vars](#global-vars)
 -  [FORM VALIDATION](#form-validation)
-   -  [user register](#user-register)
-   -  [user login](#user-login)
-   -  [user profile](#user-profile)
-   -  [post main](#post-main)
-   -  [dog main](#dog-main)
-   -  [post new and post edit](#post-new-and-post-edit)
-   -  [dog new and dog edit](#dog-new-and-dog-edit)
-   -  [message reply](#message-reply)
-   -  [contact](#contact)
+   -  [user register form](#user-register-form)
+   -  [user login form](#user-login-form)
+   -  [user profile form](#user-profile-form)
+   -  [post main form](#post-main-form)
+   -  [dog main form](#dog-main-form)
+   -  [post new and post edit form](#post-new-and-post-edit-form)
+   -  [dog new and dog edit form](#dog-new-and-dog-edit-form)
+   -  [message reply form](#message-reply-form)
+   -  [contact form](#contact-form)
 -  [USER PERMISSIONS](#user-permissions)
 
 ---
@@ -544,7 +544,7 @@ Testing screenshots:
 
 All forms on the website are tested to ensure correct data is passed on to the server side. Expected input and and result of the test outcome is logged for each form.
 
-## user register
+## user register form
 
 On submit, form method is POST and the ‘user_register’ python function is called. Also on submit, javascript ‘setLocalRegister’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh.
 
@@ -556,7 +556,7 @@ Expected inputs:
 
 **All tests passed!**
 
-## user login
+## user login form
 
 On submit, form method is POST and the ‘user_login’ python function is called. 
 
@@ -567,7 +567,7 @@ Expected inputs:
 
 **All tests passed!**
 
-## user profile
+## user profile form
 
 There are two forms on this page. First form allows user to change password only, and the other form allows change of profile information. If previous data exists, info in form 2 is pre populated on load. On submit, method is POST and the ‘user_login’ python function is called for both forms. 
 
@@ -586,7 +586,7 @@ Expected inputs for Form2:
 
 **All tests passed!**
 
-## post main
+## post main form
 
 On submit, form method is POST and the ‘post_main’ python function is called.  
 
@@ -596,7 +596,7 @@ Expected inputs:
 * Author name does not have any validation restrictions*
 * Sort by does not have any validation restrictions*
 
-## dog main
+## dog main form
 
 On submit, form method is POST and the ‘dog_main’ python function is called.
 
@@ -608,7 +608,7 @@ Expected inputs:
 * Dog size does not have any validation restrictions*
 * Checkbox inputs do not have any validation restrictions*
 
-## post new and post edit
+## post new and post edit form
 
 On submit, form method is POST and the ‘post_new / post_edit’ python function is called. Also on submit, javascript ‘setLocalPost’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded. If post_edit function is called, all form fields are pre populated from the database.
 
@@ -622,7 +622,7 @@ Expected inputs:
 
 **All tests passed!**
 
-## dog new and dog edit
+## dog new and dog edit form
 
 On submit, form method is POST and the ‘dog_new / dog_edit’ python function is called. Also on submit, javascript ‘setLocalDog’ function is called to store all form values to local storage. This enables to pre fill the form values in case server returns an error caused by invalid input and page has to refresh. Enctype of the form is set to 'multipart/form-data' to allow photos to be uploaded.  If dog_edit function is called, all form fields are pre populated from the database.
 
@@ -639,7 +639,7 @@ Expected inputs:
 
 **All tests passed!**
 
-## message reply
+## message reply form
 
 On submit, form method is POST and the ‘reply’ python function is called. Also, 'receiver' and 'msg_id' variables are sent to the server side for further actions.
 
@@ -649,7 +649,7 @@ Expected inputs:
 
 **All tests passed!**
 
-## contact
+## contact form
 
 Expected inputs:
 
