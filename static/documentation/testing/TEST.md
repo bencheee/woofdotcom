@@ -605,7 +605,7 @@ Expected inputs:
 
 * First name (required) is between 2 and 20 characters long, does not contain spaces or special characters 
 * Email address (required) is in correct email format
-* Subject (required) is max 40 characters long
+* Subject (required) is max 80 characters long
 * Message (required) is max 10000 characters long
 
 **All tests passed!**
