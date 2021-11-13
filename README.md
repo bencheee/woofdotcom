@@ -48,9 +48,9 @@
 - [TESTING](#testing)
   -  [Code tests](#code-tests)
   -  [Testing User Stories from User Experience Section](#testing-user-stories-from-user-experience-section)
-    -  [First time visitors goals](#first-time-visitors-goals)
-    -  [Frequent users goals](#frequent-users-goals)
-    -  [Site owners goals](#site-owners-goals)
+    -  [Testing first time visitors goals](#testing-first-time-visitors-goals)
+    -  [Testing frequent users goals](#testing-frequent-users-goals)
+    -  [Testing site owners goals](#testing-site-owners-goals)
   -  [Responsiveness and browser tests](#responsiveness-and-browser-tests)
   -  [Manual testing](#manual-testing)
   -  [Known bugs](#known-bugs)
@@ -368,7 +368,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
 ## Testing User Stories from User Experience Section
 
-### First time visitors goals
+### Testing first time visitors goals
 
 * As a first time visitor, I want to clearly see the purpose of the site and to easily navigate throughout the site.
 
@@ -401,7 +401,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   [Example 6](/static/documentation/testing/user_stories/006.webp)
 
-### Frequent users goals
+### Testing frequent users goals
 
 * As a frequent user, I want to be able to write my own content and to share it with other users of the site
 
@@ -447,7 +447,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
   [Example 15](/static/documentation/testing/user_stories/015.webp)
 
-### Site owners goals
+### Testing site owners goals
 
 * As a site owner, I want to provide a platform for users to share their knowledge, experiences, advices and passion for dogs
 
