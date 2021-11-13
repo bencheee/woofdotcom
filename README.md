@@ -62,7 +62,31 @@
 
 ## 3. DATABASE SCHEMA
 
-![Database Schema](static/documentation/db_schema.png)
+Database for this project includes 5 collections (*users*, *categories*, *posts*, *dogs* and *messages*).
+
+### 3.1 Users collection
+
+Document in 'users' collection consists of 10 fields (including default _id field). Fields *liked_posts* and *adoption_requests* are arrays which get their values from documents in *post* and *dog* collections. All other fileds are populated by direct user input.
+
+### 3.2 Posts collection
+
+Document in 'posts' collection consists of 14 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific post document. Fields *created*, *create_date*, *create_time* and *update_time* are also generated inside python code with datetime module and their purpose is to manipulate posts by time criteria. *Like* field is integer type and it changes depending on users action (like button on post page). *Author* field is populated from a document in 'users' collection. *Category* filed is populated from a document in 'categories' collection. Fields *title*, *summary* and *content* are populated by direct user input.
+
+### 3.3 Dogs collection
+
+Document in 'dogs' collection consists of 13 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific dog document. *Owner_id* field is of ObjectId type and it is received from a document in 'users' collection'. *Created* field is generated inside python code with datetime module and its purpose is to manipulate dogs by time criteria. Fields *name*, *gender*, *age*, *size*, *good_with*, *description* and *greeting* are populated by direct user input.
+
+### 3.4 Messages
+
+Document in 'messages' collection consists of 17 fields (including default _id field). Messages collection is specific when compared to other collections in this project because messages can be of two types - standard message or adoption request. Standard message document has 10 fields, and adoption request adds additional 7 fields (info about a dog for which user applied). Adoption request fields are: *sender_fname*, *sender_lname*, *sender_email*, *sender_phone*, *sender_about* (all of them are received from a document in 'users' collection), *dog_name* and *dog_id* (received from document in 'dogs' collection). Standard message fields are: *type*, *replied*, *status*, *sent_on*, *create_date*, *create_time*, *registered* (all generated within python code), *sent_by*, *send_to* (received from document in 'users' collection), *subject* and *message* which are received by direct user input.
+
+### 3.5 Categories
+
+Document in 'categories' collection consists of 2 fields (including default _id field). Name field is predefined by author of the website.
+
+VISUAL REPRESENTATION OF DATABASE SCHEMA MODEL:
+
+![Database Schema](static/documentation/db_schema.PNG)
 
 ## 4. TECHNOLOGIES USED
 
