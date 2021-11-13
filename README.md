@@ -124,7 +124,7 @@
 # DATABASE SCHEMA
 [Back to table of contents](#table-of-contents)
 
-Database for this project includes 5 collections (*users*, *categories*, *posts*, *dogs* and *messages*).
+For this project non relational MongoDB database was used. Database schema includes 5 collections (*users*, *categories*, *posts*, *dogs* and *messages*).
 
 ## Users collection
 
