@@ -309,22 +309,27 @@ $(".navbar__toggle").click(function () {
 });
 
 // Animates search filter box on desktop size 
-$(".js-form-toggle *").hide();
-let filterButton =
-    `<div class="desktop-filter" style="font-size: 2rem; text-align: center;"
-        tabindex="0">
-        <i class="fas fa-cogs"></i>
-        <p>Search filter</p>
-    </div>`;
-$(".js-form-toggle").append(filterButton);
 
-$(".desktop-filter").click(function () {
-    $(".desktop-filter").addClass("animate__animated animate__flipOutY");
-    $(".desktop-filter").remove();
-    $(".js-form-toggle *").show();
-    $(".js-form-toggle").addClass("animate__animated animate__flipInY");
+if (window.innerWidth > 992) {
+    $(".js-form-toggle *").hide();
+    let filterButton =
+        `<div class="desktop-filter" style="font-size: 2rem; text-align: center;"
+            tabindex="0">
+            <i class="fas fa-cogs"></i>
+            <p>Search filter</p>
+        </div>`;
+    $(".js-form-toggle").append(filterButton);
+    
+    $(".desktop-filter").click(function () {
+        $(".desktop-filter").addClass("animate__animated animate__flipOutY");
+        $(".desktop-filter").remove();
+        $(".js-form-toggle *").show();
+        $(".js-form-toggle").addClass("animate__animated animate__flipInY");
+    
+    });
+}
 
-});
+
 
 
 // ####################
