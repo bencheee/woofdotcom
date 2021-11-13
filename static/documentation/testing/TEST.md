@@ -61,7 +61,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#user-register) 
+**Form validation test:** [Results](#user-register-form) 
 
 Testing screenshots:
 
@@ -82,7 +82,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#user-login) 
+**Form validation test:** [Results](#user-login-form) 
 
 Testing screenshots:
 
@@ -102,7 +102,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#user-profile) 
+**Form validation test:** [Results](#user-profile-form) 
 
 Testing screenshots:
 
@@ -234,7 +234,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#post-new-and-post-edit) 
+**Form validation test:** [Results](#post-new-and-post-edit-form) 
 
 Testing screenshots:
 
@@ -254,7 +254,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#dog-new-and-dog-edit) 
+**Form validation test:** [Results](#dog-new-and-dog-edit-form) 
 
 Testing screenshots:
 
@@ -274,7 +274,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#post-new-and-post-edit) 
+**Form validation test:** [Results](#post-new-and-post-edit-form) 
 
 Testing screenshots:
 
@@ -295,7 +295,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#dog-new-and-dog-edit) 
+**Form validation test:** [Results](#dog-new-and-dog-edit-form) 
 
 Testing screenshots:
 
@@ -355,7 +355,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#message-reply) 
+**Form validation test:** [Results](#message-reply-form) 
 
 Testing screenshots:
 
@@ -399,7 +399,7 @@ Expected behaviour:
 
 **Test result:** All tests passed
 
-**Form validation test:** [Results](#contact) 
+**Form validation test:** [Results](#contact-form) 
 
 Testing screenshots:
 
