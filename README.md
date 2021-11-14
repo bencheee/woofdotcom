@@ -478,7 +478,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
 
 ## Responsiveness and browser tests
 
-* The website was tested on [Google Chrome](/static/documentation/testing/images/chrome.PNG), [Microsoft Edge]((/static/documentation/testing/images/edge.PNG)), [Mozilla Firefox]((/static/documentation/testing/images/firefox.PNG)) and [Opera]((/static/documentation/testing/images/opera.PNG)) browsers.
+* The website was tested on [Google Chrome](/static/documentation/testing/images/chrome.PNG), [Microsoft Edge](/static/documentation/testing/images/edge.PNG), [Mozilla Firefox](/static/documentation/testing/images/firefox.PNG) and [Opera](/static/documentation/testing/images/opera.PNG) browsers.
 
 * Lighthouse test results for [desktop](/static/documentation/testing/lighthouse_desktop.pdf) and [mobile](/static/documentation/testing/lighthouse_mobile.pdf).
 
