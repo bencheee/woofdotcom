@@ -2,7 +2,7 @@
 
 [Click for live website](http://woofdotcom.herokuapp.com/)
 
-**woof(dot)com** is web portal for dog lovers and it is part of my 3nd milestone project in **Code Institute's Full Stack Software Development Course**. This site is intended for all dog lovers to share their posts with community, to find new homes for their dogs in case they cannot keep them anymore, and for those who would like to adopt a dog.
+**woof(dot)com** is web portal for dog lovers and it is part of my 3rd milestone project in **Code Institute's Full Stack Software Development Course**. This site is intended for all dog lovers to share their posts with community, to find new homes for their dogs in case they cannot keep them anymore, and for those who would like to adopt a dog.
 
 ![mockup](/static/documentation/testing/images/mockup.PNG)
 
@@ -43,7 +43,7 @@
   -  [Editing and deleting post or dog ads](#editing-and-deleting-post-or-dog-ads)
   -  [Liking a post](#liking-a-post)
   -  [Adopting a dog](#adopting-a-dog)
-  -  [Contact form](#contact-form)
+  -  [Contact page](#contact-page)
   -  [Inbox](#inbox)
 - [TESTING](#testing)
   -  [Code tests](#code-tests)
@@ -138,11 +138,11 @@ Document in 'posts' collection consists of 14 fields (including default _id fiel
 
 Document in 'dogs' collection consists of 13 fields (including default _id field). Fields *img_id*, *img_filename* and *img_path* are generated inside python code and their purpose is to give unique identifying attributes to specific dog document. *Owner_id* field is of *ObjectId* type and it is received from a document in 'users' collection'. *Created* field is generated inside python code with *datetime* module and its purpose is to manipulate dogs by time criteria. Fields *name*, *gender*, *age*, *size*, *good_with*, *description* and *greeting* are populated by direct user input.
 
-## Messages
+## Messages collection
 
 Document in 'messages' collection consists of 17 fields (including default _id field). Messages collection is specific when compared to other collections in this project because messages can be of two types - standard message or adoption request. Standard message document has 10 fields, and adoption request adds additional 7 fields (info about a dog for which user applied). Adoption request fields are: *sender_fname*, *sender_lname*, *sender_email*, *sender_phone*, *sender_about* (all of them are received from a document in 'users' collection), *dog_name* and *dog_id* (received from document in 'dogs' collection). Standard message fields are: *type*, *replied*, *status*, *sent_on*, *create_date*, *create_time*, *registered* (all generated within python code), *sent_by*, *send_to* (received from document in 'users' collection), *subject* and *message* which are received by direct user input.
 
-## Categories
+## Categories collection
 
 Document in 'categories' collection consists of 2 fields (including default _id field). Name field is predefined by author of the website.
 
@@ -313,7 +313,7 @@ By clicking on the *Apply for adoption* button on a dog page, user can apply for
 ![025](/static/documentation/features/025.webp)
 ![026](/static/documentation/features/026.webp)
 
-## Contact form
+## Contact page
 
 By clicking on *contact us* link in link tabs, contact page will open. If user is registered then only message subject and message is needed. If user is not registered then also user first name and email address is required.
 
@@ -381,6 +381,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
   -  On index page there are two sections. First one, section with latest posts, shows 3 most recent posts added to the website. Second section contains 3 most recent dogs advertised for adoption. Both sections have “view more” buttons which redirect users to dedicated page for posts or dog ads. On desktop size, users can browse through different website sections by using tabs which are placed below title/banner. On mobile and tablet those links are part of navigation menu which can be accessed by pressing the toggle button in upper right corner of the page. 
 
   [Example 2](/static/documentation/testing/user_stories/002.webp)
+
   [Example 3](/static/documentation/testing/user_stories/003.webp)
 
 * As a first time visitor, I want to be able to use search tools to filter content by specific criteria
@@ -414,6 +415,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
   -  Registered users can add their dog ads to the website. On desktop size there is navigation tab “Surrender a dog” below the title/banner. On mobile and tablet size this link is in the navigation menu. This link redirects users to a page with tips and advices on rehoming a dog, and if user wants to proceed with posting an ad, there is a link on the bottom of the page. However, only registered users with full profile info can post dog ads. If user did not provide full info, flash message is displayed.
 
   [Example 8](/static/documentation/testing/user_stories/008.webp)
+
   [Example 9](/static/documentation/testing/user_stories/009.webp)
 
 * As a frequent user, I want to be able to edit or delete all the content created by myself at any time
@@ -433,6 +435,7 @@ The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](ht
   -  Registered users can apply for dog adoption. There is “Apply for adoption” button on the bottom of each dog’s page. However, only registered users with full profile info can apply for dog adoption. If user did not provide full info, flash message is displayed. Once clicked, flash message is displayed to the user, and adoption request message with user’s details is sent to admin. This action can also be undone by pressing the “Withdraw application” button. Users can not send applications for own dogs.
 
   [Example 12](/static/documentation/testing/user_stories/012.webp)
+  
   [Example 13](/static/documentation/testing/user_stories/013.webp)
 
 * As a frequent user, I want to be able to easily communicate with site owner or admin
