@@ -47,7 +47,6 @@ $(window).resize(function () {
     resizeImg($(".dog__img"));
 });
 
-
 // Back button
 $(".js-btn-back").click(function () {
     window.location.href = document.referrer;
@@ -240,7 +239,6 @@ $(".nav__username").focusin(function () {
     $(".nav__dropdown").slideDown();
 });
 
-
 // Adds carousel to dog_surrender.html
 // CODE CREDIT: https://kenwheeler.github.io/slick/
 $(document).ready(function () {
@@ -273,7 +271,6 @@ $(".card__img").on({
         });
     }
 });
-
 
 // Hides posts on post/dog main page if there is more than 10 posts 
 if (($(".card").length) / 3 > 5) {
@@ -309,7 +306,6 @@ $(".navbar__toggle").click(function () {
 });
 
 // Animates search filter box on desktop size 
-
 if (window.innerWidth > 992) {
     $(".js-form-toggle *").hide();
     let filterButton =
@@ -328,8 +324,6 @@ if (window.innerWidth > 992) {
     
     });
 }
-
-
 
 
 // ####################
@@ -414,7 +408,6 @@ function resizeImg(img) {
 
 // Toggles popup message
 let msg;
-
 function popUp(msg, id) {
     $(".popup__container").css("display", "flex");
     $(".popup__text").text(msg);
