@@ -12,16 +12,16 @@
 
 - [USER EXPERIENCE](#user-experience)
   -  [User stories](#user-stories)
-    -  [First time visitors goals](#first-time-visitors-goals)
-    -  [Frequent users goals](#frequent-users-goals)
-    -  [Site owners goals](#site-owners-goals)
+      -  [First time visitors goals](#first-time-visitors-goals)
+      -  [Frequent users goals](#frequent-users-goals)
+      -  [Site owners goals](#site-owners-goals)
 - [WIREFRAMES](#wireframes)
 - [DATABASE SCHEMA](#database-schema)
   -  [Users collection](#users-collection)
   -  [Posts collection](#posts-collection)
   -  [Dogs collection](#dogs-collection)
-  -  [Messages](#messages)
-  -  [Categories](#categories)
+  -  [Messages collection](#messages-collection)
+  -  [Categories collection](#categories-collection)
 - [TECHNOLOGIES USED](#technologies-used)
   -  [Languages](#languages)
   -  [Frameworks, libraries, programs and websites](#frameworks-libraries-programs-and-websites)
@@ -45,6 +45,7 @@
   -  [Adopting a dog](#adopting-a-dog)
   -  [Contact page](#contact-page)
   -  [Inbox](#inbox)
+  -  [Future features to implement](#future-features-to-implement)
 - [TESTING](#testing)
   -  [Code tests](#code-tests)
   -  [Testing User Stories from User Experience Section](#testing-user-stories-from-user-experience-section)
@@ -326,6 +327,10 @@ Every registered user has access to inbox by clicking on envelope icon in the to
 ![028](/static/documentation/features/028.webp)
 ![029](/static/documentation/features/029.webp)
 ![030](/static/documentation/features/030.webp)
+
+## Future features to implement
+
+Future features to implement to the website include fully functional inbox where every user can send messages directly to other users (at the moment messages can be sent only to admin). Also, option to comment the posts and to reshare content on social networks will be included.
 
 ---
 
