@@ -35,11 +35,6 @@ IMG_FOLDER = os.environ.get("IMG_FOLDER")
 mongo = PyMongo(app)
 
 
-@app.route("/test")
-def test():
-    return render_template("test.html")
-
-
 @app.errorhandler(403)
 @app.errorhandler(404)
 @app.errorhandler(500)
