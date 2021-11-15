@@ -443,6 +443,7 @@ li {
 
 .input-placeholder::placeholder {
     font-weight: 100;
+    color: black;
     letter-spacing: normal;
 }
 
