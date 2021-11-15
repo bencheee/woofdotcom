@@ -121,8 +121,7 @@ def alert(response):
         render_template for alert.html
     """
     response_received = response
-    return render_template(
-        "alert.html", response=response_received)
+    return render_template("alert.html", response=response_received)
 
 
 @app.route("/user_register", methods=["GET", "POST"])
@@ -163,8 +162,7 @@ def user_register():
         # Save user details to database
         new_user = {
             "username": request.form.get("username"),
-            "password": generate_password_hash(
-                request.form.get("password")),
+            "password": generate_password_hash(request.form.get("password")),
             "email": "",
             "fname": "",
             "lname": "",
@@ -622,13 +620,11 @@ def post_page(post_id):
         update_date = f"{day}/{mon}/{year} at {hour}:{mins}"
     else:
         update_date = ""
-
     if session.get('user') is None:
         liked_post = None
         user = None
     else:
         user = mongo.db.users.find_one({"username": session["user"]})
-
     # Check if session user has liked this post before
     if user is not None:
         if post["_id"] in user["liked_posts"]:
@@ -754,14 +750,12 @@ def dog_main():
                             pass
         # Number of dogs after all filters are applied
         cur_len = len(dogs)
-
     if len(dogs) == 0:
         no_dogs = True
         dog_top = None
     else:
         dog_top = dogs[0]
         dogs.pop(0)
-
     return render_template(
         "dog_main.html", dogs=dogs, tot_len=tot_len, cur_len=cur_len,
         no_dogs=no_dogs, dog_top=dog_top)
@@ -794,7 +788,6 @@ def dog_new():
             user["phone"] == "" or
             user["about"] == ""):
         return permission_denied()
-
     if request.method == "POST":
         photo = request.files['photo']
         if photo.filename == "":
@@ -867,7 +860,6 @@ def dog_edit(dog_id):
     """
     if session.get('user') is None:
         return permission_denied()
-
     user = mongo.db.users.find_one({"username": session["user"]})
     dog = mongo.db.dogs.find_one({"_id": ObjectId(dog_id)})
     # Allow code to run only if dog exists in database
@@ -876,7 +868,6 @@ def dog_edit(dog_id):
     #  Allow only original poster or admin to see the page
     if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
         return permission_denied()
-
     if request.method == "POST":
         photo = request.files['photo']
         if photo.filename != "" and dog["img_id"] != "default":
@@ -943,7 +934,6 @@ def dog_delete(dog_id):
     # Allow only dog owner or admin to delete the dog
     if user["_id"] != dog["owner_id"] and session["user"] != "Admin":
         return permission_denied()
-
     for user in users:
         # Send message about dog deletion to all applicants
         if ObjectId(dog_id) in user["adoption_requests"]:
@@ -953,8 +943,7 @@ def dog_delete(dog_id):
                 "sent_on": datetime.today().timetuple(),
                 "create_date": datetime.now().strftime("%d/%m/%Y"),
                 "create_time": datetime.now().strftime("%H:%M"),
-                "subject": (
-                    f"Re: Adoption - {dog['name'].capitalize()}"),
+                "subject": (f"Re: Adoption - {dog['name'].capitalize()}"),
                 "message": (
                     f"""
                     This is automated message to inform you that \
@@ -972,8 +961,7 @@ def dog_delete(dog_id):
             user["adoption_requests"].remove(dog["_id"])
     mongo.db.users.update_one(
         {"username": user["username"]},
-        {"$set": {
-            "adoption_requests": user["adoption_requests"]}})
+        {"$set": {"adoption_requests": user["adoption_requests"]}})
     # Delete only images uploaded by users, not default system images
     if dog["img_id"] != "default":
         MY_BUCKET.Object(dog["img_filename"]).delete()
@@ -1139,8 +1127,7 @@ def adopt_undo(dog_id):
         {"username": session["user"]},
         {"$set": {"adoption_requests": user["adoption_requests"]}})
     flash("Application sucessfully withdrawn !")
-    return redirect(
-        url_for('dog_page', dog_id=dog_id))
+    return redirect(url_for('dog_page', dog_id=dog_id))
 
 
 @app.route("/inbox")
@@ -1156,7 +1143,6 @@ def inbox():
     """
     if session.get('user') is None:
         return permission_denied()
-
     # Get all messages / adoption requests
     admin_msgs = list(mongo.db.messages.find(
         {"type": "standard", "send_to": "Admin"}))
@@ -1178,7 +1164,6 @@ def inbox():
         {"type": "adoption", "send_to": "Admin", "status": "unread"})))
     user_unread_msgs = len(list(mongo.db.messages.find(
         {"send_to": session["user"], "status": "unread"})))
-
     return render_template(
         "inbox.html", admin_msgs=admin_msgs, admin_reqs=admin_reqs,
         user_msgs=user_msgs, admin_unread_msgs=admin_unread_msgs,
@@ -1338,10 +1323,8 @@ def global_vars():
         user = False
     else:
         user = True
-
     unread_msgs = 0
     unread_reqs = 0
-
     if user:
         # Get the number of unread messages in inbox
         unread_msgs = len(list(mongo.db.messages.find(
