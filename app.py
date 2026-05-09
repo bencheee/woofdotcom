@@ -30,10 +30,14 @@ mongo = PyMongo(app)
 
 @app.errorhandler(403)
 @app.errorhandler(404)
-@app.errorhandler(500)
 def page_error(e):
     """Error handler for most common error codes"""
     return redirect(url_for("alert", response="page error"))
+
+
+@app.errorhandler(500)
+def server_error(e):
+    return f"<pre>500 error: {e}</pre>", 500
 
 
 def permission_denied():
