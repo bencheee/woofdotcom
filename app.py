@@ -1339,13 +1339,7 @@ def global_vars():
         'msgs_reqs': unread_msgs + unread_reqs}
 
 
-def _upload(url, public_id):
-    r = cloudinary.uploader.upload(url, public_id=public_id, resource_type="image")
-    return r["secure_url"]
-
-
 def _insert_post(data):
-    img_path = _upload(data["img_url"], data["public_id"])
     now = datetime.now()
     mongo.db.posts.insert_one({
         "title": data["title"], "summary": data["summary"],
@@ -1354,12 +1348,11 @@ def _insert_post(data):
         "created": now.timetuple(), "create_date": now.strftime("%d/%m/%Y"),
         "create_time": now.strftime("%H:%M"), "update_date": "",
         "likes": data["likes"], "img_id": int(data["public_id"].split("_")[-1]),
-        "img_filename": f"{data['public_id']}.webp", "img_path": img_path,
+        "img_filename": f"{data['public_id']}.jpg", "img_path": data["img_url"],
     })
 
 
 def _insert_dog(data):
-    img_path = _upload(data["img_url"], data["public_id"])
     now = datetime.now()
     mongo.db.dogs.insert_one({
         "name": data["name"], "gender": data["gender"], "age": data["age"],
@@ -1367,7 +1360,7 @@ def _insert_dog(data):
         "description": data["description"], "greeting": data["greeting"],
         "created": now.timetuple(), "owner_id": data["owner_id"],
         "img_id": int(data["public_id"].split("_")[-1]),
-        "img_filename": f"{data['public_id']}.webp", "img_path": img_path,
+        "img_filename": f"{data['public_id']}.jpg", "img_path": data["img_url"],
     })
 
 
