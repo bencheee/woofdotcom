@@ -1339,18 +1339,10 @@ def global_vars():
         'msgs_reqs': unread_msgs + unread_reqs}
 
 
-_BREED_POOLS = [
-    "retriever-golden", "labrador", "husky", "beagle",
-    "poodle-standard", "spaniel-cocker", "bulldog-french",
-    "germanshepherd", "boxer", "border-collie",
-]
-
-
 def _random_dog_url():
     import urllib.request, json as _json
-    breed = random.choice(_BREED_POOLS)
-    api = f"https://dog.ceo/api/breed/{breed}/images/random"
-    with urllib.request.urlopen(api, timeout=10) as r:
+    with urllib.request.urlopen(
+            "https://dog.ceo/api/breeds/image/random", timeout=10) as r:
         data = _json.loads(r.read())
     return data["message"]
 
