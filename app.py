@@ -1339,22 +1339,20 @@ def global_vars():
         'msgs_reqs': unread_msgs + unread_reqs}
 
 
-_POST_IMGS = [
-    "https://images.dog.ceo/breeds/retriever-golden/n02099601_3004.jpg",
-    "https://images.dog.ceo/breeds/labrador/n02099712_4323.jpg",
-    "https://images.dog.ceo/breeds/husky/n02110185_10047.jpg",
-    "https://images.dog.ceo/breeds/beagle/n02088364_10108.jpg",
-    "https://images.dog.ceo/breeds/poodle-standard/n02113799_2280.jpg",
-    "https://images.dog.ceo/breeds/bulldog-english/n02096585_1380.jpg",
+_BREED_POOLS = [
+    "retriever-golden", "labrador", "husky", "beagle",
+    "poodle-standard", "spaniel-cocker", "bulldog-french",
+    "germanshepherd", "boxer", "border-collie",
 ]
-_DOG_IMGS = [
-    "https://images.dog.ceo/breeds/retriever-golden/n02099601_7771.jpg",
-    "https://images.dog.ceo/breeds/husky/n02110185_11364.jpg",
-    "https://images.dog.ceo/breeds/beagle/n02088364_13776.jpg",
-    "https://images.dog.ceo/breeds/labrador/n02099712_7003.jpg",
-    "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_5978.jpg",
-    "https://images.dog.ceo/breeds/poodle-standard/n02113799_4063.jpg",
-]
+
+
+def _random_dog_url():
+    import urllib.request, json as _json
+    breed = random.choice(_BREED_POOLS)
+    api = f"https://dog.ceo/api/breed/{breed}/images/random"
+    with urllib.request.urlopen(api, timeout=10) as r:
+        data = _json.loads(r.read())
+    return data["message"]
 
 _SEED_POSTS = [
     # ── Training ──────────────────────────────────────────────────────────────
@@ -1433,7 +1431,7 @@ def _seed_upload_and_insert_posts(start, end):
         p = _SEED_POSTS[i]
         public_id = f"post_img_{1001 + i}"
         result = cloudinary.uploader.upload(
-            _POST_IMGS[p["img"]], public_id=public_id, resource_type="image")
+            _random_dog_url(), public_id=public_id, resource_type="image")
         img_path = result["secure_url"]
         now = datetime.now()
         mongo.db.posts.insert_one({
@@ -1452,7 +1450,7 @@ def _seed_upload_and_insert_dogs(start, end):
         d = _SEED_DOGS[i]
         public_id = f"dog_img_{2001 + i}"
         result = cloudinary.uploader.upload(
-            _DOG_IMGS[d["img"]], public_id=public_id, resource_type="image")
+            _random_dog_url(), public_id=public_id, resource_type="image")
         img_path = result["secure_url"]
         owner = mongo.db.users.find_one({"username": d["owner"]})
         now = datetime.now()
