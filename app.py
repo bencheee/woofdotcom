@@ -9,7 +9,8 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-import boto3
+import cloudinary
+import cloudinary.uploader
 if os.path.exists("env.py"):
     import env
 
@@ -20,16 +21,8 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
-# Configure AWS client
-s3 = boto3.client(
-    's3',
-    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
-    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
-)
-BUCKET_NAME = os.environ.get("S3_BUCKET_NAME")
-S3_RESOURCE = boto3.resource('s3')
-MY_BUCKET = S3_RESOURCE.Bucket(BUCKET_NAME)
-IMG_FOLDER = os.environ.get("IMG_FOLDER")
+# Configure Cloudinary
+cloudinary.config(cloudinary_url=os.environ.get("CLOUDINARY_URL"))
 
 # Connect database with the app
 mongo = PyMongo(app)
@@ -68,7 +61,8 @@ def generate_photo(item, collection):
     image = Image.open(request.files['photo'])
     image.thumbnail((768, 432))
     img_id = round(random.random() * 1000000)
-    img_filename = f"{item}_img_{img_id}.webp"
+    public_id = f"{item}_img_{img_id}"
+    img_filename = f"{public_id}.webp"
     while True:
         image_exists = False
         for i in collection:
@@ -76,15 +70,16 @@ def generate_photo(item, collection):
                 image_exists = True
         if image_exists:
             img_id = round(random.random() * 1000000)
-            img_filename = f"{item}_img_{img_id}.webp"
+            public_id = f"{item}_img_{img_id}"
+            img_filename = f"{public_id}.webp"
         else:
             buffer = BytesIO()
             image.save(buffer, 'webp')
             buffer.seek(0)
-            MY_BUCKET.Object(img_filename).put(
-                Body=buffer, ContentType='image/webp')
+            result = cloudinary.uploader.upload(
+                buffer, public_id=public_id, resource_type='image')
+            img_path = result['secure_url']
             break
-    img_path = f"{IMG_FOLDER}{img_filename}"
     return img_id, img_filename, img_path
 
 
@@ -518,7 +513,7 @@ def post_edit(post_id):
     if request.method == "POST":
         photo = request.files['photo']
         if photo.filename != "" and post["img_id"] != "default":
-            MY_BUCKET.Object(post["img_filename"]).delete()
+            cloudinary.uploader.destroy(post["img_filename"].rsplit('.', 1)[0])
         if photo.filename != "":
             try:
                 Image.open(photo)
@@ -586,7 +581,7 @@ def post_delete(post_id):
                 {"$set": {"liked_posts": user["liked_posts"]}})
     # Delete post image filepath for all except default images
     if post["img_id"] != "default":
-        MY_BUCKET.Object(post["img_filename"]).delete()
+        cloudinary.uploader.destroy(post["img_filename"].rsplit('.', 1)[0])
     # Delete post from database
     mongo.db.posts.delete_one({"_id": ObjectId(post_id)})
     flash("Post deleted!")
@@ -871,7 +866,7 @@ def dog_edit(dog_id):
     if request.method == "POST":
         photo = request.files['photo']
         if photo.filename != "" and dog["img_id"] != "default":
-            MY_BUCKET.Object(dog["img_filename"]).delete()
+            cloudinary.uploader.destroy(dog["img_filename"].rsplit('.', 1)[0])
         if photo.filename != "":
             try:
                 Image.open(photo)
@@ -964,7 +959,7 @@ def dog_delete(dog_id):
         {"$set": {"adoption_requests": user["adoption_requests"]}})
     # Delete only images uploaded by users, not default system images
     if dog["img_id"] != "default":
-        MY_BUCKET.Object(dog["img_filename"]).delete()
+        cloudinary.uploader.destroy(dog["img_filename"].rsplit('.', 1)[0])
     # Remove dog from database
     mongo.db.dogs.delete_one({"_id": ObjectId(dog_id)})
     flash("Dog sucessfully removed from database !")
@@ -1341,6 +1336,6 @@ def global_vars():
 
 if __name__ == "__main__":
     app.run(
-        host=os.environ.get("IP"),
-        port=int(os.environ.get("PORT")),
+        host=os.environ.get("IP", "0.0.0.0"),
+        port=int(os.environ.get("PORT", 5000)),
         debug=False)
