@@ -1334,6 +1334,186 @@ def global_vars():
         'msgs_reqs': unread_msgs + unread_reqs}
 
 
+@app.route("/seed/woof-seed-2026")
+def seed_database():
+    """One-time seed route — remove after use."""
+    from werkzeug.security import generate_password_hash as gph
+
+    for col in ["users", "categories", "posts", "dogs", "messages"]:
+        mongo.db[col].drop()
+
+    mongo.db.categories.insert_many([
+        {"category_name": c} for c in
+        ["Training", "Health", "Nutrition", "Behaviour", "Lifestyle"]
+    ])
+
+    def make_user(username, email, fname, lname, phone, about):
+        return {
+            "username": username,
+            "password": gph("Password1!"),
+            "email": email,
+            "fname": fname,
+            "lname": lname,
+            "phone": phone,
+            "about": about,
+            "liked_posts": [],
+            "adoption_requests": []
+        }
+
+    mongo.db.users.insert_many([
+        make_user("Admin",   "admin@woofdotcom.com", "Admin", "User",    "000-000-0000", "Site administrator and dog lover."),
+        make_user("sarah_w", "sarah@example.com",    "Sarah", "Wilson",  "555-101-2020", "Proud owner of two golden retrievers. Dog trainer for 8 years."),
+        make_user("mike_d",  "mike@example.com",     "Mike",  "Davies",  "555-303-4040", "Vet nurse and passionate advocate for dog adoption."),
+        make_user("emma_r",  "emma@example.com",     "Emma",  "Roberts", "555-505-6060", "Lifelong dog owner. Love hiking with my huskies!"),
+    ])
+
+    admin = mongo.db.users.find_one({"username": "Admin"})
+    sarah = mongo.db.users.find_one({"username": "sarah_w"})
+    mike  = mongo.db.users.find_one({"username": "mike_d"})
+    emma  = mongo.db.users.find_one({"username": "emma_r"})
+
+    def upload(url, public_id):
+        r = cloudinary.uploader.upload(url, public_id=public_id, resource_type="image")
+        return r["secure_url"]
+
+    posts_data = [
+        {
+            "title": "5 Essential Commands Every Dog Should Know",
+            "summary": "Teaching your dog basic commands is the foundation of a happy life together. Here are the five commands you should start with.",
+            "content": "Starting with the basics is always the best approach when training your dog.\n\n**1. Sit** – Hold a treat close to your dog's nose, then move your hand up so their bottom lowers. Once they're in sitting position, say 'Sit' and give the treat.\n\n**2. Stay** – Ask your dog to sit first. Open your palm in front of you and say 'Stay'. Take a few steps back and reward if they stay put.\n\n**3. Come** – Put a leash on your dog, crouch down, and gently pull the leash while saying 'Come'. When they reach you, reward generously.\n\n**4. Down** – Hold a treat in your closed fist. Hold it to your dog's snout, then move it to the floor. Their body will follow.\n\n**5. Leave it** – Place a treat in both hands. Show your dog one enclosed fist and say 'Leave it'. When they stop trying, give them the treat from the other hand.\n\nConsistency is key. Short, frequent training sessions work better than long infrequent ones!",
+            "category": "Training", "author": "sarah_w", "likes": 24,
+            "img_url": "https://images.dog.ceo/breeds/retriever-golden/n02099601_3004.jpg",
+            "public_id": "post_img_1001",
+        },
+        {
+            "title": "How to Spot Signs of a Healthy Dog",
+            "summary": "Regular health checks at home can help you catch problems early. Learn what to look for to keep your dog in top shape.",
+            "content": "As a dog owner, you're your pet's first line of defence.\n\n**Eyes** – Should be bright and clear with no discharge.\n\n**Ears** – Clean and odour-free. Head shaking can indicate infection.\n\n**Coat** – A healthy coat is shiny and smooth. Dull fur can signal nutritional deficiencies.\n\n**Weight** – You should be able to feel your dog's ribs without pressing hard, but not see them.\n\n**Gums** – Should be pink and moist. Pale or white gums are a veterinary emergency.\n\n**Energy levels** – Know your dog's normal baseline. Sudden lethargy can signal something needs attention.\n\n**Bathroom habits** – Regular, firm stools are a good sign. Diarrhoea lasting more than 24 hours needs attention.\n\nA monthly at-home check keeps you in tune with your dog's health!",
+            "category": "Health", "author": "mike_d", "likes": 31,
+            "img_url": "https://images.dog.ceo/breeds/labrador/n02099712_4323.jpg",
+            "public_id": "post_img_1002",
+        },
+        {
+            "title": "Raw vs Kibble: What's Best for Your Dog?",
+            "summary": "The debate between raw feeding and kibble has been going on for years. We break down the pros and cons of each approach.",
+            "content": "Choosing how to feed your dog is one of the most debated topics in the dog community.\n\n**Kibble** – Convenient, long shelf life, nutritionally balanced if you choose a quality brand. Some brands use low-quality fillers and preservatives.\n\n**Raw Food (BARF)** – Mimics natural diet, often improves coat condition and energy. Requires careful planning, risk of bacterial contamination, more expensive.\n\n**What do vets say?** Most recommend high-quality kibble as the baseline. If you want to introduce raw, consult your vet first.\n\n**The middle ground** – Many owners feed quality kibble with occasional raw meaty bones or fresh food toppers.\n\nWhatever you choose, transition slowly over 7-10 days to avoid upsetting your dog's stomach.",
+            "category": "Nutrition", "author": "Admin", "likes": 18,
+            "img_url": "https://images.dog.ceo/breeds/husky/n02110185_10047.jpg",
+            "public_id": "post_img_1003",
+        },
+        {
+            "title": "Understanding Dog Body Language",
+            "summary": "Dogs communicate constantly through their bodies. Learning to read the signals can transform your relationship with your dog.",
+            "content": "Dogs can't speak our language, but they're incredibly expressive if you know what to look for.\n\n**The Tail** – A high, fast wag often signals excitement. A tail tucked between the legs signals fear.\n\n**The Eyes** – Soft, relaxed eyes mean a relaxed dog. Hard, staring eyes can be a warning. 'Whale eye' (seeing the whites) is a stress signal.\n\n**The Ears** – Pinned back signals fear. Erect, forward-pointing ears signal alertness. Relaxed ears mean the dog is comfortable.\n\n**The Body** – A dog that rolls over is either submissive or asking for a belly rub. Hackles raised along the back signals arousal or fear.\n\n**Calming Signals** – Yawning, lip licking, and turning away are signals your dog needs some space. Recognising these early prevents situations from escalating.",
+            "category": "Behaviour", "author": "emma_r", "likes": 42,
+            "img_url": "https://images.dog.ceo/breeds/beagle/n02088364_10108.jpg",
+            "public_id": "post_img_1004",
+        },
+        {
+            "title": "The Best Dog-Friendly Hiking Tips",
+            "summary": "Exploring the great outdoors with your dog is one of life's great pleasures. Here are our top tips for a safe and fun adventure.",
+            "content": "Hiking with your dog is one of the most rewarding experiences for both of you.\n\n**Before You Go** – Check that the trail allows dogs. Check your dog's fitness and ensure vaccinations and tick treatment are up to date.\n\n**What to Pack** – Collapsible water bowl, plenty of water, high-value snacks, poop bags, dog first aid kit with tick remover.\n\n**On the Trail** – Let your dog sniff – this is mentally tiring in the best way. Take regular breaks on hot days. Watch for signs of fatigue: excessive panting, lagging behind.\n\n**After the Hike** – Check paws for cuts or thorns. Check the coat thoroughly for ticks, especially around the ears and between toes.\n\nA tired dog is a happy dog – and a happy owner!",
+            "category": "Lifestyle", "author": "sarah_w", "likes": 29,
+            "img_url": "https://images.dog.ceo/breeds/poodle-standard/n02113799_2280.jpg",
+            "public_id": "post_img_1005",
+        },
+        {
+            "title": "Separation Anxiety: Causes and Solutions",
+            "summary": "Separation anxiety is one of the most common behavioural issues in dogs. Understanding it is the first step to helping your dog.",
+            "content": "If your dog howls or destroys things when left alone, they may have separation anxiety. It's treatable!\n\n**What Causes It?** It can develop after a change in routine, after rehoming, or due to a traumatic experience. Some breeds are more prone to it.\n\n**Signs** – Destructive behaviour when alone, excessive vocalisation, house soiling, pacing, shadowing you around the house.\n\n**What Helps**\n\n**Desensitisation** – Gradually get your dog used to being alone. Start with very short absences and build up slowly.\n\n**Departure cues** – Make leaving and arriving low-key. Avoid big emotional goodbyes.\n\n**Enrichment** – Give a special treat only when you leave (a stuffed Kong). This creates a positive association.\n\n**Exercise** – A well-exercised dog settles more easily.\n\n**Professional help** – For severe cases, a qualified behaviourist can make a real difference.",
+            "category": "Behaviour", "author": "mike_d", "likes": 37,
+            "img_url": "https://images.dog.ceo/breeds/bulldog-english/n02096585_1380.jpg",
+            "public_id": "post_img_1006",
+        },
+    ]
+
+    for p in posts_data:
+        img_path = upload(p["img_url"], p["public_id"])
+        img_id = int(p["public_id"].split("_")[-1])
+        now = datetime.now()
+        mongo.db.posts.insert_one({
+            "title": p["title"], "summary": p["summary"],
+            "content": p["content"], "category": p["category"],
+            "author": p["author"],
+            "created": now.timetuple(), "create_date": now.strftime("%d/%m/%Y"),
+            "create_time": now.strftime("%H:%M"), "update_date": "",
+            "likes": p["likes"], "img_id": img_id,
+            "img_filename": f"{p['public_id']}.webp", "img_path": img_path,
+        })
+
+    dogs_data = [
+        {
+            "name": "buddy", "gender": "Male", "age": "3", "size": "Large",
+            "good_with": ["Kids", "Dogs", "Cats"],
+            "description": "Buddy is a gorgeous 3-year-old Golden Retriever with a heart of gold. He loves everyone he meets and has never met a stranger. Buddy is fully house trained, great on the lead, and knows his basic commands. He was surrendered when his owner moved abroad and is looking for a loving forever home where he can get the cuddles and exercise he deserves.",
+            "greeting": "Hi, I'm Buddy! I love fetch, belly rubs, and stealing socks. I promise to be your best friend forever!",
+            "owner_id": admin["_id"],
+            "img_url": "https://images.dog.ceo/breeds/retriever-golden/n02099601_7771.jpg",
+            "public_id": "dog_img_2001",
+        },
+        {
+            "name": "luna", "gender": "Female", "age": "2", "size": "Large",
+            "good_with": ["Dogs"],
+            "description": "Luna is an energetic and intelligent 2-year-old Husky who needs an experienced owner who understands the breed. She is stunning to look at and an absolute joy to be around once she has had her exercise. Luna needs at least 2 hours of activity a day and a secure garden. Not suitable for homes with cats due to a high prey drive.",
+            "greeting": "Howwooo! I'm Luna and I have enough energy for the both of us. Take me hiking and I'll love you forever.",
+            "owner_id": emma["_id"],
+            "img_url": "https://images.dog.ceo/breeds/husky/n02110185_11364.jpg",
+            "public_id": "dog_img_2002",
+        },
+        {
+            "name": "charlie", "gender": "Male", "age": "5", "size": "Small",
+            "good_with": ["Kids", "Dogs", "Cats"],
+            "description": "Charlie is a sweet, gentle 5-year-old Beagle who adores company. He is great with children and other pets, making him the perfect family dog. Charlie loves sniffing on long walks and is fully vaccinated, neutered, and microchipped. A real gem looking for his forever sofa.",
+            "greeting": "Hi there! I'm Charlie. I might follow my nose into trouble sometimes, but I always come back for cuddles.",
+            "owner_id": mike["_id"],
+            "img_url": "https://images.dog.ceo/breeds/beagle/n02088364_13776.jpg",
+            "public_id": "dog_img_2003",
+        },
+        {
+            "name": "max", "gender": "Male", "age": "1", "size": "Large",
+            "good_with": ["Dogs"],
+            "description": "Max is a bouncy 1-year-old Labrador who is full of life and mischief! He is still very much a puppy at heart and needs a home that can continue his training. Max would thrive with an active family who can give him the stimulation he needs.",
+            "greeting": "HELLO! Is it walkies time? What about now? I'm Max and every moment is the BEST MOMENT EVER!",
+            "owner_id": admin["_id"],
+            "img_url": "https://images.dog.ceo/breeds/labrador/n02099712_7003.jpg",
+            "public_id": "dog_img_2004",
+        },
+        {
+            "name": "rosie", "gender": "Female", "age": "4", "size": "Medium",
+            "good_with": ["Kids", "Dogs", "Cats"],
+            "description": "Rosie is a calm and affectionate 4-year-old Cocker Spaniel who loves nothing more than being close to her people. She is well-mannered, great in the car, and fantastic with children and other animals. Rosie was previously a therapy dog and has impeccable manners.",
+            "greeting": "Hello, lovely. I'm Rosie. I'll sit nicely, I won't bark, and I'll look at you with these eyes until you give me a biscuit.",
+            "owner_id": sarah["_id"],
+            "img_url": "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_5978.jpg",
+            "public_id": "dog_img_2005",
+        },
+        {
+            "name": "pepper", "gender": "Female", "age": "6", "size": "Medium",
+            "good_with": ["Kids", "Cats"],
+            "description": "Pepper is a sophisticated and playful 6-year-old Standard Poodle. Don't let the elegant appearance fool you – she is hilarious and loves to clown around. Pepper is incredibly smart, quick to learn, and hypoallergenic, making her wonderful for families with allergies.",
+            "greeting": "Bonjour! I'm Pepper. I'm smart, I'm stylish, and I'm probably already training you without you knowing.",
+            "owner_id": mike["_id"],
+            "img_url": "https://images.dog.ceo/breeds/poodle-standard/n02113799_4063.jpg",
+            "public_id": "dog_img_2006",
+        },
+    ]
+
+    for d in dogs_data:
+        img_path = upload(d["img_url"], d["public_id"])
+        img_id = int(d["public_id"].split("_")[-1])
+        now = datetime.now()
+        mongo.db.dogs.insert_one({
+            "name": d["name"], "gender": d["gender"], "age": d["age"],
+            "size": d["size"], "good_with": d["good_with"],
+            "description": d["description"], "greeting": d["greeting"],
+            "created": now.timetuple(), "owner_id": d["owner_id"],
+            "img_id": img_id, "img_filename": f"{d['public_id']}.webp",
+            "img_path": img_path,
+        })
+
+    return "Seed complete! 4 users, 5 categories, 6 posts, 6 dogs loaded. Remove this route now."
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP", "0.0.0.0"),
