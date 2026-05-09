@@ -37,7 +37,8 @@ def page_error(e):
 
 @app.errorhandler(500)
 def server_error(e):
-    return f"<pre>500 error: {e}</pre>", 500
+    import traceback
+    return f"<pre>{traceback.format_exc()}</pre>", 500
 
 
 def permission_denied():
